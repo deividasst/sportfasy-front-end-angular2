@@ -5,17 +5,15 @@ import 'rxjs/add/operator/map'
 
 @Injectable()
 export class DService {
-
-  constructor(private http: Http) {
-
-  }
+    private _url: string = "http://localhost:3000/api/users"
+    constructor(private _http: Http){}
 
 getDataFromLocalHost() {
-  return this.http.get('http://localhost:3000/posts').map((res: Response) => res.json());
-}
-
-getCommentsLocalHost(postID) {
-  return this.http.get(`http://localhost:3000/comments/
-    ${postID} `).map((res: Response) => res.json());
-}
+  return this._http.get(this._url)
+  .map((res: Response) => res.json());
+    }
+//getCommentsLocalHost(postID) {
+//  return this.http.get(`http://localhost:3000/comments/
+    //${postID} `).map((res: Response) => res.json());
+//}
 }
