@@ -10,8 +10,5 @@ import {DService} from './web_components/shared/data.srv';
 })
 export class AppComponent {
   title = 'app';
-  data:any;
-  constructor(private ds: DService) {
-    console.log(this.ds.getDataFromLocalHost().subscribe(data => this.data = data));
-  }
+
 }

@@ -1,35 +1,26 @@
-
-  <body>
   <div style="text-align:center">
 
     <h2 class="page-header">Sing Up</h2>
 
     <form action="http://localhost:3000/api/users" method="post">
-    First Name:
+
+    <label for="name">First Name:</label>
     <input type="text" required minlength="1" id="name" name="name">
-    Last Name:
+
+    <label for="surname">Last Name:</label>
     <input type="text" required minlength="4" id="surname" name="surname">
-    Password:
-    <input type="text" required minlength="4" id="password" name="password">
-    Confirm Password:
-    <input type="text" required minlength="4" id="c_password" name="c_password">
-    Email:
-    <input type="text" required minlength="4" id="email" name="email">
+
+    <label for="password">Password:</label>
+    <input type="password" required minlength="6" id="password" name="password">
+
+    <label for="c_password">Confirm Password:</label>
+    <input type="password" required minlength="6" id="c_password" name="c_password">
+
+    <label for="email">Email:</label>
+    <input type="email" required minlength="4" id="email" name="email">
     <br>
     <br>
-    <button (click) ="Show()" >Sing Up</button>
+    <button type="submit" value="Submit">Submit</button>
     </form>
-    <ul>
-          <li *ngFor="let item of itemList" >
-            First Name: {{item.id|json}}
-            <br>
-            Last Name: {{item.comment|json}}
-            <br>
-            Email: {{item.comment|json}}
-            <br>
-            Password: {{item.comment|json}}
-            <br>
-          </li>
-    </ul>
+
   </div>
-  </body>

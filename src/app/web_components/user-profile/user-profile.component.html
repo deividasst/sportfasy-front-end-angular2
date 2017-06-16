@@ -1,18 +1,15 @@
 <p>
   user-profile works!
 </p>
-<li>
-  <p><b>First Name: </b> {{user.name}}</p>
-  <p><b>Last name: </b>{{user.surname}} </p>
-  <p><b>Email: </b>{{user.email}} </p>
-</li>
-<!--
-<li>
-<p> <b>First Name: </b> {{post.name}}</p>
-  <p> <b>Last Name: </b> {{post.surname}}</p>
-</li>
-
-<app-post *ngFor="let post of data"
-          [users]="users">
-</app-post>
--->
+<button type (click) ="Show()" >Show registered uses</button>
+<ul>
+    <li *ngFor="let item of itemList" >
+      First Name: {{item.name|json}}
+      <br>
+      Last Name: {{item.surname|json}}
+      <br>
+      Email: {{item.email|json}}
+      <br>
+      <br>
+    </li>
+</ul>
