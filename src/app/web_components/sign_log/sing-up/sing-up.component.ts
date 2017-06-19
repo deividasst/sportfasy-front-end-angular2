@@ -10,6 +10,25 @@ import {DService} from '../../shared/data.srv';
 })
 export class SingUpComponent implements OnInit {
 
+  /*itemList=[];
+
+   data;
+
+   constructor(private http:Http) {
+     this.http.post(
+     'http://localhost:3000/api/users',
+     JSON.stringify({
+      name: String,
+      surname: String,
+      password: String,
+      email: String
+     }))
+     .subscribe(res => this.data = res.json());
+   }
+   post(){
+     this.itemList = this.data;
+   }
+   */
   ngOnInit() {
   }
 }

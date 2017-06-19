@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule }   from '@angular/router';
 import { FormsModule }   from '@angular/forms';
 import { HttpModule, JsonpModule } from '@angular/http';
+import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 
 
 import { AppComponent } from './app.component';
@@ -34,6 +35,7 @@ import {DService} from './web_components/shared/data.srv';
     BrowserModule,
     HttpModule,
     JsonpModule,
+    BsDropdownModule.forRoot(),
     RouterModule.forRoot([
      {
        path: 'logout',

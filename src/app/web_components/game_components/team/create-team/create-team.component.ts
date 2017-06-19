@@ -11,5 +11,4 @@ export class CreateTeamComponent implements OnInit {
 
   ngOnInit() {
   }
-
 }
