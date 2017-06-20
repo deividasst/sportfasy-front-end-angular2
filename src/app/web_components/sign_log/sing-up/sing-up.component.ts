@@ -1,34 +1,46 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, Validators } from '@angular/forms';
-import { Http } from'@angular/http';
+import {NgForm} from '@angular/forms';
 import {DService} from '../../shared/data.srv';
+import { Observable } from 'rxjs/Observable';
+import { FormBuilder, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { FormGroup, FormControl } from '@angular/forms';
+import { Hero } from './hero'
 
 @Component({
+  moduleId: module.id,
   selector: 'app-sing-up',
   templateUrl: './sing-up.component.html',
   styleUrls: ['./sing-up.component.sass']
 })
 export class SingUpComponent implements OnInit {
 
-  /*itemList=[];
+  //iš hero
+  model = new Hero('Vardas', 'Pavarde', 'Slaptazodis', 'pastas@gmail.com');
+  submitted = false;
 
-   data;
+  //ne iš hero
+  heroes=[];
+  mode = 'Observable';
 
-   constructor(private http:Http) {
-     this.http.post(
-     'http://localhost:3000/api/users',
-     JSON.stringify({
-      name: String,
-      surname: String,
-      password: String,
-      email: String
-     }))
-     .subscribe(res => this.data = res.json());
+  //iš hero
+  onSubmit () { this.submitted = true; }
+
+  //iš hero
+  // TODO: Remove this when we're done
+  get diagnostic() { return JSON.stringify(this.model); }
+    constructor(private ds: DService) {}
+
+    newHero() {
+     this.model = new Hero('zodis', 'kazkas', 'kazkas', 'kazkas');
    }
-   post(){
-     this.itemList = this.data;
-   }
-   */
-  ngOnInit() {
+
+  addUser(user) {
+  console.log('added new user' );
+  this.ds.add( user )
+                     .subscribe(
+                       hero  => this.heroes);
   }
+
+  ngOnInit() {}
 }
