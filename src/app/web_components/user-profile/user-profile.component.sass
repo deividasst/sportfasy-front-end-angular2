@@ -9,27 +9,14 @@
 
 /* Set height of the grid so .sidenav can be 100% (adjust as needed)
 
-.row.content
-
-  height: 100%
-
 /* Set gray background color and 100% height
 
 .sidenav
+  position: inherit
   background-color: #ffad01
   height: 100%
-  padding-bottom: 2%
-/* Set black background color, white text and some padding
 
-footer
-  position: absolute
-  right: 0
-  bottom: 0
-  left: 0
-  width: 100%
-  height: 7%
-  background-color: #dde7e9
-  color: #212121
+/* Set black background color, white text and some padding
 
 #header
   background-color: #212121
@@ -63,10 +50,12 @@ footer
 .logout
   color: #ffffff
 
+
 #pav
+  position: relative
   float: left
-  width: 92%
-  height: 40%
+  min-width: 92%
+  min-height: 30%
   background-color: #f8f9f9
   color: #ffad01
   margin-left: 4%
@@ -75,18 +64,20 @@ footer
   margin-bottom: 2%
 
 #all_tour
+  position: relative
   float: left
   width: 45%
-  height: 55%
+  height: 65%
   color: #ffad01
   background-color: #212121
   margin-bottom: 1%
   margin-left: 4%
 
 #all_teams
+  position: relative
   float: right
   width: 45%
-  height: 55%
+  height: 65%
   background-color: #212121
   color: #ffad01
   margin-bottom: 1%
@@ -98,7 +89,6 @@ footer
     height: auto
     padding: 15px
   .row.content
-    min-font-size: auto
     height: auto
-  footer
-    position: relative
+
+
