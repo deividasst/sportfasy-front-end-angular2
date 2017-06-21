@@ -12,7 +12,8 @@
 /* Set gray background color and 100% height
 
 .sidenav
-  position: inherit
+  position: relative
+  float: left
   background-color: #ffad01
   height: 100%
 
@@ -20,7 +21,7 @@
 
 #header
   background-color: #212121
-  height: 20%
+  height: 10%
   padding: 15px
   margin-bottom: 5px
 
@@ -53,7 +54,6 @@
 
 
 #pav
-  position: relative
   float: left
   min-width: 92%
   min-height: 30%
@@ -65,7 +65,6 @@
   margin-bottom: 2%
 
 #all_tour
-  position: relative
   float: left
   width: 45%
   height: 65%
@@ -75,7 +74,6 @@
   margin-left: 4%
 
 #all_teams
-  position: relative
   float: right
   width: 45%
   height: 65%
@@ -93,15 +91,23 @@
     height: auto
 
 .fullbody
+  align-items: center
+  position: fixed
+  width: 100%
   height: 100%
-  background-color: #dde7e9
 
 .green
-  background-color: green
-  height: 70%
+  height: 80%
 
 footer
   margin-top: 0.5%
   background-color: #212121
   height: 10%
   color: #ff9900
+
+.divs
+  float: right
+  position: inherit
+  height: 100%
+  width: 100%
+  background-color: #d2d2d2
