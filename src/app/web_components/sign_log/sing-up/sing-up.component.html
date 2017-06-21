@@ -1,28 +1,31 @@
+<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
 <div class="login-form">
-			<div class="close"> </div>
-					<div class="head">
-					</div>
-					<div class="head-info">
-						<h1>SIGN UP</h1>
-						<h2>Hello and Welcome! Tell us a bit about you</h2>
-					</div>
-				<form method="post" novalidate="">
-					<li>
-						<input type="text" name="name" [(ngModel)]="user.name" class="text" value="Name" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Name';}" ><a href="#"></a>
-					</li>
-					<li>
-						<input type="text" name="surname" [(ngModel)]="user.surname" class="text" value="Surname" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Surname';}" ><a href="#"></a>
-					</li>
-					<li>
-						<input type="password" name="password" [(ngModel)]="user.password" value="Password" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Password';}"><a href="#" ></a>
-					</li>
-          <li>
-						<input type="email" name="email" [(ngModel)]="user.email" value="Email" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Mail';}"><a href="#" ></a>
-					</li>
-					<div class="p-container">
-								<input type="submit" (click) ="addUser()" value="SIGN UP" >
-							<div class="clear"> </div>
-					</div>
-          <router-outlet></router-outlet>
-				</form>
-</div>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-offset-5 col-md-3">
+        <div class="form-login">
+          <h4>Join us!</h4>
+          <form method="post" novalidate="">
+
+            <label class="label" for="name">First Name:</label><br>
+            <input class="form-control input-sm chat-input" type="text" name="name" [(ngModel)]="user.name" value="Name" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Name';}" ><a href="#"></a><br>
+
+            <label class="label" for="surname">Last Name:</label><br>
+            <input class="form-control input-sm chat-input" type="text" name="surname" [(ngModel)]="user.surname" value="Surname" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Surname';}" ><a href="#"></a><br>
+
+            <label class="label" for="password">Password:</label><br>
+            <input class="form-control input-sm chat-input" type="password" required minlength="6" name="password" [(ngModel)]="user.password" value="Password" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Password';}"><a href="#" ></a><br>
+
+            <label class="label" for="c_password">Confirm Password:</label><br>
+            <input class="form-control input-sm chat-input" type="password" required minlength="6" id="c_password" name="c_password"><br>
+
+            <label class="label" for="email">Email:</label><br>
+            <input class="form-control input-sm chat-input" type="email" name="email" [(ngModel)]="user.email" value="Email" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Mail';}"><a href="#" ></a>
+            <button class="btn button" type="submit" (click) ="addUser()" value="SIGN UP"></button>
+            <p>Already have an account? <a routerLink="/login">Login</a> </p>
+          </form>
+
+        </div>
+      </div>
+    </div>
+  </div>
