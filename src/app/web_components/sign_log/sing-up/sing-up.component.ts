@@ -1,46 +1,42 @@
 import { Component, OnInit } from '@angular/core';
-import {NgForm} from '@angular/forms';
-import {DService} from '../../shared/data.srv';
+import { NgForm } from '@angular/forms';
+import { DService } from '../../shared/data.srv';
 import { Observable } from 'rxjs/Observable';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { FormGroup, FormControl } from '@angular/forms';
-import { Hero } from './hero'
+import { User } from '../../shared/User'
 
 @Component({
-  moduleId: module.id,
   selector: 'app-sing-up',
   templateUrl: './sing-up.component.html',
-  styleUrls: ['./sing-up.component.sass']
+  styleUrls: ['./sing-up.component.sass'],
+  providers:[DService]
 })
 export class SingUpComponent implements OnInit {
 
-  //iš hero
-  model = new Hero('Vardas', 'Pavarde', 'Slaptazodis', 'pastas@gmail.com');
-  submitted = false;
+  constructor(private ds: DService,private router: Router) { }
+    user: User;
+    responseStatus:Object= [];
+    status:boolean ;
 
-  //ne iš hero
-  heroes=[];
-  mode = 'Observable';
+    public location = '' ;
+    ngOnInit() {
+      this.user = new User();
+      this.user.name = "First Name";
+      this.user.surname = "Last Name";
+      this.user.password = "Password";
+      this.user.email = "email@gmail.com";
 
-  //iš hero
-  onSubmit () { this.submitted = true; }
+    }
+  //duomenim saugot vieta
+  dataHolder=[];
 
-  //iš hero
-  // TODO: Remove this when we're done
-  get diagnostic() { return JSON.stringify(this.model); }
-    constructor(private ds: DService) {}
-
-    newHero() {
-     this.model = new Hero('zodis', 'kazkas', 'kazkas', 'kazkas');
-   }
-
+  //funcija prideti nauja vartotoja i duomenu baze
   addUser(user) {
   console.log('added new user' );
-  this.ds.add( user )
+  this.ds.registerUser(this.user)
                      .subscribe(
-                       hero  => this.heroes);
+                       hero  => this.dataHolder),() => console.log('Request Completed');
   }
-
-  ngOnInit() {}
 }

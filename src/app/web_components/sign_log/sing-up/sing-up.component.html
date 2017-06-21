@@ -1,98 +1,28 @@
-<!--
-  <div>
-
-    <h2 class="page-header">Sing Up</h2>
-
-    <form>
-
-    <label for="name">First Name:</label>
-    <input type="text" required minlength="1" id="name" name="name">
-
-    <label for="surname">Last Name:</label>
-    <input type="text" required minlength="4" id="surname" name="surname">
-
-    <label for="password">Password:</label>
-    <input type="password" required minlength="6" id="password" name="password">
-
-    <label for="c_password">Confirm Password:</label>
-    <input type="password" required minlength="6" id="c_password" name="c_password">
-
-    <label for="email">Email:</label>
-    <input type="email" required minlength="4" id="email" name="email">
-    <br>
-    <br>
-    <button class="btn" type="submit" value="Submit" (click)="addUser()">Submit</button>
-  </form>
+<div class="login-form">
+			<div class="close"> </div>
+					<div class="head">
+					</div>
+					<div class="head-info">
+						<h1>SIGN UP</h1>
+						<h2>Hello and Welcome! Tell us a bit about you</h2>
+					</div>
+				<form method="post" novalidate="">
+					<li>
+						<input type="text" name="name" [(ngModel)]="user.name" class="text" value="Name" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Name';}" ><a href="#"></a>
+					</li>
+					<li>
+						<input type="text" name="surname" [(ngModel)]="user.surname" class="text" value="Surname" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Surname';}" ><a href="#"></a>
+					</li>
+					<li>
+						<input type="password" name="password" [(ngModel)]="user.password" value="Password" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Password';}"><a href="#" ></a>
+					</li>
+          <li>
+						<input type="email" name="email" [(ngModel)]="user.email" value="Email" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Mail';}"><a href="#" ></a>
+					</li>
+					<div class="p-container">
+								<input type="submit" (click) ="addUser()" value="SIGN UP" >
+							<div class="clear"> </div>
+					</div>
+          <router-outlet></router-outlet>
+				</form>
 </div>
--->
-
-
-
-
-{{diagnostic}}
-
-<div class="container">
-    <p></p>
-    <h1>Sing Up</h1>
-
-    <form #heroForm="ngForm">
-      <div class="form-group">
-        <label for="name">Name</label>
-        <input type="text" class="form-control" id="name" required
-        [(ngModel)]="model.name" name="name" #name="ngModel">
-        TODO: remove this: {{mode.name}}
-      </div>
-
-      <div class="form-group">
-        <label for="surname">Surname</label>
-        <input type="text" class="form-control" id="surname" required
-        [(ngModel)]="model.surname" name="surname" #surname="ngModel">
-        TODO: remove this: {{mode.surname}}
-      </div>
-
-      <div class="form-group">
-        <label for="password">Password</label>
-        <input type="password" class="form-control" id="password" required
-        [(ngModel)]="model.password" name="password" #password="ngModel">
-        TODO: remove this: {{mode.password}}
-      </div>
-
-      <div class="form-group">
-        <label for="email">Email</label>
-        <input type="email" class="form-control" id="email" required
-        [(ngModel)]="model.email" name="email" #email="ngModel">
-        TODO: remove this: {{mode.email}}
-      </div>
-      <button type="submit" class="btn btn-default" (click)="newHero()">Submit</button>
-    </form>
-</div>
-
-
-
-<!--
-<div> class = "container">
-    <h2>Sing Up</h2>
-    <form [formGroup]="userForm">
-        <div class="form-group">
-          <label>Name</label>
-          <input type="text" class="form-control">
-        </div>
-
-        <div class="form-group">
-          <label>Surname</label>
-          <input type="text" class="form-control">
-        </div>
-
-        <div class="form-group">
-          <label>Password</label>
-          <input type="password" class="form-control">
-        </div>
-
-        <div class="form-group">
-          <label>Email</label>
-          <input type="email" class="form-control">
-        </div>
-        <button type="submit" class="btn btn-primary">Submit</button>
-      </form>
-    </div>
-  -->
