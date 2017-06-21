@@ -1,36 +1,35 @@
-import {Http, Response} from '@angular/http';
+import {Http, Response} from '@angular/http'
 import {Injectable} from '@angular/core';
-import 'rxjs/add/operator/map'
-
+import {Observable} from 'rxjs/Observable';
+import 'rxjs/add/operator/map';
+import {Headers, RequestOptions} from '@angular/http';
+import { FormGroup, FormControl } from '@angular/forms';
+import { User } from './User'
+import 'rxjs/add/operator/catch'
 
 @Injectable()
 
-export class DService {
+  export class DService {
+  constructor(public http: Http) {
+  }
 
- constructor(public http: Http) {
+  data;
 
- }
-data;
- getData() {
-  return this.http.get('http://localhost:3000/api/users')
-    .map((res: Response) => res.json().posts);
-}
+  carsUrl: string = 'http://localhost:3000/api/users/registration';
+//get funkcija parodyti visus uzsiregistravusius narius
+  getData() {
+    return this.http.get(this.carsUrl)
+      .map((res: Response) => res.json().posts);
+  }
 
+//post funcija, registracijai
+  registerUser(user: User) {
+    return this.http.post(this.carsUrl, user, {  }).map(res =>  res.json()).catch(this.handleErrorObservable);
+  }
 
-/*
-makePost(): void {
-this.http.post(
-'http://localhost:3000/api/users',
-JSON.stringify({
- name: "laura",
- surname: "laura",
- password: "123546",
- email: "laura@gmail.com"
-}))
-.subscribe((res: Response) => {
-this.data = res.json();
+  private handleErrorObservable (error: Response | any) {
+    console.error(error.message || error);
+    return Observable.throw(error.message || error);
+  }
 
-});
-}
-*/
 }

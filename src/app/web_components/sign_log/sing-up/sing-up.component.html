@@ -1,28 +1,34 @@
+<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+<div class="login-form">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-offset-5 col-md-3">
+        <div class="form-login">
+          <h4>Join us!</h4>
+          <form method="post" novalidate="">
 
+            <label class="label" for="name">First Name:</label><br>
+            <input class="form-control input-sm chat-input" type="text" name="name" [(ngModel)]="user.name" value="Name" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Name';}" ><a href="#"></a><br>
 
-  <div>
+            <label class="label" for="surname">Last Name:</label><br>
+            <input class="form-control input-sm chat-input" type="text" name="surname" [(ngModel)]="user.surname" value="Surname" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Surname';}" ><a href="#"></a><br>
 
-    <h2 class="page-header">Sing Up</h2>
+            <label class="label" for="password">Password:</label><br>
+            <input class="form-control input-sm chat-input" type="password" required minlength="6" name="password" [(ngModel)]="user.password" value="Password" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Password';}"><a href="#" ></a><br>
 
-    <form action="http://localhost:3000/api/users" method="post"> 
+            <label class="label" for="c_password">Confirm Password:</label><br>
+            <input class="form-control input-sm chat-input" type="password" required minlength="6" name="c_password" value="Password"><br>
 
-    <label for="name">First Name:</label>
-    <input type="text" required minlength="1" id="name" name="name">
+            <label class="label" for="email">Email:</label><br>
+            <input class="form-control input-sm chat-input" type="email" name="email" [(ngModel)]="user.email" value="Email" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Mail';}"><a href="#" ></a>
+            <input class="btn button" type="submit" (click) ="addUser()" value="SIGN UP">
+            <p>Already have an account? <a routerLink="/login">Login</a> </p>
+          </form>
 
-    <label for="surname">Last Name:</label>
-    <input type="text" required minlength="4" id="surname" name="surname">
+        </div>
+      </div>
+    </div>
 
-    <label for="password">Password:</label>
-    <input type="password" required minlength="6" id="password" name="password">
-
-    <label for="c_password">Confirm Password:</label>
-    <input type="password" required minlength="6" id="c_password" name="c_password">
-
-    <label for="email">Email:</label>
-    <input type="email" required minlength="4" id="email" name="email">
-    <br>
-    <br>
-    <button class="btn" type="submit" value="Submit">Submit</button>
-    </form>
+  <div *ngIf="errorMessage" [ngClass] = "'error'"> {{errorMessage}} </div>
 
   </div>
