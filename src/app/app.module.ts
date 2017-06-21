@@ -1,9 +1,10 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { RouterModule }   from '@angular/router';
-import { FormsModule }   from '@angular/forms';
+import { RouterModule } from '@angular/router';
+import { FormsModule } from '@angular/forms';
 import { HttpModule, JsonpModule } from '@angular/http';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
+
 
 
 import { AppComponent } from './app.component';
@@ -16,6 +17,7 @@ import { ListTeamComponent } from './web_components/game_components/team/list-te
 import { CreateTeamComponent } from './web_components/game_components/team/create-team/create-team.component';
 import { UserProfileComponent } from './web_components/user-profile/user-profile.component';
 import {DService} from './web_components/shared/data.srv';
+//import { HeroFormComponent } from './web_components/sign_log/sing-up/hero-form.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +29,8 @@ import {DService} from './web_components/shared/data.srv';
     JoinTournmentComponent,
     ListTeamComponent,
     CreateTeamComponent,
-    UserProfileComponent
+    UserProfileComponent,
+  //  HeroFormComponent
 
 
   ],
@@ -35,7 +38,9 @@ import {DService} from './web_components/shared/data.srv';
     BrowserModule,
     HttpModule,
     JsonpModule,
+    FormsModule,
     BsDropdownModule.forRoot(),
+    //HeroFormComponent,
     RouterModule.forRoot([
      {
        path: 'logout',
@@ -51,7 +56,7 @@ import {DService} from './web_components/shared/data.srv';
      },
      {
        path: 'createtournment',
-       component: CreateTeamComponent
+       component: CreatTournmentComponent
      },
      {
        path: 'jointournment',
