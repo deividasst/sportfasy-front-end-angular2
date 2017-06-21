@@ -77,6 +77,15 @@ import {DService} from './web_components/shared/data.srv';
    ])
   ],
   providers: [DService],
-  bootstrap: [AppComponent]
+  bootstrap: [
+    AppComponent,
+    LogOutComponent,
+    LogInComponent,
+    SingUpComponent,
+    CreatTournmentComponent,
+    JoinTournmentComponent,
+    ListTeamComponent,
+    CreateTeamComponent,
+    UserProfileComponent]
 })
 export class AppModule { }
