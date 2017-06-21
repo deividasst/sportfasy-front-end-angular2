@@ -17,11 +17,11 @@
             <input class="form-control input-sm chat-input" type="password" required minlength="6" name="password" [(ngModel)]="user.password" value="Password" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Password';}"><a href="#" ></a><br>
 
             <label class="label" for="c_password">Confirm Password:</label><br>
-            <input class="form-control input-sm chat-input" type="password" required minlength="6" id="c_password" name="c_password"><br>
+            <input class="form-control input-sm chat-input" type="password" required minlength="6" name="c_password" value="Password"><br>
 
             <label class="label" for="email">Email:</label><br>
             <input class="form-control input-sm chat-input" type="email" name="email" [(ngModel)]="user.email" value="Email" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Mail';}"><a href="#" ></a>
-            <button class="btn button" type="submit" (click) ="addUser()" value="SIGN UP"></button>
+            <input class="btn button" type="submit" (click) ="addUser()" value="SIGN UP">
             <p>Already have an account? <a routerLink="/login">Login</a> </p>
           </form>
 
