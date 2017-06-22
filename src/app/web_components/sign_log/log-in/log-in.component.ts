@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-import { User } from '../../shared/User'
-import { DService } from '../../shared/data.srv';
+import {Component, OnInit} from '@angular/core';
+import {User} from '../../shared/User'
+import {DService} from '../../shared/data.srv';
 
 @Component({
   selector: 'app-log-in',
@@ -10,11 +10,12 @@ import { DService } from '../../shared/data.srv';
 })
 export class LogInComponent implements OnInit {
   user: User;
-  responseStatus: Object= [];
+  responseStatus: Object = [];
   status: boolean;
-  dataHolder= [];
+  dataHolder = [];
 
-  constructor(private ds: DService) { }
+  constructor(private ds: DService) {
+  }
 
   ngOnInit() {
     this.user = new User();
@@ -25,9 +26,9 @@ export class LogInComponent implements OnInit {
   }
 
   loginUser(user) {
-    console.log('try to log in user' );
+    console.log('try to log in user');
     this.ds.loginUser('/api/login', JSON.stringify(this.user))
-      .subscribe(obj  => this.dataHolder);
+      .subscribe(obj => this.dataHolder);
   }
 
 }

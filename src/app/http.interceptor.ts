@@ -2,11 +2,12 @@ import {Injectable} from '@angular/core';
 import {ConnectionBackend, RequestOptions, Request, RequestOptionsArgs, Response, Http, Headers} from '@angular/http';
 import {Observable} from 'rxjs/Rx';
 import {environment} from '../environments/environment';
+import {Router} from '@angular/router';
 
 
 @Injectable()
 export class InterceptedHttp extends Http {
-  constructor(backend: ConnectionBackend, defaultOptions: RequestOptions) {
+  constructor(backend: ConnectionBackend, defaultOptions: RequestOptions, private router?: Router) {
     super(backend, defaultOptions);
   }
 
@@ -47,12 +48,11 @@ export class InterceptedHttp extends Http {
       options.headers = new Headers();
     }
     options.headers.append('Content-Type', 'application/json');
-    // options.headers.append('Access-Control-Request-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
-    // options.headers.append('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
-
     return options;
   }
 
   private onError(err: any): void {
+    this.router.navigate(['/login']);
+    console.log(err);
   }
 }
