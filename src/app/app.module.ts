@@ -83,15 +83,8 @@ import {Http, XHRBackend, RequestOptions} from '@angular/http';
 
     DService
   ],
-  bootstrap: [AppComponent,
-    LogOutComponent,
-    LogInComponent,
-    SingUpComponent,
-    CreatTournmentComponent,
-    JoinTournmentComponent,
-    ListTeamComponent,
-    CreateTeamComponent,
-    UserProfileComponent]
+  bootstrap: [AppComponent
+ ]
 
 })
 export class AppModule {
