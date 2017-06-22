@@ -31,7 +31,6 @@ import { Http, XHRBackend, RequestOptions} from '@angular/http';
     ListTeamComponent,
     CreateTeamComponent,
     UserProfileComponent,
-  //  HeroFormComponent
 
 
   ],
