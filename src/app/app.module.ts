@@ -17,7 +17,7 @@ import { ListTeamComponent } from './web_components/game_components/team/list-te
 import { CreateTeamComponent } from './web_components/game_components/team/create-team/create-team.component';
 import { UserProfileComponent } from './web_components/user-profile/user-profile.component';
 import {DService} from './web_components/shared/data.srv';
-
+import { ReactiveFormsModule } from '@angular/forms';  // <-- #1 import module
 
 
 
@@ -42,6 +42,7 @@ import {DService} from './web_components/shared/data.srv';
     HttpModule,
     JsonpModule,
     FormsModule,
+    ReactiveFormsModule,
     BsDropdownModule.forRoot(),
     RouterModule.forRoot([
      {

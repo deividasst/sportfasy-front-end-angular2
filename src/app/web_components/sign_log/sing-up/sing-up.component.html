@@ -5,28 +5,42 @@
       <div class="col-md-offset-5 col-md-3">
         <div class="form-login">
           <h4>Join us!</h4>
-          <form method="post" novalidate>
+          <form [formGroup]="form"  method="post" novalidate (ngSubmit)="onSubmit()">
+          <div class="form-group">
+                <label class="label" for="name">First Name:</label><br>
+                  <div>
+                    <input class="form-control" type="text"  name="name" [(ngModel)]="user.name" [ngModelOptions]="{standalone: true}"   #name="ngModel" onfocus="this.value = '';" placeholder="Name" ><a href="#"></a><br>
+                </div>
+          </div> 
+          <div class="form-group">
+                <label class="label" for="surname">Last Name:</label><br>
+                  <div>
+                    <input class="form-control" type="text"  name="surname" [(ngModel)]="user.surname" [ngModelOptions]="{standalone: true}"  #surname="ngModel" onfocus="this.value = '';" placeholder="Surname"><a href="#"></a><br>
+                </div>
+          </div>
+          <div class="form-group">
+                <label class="label" for="password">Password:</label><br>
+                  <div>
+                    <input class="form-control" [formGroup]="form"  formControlName="password"   id="password" type="password"  name="password" [(ngModel)]="user.password"  onfocus="this.value = '';" placeholder="••••••••••••"><a href="#" ></a><br>
+                </div>
+          </div>   
+          <div class="form-group">
+                <label class="label" for="cPassword">Confirm Password:</label><br>
+                  <div>
+                  <input class="form-control"  [formGroup]="form"  formControlName="cPassword" type="password" id="cPassword" name="cPassword" [(ngModel)]="user.cPassword"   placeholder="••••••••••••"><br>
+                </div>
+          </div> 
+            <div class="alert alert-danger" *ngIf="form.controls.cPassword.errors?.MatchPassword">Password not match</div>
 
-            <label class="label" for="name">First Name:</label><br>
-            <input class="form-control input-sm chat-input" type="text"  name="name" [(ngModel)]="user.name" required minlength="3" maxlength="20"  #name="ngModel" onfocus="this.value = '';" placeholder="Jonas"><a href="#"></a><br>
-           
+          <div class="form-group">
+                <label class="label" for="email">Email:</label><br>
+                  <div>
+                    <input class="form-control" type="email" name="email" [(ngModel)]="user.email"  [ngModelOptions]="{standalone: true}" required  #email="ngModel" onfocus="this.value = '';" placeholder="Email address"><a href="#" ></a>
+                </div>
+          </div>
 
-            <label class="label" for="surname">Last Name:</label><br>
-            <input class="form-control input-sm chat-input" type="text"  name="surname" [(ngModel)]="user.surname" required minlength="3" maxlength="20" #surname="ngModel" onfocus="this.value = '';" placeholder="Jonaitis"><a href="#"></a><br>
 
-            <label class="label" for="password">Password:</label><br>
-            <input class="form-control input-sm chat-input" type="password" required minlength="6" name="password" [(ngModel)]="user.password" #password="ngModel" onfocus="this.value = '';" placeholder="••••••••••••"><a href="#" ></a><br>
-            
-
-            <label class="label" for="cPassword">Confirm Password:</label><br>
-            <input class="form-control input-sm chat-input" type="password" required minlength="6" name="cPassword" [(ngModel)]="user.cPassword"  #cPqassword = "ngModel" placeholder="••••••••••••"><br>
-         
-
-            <label class="label" for="email">Email:</label><br>
-            <input class="form-control input-sm chat-input" type="email" name="email" [(ngModel)]="user.email" required  #email="ngModel" onfocus="this.value = '';" placeholder="jonas.jonaitis@sportfasy.com"><a href="#" ></a>
-           
- 
-            <button type="submit" class="btn button" (click) ="addUser()"  >SIGN UP</button>
+            <button type="submit" class="btn button " (click) ="addUser()"  >SIGN UP</button>
             <h3 class="error">{{errorMsg}}</h3>
 
 

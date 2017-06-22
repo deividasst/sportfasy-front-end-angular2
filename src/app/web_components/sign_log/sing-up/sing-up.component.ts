@@ -6,6 +6,7 @@ import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { FormGroup, FormControl } from '@angular/forms';
 import { User } from '../../shared/User'
+import { PasswordValidation } from './password-validator';
 
 
 
@@ -17,7 +18,26 @@ import { User } from '../../shared/User'
 })
 export class SingUpComponent implements OnInit {
 
-  constructor(private ds: DService,private router: Router) { }
+form: FormGroup;
+
+
+
+  constructor(private ds: DService,private router: Router, fb: FormBuilder) 
+     
+  {
+     this.form = fb.group({
+      password: ['', Validators.required],
+      cPassword: ['', Validators.required]
+    }, {
+      validator: PasswordValidation.MatchPassword // your validation method
+    })
+  }
+    
+//private formBuilder: FormBuilder
+
+    onSubmit() {
+    console.log(this.form);
+  }
     user: User;
     errorMsg: string;
     
