@@ -5,26 +5,33 @@
       <div class="col-md-offset-5 col-md-3">
         <div class="form-login">
           <h4>Join us!</h4>
-          <form method="post" novalidate="">
+          <form method="post" novalidate>
 
             <label class="label" for="name">First Name:</label><br>
-            <input class="form-control input-sm chat-input" type="text" name="name" [(ngModel)]="user.name" value="Name" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Name';}" ><a href="#"></a><br>
+            <input class="form-control input-sm chat-input" type="text"  name="name" [(ngModel)]="user.name" required minlength="3" maxlength="20"  #name="ngModel" onfocus="this.value = '';" placeholder="Jonas"><a href="#"></a><br>
+           
 
             <label class="label" for="surname">Last Name:</label><br>
-            <input class="form-control input-sm chat-input" type="text" name="surname" [(ngModel)]="user.surname" value="Surname" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Surname';}" ><a href="#"></a><br>
+            <input class="form-control input-sm chat-input" type="text"  name="surname" [(ngModel)]="user.surname" required minlength="3" maxlength="20" #surname="ngModel" onfocus="this.value = '';" placeholder="Jonaitis"><a href="#"></a><br>
 
             <label class="label" for="password">Password:</label><br>
-            <input class="form-control input-sm chat-input" type="password" required minlength="6" name="password" [(ngModel)]="user.password" value="Password" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Password';}"><a href="#" ></a><br>
+            <input class="form-control input-sm chat-input" type="password" required minlength="6" name="password" [(ngModel)]="user.password" #password="ngModel" onfocus="this.value = '';" placeholder="••••••••••••"><a href="#" ></a><br>
+            
 
-            <label class="label" for="c_password">Confirm Password:</label><br>
-            <input class="form-control input-sm chat-input" type="password" required minlength="6" name="c_password" value="Password"><br>
+            <label class="label" for="cPassword">Confirm Password:</label><br>
+            <input class="form-control input-sm chat-input" type="password" required minlength="6" name="cPassword" [(ngModel)]="user.cPassword"  #cPqassword = "ngModel" placeholder="••••••••••••"><br>
+         
 
             <label class="label" for="email">Email:</label><br>
-            <input class="form-control input-sm chat-input" type="email" name="email" [(ngModel)]="user.email" value="Email" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Mail';}"><a href="#" ></a>
-            <input class="btn button" type="submit" (click) ="addUser()" value="SIGN UP">
-            <p>Already have an account? <a routerLink="/login">Login</a> </p>
-          </form>
+            <input class="form-control input-sm chat-input" type="email" name="email" [(ngModel)]="user.email" required  #email="ngModel" onfocus="this.value = '';" placeholder="jonas.jonaitis@sportfasy.com"><a href="#" ></a>
+           
+ 
+            <button type="submit" class="btn button" (click) ="addUser()"  >SIGN UP</button>
+            <h3 class="error">{{errorMsg}}</h3>
 
+
+            <p class="error">Already have an account? <a routerLink="/login">Login</a></p>
+          </form>
         </div>
       </div>
     </div>

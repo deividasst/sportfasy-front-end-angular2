@@ -7,6 +7,8 @@ import { Router } from '@angular/router';
 import { FormGroup, FormControl } from '@angular/forms';
 import { User } from '../../shared/User'
 
+
+
 @Component({
   selector: 'app-sing-up',
   templateUrl: './sing-up.component.html',
@@ -17,18 +19,24 @@ export class SingUpComponent implements OnInit {
 
   constructor(private ds: DService,private router: Router) { }
     user: User;
-    responseStatus:Object= [];
-    status:boolean ;
+    errorMsg: string;
+    
 
     public location = '' ;
     ngOnInit() {
       this.user = new User();
-      this.user.name = "First Name";
-      this.user.surname = "Last Name";
-      this.user.password = "Password";
-      this.user.email = "email@gmail.com";
-
+      this.user.name;
+      this.user.surname;
+      this.user.password;
+      this.user.cPassword;
+      this.user.email;
     }
+
+    save(model: User, isValid: boolean) {
+        // call API to save customer
+        console.log(model, isValid);
+    }
+
   //duomenim saugot vieta
   dataHolder=[];
 
@@ -37,6 +45,9 @@ export class SingUpComponent implements OnInit {
   console.log('added new user' );
   this.ds.registerUser(this.user)
                      .subscribe(
-                       hero  => this.dataHolder),() => console.log('Request Completed');
+                       hero  => this.dataHolder,
+                     resError => this.errorMsg = resError);
   }
+
+
 }
