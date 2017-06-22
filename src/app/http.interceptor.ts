@@ -54,6 +54,5 @@ export class InterceptedHttp extends Http {
   }
 
   private onError(err: any): void {
-
   }
 }
