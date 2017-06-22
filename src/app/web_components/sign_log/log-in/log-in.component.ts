@@ -15,7 +15,14 @@ export class LogInComponent implements OnInit {
   status: boolean;
   dataHolder= [];
 
-  constructor(private ds: DService) { }
+  constructor(private ds: DService) {
+    this.user = new User();
+    this.user.name = 'First Name';
+    this.user.surname = 'Last Name';
+    this.user.password = 'kinlock';
+    this.user.email = 'kemmalis013949ou86';
+
+  }
 
   ngOnInit() {
   }
