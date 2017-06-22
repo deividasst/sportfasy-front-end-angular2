@@ -16,31 +16,28 @@ import { User } from '../../shared/User'
 export class SingUpComponent implements OnInit {
 
   user: User;
-  responseStatus: Object= [];
-  status: boolean;
-  // duomenim saugot vieta
+
   dataHolder= [];
 
   constructor(private ds: DService, private router: Router) { }
 
-
-    public location = '' ;
     ngOnInit() {
           this.user = new User();
       this.user.name = 'First Name';
-      this.user.surname = "Last Name";
-      this.user.password = "Password";
-      this.user.email = "email@gmail.com";
+      this.user.surname = 'Last Name';
+      this.user.password = 'Password';
+      this.user.email = 'email@gmail.com';
 
     }
 
 
 
   // funcija prideti nauja vartotoja i duomenu baze
+
+
   addUser(user) {
-  console.log('added new user' );
-  this.ds.registerUser(this.user)
-                     .subscribe(
-                       hero  => this.dataHolder),() => console.log('Request Completed');
+    console.log('added new user');
+    this.ds.registerUser('/api/users/registration', JSON.stringify(this.user))
+      .subscribe(obj => this.dataHolder);
   }
 }
