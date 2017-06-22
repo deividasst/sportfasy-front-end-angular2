@@ -11,28 +11,32 @@ import { User } from '../../shared/User'
   selector: 'app-sing-up',
   templateUrl: './sing-up.component.html',
   styleUrls: ['./sing-up.component.sass'],
-  providers:[DService]
+  providers: [DService]
 })
 export class SingUpComponent implements OnInit {
 
-  constructor(private ds: DService,private router: Router) { }
-    user: User;
-    responseStatus:Object= [];
-    status:boolean ;
+  user: User;
+  responseStatus: Object= [];
+  status: boolean;
+  // duomenim saugot vieta
+  dataHolder= [];
+
+  constructor(private ds: DService, private router: Router) { }
+
 
     public location = '' ;
     ngOnInit() {
-      this.user = new User();
-      this.user.name = "First Name";
+          this.user = new User();
+      this.user.name = 'First Name';
       this.user.surname = "Last Name";
       this.user.password = "Password";
       this.user.email = "email@gmail.com";
 
     }
-  //duomenim saugot vieta
-  dataHolder=[];
 
-  //funcija prideti nauja vartotoja i duomenu baze
+
+
+  // funcija prideti nauja vartotoja i duomenu baze
   addUser(user) {
   console.log('added new user' );
   this.ds.registerUser(this.user)
