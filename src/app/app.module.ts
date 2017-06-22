@@ -17,7 +17,8 @@ import { ListTeamComponent } from './web_components/game_components/team/list-te
 import { CreateTeamComponent } from './web_components/game_components/team/create-team/create-team.component';
 import { UserProfileComponent } from './web_components/user-profile/user-profile.component';
 import {DService} from './web_components/shared/data.srv';
-//import { HeroFormComponent } from './web_components/sign_log/sing-up/hero-form.component';
+import {httpFactory} from './http.factory';
+import { Http, XHRBackend, RequestOptions} from '@angular/http';
 
 @NgModule({
   declarations: [
@@ -40,7 +41,6 @@ import {DService} from './web_components/shared/data.srv';
     JsonpModule,
     FormsModule,
     BsDropdownModule.forRoot(),
-    //HeroFormComponent,
     RouterModule.forRoot([
      {
        path: 'logout',
@@ -76,7 +76,15 @@ import {DService} from './web_components/shared/data.srv';
      }
    ])
   ],
-  providers: [DService],
+  providers: [
+    {
+      provide: Http,
+      useFactory: httpFactory,
+      deps: [XHRBackend, RequestOptions]
+    },
+
+    DService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

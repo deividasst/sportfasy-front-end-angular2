@@ -5,7 +5,6 @@ import 'rxjs/add/operator/map';
 import {Headers, RequestOptions} from '@angular/http';
 import {FormGroup, FormControl} from '@angular/forms';
 import {User} from './User'
-import {InterceptedHttp} from './Interceptor.srv'
 
 
 
@@ -15,7 +14,7 @@ export class DService {
 
   carsUrl = 'http://localhost:3000/api/users';
 
-  constructor(public http: Http, public interceptor: InterceptedHttp) {
+  constructor(public http: Http) {
   }
 
 
@@ -32,7 +31,7 @@ export class DService {
 
   // post function login
   loginUser(url: string, user: string) {
-    return this.interceptor.post(url, user).map(res => res.json());
+    return this.http.post(url, user).map(res => res.json());
 
 
   }

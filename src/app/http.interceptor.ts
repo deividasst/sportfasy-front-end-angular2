@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
 import { ConnectionBackend, RequestOptions, Request, RequestOptionsArgs, Response, Http, Headers} from '@angular/http';
 import {Observable} from 'rxjs/Rx';
-import {environment} from '../../../environments/environment';
+import {environment} from '../environments/environment';
 
 
 @Injectable()
@@ -46,6 +46,8 @@ export class InterceptedHttp extends Http {
       options.headers = new Headers();
     }
     options.headers.append('Content-Type', 'application/json');
+    // options.headers.append('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
+    // options.headers.append('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
 
     return options;
   }

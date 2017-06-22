@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { User } from '../../shared/User'
 import { DService } from '../../shared/data.srv';
-import { InterceptedHttp } from '../../shared/Interceptor.srv';
 
 @Component({
   selector: 'app-log-in',
@@ -18,6 +17,11 @@ export class LogInComponent implements OnInit {
   constructor(private ds: DService) { }
 
   ngOnInit() {
+    this.user = new User();
+    this.user.name = 'First Name';
+    this.user.surname = 'Last Name';
+    this.user.password = 'kinlock';
+    this.user.email = 'kemmalis013949ou86';
   }
 
   loginUser(user) {

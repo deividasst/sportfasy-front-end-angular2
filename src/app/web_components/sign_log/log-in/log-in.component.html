@@ -9,15 +9,12 @@
 
 
             <label class="label" for="email">Email:</label><br>
-            <input class="form-control input-sm chat-input"  name="email" [(ngModel)]="user.email"
-                   value="Email" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Mail';}"><a
-            href="#"></a>
+            <input class="form-control input-sm chat-input"  name="email" [(ngModel)]="user.email">
 
 
             <label class="label" for="password">Password:</label><br>
             <input class="form-control input-sm chat-input" type="password" required minlength="6" name="password"
-                   [(ngModel)]="user.password" value="Password" onfocus="this.value = '';"
-                   onblur="if (this.value == '') {this.value = 'Password';}"><a href="#"></a><br>
+                   [(ngModel)]="user.password"><br>
 
             <input class="btn button" type="submit" (click)="loginUser()" value="Log in">
 
