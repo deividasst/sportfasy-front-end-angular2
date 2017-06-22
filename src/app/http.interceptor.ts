@@ -21,6 +21,7 @@ export class InterceptedHttp extends Http {
 
   post(url: string, body: string, options?: RequestOptionsArgs): Observable<Response> {
     url = this.updateUrl(url);
+    console.log(url, body, this.getRequestOptionArgs(options));
     return super.post(url, body, this.getRequestOptionArgs(options));
   }
 
@@ -46,9 +47,13 @@ export class InterceptedHttp extends Http {
       options.headers = new Headers();
     }
     options.headers.append('Content-Type', 'application/json');
-    options.headers.append('Access-Control-Request-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
+    // options.headers.append('Access-Control-Request-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
     // options.headers.append('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
 
     return options;
+  }
+
+  private onError(err: any): void {
+
   }
 }

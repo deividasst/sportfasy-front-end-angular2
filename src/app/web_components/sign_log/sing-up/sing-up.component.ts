@@ -26,7 +26,7 @@ export class SingUpComponent implements OnInit {
 
     public location = '' ;
     ngOnInit() {
-      this.user = new User();
+          this.user = new User();
       this.user.name = 'First Name';
       this.user.surname = "Last Name";
       this.user.password = "Password";

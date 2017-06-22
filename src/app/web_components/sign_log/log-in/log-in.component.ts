@@ -26,7 +26,7 @@ export class LogInComponent implements OnInit {
 
   loginUser(user) {
     console.log('try to log in user' );
-    this.ds.loginUser('/api/login', this.user.toString())
+    this.ds.loginUser('/api/login', JSON.stringify(this.user))
       .subscribe(obj  => this.dataHolder);
   }
 
