@@ -18,15 +18,17 @@ import { PasswordValidation } from './password-validator';
 })
 export class SingUpComponent implements OnInit {
 
-form: FormGroup;
+       form: FormGroup;
+       dataHolder= [];
+       user: User;
+       errorMsg: string;
 
+  constructor(private ds: DService,private router: Router, fb: FormBuilder)
 
-
-  constructor(private ds: DService,private router: Router, fb: FormBuilder) 
-     
   {
+
      this.form = fb.group({
-      
+
       name: ['', Validators.compose([Validators.required,
        Validators.minLength(5), // Minimum length is 5 characters
       Validators.maxLength(30), // Maximum length is 30 characters
@@ -99,17 +101,13 @@ form: FormGroup;
     }
   }
 
-    
+
 //private formBuilder: FormBuilder
 
     onSubmit() {
     console.log(this.form);
   }
-    user: User;
-    errorMsg: string;
-    
 
-    public location = '' ;
     ngOnInit() {
       this.user = new User();
       this.user.name;
@@ -125,7 +123,7 @@ form: FormGroup;
     }
 
   //duomenim saugot vieta
-  dataHolder=[];
+
 
   //funcija prideti nauja vartotoja i duomenu baze
   addUser(user) {

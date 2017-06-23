@@ -16,40 +16,26 @@ import { Router } from '@angular/router';
    data;
 
        carsUrl : string = 'http://localhost:3000/api/users/registration';
-//get funkcija parodyti visus uzsiregistravusius narius
+us
       getData() {
          return this.http.get(this.carsUrl)
            .map((res: Response) => res.json().posts);
-             
+
        }
 
-//post funcija, registracijai
-      /*registerUser(user: User) {
-             return this.http.post(this.carsUrl, user, {  }).map(res =>  res.json()).
-             catch(this.errorHandler);
-  }
-  errorHandler(error: Response) {
-      console.error(error);
-      let message = `Errors status code ${error.status} at ${error.url}`
-      return Observable.throw(message);
-  }*/
   registerUser(user: User) {
          return this.http.post(this.carsUrl, user, {  }).map(res => {
            this.router.navigate(['login']);
                 if (res) {
                     if (res.status === 200) {
-                        return [{ status: res.status, json: res.json() }]
+                        return [{ status: res.status, json: res.json().}]
                     }}}).
          catch((error: any) => {
            if (error.status === 409){
              return Observable.throw(new Error('user already exist!'));
-               
-            
-
-
         }
         else if (error.status === 500){
-          return Observable.throw(new Error('while creating new user!'));
+          return Observable.throw(new Error('please fill all fields'));
        }
         else if (error.status === 200){
           return Observable.throw(new Error('Success creating new user!'));
