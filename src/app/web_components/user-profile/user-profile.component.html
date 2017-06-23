@@ -74,18 +74,14 @@
     <main id="page-content-wrapper" role="main">
       <div id="pav">
         <br>
-        <p>image</p>
+        <input class="btn button" type="submit" (click) ="getUsers()" value="SIGN UP">
         <br>
       </div>
       <div id="all_tour">
         <p>ALL TOURNAMENTS</p>
         <ul>
-          <a>List</a><br>
-          <a>List</a><br>
-          <a>List</a><br>
-          <a>List</a><br>
-          <a>List</a><br>
-          <a>List</a><br>
+          <li *ngFor="let item of dataHolder; let i = index">
+            {{i}} {{item}}</li><br>
         </ul>
       </div>
       <div id="all_teams">

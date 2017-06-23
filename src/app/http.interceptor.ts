@@ -3,21 +3,26 @@ import {ConnectionBackend, RequestOptions, Request, RequestOptionsArgs, Response
 import {Observable} from 'rxjs/Rx';
 import {environment} from '../environments/environment';
 import {Router} from '@angular/router';
-
+import {TokenHolderServise} from './web_components/shared/tokenholder.srv';
 
 @Injectable()
 export class InterceptedHttp extends Http {
-  constructor(backend: ConnectionBackend, defaultOptions: RequestOptions, private router?: Router) {
+  private router:  Router;
+  private tokenHolder: TokenHolderServise;
+  constructor(backend: ConnectionBackend,
+              defaultOptions: RequestOptions, router:  Router) {
     super(backend, defaultOptions);
+    this.router = router;
+    console.log('router', this.router);
   }
 
   request(url: string | Request, options?: RequestOptionsArgs): Observable<Response> {
-    return super.request(url, options);
+    return this.intercept(super.request(url, options));
   }
 
   get(url: string, options?: RequestOptionsArgs): Observable<Response> {
     url = this.updateUrl(url);
-    return super.get(url, this.getRequestOptionArgs(options));
+    return this.intercept(super.get(url, this.getRequestOptionArgs(options)));
   }
 
   post(url: string, body: string, options?: RequestOptionsArgs): Observable<Response> {
@@ -51,8 +56,15 @@ export class InterceptedHttp extends Http {
     return options;
   }
 
-  private onError(err: any): void {
-    this.router.navigate(['/login']);
-    console.log(err);
+  intercept(observable: Observable<Response>): Observable<Response> {
+    return observable.catch((err, source) => {
+      if (err.status  !== 200 ) {
+        console.log('interceptor method');
+        this.router.navigate(['/login']);
+        return Observable.empty();
+      } else {
+        return Observable.throw(err);
+      }
+    });
   }
 }

@@ -11,9 +11,9 @@ export class DService {
   constructor(public http: Http) {
   }
 
-  getData() {
-    return this.http.get('/users')
-      .map((res: Response) => res.json().posts);
+  getUsers() {
+    return this.http.get('/api/users')
+      .map((res: Response) => res.json());
   }
 
   registerUser(url: string, user: string) {

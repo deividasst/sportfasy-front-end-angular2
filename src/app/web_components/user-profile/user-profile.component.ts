@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {DService} from '../shared/data.srv';
+
 
 
 @Component({
@@ -8,11 +10,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UserProfileComponent implements OnInit {
 
-  constructor() {
+  dataHolder= [];
+  constructor(private ds: DService) {
   }
 
   ngOnInit() {
 
+  }
+
+  getUsers() {
+    this.ds.getUsers()
+      .subscribe(obj => this.dataHolder);
   }
 
 }

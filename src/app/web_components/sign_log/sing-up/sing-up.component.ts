@@ -30,13 +30,7 @@ export class SingUpComponent implements OnInit {
 
     }
 
-
-
-  // funcija prideti nauja vartotoja i duomenu baze
-
-
   addUser(user) {
-    console.log('added new user');
     this.ds.registerUser('/api/users/registration', JSON.stringify(this.user))
       .subscribe(obj => this.dataHolder);
   }
