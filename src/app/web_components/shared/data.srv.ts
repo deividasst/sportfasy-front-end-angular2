@@ -28,7 +28,7 @@ us
            this.router.navigate(['login']);
                 if (res) {
                     if (res.status === 200) {
-                        return [{ status: res.status, json: res.json().}]
+                        return [{ status: res.status, json: res.json() }]
                     }}}).
          catch((error: any) => {
            if (error.status === 409){
