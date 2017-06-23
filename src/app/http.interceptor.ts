@@ -1,12 +1,13 @@
 import {Injectable} from '@angular/core';
-import { ConnectionBackend, RequestOptions, Request, RequestOptionsArgs, Response, Http, Headers} from '@angular/http';
+import {ConnectionBackend, RequestOptions, Request, RequestOptionsArgs, Response, Http, Headers} from '@angular/http';
 import {Observable} from 'rxjs/Rx';
-import {environment} from '../../../environments/environment';
+import {environment} from '../environments/environment';
+import {Router} from '@angular/router';
 
 
 @Injectable()
 export class InterceptedHttp extends Http {
-  constructor(backend: ConnectionBackend, defaultOptions: RequestOptions) {
+  constructor(backend: ConnectionBackend, defaultOptions: RequestOptions, private router?: Router) {
     super(backend, defaultOptions);
   }
 
@@ -21,6 +22,7 @@ export class InterceptedHttp extends Http {
 
   post(url: string, body: string, options?: RequestOptionsArgs): Observable<Response> {
     url = this.updateUrl(url);
+    console.log(url, body, this.getRequestOptionArgs(options));
     return super.post(url, body, this.getRequestOptionArgs(options));
   }
 
@@ -35,7 +37,7 @@ export class InterceptedHttp extends Http {
   }
 
   private updateUrl(req: string) {
-    return  environment.origin + req;
+    return environment.origin + req;
   }
 
   private getRequestOptionArgs(options?: RequestOptionsArgs): RequestOptionsArgs {
@@ -46,7 +48,11 @@ export class InterceptedHttp extends Http {
       options.headers = new Headers();
     }
     options.headers.append('Content-Type', 'application/json');
-
     return options;
+  }
+
+  private onError(err: any): void {
+    this.router.navigate(['/login']);
+    console.log(err);
   }
 }

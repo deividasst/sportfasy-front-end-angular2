@@ -1,7 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-import { User } from '../../shared/User'
-import { DService } from '../../shared/data.srv';
-import { InterceptedHttp } from '../../shared/Interceptor.srv';
+import {Component, OnInit} from '@angular/core';
+import {User} from '../../shared/User'
+import {DService} from '../../shared/data.srv';
 
 @Component({
   selector: 'app-log-in',
@@ -11,26 +10,26 @@ import { InterceptedHttp } from '../../shared/Interceptor.srv';
 })
 export class LogInComponent implements OnInit {
   user: User;
-  responseStatus: Object= [];
+  responseStatus: Object = [];
   status: boolean;
-  dataHolder= [];
+  dataHolder = [];
 
   constructor(private ds: DService) {
+
+  }
+
+  ngOnInit() {
     this.user = new User();
     this.user.name = 'First Name';
     this.user.surname = 'Last Name';
     this.user.password = 'kinlock';
     this.user.email = 'kemmalis013949ou86';
-
-  }
-
-  ngOnInit() {
   }
 
   loginUser(user) {
-    console.log('try to log in user' );
-    this.ds.loginUser('/api/login', this.user.toString())
-      .subscribe(obj  => this.dataHolder);
+    console.log('try to log in user');
+    this.ds.loginUser('/api/login', JSON.stringify(this.user))
+      .subscribe(obj => this.dataHolder);
   }
 
 }
