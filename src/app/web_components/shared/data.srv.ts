@@ -25,3 +25,5 @@ export class DService {
     return this.http.post(url, user).map(res => res.json());
   }
 }
+
+

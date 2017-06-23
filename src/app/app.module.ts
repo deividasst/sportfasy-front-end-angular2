@@ -1,7 +1,7 @@
 import {BrowserModule} from '@angular/platform-browser';
 import {NgModule} from '@angular/core';
 import {RouterModule, Router} from '@angular/router';
-import {FormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {HttpModule, JsonpModule} from '@angular/http';
 import {BsDropdownModule} from 'ngx-bootstrap/dropdown';
 
@@ -38,6 +38,7 @@ import {Http, XHRBackend, RequestOptions} from '@angular/http';
     HttpModule,
     JsonpModule,
     FormsModule,
+    ReactiveFormsModule,
     BsDropdownModule.forRoot(),
     RouterModule.forRoot([
       {
