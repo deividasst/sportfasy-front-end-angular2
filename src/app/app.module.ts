@@ -18,6 +18,7 @@ import {UserProfileComponent} from './web_components/user-profile/user-profile.c
 import {DService} from './web_components/shared/data.srv';
 import {httpFactory} from './http.factory';
 import {Http, XHRBackend, RequestOptions} from '@angular/http';
+import {TokenHolderServise} from './web_components/shared/tokenholder.srv';
 
 @NgModule({
   declarations: [
@@ -78,10 +79,11 @@ import {Http, XHRBackend, RequestOptions} from '@angular/http';
     {
       provide: Http,
       useFactory: httpFactory,
-      deps: [XHRBackend, RequestOptions, Router]
+      deps: [XHRBackend, RequestOptions, Router, TokenHolderServise]
     },
 
-    DService
+    DService,
+    TokenHolderServise
   ],
   bootstrap: [AppComponent
  ]

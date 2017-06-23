@@ -7,13 +7,15 @@ import {TokenHolderServise} from './web_components/shared/tokenholder.srv';
 
 @Injectable()
 export class InterceptedHttp extends Http {
-  private router:  Router;
+  private router: Router;
   private tokenHolder: TokenHolderServise;
+
   constructor(backend: ConnectionBackend,
-              defaultOptions: RequestOptions, router:  Router) {
+              defaultOptions: RequestOptions, router: Router, tokenHolder: TokenHolderServise) {
     super(backend, defaultOptions);
     this.router = router;
-    console.log('router', this.router);
+    this.tokenHolder = tokenHolder;
+    // console.log('router', this.router);
   }
 
   request(url: string | Request, options?: RequestOptionsArgs): Observable<Response> {
@@ -53,12 +55,15 @@ export class InterceptedHttp extends Http {
       options.headers = new Headers();
     }
     options.headers.append('Content-Type', 'application/json');
+    if (this.tokenHolder.getToken()) {
+      options.headers.append('x-access-token', this.tokenHolder.getToken());
+    }
     return options;
   }
 
   intercept(observable: Observable<Response>): Observable<Response> {
     return observable.catch((err, source) => {
-      if (err.status  !== 200 ) {
+      if (err.status !== 200) {
         console.log('interceptor method');
         this.router.navigate(['/login']);
         return Observable.empty();
@@ -68,3 +73,6 @@ export class InterceptedHttp extends Http {
     });
   }
 }
+
+
+

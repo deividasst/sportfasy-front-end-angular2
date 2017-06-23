@@ -7,15 +7,14 @@ import 'rxjs/add/operator/map';
 export class TokenHolderServise {
   private _token;
 
-
   constructor() {
   }
 
-  get token() {
+  getToken() {
     return this._token;
   }
 
-  set token(value) {
+  setToken(value) {
     this._token = value;
   }
 }
