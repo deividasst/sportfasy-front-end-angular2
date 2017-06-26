@@ -4,7 +4,7 @@ import {RouterModule, Router} from '@angular/router';
 import {FormsModule} from '@angular/forms';
 import {HttpModule, JsonpModule} from '@angular/http';
 import {BsDropdownModule} from 'ngx-bootstrap/dropdown';
-
+import {InterceptedHttp} from './http.interceptor';
 
 import {AppComponent} from './app.component';
 import {LogOutComponent} from './web_components/sign_log/log-out/log-out.component';
@@ -83,7 +83,7 @@ import {TokenHolderServise} from './web_components/shared/tokenholder.srv';
     },
 
     DService,
-    TokenHolderServise
+    TokenHolderServise,
   ],
   bootstrap: [AppComponent
  ]

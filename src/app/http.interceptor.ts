@@ -15,7 +15,6 @@ export class InterceptedHttp extends Http {
     super(backend, defaultOptions);
     this.router = router;
     this.tokenHolder = tokenHolder;
-    // console.log('router', this.router);
   }
 
   request(url: string | Request, options?: RequestOptionsArgs): Observable<Response> {

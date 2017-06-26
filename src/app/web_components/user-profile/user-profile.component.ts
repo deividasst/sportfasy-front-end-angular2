@@ -20,7 +20,7 @@ export class UserProfileComponent implements OnInit {
 
   getUsers() {
     this.ds.getUsers()
-      .subscribe(obj => this.dataHolder);
+      .subscribe(obj => {this.dataHolder.push(JSON.stringify(obj)), console.log(JSON.stringify(obj))}, );
   }
 
 }

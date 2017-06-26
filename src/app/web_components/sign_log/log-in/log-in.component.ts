@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {User} from '../../shared/User'
 import {DService} from '../../shared/data.srv';
 import {TokenHolderServise} from '../../shared/tokenholder.srv';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-log-in',
@@ -15,7 +16,7 @@ export class LogInComponent implements OnInit {
   status: boolean;
   dataHolder = [];
 
-  constructor(private ds: DService, private tokenHolder: TokenHolderServise) {
+  constructor(private ds: DService, private tokenHolder: TokenHolderServise, private router: Router) {
 
   }
 
@@ -29,8 +30,8 @@ export class LogInComponent implements OnInit {
 
   loginUser(user) {
     console.log('try to log in user');
-    this.ds.loginUser('/api/login', JSON.stringify(this.user))
-      .subscribe(obj => this.tokenHolder.setToken(obj.token));
+    this.ds.loginUser( JSON.stringify(this.user))
+      .subscribe(obj => {this.tokenHolder.setToken(obj.token), this.router.navigate(['/userprofile'])});
   }
 
 }

@@ -2,7 +2,6 @@ import {Http, Response} from '@angular/http'
 import {Component, Injectable} from '@angular/core';
 import 'rxjs/add/operator/map';
 
-
 @Injectable()
 export class DService {
   data;
@@ -20,8 +19,8 @@ export class DService {
     return this.http.post(url, user).map(res => res.json());
   }
 
-  loginUser(url: string, user: string) {
+  loginUser(user: string) {
 
-    return this.http.post(url, user).map(res => res.json());
+    return this.http.post('/api/login', user).map(res => res.json());
   }
 }

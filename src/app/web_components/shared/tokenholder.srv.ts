@@ -5,7 +5,7 @@ import 'rxjs/add/operator/map';
 
 @Injectable()
 export class TokenHolderServise {
-  private _token;
+  private _token: string;
 
   constructor() {
   }
