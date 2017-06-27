@@ -107,14 +107,8 @@ export class SingUpComponent implements OnInit {
         this.user = new User();
     }
 
-    save(model: User, isValid: boolean) {
-        // call API to save customer
-        console.log(model, isValid);
-    }
-
-
     addUser(user) {
         this.ds.registerUser(JSON.stringify(this.user))
-            .subscribe(obj => this.dataHolder);
+            .subscribe(obj => this.router.navigate(['/login']));
     }
 }

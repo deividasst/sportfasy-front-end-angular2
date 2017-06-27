@@ -28,7 +28,8 @@ export class InterceptedHttp extends Http {
 
   post(url: string, body: string, options?: RequestOptionsArgs): Observable<Response> {
     url = this.updateUrl(url);
-    return super.post(url, body, this.getRequestOptionArgs(options));
+    console.log('intercepted post');
+    return this.intercept(super.post(url, body, this.getRequestOptionArgs(options)));
   }
 
   put(url: string, body: string, options?: RequestOptionsArgs): Observable<Response> {
@@ -61,6 +62,7 @@ export class InterceptedHttp extends Http {
 
   intercept(observable: Observable<Response>): Observable<Response> {
     return observable.catch((err, source) => {
+        console.log('log err');
       if (err.status !== 200) {
         this.router.navigate(['/login']);
         return Observable.empty();
