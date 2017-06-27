@@ -5,6 +5,7 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {HttpModule, JsonpModule} from '@angular/http';
 import {BsDropdownModule} from 'ngx-bootstrap/dropdown';
 import {InterceptedHttp} from './http.interceptor';
+import {DatepickerModule} from 'angular2-material-datepicker'
 
 import {AppComponent} from './app.component';
 import {LogOutComponent} from './web_components/sign_log/log-out/log-out.component';
@@ -19,76 +20,82 @@ import {DService} from './web_components/shared/data.srv';
 import {httpFactory} from './http.factory';
 import {Http, XHRBackend, RequestOptions} from '@angular/http';
 import {TokenHolderServise} from './web_components/shared/tokenholder.srv';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
+
+
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    LogOutComponent,
-    LogInComponent,
-    SingUpComponent,
-    CreatTournmentComponent,
-    JoinTournmentComponent,
-    ListTeamComponent,
-    CreateTeamComponent,
-    UserProfileComponent,
+    declarations: [
+        AppComponent,
+        LogOutComponent,
+        LogInComponent,
+        SingUpComponent,
+        CreatTournmentComponent,
+        JoinTournmentComponent,
+        ListTeamComponent,
+        CreateTeamComponent,
+        UserProfileComponent,
 
 
-  ],
-  imports: [
-    BrowserModule,
-    HttpModule,
-    JsonpModule,
-    FormsModule,
-    ReactiveFormsModule,
-    BsDropdownModule.forRoot(),
-    RouterModule.forRoot([
-      {
-        path: 'logout',
-        component: LogOutComponent
-      },
-      {
-        path: 'login',
-        component: LogInComponent
-      },
-      {
-        path: 'singup',
-        component: SingUpComponent
-      },
-      {
-        path: 'createtournment',
-        component: CreatTournmentComponent
-      },
-      {
-        path: 'jointournment',
-        component: JoinTournmentComponent
-      },
-      {
-        path: 'listteam',
-        component: ListTeamComponent
-      },
-      {
-        path: 'creatteam',
-        component: CreateTeamComponent
-      },
-      {
-        path: 'userprofile',
-        component: UserProfileComponent
-      }
-    ])
-  ],
-  providers: [
-    {
-      provide: Http,
-      useFactory: httpFactory,
-      deps: [XHRBackend, RequestOptions, Router, TokenHolderServise]
-    },
+    ],
+    imports: [
+        BrowserModule,
+        HttpModule,
+        JsonpModule,
+        FormsModule,
+        ReactiveFormsModule,
+        DatepickerModule,
+        BrowserAnimationsModule,
+        BsDropdownModule.forRoot(),
+        RouterModule.forRoot([
+            {
+                path: 'logout',
+                component: LogOutComponent
+            },
+            {
+                path: 'login',
+                component: LogInComponent
+            },
+            {
+                path: 'singup',
+                component: SingUpComponent
+            },
+            {
+                path: 'createtournment',
+                component: CreatTournmentComponent
+            },
+            {
+                path: 'jointournment',
+                component: JoinTournmentComponent
+            },
+            {
+                path: 'listteam',
+                component: ListTeamComponent
+            },
+            {
+                path: 'creatteam',
+                component: CreateTeamComponent
+            },
+            {
+                path: 'userprofile',
+                component: UserProfileComponent
+            }
+        ])
+    ],
+    providers: [
+        {
+            provide: Http,
+            useFactory: httpFactory,
+            deps: [XHRBackend, RequestOptions, Router, TokenHolderServise]
+        },
 
-    DService,
-    TokenHolderServise,
-      LogOutComponent
-  ],
-  bootstrap: [AppComponent
- ]
+        DService,
+        TokenHolderServise,
+        LogOutComponent
+    ],
+    bootstrap: [AppComponent
+    ]
 
 })
 export class AppModule {
