@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {DService} from '../shared/data.srv';
-
-
+import {LogOutComponent} from '../sign_log/log-out/log-out.component';
 
 @Component({
   selector: 'app-user-profile',
@@ -11,7 +10,7 @@ import {DService} from '../shared/data.srv';
 export class UserProfileComponent implements OnInit {
 
   dataHolder= [];
-  constructor(private ds: DService) {
+  constructor(private ds: DService, private logout: LogOutComponent) {
   }
 
   ngOnInit() {
@@ -20,7 +19,10 @@ export class UserProfileComponent implements OnInit {
 
   getUsers() {
     this.ds.getUsers()
-      .subscribe(obj => {this.dataHolder.push(JSON.stringify(obj)), console.log(JSON.stringify(obj))}, );
+      .subscribe(obj => {this.dataHolder.push(JSON.stringify(obj))} );
+  }
+  logOut() {
+      this.logout.logOut();
   }
 
 }

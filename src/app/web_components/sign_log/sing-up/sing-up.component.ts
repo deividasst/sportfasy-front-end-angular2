@@ -31,7 +31,7 @@ export class SingUpComponent implements OnInit {
     }
 
   addUser(user) {
-    this.ds.registerUser('/api/users/registration', JSON.stringify(this.user))
+    this.ds.registerUser(JSON.stringify(this.user))
       .subscribe(obj => this.dataHolder);
   }
 }

@@ -84,6 +84,7 @@ import {TokenHolderServise} from './web_components/shared/tokenholder.srv';
 
     DService,
     TokenHolderServise,
+      LogOutComponent
   ],
   bootstrap: [AppComponent
  ]

@@ -15,12 +15,15 @@ export class DService {
       .map((res: Response) => res.json());
   }
 
-  registerUser(url: string, user: string) {
-    return this.http.post(url, user).map(res => res.json());
+  registerUser(user: string) {
+    return this.http.post('/api/users/registration', user).map(res => res.json());
   }
 
   loginUser(user: string) {
-
     return this.http.post('/api/login', user).map(res => res.json());
+  }
+
+    logOutUser() {
+    return this.http.get('/api/logout').map(res => res.json());
   }
 }

@@ -29,7 +29,6 @@ export class LogInComponent implements OnInit {
   }
 
   loginUser(user) {
-    console.log('try to log in user');
     this.ds.loginUser( JSON.stringify(this.user))
       .subscribe(obj => {this.tokenHolder.setToken(obj.token), this.router.navigate(['/userprofile'])});
   }
