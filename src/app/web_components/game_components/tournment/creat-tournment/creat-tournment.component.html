@@ -1,7 +1,10 @@
 <div class="body">
+
   <div id="navbar-wrapper">
     <header>
-      <p routerLink="/userprofile" class="logo text-left">Sportfasy</p>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+        <p routerLink="/userprofile" class="logo text-left">Sportfasy</p>
     </header>
   </div>
   <div id="wrapper">
@@ -72,33 +75,30 @@
       </aside>
     </div>
     <main id="page-content-wrapper" role="main">
-      <div id="pav">
-        <br>
-        <p>image</p>
-        <br>
-      </div>
-      <div id="all_tour">
-        <p>ALL TOURNAMENTS</p>
-        <ul>
-          <a>List</a><br>
-          <a>List</a><br>
-          <a>List</a><br>
-          <a>List</a><br>
-          <a>List</a><br>
-          <a>List</a><br>
-        </ul>
-      </div>
-      <div id="all_teams">
-        <p>ALL TEAMS</p>
-        <ul>
-          <a>List</a><br>
-          <a>List</a><br>
-          <a>List</a><br>
-          <a>List</a><br>
-          <a>List</a><br>
-          <a>List</a><br>
-        </ul>
-      </div>
+
+        <div class="container">
+
+            <form class="form-signin">
+                <h2 class="form-signin-heading">Create your tournament!</h2>
+                <label for="tName" class="label">Tournament name: </label>
+                <input type="text" id="tName" class="form-control" placeholder="Tournament name" required autofocus>
+
+                <label for="maxTeams" class="label">Maximum teams:</label>
+                <input type="text" id="maxTeams" class="form-control" placeholder="Maximum teams" required>
+
+
+                <label for="maxPlayers" class="label">Maximum Players in team: </label>
+                <input type="text" id="maxPlayers" class="form-control" placeholder="Maximum players in team" required>
+
+                <label for="maxBudget" class="label">Maximum budget: </label>
+                <input type="text" id="maxBudget" class="form-control" placeholder="Maximum budget" required>
+
+                <button type="button" id="botModal" class="btn btn-primary">Create</button><br>
+            </form>
+        </div> <!-- /container -->
     </main>
   </div>
 </div>
+
+
+
