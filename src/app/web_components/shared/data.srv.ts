@@ -27,3 +27,5 @@ export class DService {
     return this.http.get('/api/logout').map(res => res.json());
   }
 }
+
+
