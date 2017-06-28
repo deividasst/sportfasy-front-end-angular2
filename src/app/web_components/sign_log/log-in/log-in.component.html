@@ -16,6 +16,7 @@
             <input class="form-control input-sm chat-input" type="password" required minlength="6" name="password"
                    [(ngModel)]="user.password"><br>
 
+              <div class="error text-center"><span *ngIf="error">{{error}}</span></div><br>
             <input class="btn button" type="submit" (click)="loginUser()" value="Log in">
 
             <p>Not a member yet? <a class="a" routerLink="/singup"><br>Join now!</a></p>

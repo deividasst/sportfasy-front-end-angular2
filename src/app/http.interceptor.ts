@@ -62,10 +62,16 @@ export class InterceptedHttp extends Http {
 
   intercept(observable: Observable<Response>): Observable<Response> {
     return observable.catch((err, source) => {
-        console.log('log err');
       if (err.status !== 200) {
-        this.router.navigate(['/login']);
-        return Observable.empty();
+          switch (err.status) {
+              case 401:
+                  console.log('BAD CREDENTIALS');
+                  return Observable.throw(err);
+              case 403:
+                  this.router.navigate(['/login']);
+                  return Observable.throw(err);
+          }
+          return Observable.empty();
       } else {
         return Observable.throw(err);
       }

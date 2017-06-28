@@ -12,6 +12,7 @@ import {Router} from '@angular/router';
 })
 export class LogInComponent implements OnInit {
     user: User;
+    error;
     responseStatus: Object = [];
     status: boolean;
     dataHolder = [];
@@ -34,7 +35,7 @@ export class LogInComponent implements OnInit {
                 obj => {
                     this.tokenHolder.setToken(obj.token),
                         this.router.navigate(['/userprofile'])
-                });
+                }, err => this.error = 'Email or password invalid. Please try again.');
     }
 
 }
