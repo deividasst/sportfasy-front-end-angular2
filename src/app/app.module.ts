@@ -19,6 +19,7 @@ import {DService} from './web_components/shared/data.srv';
 import {httpFactory} from './http.factory';
 import {Http, XHRBackend, RequestOptions} from '@angular/http';
 import {TokenHolderServise} from './web_components/shared/tokenholder.srv';
+import { OverAllTeamsWidgetComponent } from './web_components/over-all-teams-widget/over-all-teams-widget.component';
 
 @NgModule({
   declarations: [
@@ -31,6 +32,7 @@ import {TokenHolderServise} from './web_components/shared/tokenholder.srv';
     ListTeamComponent,
     CreateTeamComponent,
     UserProfileComponent,
+    OverAllTeamsWidgetComponent,
 
 
   ],
