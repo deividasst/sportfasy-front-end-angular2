@@ -1,7 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {Team} from '../../../shared/Team'
 import {DService} from '../../../shared/data.srv';
-import {NgForm} from '@angular/forms';
 
 @Component({
     selector: 'app-over-all-teams-widget',
@@ -15,7 +14,7 @@ export class OverAllTeamsWidgetComponent implements OnInit {
     }
 
     getTeams(): void {
-         this.ds.getAllTeams().subscribe(team => {this.teams = team, console.log(team )})
+         this.ds.getAllTeams().subscribe(team => {this.teams = team})
     }
 
     ngOnInit() {

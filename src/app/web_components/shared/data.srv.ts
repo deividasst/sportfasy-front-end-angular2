@@ -28,6 +28,10 @@ export class DService {
     getAllTeams() {
         return this.http.get('/api/teams').map(res => res.json());
     }
+
+    getAllTournaments() {
+        return this.http.get('/api/tournaments').map(res => res.json());
+    }
 }
 
 

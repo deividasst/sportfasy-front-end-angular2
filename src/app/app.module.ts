@@ -20,6 +20,7 @@ import {httpFactory} from './http.factory';
 import {Http, XHRBackend, RequestOptions} from '@angular/http';
 import {TokenHolderServise} from './web_components/shared/tokenholder.srv';
 import { OverAllTeamsWidgetComponent } from './web_components/game_components/team/over-all-teams-widget/over-all-teams-widget.component';
+import { OverAllTournamentsWidgetComponent } from './web_components/game_components/tournment/over-all-tournaments-widget/over-all-tournaments-widget.component';
 
 @NgModule({
   declarations: [
@@ -33,6 +34,7 @@ import { OverAllTeamsWidgetComponent } from './web_components/game_components/te
     CreateTeamComponent,
     UserProfileComponent,
     OverAllTeamsWidgetComponent,
+    OverAllTournamentsWidgetComponent,
 
 
   ],
