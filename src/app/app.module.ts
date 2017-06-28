@@ -34,8 +34,7 @@ import { OverAllTournamentsWidgetComponent } from './web_components/game_compone
     CreateTeamComponent,
     UserProfileComponent,
     OverAllTeamsWidgetComponent,
-    OverAllTournamentsWidgetComponent,
-
+    OverAllTournamentsWidgetComponent
 
   ],
   imports: [
