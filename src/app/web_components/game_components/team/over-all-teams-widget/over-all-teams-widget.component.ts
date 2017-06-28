@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
-import {Team} from './../shared/Team'
-import {DService} from './../shared/data.srv';
+import {Team} from '../../../shared/Team'
+import {DService} from '../../../shared/data.srv';
 import {NgForm} from '@angular/forms';
 
 @Component({
