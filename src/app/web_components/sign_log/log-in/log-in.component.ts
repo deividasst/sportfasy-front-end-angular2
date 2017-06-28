@@ -4,6 +4,7 @@ import {DService} from '../../shared/data.srv';
 import {TokenHolderServise} from '../../shared/tokenholder.srv';
 import {Router} from '@angular/router';
 
+
 @Component({
     selector: 'app-log-in',
     templateUrl: './log-in.component.html',
@@ -13,14 +14,10 @@ import {Router} from '@angular/router';
 export class LogInComponent implements OnInit {
     user: User;
     error;
-    responseStatus: Object = [];
-    status: boolean;
-    dataHolder = [];
 
     constructor(private ds: DService, private tokenHolder: TokenHolderServise, private router: Router) {
 
     }
-
     ngOnInit() {
         this.user = new User();
         this.user.name = 'First Name';
@@ -36,6 +33,8 @@ export class LogInComponent implements OnInit {
                     this.tokenHolder.setToken(obj.token),
                         this.router.navigate(['/userprofile'])
                 }, err => this.error = 'Email or password invalid. Please try again.');
+
     }
+
 
 }
