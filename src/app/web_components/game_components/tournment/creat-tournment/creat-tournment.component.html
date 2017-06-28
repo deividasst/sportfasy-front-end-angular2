@@ -78,25 +78,39 @@
 
         <div class="container">
 
-            <form class="form-signin" #loginForm="ngForm">
+            <form class="form-signin" #loginForm="ngForm" method="post" novalidate>
                 <h2 class="form-signin-heading">Create your tournament!</h2>
-                <label for="tName" class="label">Tournament name: </label>
-                <input type="text" id="tName" class="form-control" placeholder="Tournament name" required autofocus>
+                <label for="name" class="label">Tournament name: </label>
+                <input type="text" id="name" class="form-control" name="name" [(ngModel)]="tournament.name" placeholder="Tournament name" required autofocus>
                 <br>
-                Tournament starts: <material-datepicker placeholder="start date" [rangeEnd]='maxDate' [rangeStart]='minDate' [(date)]="yourModelDate"></material-datepicker>
-                Tournament ends: <material-datepicker placeholder="end date" [rangeEnd]='maxDate' [rangeStart]='minDate' [(date)]="yourModelDate1"></material-datepicker>
+               <!-- Tournament starts: <material-datepicker  name="start" [(ngModel)]="tournament.start" placeholder="start date" [rangeEnd]='maxDate' [rangeStart]='minDate' [(date)]="yourModelDate"  ngDefaultControl></material-datepicker>
+                Tournament ends: <material-datepicker name="end" [(ngModel)]="tournament.end" placeholder="end date" [rangeEnd]='maxDate' [rangeStart]='minDate' [(date)]="yourModelDate1"  ngDefaultControl></material-datepicker>
+               -->
                 <br>
-                <label for="maxTeams" class="label">Maximum teams:</label>
-                <input type="text" id="maxTeams" class="form-control" placeholder="Maximum teams" required>
+                <label for="teams" class="label">Maximum teams:</label>
+                <input type="number" id="teams" name="teams" [(ngModel)]="tournament.teams"  class="form-control" placeholder="Maximum teams" required>
                 <br>
-                <label for="maxPlayers" class="label">Maximum Players in team: </label>
-                <input type="text" id="maxPlayers" class="form-control" placeholder="Maximum players in team" required>
+                <label for="players" class="label">Maximum Players in team: </label>
+                <input type="number" id="players" name="players" [(ngModel)]="tournament.players" class="form-control" placeholder="Maximum players in team" required>
                 <br>
-                <label for="maxBudget" class="label">Maximum budget: </label>
-                <input type="text" id="maxBudget" class="form-control" placeholder="Maximum budget" required>
+                <label for="budget" class="label">Maximum budget: </label>
+                <input type="number" id="budget" name="budget" [(ngModel)]="tournament.budget" class="form-control" placeholder="Maximum budget" required>
                 <br>
-                <button type="submit" class="btn btn-primary button " >Create Tournament</button>
-                <button  type="submit"  [disabled]="!loginForm.form.valid">Submit</button>
+
+
+                <div class="row">
+                    <div class="col-md-6"><h4>Tournament starts:  <em *ngIf="tournament.start">{{ getDate() | date:'fullDate'}}</em></h4>
+                        <div style="display:inline-block; min-height:290px;">
+                            <datepicker name="start" [(ngModel)]="tournament.start" [minDate]="minDate" [showWeeks]="true" [dateDisabled]="dateDisabled"></datepicker>
+                        </div></div>
+                    <div class="col-md-6"><h4>Tournament ends: <em *ngIf="tournament.end">{{ getDate2() | date:'fullDate'}}</em></h4>
+                        <div style="display:inline-block; min-height:290px;">
+                            <datepicker name="end" [(ngModel)]="tournament.end" [minDate]="minDate" [showWeeks]="true" [dateDisabled]="dateDisabled"></datepicker>
+                        </div></div>
+                </div>
+
+                <button type="submit"  (click)="addTournament()" class="btn btn-primary button " >Create Tournament</button>
+
             </form>
         </div> <!-- /container -->
     </main>

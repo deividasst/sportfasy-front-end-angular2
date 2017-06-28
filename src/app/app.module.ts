@@ -5,7 +5,7 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {HttpModule, JsonpModule} from '@angular/http';
 import {BsDropdownModule} from 'ngx-bootstrap/dropdown';
 import {InterceptedHttp} from './http.interceptor';
-import {DatepickerModule} from 'angular2-material-datepicker'
+//import {DatepickerModule} from 'angular2-material-datepicker'
 
 import {AppComponent} from './app.component';
 import {LogOutComponent} from './web_components/sign_log/log-out/log-out.component';
@@ -16,11 +16,13 @@ import {JoinTournmentComponent} from './web_components/game_components/tournment
 import {ListTeamComponent} from './web_components/game_components/team/list-team/list-team.component';
 import {CreateTeamComponent} from './web_components/game_components/team/create-team/create-team.component';
 import {UserProfileComponent} from './web_components/user-profile/user-profile.component';
+import { AlertModule } from 'ngx-bootstrap';
 import {DService} from './web_components/shared/data.srv';
 import {httpFactory} from './http.factory';
 import {Http, XHRBackend, RequestOptions} from '@angular/http';
 import {TokenHolderServise} from './web_components/shared/tokenholder.srv';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { DatepickerModule } from 'ngx-bootstrap';
 
 
 
@@ -47,6 +49,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
         ReactiveFormsModule,
         DatepickerModule,
         BrowserAnimationsModule,
+        AlertModule.forRoot(),
+        DatepickerModule.forRoot(),
         BsDropdownModule.forRoot(),
         RouterModule.forRoot([
             {

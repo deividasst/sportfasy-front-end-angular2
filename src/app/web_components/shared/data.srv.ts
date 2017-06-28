@@ -4,28 +4,32 @@ import 'rxjs/add/operator/map';
 
 @Injectable()
 export class DService {
-  data;
+    data;
 
 
-  constructor(public http: Http) {
-  }
+    constructor(public http: Http) {
+    }
 
-  getUsers() {
-    return this.http.get('/api/users')
-      .map((res: Response) => res.json());
-  }
+    getUsers() {
+        return this.http.get('/api/users')
+            .map((res: Response) => res.json());
+    }
 
-  registerUser(user: string) {
-    return this.http.post('/api/users/registration', user).map(res => res.json());
-  }
+    registerUser(user: string) {
+        return this.http.post('/api/users/registration', user).map(res => res.json());
+    }
 
-  loginUser(user: string) {
-    return this.http.post('/api/login', user).map(res => res.json());
-  }
+    loginUser(user: string) {
+        return this.http.post('/api/login', user).map(res => res.json());
+    }
+
+    registerTournament(tournament: string) {
+        return this.http.post('/api/tournaments', tournament).map(res => res.json());
+    }
 
     logOutUser() {
-    return this.http.get('/api/logout').map(res => res.json());
-  }
+        return this.http.get('/api/logout').map(res => res.json());
+    }
 }
 
 

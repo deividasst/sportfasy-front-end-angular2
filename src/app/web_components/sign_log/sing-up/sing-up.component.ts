@@ -118,3 +118,4 @@ export class SingUpComponent implements OnInit {
             .subscribe(obj => this.dataHolder);
     }
 }
+
