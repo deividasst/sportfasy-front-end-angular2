@@ -74,26 +74,12 @@
     <main id="page-content-wrapper" role="main">
       <div id="pav">
         <br>
-        <input class="btn button" type="submit" (click) ="getUsers()" value="Get Users">
-        <br>
       </div>
       <div id="all_tour">
-        <p>ALL TOURNAMENTS</p>
-        <ul>
-          <li *ngFor="let item of dataHolder; let i = index">
-            {{i}} {{item}}</li><br>
-        </ul>
+          <app-over-all-tournaments-widget></app-over-all-tournaments-widget>
       </div>
       <div id="all_teams">
-        <p>ALL TEAMS</p>
-        <ul>
-          <a>List</a><br>
-          <a>List</a><br>
-          <a>List</a><br>
-          <a>List</a><br>
-          <a>List</a><br>
-          <a>List</a><br>
-        </ul>
+        <app-over-all-teams-widget ></app-over-all-teams-widget>
       </div>
     </main>
   </div>
