@@ -4,6 +4,7 @@ import {DService} from '../../shared/data.srv';
 import {TokenHolderServise} from '../../shared/tokenholder.srv';
 import {Router} from '@angular/router';
 
+
 @Component({
     selector: 'app-log-in',
     templateUrl: './log-in.component.html',
@@ -12,14 +13,11 @@ import {Router} from '@angular/router';
 })
 export class LogInComponent implements OnInit {
     user: User;
-    responseStatus: Object = [];
-    status: boolean;
-    dataHolder = [];
+    errors;
 
     constructor(private ds: DService, private tokenHolder: TokenHolderServise, private router: Router) {
 
     }
-
     ngOnInit() {
         this.user = new User();
         this.user.name = 'First Name';
@@ -32,9 +30,9 @@ export class LogInComponent implements OnInit {
         this.ds.loginUser(JSON.stringify(this.user))
             .subscribe(
                 obj => {
-                    this.tokenHolder.setToken(obj.token),
-                        this.router.navigate(['/userprofile'])
-                });
+                    this.tokenHolder.setToken(obj.token), this.router.navigate(['/userprofile'])
+                })
     }
+
 
 }

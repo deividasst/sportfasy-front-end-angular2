@@ -1,4 +1,4 @@
-<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+
 <div>
   <div class="container">
     <div class="row">
@@ -15,9 +15,9 @@
             <label class="label" for="password">Password:</label><br>
             <input class="form-control input-sm chat-input" type="password" required minlength="6" name="password"
                    [(ngModel)]="user.password"><br>
-
-            <input class="btn button" type="submit" (click)="loginUser()" value="Log in">
-
+            <div class="text-center">
+            <input class="btn button" type="submit" (click)="loginUser()" value="LOG IN">
+            </div>
             <p>Not a member yet? <a class="a" routerLink="/singup"><br>Join now!</a></p>
           </form>
 

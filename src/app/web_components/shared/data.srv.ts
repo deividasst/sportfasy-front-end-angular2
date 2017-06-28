@@ -20,7 +20,7 @@ export class DService {
   }
 
   loginUser(user: string) {
-    return this.http.post('/api/login', user).map(res => res.json());
+    return this.http.post('/api/login', user).map(res => res.json())
   }
 
     logOutUser() {
