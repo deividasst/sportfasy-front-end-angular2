@@ -18,6 +18,7 @@ export class LogInComponent implements OnInit {
     constructor(private ds: DService, private tokenHolder: TokenHolderServise, private router: Router) {
 
     }
+
     ngOnInit() {
         this.user = new User();
         this.user.name = 'First Name';
