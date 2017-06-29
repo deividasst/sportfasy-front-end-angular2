@@ -21,6 +21,10 @@ export class DService {
         return this.http.post('/api/login', user).map(res => res.json());
     }
 
+    registerTournament(tournament: string) {
+        return this.http.post('/api/tournaments', tournament).map(res => res.json());
+    }
+
     logOutUser() {
         return this.http.get('/api/logout').map(res => res.json());
     }

@@ -1,7 +1,10 @@
 <div class="body">
+
   <div id="navbar-wrapper">
     <header>
-      <p routerLink="/userprofile" class="logo text-left">Sportfasy</p>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+        <p routerLink="/userprofile" class="logo text-left">Sportfasy</p>
     </header>
   </div>
   <div id="wrapper">
@@ -72,33 +75,63 @@
       </aside>
     </div>
     <main id="page-content-wrapper" role="main">
-      <div id="pav">
-        <br>
-        <p>image</p>
-        <br>
-      </div>
-      <div id="all_tour">
-        <p>ALL TOURNAMENTS</p>
-        <ul>
-          <a>List</a><br>
-          <a>List</a><br>
-          <a>List</a><br>
-          <a>List</a><br>
-          <a>List</a><br>
-          <a>List</a><br>
-        </ul>
-      </div>
-      <div id="all_teams">
-        <p>ALL TEAMS</p>
-        <ul>
-          <a>List</a><br>
-          <a>List</a><br>
-          <a>List</a><br>
-          <a>List</a><br>
-          <a>List</a><br>
-          <a>List</a><br>
-        </ul>
-      </div>
+
+        <div class="container">
+
+            <form class="form-signin" #tournamentForm="ngForm" method="post" novalidate>
+                <h2 class="form-signin-heading">Create your tournament!</h2>
+                <label for="name" class="label">Tournament name: </label>
+                <input type="text" id="name" class="form-control" name="name" [(ngModel)]="tournament.name" placeholder="Tournament name" required  minlength="4" maxlength="24"  #name="ngModel"  autofocus>
+                <div *ngIf="name.errors && (name.dirty || name.touched)"
+                     class="alert alert-danger">
+                    <div [hidden]="!name.errors.required">
+                        Name is required
+                    </div>
+                    <div [hidden]="!name.errors.minlength">
+                        Name must be at least 4 characters long.
+                    </div>
+                    <div [hidden]="!name.errors.maxlength">
+                        Name cannot be more than 24 characters long.
+                    </div>
+                </div>
+
+               <!-- Tournament starts: <material-datepicker  name="start" [(ngModel)]="tournament.start" placeholder="start date" [rangeEnd]='maxDate' [rangeStart]='minDate' [(date)]="yourModelDate"  ngDefaultControl></material-datepicker>
+                Tournament ends: <material-datepicker name="end" [(ngModel)]="tournament.end" placeholder="end date" [rangeEnd]='maxDate' [rangeStart]='minDate' [(date)]="yourModelDate1"  ngDefaultControl></material-datepicker>
+               -->
+                <br>
+                <label for="teams" class="label">Maximum teams:</label>
+                <input type="number" id="teams" name="teams" [(ngModel)]="tournament.teams" #teams="ngModel"  [min]="2" class="form-control" placeholder="Maximum teams" required>
+                <p  class="alert alert-danger" *ngIf="teams.errors?.min">there should be 2 teams at least</p>
+                <br>
+                <label for="players" class="label">Maximum Players in team: </label>
+                <input type="number" id="players" name="players" [(ngModel)]="tournament.players" #players="ngModel"  [min]="3" [max]="10" class="form-control" placeholder="Maximum players in team" required>
+                <p  class="alert alert-danger" *ngIf="players.errors?.min">there should be at least 3 players in team</p>
+                <p  class="alert alert-danger" *ngIf="players.errors?.max">you can have more than 10 players</p>
+                <br>
+                <label for="budget" class="label">Maximum budget: </label>
+                <input type="number" id="budget" name="budget" [(ngModel)]="tournament.budget" #budget="ngModel"  [min]="200" [max]="2000"class="form-control" placeholder="Maximum budget" required>
+                <p  class="alert alert-danger" *ngIf="budget.errors?.min">minimum budget is 200</p>
+                <p  class="alert alert-danger" *ngIf="budget.errors?.max">maximum budget is 2000</p>
+
+                <br>
+                <div class="row">
+                    <div class="col-md-6"><h4>Tournament starts:  <em *ngIf="tournament.start">{{ getDate() | date:'fullDate'}}</em></h4>
+                        <div style="display:inline-block; min-height:290px;">
+                            <datepicker name="start" [(ngModel)]="tournament.start" [minDate]="minDate" [showWeeks]="true" [dateDisabled]="dateDisabled"></datepicker>
+                        </div></div>
+                    <div class="col-md-6"><h4>Tournament ends: <em *ngIf="tournament.end">{{ getDate2() | date:'fullDate'}}</em></h4>
+                        <div style="display:inline-block; min-height:290px;">
+                            <datepicker name="end" [(ngModel)]="tournament.end" [minDate]="minDate" [showWeeks]="true" [dateDisabled]="dateDisabled"></datepicker>
+                        </div></div>
+                </div>
+
+                <button type="submit"  [disabled]="!tournamentForm.form.valid" (click)="addTournament()" class="btn btn-primary button " >Create Tournament</button>
+
+            </form>
+        </div> <!-- /container -->
     </main>
   </div>
 </div>
+
+
+

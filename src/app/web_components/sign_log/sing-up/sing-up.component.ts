@@ -112,3 +112,4 @@ export class SingUpComponent implements OnInit {
             .subscribe(obj => this.router.navigate(['/login']));
     }
 }
+
