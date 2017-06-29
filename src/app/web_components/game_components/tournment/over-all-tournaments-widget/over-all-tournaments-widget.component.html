@@ -1,0 +1,16 @@
+<p>
+    Overall Toutnaments
+</p>
+
+<table class="table">
+    <tr>
+        <th>Tournament's name</th>
+        <th>Tournament's players</th>
+        <th>Tournament's budget</th>
+    </tr>
+    <tr *ngFor="let tournament of tournaments">
+        <td>{{tournament.name}}</td>
+        <td>{{tournament.players}}</td>
+        <td>{{tournament.budget}}</td>
+    </tr>
+</table>

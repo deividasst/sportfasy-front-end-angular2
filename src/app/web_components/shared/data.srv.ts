@@ -4,8 +4,6 @@ import 'rxjs/add/operator/map';
 
 @Injectable()
 export class DService {
-    data;
-
 
     constructor(public http: Http) {
     }
@@ -29,6 +27,14 @@ export class DService {
 
     logOutUser() {
         return this.http.get('/api/logout').map(res => res.json());
+    }
+
+    getAllTeams() {
+        return this.http.get('/api/teams').map(res => res.json());
+    }
+
+    getAllTournaments() {
+        return this.http.get('/api/tournaments').map(res => res.json());
     }
 }
 

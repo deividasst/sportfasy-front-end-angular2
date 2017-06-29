@@ -5,7 +5,6 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {HttpModule, JsonpModule} from '@angular/http';
 import {BsDropdownModule} from 'ngx-bootstrap/dropdown';
 import {InterceptedHttp} from './http.interceptor';
-//import {DatepickerModule} from 'angular2-material-datepicker'
 
 import {AppComponent} from './app.component';
 import {LogOutComponent} from './web_components/sign_log/log-out/log-out.component';
@@ -26,19 +25,22 @@ import { DatepickerModule } from 'ngx-bootstrap';
 import { CustomFormsModule } from 'ng2-validation';
 
 
+import { OverAllTeamsWidgetComponent } from './web_components/game_components/team/over-all-teams-widget/over-all-teams-widget.component';
+import { OverAllTournamentsWidgetComponent } from './web_components/game_components/tournment/over-all-tournaments-widget/over-all-tournaments-widget.component';
 
 @NgModule({
-    declarations: [
-        AppComponent,
-        LogOutComponent,
-        LogInComponent,
-        SingUpComponent,
-        CreatTournmentComponent,
-        JoinTournmentComponent,
-        ListTeamComponent,
-        CreateTeamComponent,
-        UserProfileComponent,
-
+  declarations: [
+    AppComponent,
+    LogOutComponent,
+    LogInComponent,
+    SingUpComponent,
+    CreatTournmentComponent,
+    JoinTournmentComponent,
+    ListTeamComponent,
+    CreateTeamComponent,
+    UserProfileComponent,
+    OverAllTeamsWidgetComponent,
+    OverAllTournamentsWidgetComponent
 
     ],
     imports: [
