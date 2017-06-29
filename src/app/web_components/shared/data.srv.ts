@@ -9,7 +9,7 @@ export class DService {
     }
 
     getUsers() {
-        return this.http.get('/api/users')
+        return this.http.get('/api/users/registration')
             .map((res: Response) => res.json());
     }
 
@@ -33,5 +33,3 @@ export class DService {
         return this.http.get('/api/tournaments').map(res => res.json());
     }
 }
-
-

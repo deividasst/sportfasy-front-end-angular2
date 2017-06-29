@@ -5,16 +5,24 @@ import 'rxjs/add/operator/map';
 
 @Injectable()
 export class TokenHolderServise {
-  private _token: string;
-
+  private token: string;
+  private _userMail: string;
   constructor() {
   }
 
   getToken() {
-    return this._token;
+    return this.token;
   }
 
   setToken(value) {
-    this._token = value;
+    this.token = value;
   }
+
+     getuserMail(): string {
+        return this._userMail;
+    }
+
+    setuserMail(value: string) {
+        this._userMail = value;
+    }
 }

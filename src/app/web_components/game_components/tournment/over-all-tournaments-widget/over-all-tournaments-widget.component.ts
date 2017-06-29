@@ -5,7 +5,7 @@ import {Tournament} from '../../../shared/Tournament'
 @Component({
     selector: 'app-over-all-tournaments-widget',
     templateUrl: './over-all-tournaments-widget.component.html',
-    styleUrls: ['./over-all-tournaments-widget.component.scss']
+    styleUrls: ['./over-all-tournaments-widget.component.sass']
 })
 export class OverAllTournamentsWidgetComponent implements OnInit {
     tournaments: Tournament[];

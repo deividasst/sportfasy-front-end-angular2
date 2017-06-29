@@ -22,8 +22,8 @@ export class LogInComponent implements OnInit {
         this.user = new User();
         this.user.name = 'First Name';
         this.user.surname = 'Last Name';
-        this.user.password = 'kinlock';
-        this.user.email = 'kemmalis013949ou86';
+        this.user.password = '123456';
+        this.user.email = 'root@gmail.com';
     }
 
     loginUser(user) {
@@ -31,9 +31,9 @@ export class LogInComponent implements OnInit {
             .subscribe(
                 obj => {
                     this.tokenHolder.setToken(obj.token),
+                    this.tokenHolder.setuserMail(obj.userEmail),
                         this.router.navigate(['/userprofile'])
                 }, err => this.error = 'Email or password invalid. Please try again.');
-
     }
 
 
