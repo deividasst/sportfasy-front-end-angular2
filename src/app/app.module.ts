@@ -23,7 +23,7 @@ import {Http, XHRBackend, RequestOptions} from '@angular/http';
 import {TokenHolderServise} from './web_components/shared/tokenholder.srv';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { DatepickerModule } from 'ngx-bootstrap';
-
+import { CustomFormsModule } from 'ng2-validation';
 
 
 
@@ -48,6 +48,7 @@ import { DatepickerModule } from 'ngx-bootstrap';
         FormsModule,
         ReactiveFormsModule,
         DatepickerModule,
+        CustomFormsModule,
         BrowserAnimationsModule,
         AlertModule.forRoot(),
         DatepickerModule.forRoot(),

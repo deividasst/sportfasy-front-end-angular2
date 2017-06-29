@@ -7,6 +7,7 @@ import {FormBuilder, Validators} from '@angular/forms';
 import {Router} from '@angular/router';
 import {FormGroup, FormControl} from '@angular/forms'
 import { DatepickerModule } from 'ngx-bootstrap';
+import { CustomFormsModule } from 'ng2-validation'
 
 import {Tournament} from '../../../shared/Tournament'
 @Component({
