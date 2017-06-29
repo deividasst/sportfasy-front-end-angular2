@@ -19,6 +19,7 @@ import {Tournament} from '../../../shared/Tournament'
 export class CreatTournmentComponent implements OnInit {
     tournament: Tournament;
     minDate = new Date(2017, 5);
+    err;
     dataHolder = [];
     public getDate(): number {
         return this.tournament.start && this.tournament.start.getTime() || new Date().getTime();
@@ -42,7 +43,7 @@ export class CreatTournmentComponent implements OnInit {
 
     addTournament(tournament) {
         this.ds.registerTournament(JSON.stringify(this.tournament))
-            .subscribe(obj => this.dataHolder);
+            .subscribe(obj => {this.router.navigate(['/userprofile'])}, err => this.err = 'Tournament with this name already exists')
     }
 
 }

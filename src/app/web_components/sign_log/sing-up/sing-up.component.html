@@ -103,12 +103,13 @@
                             </div>
                         </div>
 
+                        <div class="text-center">
+                            <button type="submit" class="btn button " [disabled]="!forma.form.valid" (click)="addUser()">SIGN UP</button>
+                            <h3 class="error">{{errorMsg}}</h3>
+                            <p  style="color:white">Already have an account? <a class="a" routerLink="/login">Login</a></p>
+                        </div>
 
-                        <button type="submit" class="btn button " [disabled]="!forma.form.valid" (click)="addUser()">SIGN UP</button>
-                        <h3 class="error">{{errorMsg}}</h3>
 
-
-                        <p class="error">Already have an account? <a routerLink="/login">Login</a></p>
                     </form>
                 </div>
             </div>

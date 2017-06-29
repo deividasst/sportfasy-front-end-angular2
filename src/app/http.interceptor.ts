@@ -70,6 +70,8 @@ export class InterceptedHttp extends Http {
               case 403:
                   this.router.navigate(['/login']);
                   return Observable.throw(err);
+              case 409:
+                  return Observable.throw(err);
           }
           return Observable.empty();
       } else {
