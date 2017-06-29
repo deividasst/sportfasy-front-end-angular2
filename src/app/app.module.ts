@@ -58,7 +58,7 @@ import { HomeComponent } from './web_components/home/home.component';
         BsDropdownModule.forRoot(),
         RouterModule.forRoot([
             {
-                path: '**',
+                path: 'home',
                 component: HomeComponent
             },
             {
