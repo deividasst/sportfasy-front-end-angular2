@@ -18,6 +18,7 @@ export class SingUpComponent implements OnInit {
     form: FormGroup;
     user: User;
     errorMsg: string;
+    dataHolder = [];
 
     constructor(private ds: DService, private router: Router, fb: FormBuilder) {
         this.form = fb.group({

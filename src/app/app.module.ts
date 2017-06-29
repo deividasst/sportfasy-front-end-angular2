@@ -15,12 +15,19 @@ import {JoinTournmentComponent} from './web_components/game_components/tournment
 import {ListTeamComponent} from './web_components/game_components/team/list-team/list-team.component';
 import {CreateTeamComponent} from './web_components/game_components/team/create-team/create-team.component';
 import {UserProfileComponent} from './web_components/user-profile/user-profile.component';
+import { AlertModule } from 'ngx-bootstrap';
 import {DService} from './web_components/shared/data.srv';
 import {httpFactory} from './http.factory';
 import {Http, XHRBackend, RequestOptions} from '@angular/http';
 import {TokenHolderServise} from './web_components/shared/tokenholder.srv';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { DatepickerModule } from 'ngx-bootstrap';
+import { CustomFormsModule } from 'ng2-validation';
+
+
 import { OverAllTeamsWidgetComponent } from './web_components/game_components/team/over-all-teams-widget/over-all-teams-widget.component';
 import { OverAllTournamentsWidgetComponent } from './web_components/game_components/tournment/over-all-tournaments-widget/over-all-tournaments-widget.component';
+import { HomeComponent } from './web_components/home/home.component';
 
 @NgModule({
   declarations: [
@@ -34,64 +41,73 @@ import { OverAllTournamentsWidgetComponent } from './web_components/game_compone
     CreateTeamComponent,
     UserProfileComponent,
     OverAllTeamsWidgetComponent,
-    OverAllTournamentsWidgetComponent
+    OverAllTournamentsWidgetComponent,
+    HomeComponent
+    ],
+    imports: [
+        BrowserModule,
+        HttpModule,
+        JsonpModule,
+        FormsModule,
+        ReactiveFormsModule,
+        DatepickerModule,
+        CustomFormsModule,
+        BrowserAnimationsModule,
+        AlertModule.forRoot(),
+        DatepickerModule.forRoot(),
+        BsDropdownModule.forRoot(),
+        RouterModule.forRoot([
+            {
+                path: '',
+                component: HomeComponent
+            },
+            {
+                path: 'logout',
+                component: LogOutComponent
+            },
+            {
+                path: 'login',
+                component: LogInComponent
+            },
+            {
+                path: 'singup',
+                component: SingUpComponent
+            },
+            {
+                path: 'createtournment',
+                component: CreatTournmentComponent
+            },
+            {
+                path: 'jointournment',
+                component: JoinTournmentComponent
+            },
+            {
+                path: 'listteam',
+                component: ListTeamComponent
+            },
+            {
+                path: 'creatteam',
+                component: CreateTeamComponent
+            },
+            {
+                path: 'userprofile',
+                component: UserProfileComponent
+            }
+        ])
+    ],
+    providers: [
+        {
+            provide: Http,
+            useFactory: httpFactory,
+            deps: [XHRBackend, RequestOptions, Router, TokenHolderServise]
+        },
 
-  ],
-  imports: [
-    BrowserModule,
-    HttpModule,
-    JsonpModule,
-    FormsModule,
-    ReactiveFormsModule,
-    BsDropdownModule.forRoot(),
-    RouterModule.forRoot([
-      {
-        path: 'logout',
-        component: LogOutComponent
-      },
-      {
-        path: 'login',
-        component: LogInComponent
-      },
-      {
-        path: 'singup',
-        component: SingUpComponent
-      },
-      {
-        path: 'createtournment',
-        component: CreatTournmentComponent
-      },
-      {
-        path: 'jointournment',
-        component: JoinTournmentComponent
-      },
-      {
-        path: 'listteam',
-        component: ListTeamComponent
-      },
-      {
-        path: 'creatteam',
-        component: CreateTeamComponent
-      },
-      {
-        path: 'userprofile',
-        component: UserProfileComponent
-      }
-    ])
-  ],
-  providers: [
-    {
-      provide: Http,
-      useFactory: httpFactory,
-      deps: [XHRBackend, RequestOptions, Router, TokenHolderServise]
-    },
-
-    DService,
-    TokenHolderServise,
-      LogOutComponent
-  ],
-  bootstrap: [AppComponent
- ]
+        DService,
+        TokenHolderServise,
+        LogOutComponent
+    ],
+    bootstrap: [AppComponent
+    ]
 
 })
 export class AppModule {
