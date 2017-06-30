@@ -1,61 +1,22 @@
-/* Remove the navbar's default margin-bottom and rounded borders
-/* Set submenu parameters
+@import url('//maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css')
 
+header
+  background: #212121
+  padding-bottom: 0.01%
 
-
-.navbar
-  margin-bottom: 0
-  border-radius: 0
-
-/* Set height of the grid so .sidenav can be 100% (adjust as needed)
-
-/* Set gray background color and 100% height
-
-.sidenav
-  position: inherit
-  background-color: #ffad01
-  height: 100%
-
-/* Set black background color, white text and some padding
-
-#header
-  background-color: #212121
-  padding: 15px
-  margin-bottom: 5px
-
-.profile
+main
   position: relative
-  padding: 11%
-  margin-left: 10%
-  margin-right: 5%
-  text-align: center
-  background-color: #212121
-  color: white
-
-.logo
-  padding-left: 20%
-  font-size: 230%
-  color: white
-  text-decoration: none
-
-.submenu
-  color: #212121
-  padding-bottom: 5%
-
-.submenu2
-  color: #ffffff
-  float: left
-  padding-left: 20%
-
-.logout
-  color: #ffffff
-
+  width: 100%
+  height: 100%
+  background-color: #d2d2d2
 
 #pav
-  position: relative
+  overflow: auto
+  position: inherit
+  text-align: center
   float: left
-  min-width: 92%
-  min-height: 30%
+  width: 92%
+  height: 40%
   background-color: #f8f9f9
   color: #ffad01
   margin-left: 4%
@@ -64,31 +25,182 @@
   margin-bottom: 2%
 
 #all_tour
-  position: relative
+  overflow: auto
+  text-align: center
+  position: inherit
+  text-decoration: none
   float: left
-  width: 45%
-  height: 65%
+  width: 92%
+  height: 55%
   color: #ffad01
   background-color: #212121
   margin-bottom: 1%
   margin-left: 4%
 
 #all_teams
-  position: relative
-  float: right
-  width: 45%
-  height: 65%
+  overflow: auto
+  position: inherit
+  text-align: center
+  text-decoration: none
+  float: left
+  width: 92%
+  height: 55%
   background-color: #212121
   color: #ffad01
   margin-bottom: 1%
-  margin-right: 4%
+  margin-left: 4%
 
-/* On small screens, set height to 'auto' for sidenav and grid
-@media screen and (max-width: 500px)
-  .sidenav
-    height: auto
-    padding: 15px
-  .row.content
-    height: auto
+.sidebar-nav
+
+  background-color: #ffad01
+  height: 100%
+
+
+.logo
+  padding-left: 2%
+  font-size: 230%
+  color: white
+  text-decoration: none
+
+.sidebar-title
+  color: #212121
+  font-size: 110%
+
+.sidebar-title2
+  color: white
+  font-size: 110%
+
+i
+  color: #212121
+
+.i
+  color: white
+
+.navbar-fixed-top
+  top: 0
+  border-width: 0 0 1px
+
+.p
+  text-decoration: none
+  padding: 0%
+  margin: 0%
+
+.logout
+  color: #ffffff
+  padding: 0%
+  margin: 0%
+
+
+.profile
+  position: relative
+  border-radius: 10px
+  height: 10%
+  padding: 5%
+  margin-left: 20%
+  margin-right: 20%
+  text-align: center
+  background-color: #212121
+  color: white
+
+.navbar-default .navbar-nav #user-profile
+  height: 50px
+  padding-top: 15px
+  padding-left: 58px
+  img
+    height: 45px
+    width: 45px
+    position: absolute
+    top: 2px
+    left: 8px
+    padding: 1px
+
+#wrapper
+  padding-left: 0
+  -webkit-transition: all .5s ease
+  -moz-transition: all .5s ease
+  -o-transition: all .5s ease
+  transition: all .5s ease
+
+@media (min-width: 992px)
+  #wrapper
+    padding-left: 225px
+
+@media (min-width: 992px)
+  #wrapper #sidebar-wrapper
+    width: 225px
+
+#sidebar-wrapper
+
+  border-right: 1px solid #e7e7e7
+  z-index: 1000
+  position: fixed
+  left: 225px
+  width: 0
+  height: 100%
+  margin-left: -225px
+  overflow-y: auto
+  background: #f8f8f8
+  -webkit-transition: all .5s ease
+  -moz-transition: all .5s ease
+  -o-transition: all .5s ease
+  transition: all .5s ease
+
+  .sidebar-nav
+    position: absolute
+    top: 0
+    width: 225px
+    font-size: 14px
+    margin: 0
+    padding: 0
+    list-style: none
+    li
+      text-indent: 0
+      line-height: 45px
+      a
+        display: block
+        text-decoration: none
+        color: #428bca
+
+#sidebar-wrapper .sidebar-nav li
+  a
+    .sidebar-icon
+      width: 45px
+      height: 45px
+      font-size: 14px
+      padding: 0 2px
+      display: inline-block
+      text-indent: 7px
+      margin-right: 10px
+      color: #fff
+      float: left
+    .caret
+      position: absolute
+      right: 23px
+      top: auto
+      margin-top: 20px
+  ul.panel-collapse
+    list-style: none
+    -moz-padding-start: 0
+    -webkit-padding-start: 0
+    -khtml-padding-start: 0
+    -o-padding-start: 0
+    padding-start: 0
+    padding: 0
+    li
+      i
+        margin-right: 10px
+      text-indent: 15px
+
+@media (max-width: 992px)
+  #wrapper #sidebar-wrapper
+    width: 45px
+    #sidebar #sidemenu li ul
+      position: fixed
+      left: 45px
+      margin-top: -45px
+      z-index: 1000
+      width: 200px
+      height: 0
+
 
 

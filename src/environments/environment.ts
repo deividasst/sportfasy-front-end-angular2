@@ -4,5 +4,6 @@
 // The list of which env maps to which file can be found in `.angular-cli.json`.
 
 export const environment = {
-  production: false
+  origin: 'http://localhost:3000',
+    swagger: 'https://app.swaggerhub.com/apis/markrudenkov/sportfasy/1.0.0'
 };

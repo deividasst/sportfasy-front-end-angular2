@@ -1,35 +1,42 @@
 import {Http, Response} from '@angular/http'
-import {Injectable} from '@angular/core';
-import {Observable} from 'rxjs/Observable';
+import {Component, Injectable} from '@angular/core';
 import 'rxjs/add/operator/map';
-import {Headers, RequestOptions} from '@angular/http';
-import { FormGroup, FormControl } from '@angular/forms';
-import { User } from './User'
-import 'rxjs/add/operator/catch'
+
 
 @Injectable()
+export class DService {
 
-  export class DService {
-  constructor(public http: Http) {
-  }
 
-  data;
+    constructor(public http: Http) {
+    }
 
-  carsUrl: string = 'http://localhost:3000/api/users/registration';
-//get funkcija parodyti visus uzsiregistravusius narius
-  getData() {
-    return this.http.get(this.carsUrl)
-      .map((res: Response) => res.json().posts);
-  }
+    getUsers() {
+        return this.http.get('/api/users/registration')
+            .map((res: Response) => res.json());
+    }
 
-//post funcija, registracijai
-  registerUser(user: User) {
-    return this.http.post(this.carsUrl, user, {  }).map(res =>  res.json()).catch(this.handleErrorObservable);
-  }
+    registerUser(user: string) {
+        return this.http.post('/api/users/registration', user).map(res => res.json());
+    }
 
-  private handleErrorObservable (error: Response | any) {
-    console.error(error.message || error);
-    return Observable.throw(error.message || error);
-  }
+    loginUser(user: string) {
+        return this.http.post('/api/login', user).map(res => res.json());
+    }
+
+    registerTournament(tournament: string) {
+        return this.http.post('/api/tournaments', tournament).map(res => res.json());
+    }
+
+    logOutUser() {
+        return this.http.get('/api/logout').map(res => res.json());
+    }
+
+    getAllTeams() {
+        return this.http.get('/api/teams').map(res => res.json());
+    }
+
+    getAllTournaments() {
+        return this.http.get('/api/tournaments').map(res => res.json());
+    }
 
 }

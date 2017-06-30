@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { Http } from'@angular/http';
 import {DService} from '../shared/data.srv';
-
+import {LogOutComponent} from '../sign_log/log-out/log-out.component';
+import {TokenHolderServise} from '../shared/tokenholder.srv';
 
 @Component({
   selector: 'app-user-profile',
@@ -9,21 +9,24 @@ import {DService} from '../shared/data.srv';
   styleUrls: ['./user-profile.component.sass']
 })
 export class UserProfileComponent implements OnInit {
-
- itemList=[];
-
-  data;
-
-  constructor(private http:Http) {
-    this.http.get('http://localhost:3000/api/users').subscribe(res => this.data = res.json());
-  }
-
-  Show(){
-    this.itemList = this.data;
+  dataHolder = [];
+  mailHolder: string;
+  tokenEmail: string;
+  constructor(private ds: DService, private logout: LogOutComponent,  private tokenHolder: TokenHolderServise) {
+      this.tokenEmail = this.tokenHolder.getuserMail();
+      this.mailHolder = this.tokenEmail;
   }
 
   ngOnInit() {
+  }
 
+  getUsers() {
+    this.ds.getUsers()
+      .subscribe(obj => {this.dataHolder.push(JSON.stringify(obj))} );
+  }
+
+  logOut() {
+      this.logout.logOut();
   }
 
 }

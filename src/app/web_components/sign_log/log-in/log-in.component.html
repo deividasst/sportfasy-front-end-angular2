@@ -1,20 +1,25 @@
-<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+
 <div>
   <div class="container">
     <div class="row">
       <div class="col-md-offset-5 col-md-3">
         <div class="form-login">
           <h4>Welcome to Sportfasy!</h4>
-          <input type="text" id="userName" class="form-control input-sm chat-input" placeholder="username"/>
-          <br>
-          <input type="text" id="userPassword" class="form-control input-sm chat-input" placeholder="password"/>
-          <br>
-          <div class="wrapper">
-            <span class="group-btn">
-                <a routerLink="/userprofile" class="btn btn-primary btn-md button">login <i class="fa fa-sign-in"></i></a>
-            </span>
-          </div>
-          <p>Not a member yet? <a class="a" routerLink="/singup"><br>Join now!</a></p>
+          <form method="post" novalidate="">
+
+
+            <label class="label" for="email">Email:</label><br>
+            <input class="form-control input-sm chat-input" name="email" [(ngModel)]="user.email">
+
+
+            <label class="label" for="password">Password:</label><br>
+            <input class="form-control input-sm chat-input" type="password" required minlength="6" name="password"
+                   [(ngModel)]="user.password"><br>
+
+              <div class="error text-center"><span *ngIf="error">{{error}}</span></div><br>
+            <div class="text-center"><input class="btn button" type="submit" (click)="loginUser()" value="LOG IN"></div>
+            <p>Not a member yet? <a class="a" routerLink="/singup"><br>Join now!</a></p>
+          </form>
         </div>
       </div>
     </div>
