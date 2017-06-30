@@ -18,7 +18,6 @@ export class UserProfileComponent implements OnInit {
   }
 
   ngOnInit() {
-      // this.tokenEmail = this.tokenHolder.getuserMail();
   }
 
   getUsers() {

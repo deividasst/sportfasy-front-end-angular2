@@ -8,6 +8,7 @@ import {Router} from '@angular/router';
 import {FormGroup, FormControl} from '@angular/forms'
 import { DatepickerModule } from 'ngx-bootstrap';
 import { CustomFormsModule } from 'ng2-validation'
+import {TokenHolderServise} from '../../../shared/tokenholder.srv';
 
 import {Tournament} from '../../../shared/Tournament'
 @Component({
@@ -20,16 +21,17 @@ export class CreatTournmentComponent implements OnInit {
     tournament: Tournament;
     minDate = new Date(2017, 5);
     err;
-    dataHolder = [];
+    mailHolder: string;
+    tokenEmail: string;
     public getDate(): number {
         return this.tournament.start && this.tournament.start.getTime() || new Date().getTime();
     }
     public getDate2(): number {
         return this.tournament.end && this.tournament.end.getTime() || new Date().getTime();
     }
-
-
-    constructor(piker: DatepickerModule, private ds: DService, private router: Router) {
+    constructor(piker: DatepickerModule, private ds: DService, private router: Router, private tokenHolder: TokenHolderServise) {
+        this.tokenEmail = this.tokenHolder.getuserMail();
+        this.mailHolder = this.tokenEmail;
     }
 
     ngOnInit() {
