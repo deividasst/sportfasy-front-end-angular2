@@ -18,7 +18,9 @@ export class OverAllTournamentsWidgetComponent implements OnInit {
             this.tournaments = tournament
         })
     }
-
+    getData(tournament: object) {
+        console.log(tournament);
+    };
     ngOnInit() {
         this.getTournaments();
     }
