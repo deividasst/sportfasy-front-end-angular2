@@ -21,7 +21,6 @@ export class CreatTournmentComponent implements OnInit {
     tournament: Tournament;
     minDate = new Date(2017, 5);
     err;
-    mailHolder: string;
     tokenEmail: string;
     public getDate(): number {
         return this.tournament.start && this.tournament.start.getTime() || new Date().getTime();
@@ -30,8 +29,7 @@ export class CreatTournmentComponent implements OnInit {
         return this.tournament.end && this.tournament.end.getTime() || new Date().getTime();
     }
     constructor(piker: DatepickerModule, private ds: DService, private router: Router, private tokenHolder: TokenHolderServise) {
-        this.tokenEmail = this.tokenHolder.getuserMail();
-        this.mailHolder = this.tokenEmail;
+        this.tokenEmail = this.tokenHolder.getEmail();
     }
 
     ngOnInit() {

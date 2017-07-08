@@ -10,11 +10,9 @@ import {TokenHolderServise} from '../shared/tokenholder.srv';
 })
 export class UserProfileComponent implements OnInit {
   dataHolder = [];
-  mailHolder: string;
   tokenEmail: string;
   constructor(private ds: DService, private logout: LogOutComponent,  private tokenHolder: TokenHolderServise) {
-      this.tokenEmail = this.tokenHolder.getuserMail();
-      this.mailHolder = this.tokenEmail;
+      this.tokenEmail = this.tokenHolder.getEmail();
   }
 
   ngOnInit() {

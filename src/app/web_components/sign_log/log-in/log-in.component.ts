@@ -20,8 +20,6 @@ export class LogInComponent implements OnInit {
     }
     ngOnInit() {
         this.user = new User();
-        this.user.name = 'First Name';
-        this.user.surname = 'Last Name';
         this.user.password = '123456';
         this.user.email = 'root@gmail.com';
     }
@@ -30,10 +28,11 @@ export class LogInComponent implements OnInit {
         this.ds.loginUser(JSON.stringify(this.user))
             .subscribe(
                 obj => {
-                    this.tokenHolder.setToken(obj.token),
-                    this.tokenHolder.setuserMail(obj.userEmail),
-                        this.router.navigate(['/userprofile'])
-                }, err => this.error = 'Email or password invalid. Please try again.');
+                    if (obj.success) {
+                        this.tokenHolder.storeUserData(obj.token, obj.userID, obj.userEmail, obj.userName),
+                            console.log(obj),
+                            this.router.navigate(['/userprofile'])
+                    }}, err => this.error = 'Email or password invalid. Please try again.');
     }
 
 

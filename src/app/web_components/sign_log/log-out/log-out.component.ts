@@ -19,7 +19,8 @@ export class LogOutComponent implements OnInit {
     }
 
     logOut() {
-        this.tokenHolder.setToken(null);
+        this.tokenHolder.storeUserData = null;
+        window.localStorage.clear();
         this.router.navigate(['/login']);
     }
 }
