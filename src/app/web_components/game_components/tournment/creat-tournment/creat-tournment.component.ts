@@ -33,7 +33,6 @@ export class CreatTournmentComponent implements OnInit {
         this.tokenEmail = this.tokenHolder.getuserMail();
         this.mailHolder = this.tokenEmail;
     }
-
     ngOnInit() {
         this.tournament = new Tournament();
     }

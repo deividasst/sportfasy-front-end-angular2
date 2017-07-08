@@ -5,4 +5,5 @@ export class Tournament {
     teams: number;
     players: number;
     budget: number;
+    users: string;
 }

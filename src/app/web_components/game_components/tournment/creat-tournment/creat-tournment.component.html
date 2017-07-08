@@ -2,7 +2,7 @@
 
   <div id="navbar-wrapper">
     <header>
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
 
         <p routerLink="/userprofile" class="logo text-left">Sportfasy</p>
     </header>
@@ -114,7 +114,6 @@
                 <input type="number" id="budget" name="budget" [(ngModel)]="tournament.budget" #budget="ngModel"  [min]="200" [max]="2000"class="form-control" placeholder="Maximum budget" required>
                 <p  class="alert alert-danger" *ngIf="budget.errors?.min">minimum budget is 200</p>
                 <p  class="alert alert-danger" *ngIf="budget.errors?.max">maximum budget is 2000</p>
-
                 <br>
                 <div class="row">
                     <div class="col-md-6"><h4>Tournament starts:  <em *ngIf="tournament.start">{{ getDate() | date:'fullDate'}}</em></h4>
