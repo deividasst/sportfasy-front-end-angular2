@@ -29,6 +29,7 @@ import { OverAllTeamsWidgetComponent } from './web_components/game_components/te
 import { OverAllTournamentsWidgetComponent } from './web_components/game_components/tournment/over-all-tournaments-widget/over-all-tournaments-widget.component';
 import { HomeComponent } from './web_components/home/home.component';
 import { TournamentDialogComponent } from './web_components/game_components/tournment/tournament-dialog/tournament-dialog.component';
+import { TournamentUserlistComponentComponent } from './web_components/game_components/tournment/tournament-userlist-component/tournament-userlist-component.component';
 
 @NgModule({
   declarations: [
@@ -44,7 +45,8 @@ import { TournamentDialogComponent } from './web_components/game_components/tour
     OverAllTeamsWidgetComponent,
     OverAllTournamentsWidgetComponent,
     HomeComponent,
-    TournamentDialogComponent
+    TournamentDialogComponent,
+    TournamentUserlistComponentComponent,
     ],
     imports: [
         BrowserModule,
