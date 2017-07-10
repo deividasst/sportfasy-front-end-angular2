@@ -3,7 +3,6 @@ import { OverAllTournamentsWidgetComponent } from '../over-all-tournaments-widge
 import {MD_DIALOG_DATA} from '@angular/material';
 import {TournamentUserlistComponentComponent} from '../tournament-userlist-component/tournament-userlist-component.component';
 import {DService} from '../../../shared/data.srv';
-import { Pipe} from '@angular/core';
 
 
 @Component({
