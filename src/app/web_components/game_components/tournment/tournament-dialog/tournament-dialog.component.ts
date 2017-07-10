@@ -31,11 +31,7 @@ import {DService} from '../../../shared/data.srv';
 
 export class TournamentDialogComponent implements OnInit {
 
-    datas = [
-    {name: this.data._users[0].name},
-    {name: this.data._users[1].name},
 
-]
     dataa: any;
     constructor(@Inject(MD_DIALOG_DATA) public data: any, private ds: DService) {
     }
