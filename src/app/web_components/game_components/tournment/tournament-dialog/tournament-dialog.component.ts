@@ -1,8 +1,9 @@
-import { Component, OnInit, Inject } from '@angular/core';
+import { Component, OnInit, Inject} from '@angular/core';
 import { OverAllTournamentsWidgetComponent } from '../over-all-tournaments-widget/over-all-tournaments-widget.component'
 import {MD_DIALOG_DATA} from '@angular/material';
 import {TournamentUserlistComponentComponent} from '../tournament-userlist-component/tournament-userlist-component.component';
 import {DService} from '../../../shared/data.srv';
+import { Pipe} from '@angular/core';
 
 
 @Component({
@@ -18,8 +19,8 @@ import {DService} from '../../../shared/data.srv';
           </md-tab>
           <md-tab label="Tournament players">
               <h3>Players list: </h3>
-              <div *ngFor="let post of dataa">
-                  <app-tournament-userlist-component [post]="post" [dataa]="dataa"></app-tournament-userlist-component>
+              <div >
+                  <app-tournament-userlist-component [tournament]="tournament" ></app-tournament-userlist-component>
               </div>
           </md-tab>
       </md-tab-group>
@@ -30,23 +31,14 @@ import {DService} from '../../../shared/data.srv';
 })
 
 export class TournamentDialogComponent implements OnInit {
+    tournament: any;
 
-    datas = [
-    {name: this.data._users[0].name},
-    {name: this.data._users[1].name},
-
-]
-    dataa: any;
     constructor(@Inject(MD_DIALOG_DATA) public data: any, private ds: DService) {
+        this.tournament = data._users;
     }
 
-    getTournaments(): void {
-        this.ds.getAllTournaments().subscribe(tournament => {
-            this.dataa = tournament
-        })
-    }
     ngOnInit() {
-        this.getTournaments();
-   }
+
+    }
 
 }

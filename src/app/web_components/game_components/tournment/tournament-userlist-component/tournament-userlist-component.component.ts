@@ -11,18 +11,19 @@ import {MD_DIALOG_DATA} from '@angular/material';
 export class TournamentUserlistComponentComponent implements OnInit {
 
     @Input()
-    post: any;
+    user: any;
 
     @Input()
-    dataa: any;
+    tournament: any;
 
     constructor(@Inject(MD_DIALOG_DATA) public data: any) { }
 
     delete() {
-        const index = this.dataa.indexOf(this.post);
-        this.dataa.splice(index, 1);
+        const index = this.tournament.indexOf(this.user);
+        this.tournament.splice(index, 1);
     }
   ngOnInit() {
+
   }
 
 }
