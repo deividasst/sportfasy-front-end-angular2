@@ -8,9 +8,13 @@
         <th>Tournament's players</th>
         <th>Tournament's budget</th>
     </tr>
+
     <tr *ngFor="let tournament of tournaments">
         <td>{{tournament.name}}</td>
-        <td>{{tournament.players}}</td>
+        <td>{{tournament.max_players}}</td>
         <td>{{tournament.budget}}</td>
+        <button md-button (click)="openDialog(tournament)">More info</button>
+
     </tr>
+
 </table>

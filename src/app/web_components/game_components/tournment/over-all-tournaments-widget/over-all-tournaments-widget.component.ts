@@ -1,6 +1,11 @@
 import {Component, OnInit} from '@angular/core';
 import {DService} from '../../../shared/data.srv';
 import {Tournament} from '../../../shared/Tournament'
+import {MdDialog, MdDialogRef} from '@angular/material';
+import {TournamentDialogComponent} from '../tournament-dialog/tournament-dialog.component'
+import {MD_DIALOG_DATA} from '@angular/material';
+import {Router} from '@angular/router';
+import {PopupComponent} from '../../../../popup/popup.component';
 
 @Component({
     selector: 'app-over-all-tournaments-widget',
@@ -10,7 +15,24 @@ import {Tournament} from '../../../shared/Tournament'
 export class OverAllTournamentsWidgetComponent implements OnInit {
     tournaments: Tournament[];
 
-    constructor(private ds: DService) {
+    constructor(private ds: DService, public dialog: MdDialog, private router: Router) {
+    }
+
+    openDialog(tournament) {
+
+        const dialogRef = this.dialog.open(TournamentDialogComponent, {
+            data: tournament,
+            height: '400px',
+            width: '600px'
+        });
+        console.log(tournament);
+    }
+
+    sugestToJoinTournament() {
+        const dialogRef = this.dialog.open(PopupComponent, {
+            height: '400px',
+            width: '600px'
+        });
     }
 
     getTournaments(): void {
@@ -21,6 +43,7 @@ export class OverAllTournamentsWidgetComponent implements OnInit {
 
     ngOnInit() {
         this.getTournaments();
+        // this.sugestToJoinTournament();
     }
 
 }

@@ -23,11 +23,14 @@ import {TokenHolderServise} from './web_components/shared/tokenholder.srv';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { DatepickerModule } from 'ngx-bootstrap';
 import { CustomFormsModule } from 'ng2-validation';
-
+import {MaterialModule, MdNativeDateModule} from '@angular/material';
 
 import { OverAllTeamsWidgetComponent } from './web_components/game_components/team/over-all-teams-widget/over-all-teams-widget.component';
 import { OverAllTournamentsWidgetComponent } from './web_components/game_components/tournment/over-all-tournaments-widget/over-all-tournaments-widget.component';
 import { HomeComponent } from './web_components/home/home.component';
+import { TournamentDialogComponent } from './web_components/game_components/tournment/tournament-dialog/tournament-dialog.component';
+import { TournamentUserlistComponentComponent } from './web_components/game_components/tournment/tournament-userlist-component/tournament-userlist-component.component';
+import { PopupComponent } from './popup/popup.component';
 
 @NgModule({
   declarations: [
@@ -42,7 +45,10 @@ import { HomeComponent } from './web_components/home/home.component';
     UserProfileComponent,
     OverAllTeamsWidgetComponent,
     OverAllTournamentsWidgetComponent,
-    HomeComponent
+    HomeComponent,
+    TournamentDialogComponent,
+    TournamentUserlistComponentComponent,
+    PopupComponent,
     ],
     imports: [
         BrowserModule,
@@ -53,6 +59,8 @@ import { HomeComponent } from './web_components/home/home.component';
         DatepickerModule,
         CustomFormsModule,
         BrowserAnimationsModule,
+        MaterialModule,
+        MdNativeDateModule,
         AlertModule.forRoot(),
         DatepickerModule.forRoot(),
         BsDropdownModule.forRoot(),
@@ -107,6 +115,10 @@ import { HomeComponent } from './web_components/home/home.component';
         LogOutComponent
     ],
     bootstrap: [AppComponent
+    ],
+    entryComponents: [
+        TournamentDialogComponent,
+        PopupComponent
     ]
 
 })

@@ -1,0 +1,18 @@
+<div id="main"><h1>tournament  info</h1>
+    <md-tab-group>
+        <md-tab label="Main info">
+            <h3>Max players allowed: {{data.max_players}}</h3>
+            <h3>Max teams allowed: {{data.max_teams}}</h3>
+            <h3>Tournament budget: {{data.budget}}</h3>
+            <h4>tournament starts: {{data.start}}</h4> <br/>
+            <h4>tournament ends: {{data.end}}</h4>
+        </md-tab>
+        <md-tab label="Tournament players">
+            <h3>Players list: </h3>
+            <div >
+                <app-tournament-userlist-component [tournament]="tournament" ></app-tournament-userlist-component>
+            </div>
+        </md-tab>
+    </md-tab-group>
+    <button class="btn btn-primary ">join</button>
+</div>
