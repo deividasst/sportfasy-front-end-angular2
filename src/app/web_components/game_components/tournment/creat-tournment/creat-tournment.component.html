@@ -102,11 +102,11 @@
                -->
                 <br>
                 <label for="teams" class="label">Maximum teams:</label>
-                <input type="number" id="teams" name="teams" [(ngModel)]="tournament.teams" #teams="ngModel"  [min]="2" class="form-control" placeholder="Maximum teams" required>
+                <input type="number" id="teams" name="teams" [(ngModel)]="tournament.max_teams" #teams="ngModel"  [min]="2" class="form-control" placeholder="Maximum teams" required>
                 <p  class="alert alert-danger" *ngIf="teams.errors?.min">there should be 2 teams at least</p>
                 <br>
                 <label for="players" class="label">Maximum Players in team: </label>
-                <input type="number" id="players" name="players" [(ngModel)]="tournament.players" #players="ngModel"  [min]="3" [max]="10" class="form-control" placeholder="Maximum players in team" required>
+                <input type="number" id="players" name="players" [(ngModel)]="tournament.max_players" #players="ngModel"  [min]="3" [max]="10" class="form-control" placeholder="Maximum players in team" required>
                 <p  class="alert alert-danger" *ngIf="players.errors?.min">there should be at least 3 players in team</p>
                 <p  class="alert alert-danger" *ngIf="players.errors?.max">you can have more than 10 players</p>
                 <br>
