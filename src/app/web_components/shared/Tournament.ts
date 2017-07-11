@@ -1,9 +1,11 @@
 export class Tournament {
+    _id: string;
     name: string;
     start: Date;
     end: Date;
     max_teams: number;
     max_players: number;
+    tournament_master: string;
     budget: number;
     _users: [{
         name: string;

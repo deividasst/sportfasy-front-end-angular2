@@ -45,3 +45,4 @@ export class DService {
         return this.http.get(`/api/tournaments/?userID=${userID}`).map(res => res.json())
     }
 }
+
