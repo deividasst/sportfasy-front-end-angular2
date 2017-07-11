@@ -2,10 +2,8 @@ import { Http, Response, Headers } from '@angular/http'
 import { Injectable } from '@angular/core';
 import 'rxjs/add/operator/map';
 
-
 @Injectable()
 export class DService {
-
 
     constructor(public http: Http) {
     }
@@ -16,14 +14,10 @@ export class DService {
     }
 
     registerUser(user: string) {
-        let headers = new Headers();
-        headers.append('Content-Type', 'application/json');
         return this.http.post('/api/users/registration', user).map(res => res.json());
     }
 
     loginUser(user: string) {
-        let headers = new Headers();
-        headers.append('Content-Type', 'application/json');
         return this.http.post('/api/login', user).map(res => res.json());
     }
 
@@ -42,5 +36,4 @@ export class DService {
     getAllTournaments() {
         return this.http.get('/api/tournaments').map(res => res.json());
     }
-
 }

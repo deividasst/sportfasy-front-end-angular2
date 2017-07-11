@@ -10,14 +10,15 @@ import {TokenHolderServise} from '../shared/tokenholder.srv';
 })
 export class UserProfileComponent implements OnInit {
   dataHolder = [];
-  tokenEmail: string;
+
+    name: string = localStorage.getItem('name_user');
+
   constructor(private ds: DService, private logout: LogOutComponent,  private tokenHolder: TokenHolderServise) {
-      this.tokenEmail = this.tokenHolder.getEmail();
   }
 
   ngOnInit() {
-  }
 
+  }
   getUsers() {
     this.ds.getUsers()
       .subscribe(obj => {this.dataHolder.push(JSON.stringify(obj))} );
@@ -26,5 +27,4 @@ export class UserProfileComponent implements OnInit {
   logOut() {
       this.logout.logOut();
   }
-
 }
