@@ -1,0 +1,16 @@
+<p>
+    Overall Teams
+</p>
+
+<table class="table">
+    <tr>
+        <th>Team name</th>
+        <th>Team master</th>
+        <th>Players in team</th>
+    </tr>
+    <tr *ngFor="let team of teams">
+        <td>{{team.name}}</td>
+        <td>{{team.master}}</td>
+        <td>{{team.players}}</td>
+    </tr>
+</table>
