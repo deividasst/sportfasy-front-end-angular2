@@ -1,3 +1,12 @@
 <div *ngFor="let user of users">
-    <div >{{user.name}} <span (click)="delete(user)"><i *ngIf=is_allowed class="fa fa-close"></i></span></div>
+    <div id="userContent" style="display: none;">
+    </div>
+    <button style="display: none;" id="contentas1" class="text-right" type="button" class="btn btn-danger "
+            (click)="conceal()"><i> close</i></button>
+    <br/>
+    {{user.name}}
+    <button class="text-right" type="button" class="btn btn-primary " (click)="show(user)"><i> View</i></button>
+    <span (click)="delete(user)"><i *ngIf=is_allowed class="fa fa-close"></i></span>
+    <div id='opener'>
+    </div>
 </div>

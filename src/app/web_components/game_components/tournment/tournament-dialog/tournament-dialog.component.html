@@ -1,4 +1,4 @@
-<div id="main"><h1>tournament  info</h1>
+<div id="main"><h1>tournament info</h1>
     <md-tab-group>
         <md-tab label="Main info">
             <h3>Max players allowed: {{data.max_players}}</h3>
@@ -9,8 +9,9 @@
         </md-tab>
         <md-tab label="Tournament players">
             <h3>Players list: </h3>
-            <div >
-                <app-tournament-userlist-component [is_allowed]="is_allowed" [users]="users"></app-tournament-userlist-component>
+            <div>
+                <app-tournament-userlist-component [is_allowed]="is_allowed"
+                                                   [users]="users"></app-tournament-userlist-component>
             </div>
         </md-tab>
     </md-tab-group>

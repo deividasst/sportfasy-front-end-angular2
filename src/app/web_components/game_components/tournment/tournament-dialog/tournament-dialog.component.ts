@@ -3,8 +3,8 @@ import { OverAllTournamentsWidgetComponent } from '../over-all-tournaments-widge
 import {MD_DIALOG_DATA} from '@angular/material';
 import {TournamentUserlistComponentComponent} from '../tournament-userlist-component/tournament-userlist-component.component';
 import {DService} from '../../../shared/data.srv';
-import {Tournament} from "../../../shared/Tournament";
-import {SecurityTrimming} from "../../../shared/security-trimming.srv";
+import {Tournament} from '../../../shared/Tournament';
+import {SecurityTrimming} from '../../../shared/security-trimming.srv';
 
 
 @Component({
@@ -15,15 +15,18 @@ import {SecurityTrimming} from "../../../shared/security-trimming.srv";
 
 export class TournamentDialogComponent implements OnInit {
     users: any;
+    view: any;
     is_allowed: boolean;
 
     constructor(@Inject(MD_DIALOG_DATA) public data: any, private ds: DService,
                 private securityTrimm: SecurityTrimming) {
         this.users = data._users;
         this.is_allowed = this.securityTrimm.isAllowedMasterRights(data._id);
+        this.view = data._user;
     }
 
     ngOnInit() {
 
     }
 }
+

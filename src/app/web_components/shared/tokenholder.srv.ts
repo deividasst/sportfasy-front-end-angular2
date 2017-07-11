@@ -3,7 +3,6 @@ import 'rxjs/add/operator/map';
 
 @Injectable()
 export class TokenHolderServise {
-    // private token: string;
     private _userMail: string;
     private _userID: string;
 
@@ -11,7 +10,6 @@ export class TokenHolderServise {
     userID: any;
     userEmail: any;
     userName: any;
-
 
     constructor() {
     }
@@ -44,7 +42,6 @@ export class TokenHolderServise {
     getName() {
         return this.userName;
     }
-
 
     storeUserData(value, id_user, email_user, name_user) {
         this.token = value;
