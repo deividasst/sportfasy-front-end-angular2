@@ -43,7 +43,6 @@ export class TournamentUserlistComponentComponent implements OnInit {
      show(user) {
     if (document.getElementById('content').style.display === 'none') {
         document.getElementById('content').innerHTML = 'Name: ' + user.name + '<br/>' + 'Surname: ' + user.surname + '<br/>' + 'Email: ' + user.email;
-        document.getElementById('content').style.display = 'block';
         document.getElementById('content1').style.display = 'block';
 
     }
