@@ -1,0 +1,199 @@
+@import url('//maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css')
+
+header
+  background: #212121
+  padding-bottom: 0.01%
+
+main
+  position: relative
+  width: 100%
+  height: 100%
+  background-color: #d2d2d2
+
+#pav
+  text-align: center
+  float: left
+  width: 92%
+  height: 40%
+  background-color: #f8f9f9
+  color: #ffad01
+  margin-left: 4%
+  margin-right: 4%
+  margin-top: 2px
+  margin-bottom: 2%
+
+#all_tour
+  text-align: center
+  text-decoration: none
+  float: left
+  width: 92%
+  height: 55%
+  color: #ffad01
+  background-color: #212121
+  margin-bottom: 1%
+  margin-left: 4%
+
+#all_teams
+  text-align: center
+  text-decoration: none
+  float: left
+  width: 92%
+  height: 55%
+  background-color: #212121
+  color: #ffad01
+  margin-bottom: 1%
+  margin-left: 4%
+
+.sidebar-nav
+
+  background-color: #ffad01
+  height: 100%
+
+
+.logo
+  padding-left: 2%
+  font-size: 230%
+  color: white
+  text-decoration: none
+
+.sidebar-title
+  color: #212121
+  font-size: 110%
+
+.sidebar-title2
+  color: white
+  font-size: 110%
+
+i
+  color: #212121
+
+.i
+  color: white
+
+.navbar-fixed-top
+  top: 0
+  border-width: 0 0 1px
+
+.p
+  text-decoration: none
+  padding: 0%
+  margin: 0%
+
+.logout
+  color: #ffffff
+  padding: 0%
+  margin: 0%
+
+
+.profile
+  position: relative
+  border-radius: 10px
+  height: 10%
+  padding: 5%
+  margin-left: 20%
+  margin-right: 20%
+  text-align: center
+  background-color: #212121
+  color: white
+
+.navbar-default .navbar-nav #user-profile
+  height: 50px
+  padding-top: 15px
+  padding-left: 58px
+  img
+    height: 45px
+    width: 45px
+    position: absolute
+    top: 2px
+    left: 8px
+    padding: 1px
+
+#wrapper
+  padding-left: 0
+  -webkit-transition: all .5s ease
+  -moz-transition: all .5s ease
+  -o-transition: all .5s ease
+  transition: all .5s ease
+
+@media (min-width: 992px)
+  #wrapper
+    padding-left: 225px
+
+@media (min-width: 992px)
+  #wrapper #sidebar-wrapper
+    width: 225px
+
+#sidebar-wrapper
+
+  border-right: 1px solid #e7e7e7
+  z-index: 1000
+  position: fixed
+  left: 225px
+  width: 0
+  height: 100%
+  margin-left: -225px
+  overflow-y: auto
+  background: #f8f8f8
+  -webkit-transition: all .5s ease
+  -moz-transition: all .5s ease
+  -o-transition: all .5s ease
+  transition: all .5s ease
+
+  .sidebar-nav
+    position: absolute
+    top: 0
+    width: 225px
+    font-size: 14px
+    margin: 0
+    padding: 0
+    list-style: none
+    li
+      text-indent: 0
+      line-height: 45px
+      a
+        display: block
+        text-decoration: none
+        color: #428bca
+
+#sidebar-wrapper .sidebar-nav li
+  a
+    .sidebar-icon
+      width: 45px
+      height: 45px
+      font-size: 14px
+      padding: 0 2px
+      display: inline-block
+      text-indent: 7px
+      margin-right: 10px
+      color: #fff
+      float: left
+    .caret
+      position: absolute
+      right: 23px
+      top: auto
+      margin-top: 20px
+  ul.panel-collapse
+    list-style: none
+    -moz-padding-start: 0
+    -webkit-padding-start: 0
+    -khtml-padding-start: 0
+    -o-padding-start: 0
+    padding-start: 0
+    padding: 0
+    li
+      i
+        margin-right: 10px
+      text-indent: 15px
+
+@media (max-width: 992px)
+  #wrapper #sidebar-wrapper
+    width: 45px
+    #sidebar #sidemenu li ul
+      position: fixed
+      left: 45px
+      margin-top: -45px
+      z-index: 1000
+      width: 200px
+      height: 0
+
+
