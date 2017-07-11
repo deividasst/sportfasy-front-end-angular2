@@ -13,12 +13,13 @@ import {MdDialog, MdDialogRef} from '@angular/material';
 export class UserProfileComponent implements OnInit {
     dataHolder = [];
     tokenEmail: string;
+    name: string = localStorage.getItem('name_user');
 
     constructor(private ds: DService,
                 private logout: LogOutComponent,
                 private tokenHolder: TokenHolderServise,
                 public dialog: MdDialog) {
-        this.tokenEmail = this.tokenHolder.getuserMail();
+        this.tokenEmail = this.tokenHolder.getEmail();
     }
 
     ngOnInit() {
@@ -26,7 +27,8 @@ export class UserProfileComponent implements OnInit {
     }
 
     getUserTurnaments(): void {
-        this.ds.getUserTurnaments(this.tokenHolder.getUserID()).subscribe(tournament => {
+        this.ds.getUserTurnaments(
+            localStorage.getItem('id_user')).subscribe(tournament => {
             if (tournament.length === 0) {
                 this.sugestToJoinTournament();
             }

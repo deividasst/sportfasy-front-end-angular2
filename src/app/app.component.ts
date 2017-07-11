@@ -1,6 +1,4 @@
 import { Component } from '@angular/core';
-import {NgForm} from '@angular/forms';
-import {DService} from './web_components/shared/data.srv';
 
 
 @Component({

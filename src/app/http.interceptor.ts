@@ -14,7 +14,6 @@ export class InterceptedHttp extends Http {
               defaultOptions: RequestOptions, router: Router, tokenHolder: TokenHolderServise) {
     super(backend, defaultOptions);
     this.router = router;
-    this.tokenHolder = tokenHolder;
   }
 
   request(url: string | Request, options?: RequestOptionsArgs): Observable<Response> {
@@ -54,8 +53,8 @@ export class InterceptedHttp extends Http {
       options.headers = new Headers();
     }
     options.headers.append('Content-Type', 'application/json');
-    if (this.tokenHolder.getToken()) {
-      options.headers.append('x-access-token', this.tokenHolder.getToken());
+    if (localStorage.getItem('id_token')) {
+      options.headers.append('x-access-token', localStorage.getItem('id_token'));
     }
     return options;
   }
@@ -73,7 +72,6 @@ export class InterceptedHttp extends Http {
               case 409:
                   return Observable.throw(err);
           }
-          return Observable.empty();
       } else {
         return Observable.throw(err);
       }
