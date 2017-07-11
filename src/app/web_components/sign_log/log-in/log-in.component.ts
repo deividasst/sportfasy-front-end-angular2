@@ -31,7 +31,8 @@ export class LogInComponent implements OnInit {
             .subscribe(
                 obj => {
                     this.tokenHolder.setToken(obj.token),
-                    this.tokenHolder.setuserMail(obj.userEmail),
+                    this.tokenHolder.setUserID(obj.userID),
+                        this.tokenHolder.setuserMail(obj.userEmail),
                         this.router.navigate(['/userprofile'])
                 }, err => this.error = 'Email or password invalid. Please try again.');
     }

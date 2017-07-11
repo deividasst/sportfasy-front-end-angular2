@@ -7,6 +7,7 @@ import 'rxjs/add/operator/map';
 export class TokenHolderServise {
   private token: string;
   private _userMail: string;
+  private _userID: string;
   constructor() {
   }
 
@@ -22,7 +23,16 @@ export class TokenHolderServise {
         return this._userMail;
     }
 
-    setuserMail(value: string) {
+    setuserMail(value: string): void {
         this._userMail = value;
+    }
+
+
+    getUserID(): string {
+        return this._userID;
+    }
+
+    setUserID(value: string): void {
+        this._userID = value;
     }
 }

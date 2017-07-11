@@ -30,6 +30,7 @@ import { OverAllTournamentsWidgetComponent } from './web_components/game_compone
 import { HomeComponent } from './web_components/home/home.component';
 import { TournamentDialogComponent } from './web_components/game_components/tournment/tournament-dialog/tournament-dialog.component';
 import { TournamentUserlistComponentComponent } from './web_components/game_components/tournment/tournament-userlist-component/tournament-userlist-component.component';
+import { PopupComponent } from './popup/popup.component';
 
 @NgModule({
   declarations: [
@@ -47,6 +48,7 @@ import { TournamentUserlistComponentComponent } from './web_components/game_comp
     HomeComponent,
     TournamentDialogComponent,
     TournamentUserlistComponentComponent,
+    PopupComponent
     ],
     imports: [
         BrowserModule,
@@ -115,7 +117,8 @@ import { TournamentUserlistComponentComponent } from './web_components/game_comp
     bootstrap: [AppComponent
     ],
     entryComponents: [
-        TournamentDialogComponent
+        TournamentDialogComponent,
+        PopupComponent
     ]
 
 })
