@@ -126,3 +126,4 @@ import {SecurityTrimming} from './web_components/shared/security-trimming.srv';
 })
 export class AppModule {
 }
+

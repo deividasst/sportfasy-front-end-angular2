@@ -14,7 +14,6 @@ export class UserProfileComponent implements OnInit {
     dataHolder = [];
     tokenEmail: string;
     name: string = localStorage.getItem('name_user');
-
     constructor(private ds: DService,
                 private logout: LogOutComponent,
                 private tokenHolder: TokenHolderServise,

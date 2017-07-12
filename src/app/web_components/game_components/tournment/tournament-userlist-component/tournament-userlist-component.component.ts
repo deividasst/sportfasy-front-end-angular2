@@ -14,7 +14,7 @@ import {SecurityTrimming} from '../../../shared/security-trimming.srv';
 export class TournamentUserlistComponentComponent implements OnInit {
 
     @Input()
-    tournament_holder: any;
+    tournament: any;
 
     @Input()
     users: any;
@@ -38,6 +38,25 @@ export class TournamentUserlistComponentComponent implements OnInit {
     }
 
     ngOnInit() {
+
     }
 
+
+    conceal(user) {
+        if (document.getElementById('userContent').style.display === 'block') {
+            document.getElementById('userContent').style.display = 'none';
+            document.getElementById('contentas1').style.display = 'none';
+
+        }
+    }
+
+    show(user) {
+        if (document.getElementById('userContent').style.display === 'none') {
+            document.getElementById('userContent').innerHTML = 'Name: ' + user.name + '<br/>' + 'Surname: ' + user.surname + '<br/>' + 'Email: ' + user.email;
+            document.getElementById('userContent').style.display = 'block';
+            document.getElementById('contentas1').style.display = 'block';
+
+        }
+        console.log(user);
+    }
 }
