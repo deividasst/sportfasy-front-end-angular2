@@ -14,7 +14,9 @@ import {Tournament} from '../../../shared/Tournament'
 })
 export class CreatTournmentComponent implements OnInit {
     tournament: Tournament;
-    name: string = localStorage.getItem('name_user');
+
+    name1: string = localStorage.getItem('name_user');
+
     minDate = new Date(2017, 5);
     err;
     tokenEmail: string;
