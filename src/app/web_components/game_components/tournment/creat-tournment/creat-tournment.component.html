@@ -115,15 +115,26 @@
                 <p  class="alert alert-danger" *ngIf="budget.errors?.min">minimum budget is 200</p>
                 <p  class="alert alert-danger" *ngIf="budget.errors?.max">maximum budget is 2000</p>
                 <br>
-                <div class="row">
-                    <div class="col-md-6"><h4>Tournament starts:  <em *ngIf="tournament.start">{{ getDate() | date:'fullDate'}}</em></h4>
-                        <div style="display:inline-block; min-height:290px;">
-                            <datepicker name="start" [(ngModel)]="tournament.start" [minDate]="minDate" [showWeeks]="true" [dateDisabled]="dateDisabled"></datepicker>
-                        </div></div>
-                    <div class="col-md-6"><h4>Tournament ends: <em *ngIf="tournament.end">{{ getDate2() | date:'fullDate'}}</em></h4>
-                        <div style="display:inline-block; min-height:290px;">
-                            <datepicker name="end" [(ngModel)]="tournament.end" [minDate]="minDate" [showWeeks]="true" [dateDisabled]="dateDisabled"></datepicker>
-                        </div></div>
+                <div class="example-wrapper">
+                    <p>Start date:</p>
+                    <kendo-datepicker
+                        name="start"
+                        [min]="min"
+                        [max]="min2"
+                        [(ngModel)]="value"
+                        [(ngModel)]="tournament.start"
+                        #dateModel="ngModel"
+                    ></kendo-datepicker>
+                </div>
+                <div class="example-wrapper">
+                    <p>End date:</p>
+                    <kendo-datepicker
+                        name="end"
+                        [min]="max"
+                        [max]="max2"
+                        [(ngModel)]="tournament.end"
+                        #dateModel="ngModel"
+                    ></kendo-datepicker>
                 </div>
                 <div *ngIf="err" class="error alert alert-danger text-center"><span >{{err}}</span></div><br>
                 <div class="text-center">
