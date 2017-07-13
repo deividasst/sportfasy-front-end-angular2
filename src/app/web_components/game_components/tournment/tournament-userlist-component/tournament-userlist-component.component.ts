@@ -4,6 +4,7 @@ import {MD_DIALOG_DATA} from '@angular/material';
 import {DService} from '../../../shared/data.srv';
 import {Router} from '@angular/router';
 import {SecurityTrimming} from '../../../shared/security-trimming.srv';
+import { DialogService, DialogCloseResult } from '@progress/kendo-angular-dialog';
 
 
 @Component({

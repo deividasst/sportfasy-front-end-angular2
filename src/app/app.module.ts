@@ -36,7 +36,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ButtonsModule } from '@progress/kendo-angular-buttons';
 import { IntlModule } from '@progress/kendo-angular-intl';
 import { DateInputsModule } from '@progress/kendo-angular-dateinputs';
-
+import { DialogModule } from '@progress/kendo-angular-dialog';
 
 @NgModule({
   declarations: [
@@ -64,6 +64,7 @@ import { DateInputsModule } from '@progress/kendo-angular-dateinputs';
         ReactiveFormsModule,
         DatepickerModule,
         CustomFormsModule,
+        DialogModule,
         BrowserAnimationsModule,
         ButtonsModule,
         IntlModule,

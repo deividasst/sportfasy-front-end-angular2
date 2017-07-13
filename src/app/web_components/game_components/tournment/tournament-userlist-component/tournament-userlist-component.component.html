@@ -7,6 +7,12 @@
     <button class="text-right" type="button" class="btn " (click)="show(user)"><i>View info</i></button>
     {{user.name}}
     <span (click)="delete(user)"><i *ngIf=is_allowed class="fa fa-close"></i></span>
+    <div class="example-wrapper">
+        <button (click)="showConfirmation(user)" class="k-button k-button-icontext k-primary">
+            <span class="k-icon k-i-delete"></span> Delete user
+        </button>
+    </div>
+    <div kendoDialogContainer></div>
     <div id='opener'>
     </div>
 </div>
