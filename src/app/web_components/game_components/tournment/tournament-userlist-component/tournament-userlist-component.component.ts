@@ -5,6 +5,7 @@ import {DService} from '../../../shared/data.srv';
 import {Router} from '@angular/router';
 import {SecurityTrimming} from '../../../shared/security-trimming.srv';
 import { DialogService, DialogCloseResult } from '@progress/kendo-angular-dialog';
+import { DeleteDialogComponent } from '../delete-dialog/delete-dialog.component';
 
 
 @Component({
@@ -22,11 +23,32 @@ export class TournamentUserlistComponentComponent implements OnInit {
     @Input()
     is_allowed: boolean;
 
-    constructor(@Inject(MD_DIALOG_DATA) public data: any,
+    constructor(@Inject(MD_DIALOG_DATA ) public data: any,
+                private dialogService: DialogService,
                 private ds: DService,
                 private router: Router,
                 private securityTrimm: SecurityTrimming) {
         console.log('this is also must be id' + this.is_allowed);
+    }
+    public result;
+
+    public showConfirmation(user) {
+        const dialogRef = this.dialogService.open({
+            title: 'Please confirm',
+
+            // show component
+            content: DeleteDialogComponent,
+
+            actions: [
+                { text: 'Cancel' },
+                { text: 'Delete', primary: true }
+            ]
+        });
+
+        const userInfo = dialogRef.content.instance;
+        userInfo.name = user.name
+        userInfo.email = user.email
+
     }
 
     delete(user) {

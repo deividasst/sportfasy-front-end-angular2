@@ -6,13 +6,15 @@
     <br/>
     <button class="text-right" type="button" class="btn " (click)="show(user)"><i>View info</i></button>
     {{user.name}}
-    <span (click)="delete(user)"><i *ngIf=is_allowed class="fa fa-close"></i></span>
     <div class="example-wrapper">
-        <button (click)="showConfirmation(user)" class="k-button k-button-icontext k-primary">
-            <span class="k-icon k-i-delete"></span> Delete user
-        </button>
+    <ng-template #dialogActions>
+        <button kendoButton (click)="close()">No</button>
+        <button kendoButton (click)="custom()" [icon]="loadingIcon">Yes</button>
+    </ng-template>
+    <span  (click)="showConfirmation(user, dialogActions)"><i *ngIf=is_allowed class="fa fa-close"></i></span>
     </div>
     <div kendoDialogContainer></div>
     <div id='opener'>
     </div>
 </div>
+<!--(click)="delete(user)"-->

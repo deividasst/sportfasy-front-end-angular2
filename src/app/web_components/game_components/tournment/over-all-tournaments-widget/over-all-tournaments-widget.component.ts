@@ -25,7 +25,7 @@ export class OverAllTournamentsWidgetComponent implements OnInit {
 
         const dialogRef = this.dialog.open(TournamentDialogComponent, {
             data: tournament,
-            height: '400px',
+            height: '600px',
             width: '600px'
         });
     }

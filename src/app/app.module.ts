@@ -37,6 +37,7 @@ import { ButtonsModule } from '@progress/kendo-angular-buttons';
 import { IntlModule } from '@progress/kendo-angular-intl';
 import { DateInputsModule } from '@progress/kendo-angular-dateinputs';
 import { DialogModule } from '@progress/kendo-angular-dialog';
+import { DeleteDialogComponent } from './web_components/game_components/tournment/delete-dialog/delete-dialog.component';
 
 @NgModule({
   declarations: [
@@ -54,7 +55,8 @@ import { DialogModule } from '@progress/kendo-angular-dialog';
     HomeComponent,
     TournamentDialogComponent,
     TournamentUserlistComponentComponent,
-    PopupComponent
+    PopupComponent,
+    DeleteDialogComponent
     ],
     imports: [
         BrowserModule,
@@ -129,7 +131,8 @@ import { DialogModule } from '@progress/kendo-angular-dialog';
     ],
     entryComponents: [
         TournamentDialogComponent,
-        PopupComponent
+        PopupComponent,
+        DeleteDialogComponent
     ]
 
 })
