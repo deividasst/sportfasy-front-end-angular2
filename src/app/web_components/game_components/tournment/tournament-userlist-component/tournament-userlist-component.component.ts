@@ -9,7 +9,7 @@ import {SecurityTrimming} from '../../../shared/security-trimming.srv';
 @Component({
     selector: 'app-tournament-userlist-component',
     templateUrl: './tournament-userlist-component.component.html',
-    styleUrls: ['./tournament-userlist-component.component.scss']
+    styleUrls: ['./tournament-userlist-component.component.sass']
 })
 export class TournamentUserlistComponentComponent implements OnInit {
 

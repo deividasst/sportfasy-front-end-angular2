@@ -16,7 +16,6 @@ export class CreatTournmentComponent implements OnInit {
     tournament: Tournament;
 
     name1: string = localStorage.getItem('name_user');
-
     minDate = new Date(2017, 5);
     err;
     tokenEmail: string;
@@ -32,6 +31,7 @@ export class CreatTournmentComponent implements OnInit {
     }
     ngOnInit() {
         this.tournament = new Tournament();
+        this.tournament.tournament_master = localStorage.getItem('email_user');
     }
     save(model: Tournament, isValid: boolean) {
         // call API to save customer
