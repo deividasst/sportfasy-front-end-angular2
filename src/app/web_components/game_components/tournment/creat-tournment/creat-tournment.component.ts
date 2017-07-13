@@ -5,7 +5,6 @@ import {Router} from '@angular/router';
 import { DatepickerModule } from 'ngx-bootstrap';
 import {TokenHolderServise} from '../../../shared/tokenholder.srv';
 import {LogOutComponent} from '../../../sign_log/log-out/log-out.component';
-
 import {Tournament} from '../../../shared/Tournament'
 @Component({
     selector: 'app-creat-tournment',
@@ -14,7 +13,15 @@ import {Tournament} from '../../../shared/Tournament'
 })
 export class CreatTournmentComponent implements OnInit {
     tournament: Tournament;
-
+    dateObj = new Date();
+    yy: any;
+    mm: any;
+    dd: any;
+    public min: Date = new Date(this.dateObj.getUTCFullYear(), this.dateObj.getUTCMonth(), this.dateObj.getUTCDate());
+    public max: Date = new Date(this.dateObj.getUTCFullYear(), this.dateObj.getUTCMonth() + 1, this.dateObj.getUTCDate());
+    public value: Date = new Date(this.yy = this.dateObj.getUTCFullYear(), this.mm = this.dateObj.getUTCMonth(), this.dd = this.dateObj.getUTCDate());
+    public min2: Date = new Date(this.yy, this.mm, this.dd + 30);
+    public max2: Date = new Date(this.yy, this.mm + 1 , this.dd + 30);
     name1: string = localStorage.getItem('name_user');
     minDate = new Date(2017, 5);
     err;
