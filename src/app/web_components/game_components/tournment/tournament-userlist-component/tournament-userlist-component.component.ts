@@ -5,8 +5,6 @@ import {DService} from '../../../shared/data.srv';
 import {Router} from '@angular/router';
 import {SecurityTrimming} from '../../../shared/security-trimming.srv';
 import { DialogService, DialogCloseResult } from '@progress/kendo-angular-dialog';
-import { DeleteDialogComponent } from '../delete-dialog/delete-dialog.component';
-
 
 @Component({
     selector: 'app-tournament-userlist-component',
@@ -39,24 +37,6 @@ export class TournamentUserlistComponentComponent implements OnInit {
 
     public open() {
       this.opened = true;
-    }
-    public showConfirmation(user) {
-        const dialogRef = this.dialogService.open({
-            title: 'Please confirm',
-
-            // show component
-            content: DeleteDialogComponent,
-
-            actions: [
-                { text: 'Cancel' },
-                { text: 'Delete', primary: true }
-            ]
-        });
-
-        const userInfo = dialogRef.content.instance;
-        userInfo.name = user.name
-        userInfo.email = user.email
-
     }
 
     delete(user) {
