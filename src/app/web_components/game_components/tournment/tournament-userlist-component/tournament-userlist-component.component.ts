@@ -31,7 +31,15 @@ export class TournamentUserlistComponentComponent implements OnInit {
         console.log('this is also must be id' + this.is_allowed);
     }
     public result;
+   public opened: boolean = false;
 
+    public close(status) {
+      this.opened = false;
+    }
+
+    public open() {
+      this.opened = true;
+    }
     public showConfirmation(user) {
         const dialogRef = this.dialogService.open({
             title: 'Please confirm',
@@ -56,6 +64,7 @@ export class TournamentUserlistComponentComponent implements OnInit {
         this.users.splice(index, 1);
         this.ds.updateTournament(JSON.stringify(this.data)).subscribe(obj => {
             this.router.navigate(['/userprofile'])
+             this.opened = false;
         });
 
     }
