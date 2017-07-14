@@ -18,7 +18,7 @@ export class UserProfileComponent implements OnInit {
                 private logout: LogOutComponent,
                 private tokenHolder: TokenHolderServise,
                 public dialog: MdDialog) {
-        this.tokenEmail = this.tokenHolder.getEmail();
+        // this.tokenEmail = this.tokenHolder.getEmail();
     }
 
     ngOnInit() {

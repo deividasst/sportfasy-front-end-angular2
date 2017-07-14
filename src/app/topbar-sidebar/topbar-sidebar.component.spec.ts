@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { OverAllTeamsWidgetComponent } from './over-all-teams-widget.component';
+import { TopbarSidebarComponent } from './topbar-sidebar.component';
 
-describe('OverAllTeamsWidgetComponent', () => {
-  let component: OverAllTeamsWidgetComponent;
-  let fixture: ComponentFixture<OverAllTeamsWidgetComponent>;
+describe('TopbarSidebarComponent', () => {
+  let component: TopbarSidebarComponent;
+  let fixture: ComponentFixture<TopbarSidebarComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ OverAllTeamsWidgetComponent ]
+      declarations: [ TopbarSidebarComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(OverAllTeamsWidgetComponent);
+    fixture = TestBed.createComponent(TopbarSidebarComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
