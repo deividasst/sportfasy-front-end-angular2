@@ -5,7 +5,7 @@ export class Tournament {
     end: Date;
     max_teams: number;
     max_players: number;
-    tournament_master: string;
+    _tournament_master: string;
     budget: number;
     _users: [{
         name: string;
