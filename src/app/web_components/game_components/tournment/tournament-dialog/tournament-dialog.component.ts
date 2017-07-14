@@ -17,10 +17,12 @@ export class TournamentDialogComponent implements OnInit {
     users: any;
     view: any;
     is_allowed: boolean;
+    master: object;
 
     constructor(@Inject(MD_DIALOG_DATA) public data: any, private ds: DService,
                 private securityTrimm: SecurityTrimming) {
         this.users = data._users;
+        console.log(JSON.stringify({data: data._tournament_master.name}, null, 4));
         this.is_allowed = this.securityTrimm.isAllowedMasterRights(data._id);
         this.view = data._user;
     }

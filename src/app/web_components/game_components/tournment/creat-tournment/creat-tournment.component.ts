@@ -38,7 +38,8 @@ export class CreatTournmentComponent implements OnInit {
     }
     ngOnInit() {
         this.tournament = new Tournament();
-        this.tournament.tournament_master = localStorage.getItem('email_user');
+        this.tournament._tournament_master = localStorage.getItem('id_user');
+        console.log(JSON.stringify({data: this.tournament}, null, 4));
     }
     save(model: Tournament, isValid: boolean) {
         // call API to save customer
@@ -49,6 +50,7 @@ export class CreatTournmentComponent implements OnInit {
     addTournament(tournament) {
         this.ds.registerTournament(JSON.stringify(this.tournament))
             .subscribe(obj => {this.router.navigate(['/userprofile'])}, err => this.err = 'Tournament with this name already exists')
+             console.log(JSON.stringify({data: this.tournament}, null, 4));
     }
 
     logOut() {

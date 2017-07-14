@@ -29,7 +29,7 @@ export class TournamentUserlistComponentComponent implements OnInit {
         console.log('this is also must be id' + this.is_allowed);
     }
     public result;
-   public opened: boolean = false;
+    public opened: boolean = false;
 
     public close(status) {
       this.opened = false;
