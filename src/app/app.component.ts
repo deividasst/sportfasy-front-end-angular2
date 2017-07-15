@@ -11,8 +11,7 @@ import {TokenHolderServise} from './web_components/shared/tokenholder.srv';
 export class AppComponent {
     title = 'app';
 
-    constructor(private tokenHolder: TokenHolderServise,
-                private ds: DService) {
+    constructor(private tokenHolder: TokenHolderServise, private ds: DService) {
         if (localStorage.getItem('id_token') && !this.tokenHolder.getUserID()) {
             this.refreshUSerData();
         }

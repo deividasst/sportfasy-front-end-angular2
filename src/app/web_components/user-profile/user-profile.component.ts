@@ -23,8 +23,11 @@ export class UserProfileComponent implements OnInit {
     }
 
     ngOnInit() {
-        this.tokenHolder.idChange$.subscribe(item => {this.userId = item});
-        this.getUserTurnaments(this.userId);
+        this.tokenHolder.idChange$.subscribe(item => {
+            this.userId = item;
+            this.getUserTurnaments(this.userId);
+        });
+        // this.getUserTurnaments(this.userId);
     }
 
     getUserTurnaments(userId): void {
