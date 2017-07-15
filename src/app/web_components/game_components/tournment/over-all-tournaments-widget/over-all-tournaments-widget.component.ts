@@ -3,7 +3,6 @@ import {DService} from '../../../shared/data.srv';
 import {Tournament} from '../../../shared/Tournament'
 import {MdDialog, MdDialogRef} from '@angular/material';
 import {TournamentDialogComponent} from '../tournament-dialog/tournament-dialog.component'
-import {MD_DIALOG_DATA} from '@angular/material';
 import {Router} from '@angular/router';
 import {PopupComponent} from '../../../../popup/popup.component';
 import {SecurityTrimming} from '../../../shared/security-trimming.srv';
@@ -22,7 +21,6 @@ export class OverAllTournamentsWidgetComponent implements OnInit {
     }
 
     openDialog(tournament) {
-        // console.log('tournament: ' + tournament._id);
         const dialogRef = this.dialog.open(TournamentDialogComponent, {
             data: tournament,
             height: '400px',
@@ -32,8 +30,6 @@ export class OverAllTournamentsWidgetComponent implements OnInit {
 
     sugestToJoinTournament() {
         const dialogRef = this.dialog.open(PopupComponent, {
-            // height: '400px',
-            // width: '800px'
         });
     }
 
@@ -41,13 +37,11 @@ export class OverAllTournamentsWidgetComponent implements OnInit {
         this.ds.getAllTournaments().subscribe(tournament => {
             this.tournaments = tournament;
             this.secureTrim.setMastersTournaments(tournament);
-            // console.log('all tournaments: ' + JSON.stringify({data: this.tournaments},null, 4));
         })
     }
 
     ngOnInit() {
         this.getTournaments();
-        // this.sugestToJoinTournament();
     }
 
 }

@@ -25,7 +25,6 @@ export class TournamentUserlistComponentComponent implements OnInit {
                 private ds: DService,
                 private router: Router,
                 private securityTrimm: SecurityTrimming) {
-        // console.log('is_allowed ' + this.is_allowed);
     }
 
     delete(user) {
@@ -34,11 +33,9 @@ export class TournamentUserlistComponentComponent implements OnInit {
         this.ds.updateTournament(JSON.stringify(this.data)).subscribe(obj => {
             this.router.navigate(['/userprofile'])
         });
-
     }
 
     ngOnInit() {
-
     }
 
 

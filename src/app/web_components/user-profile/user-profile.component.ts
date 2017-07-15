@@ -27,7 +27,6 @@ export class UserProfileComponent implements OnInit {
             this.userId = item;
             this.getUserTurnaments(this.userId);
         });
-        // this.getUserTurnaments(this.userId);
     }
 
     getUserTurnaments(userId): void {
