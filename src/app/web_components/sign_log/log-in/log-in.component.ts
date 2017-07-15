@@ -38,7 +38,6 @@ export class LogInComponent implements OnInit {
                             obj.userID,
                             obj.userEmail,
                             obj.userName),
-                            console.log(obj),
                             this.router.navigate(['/userprofile'])
                     }
                 },

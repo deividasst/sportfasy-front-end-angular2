@@ -16,19 +16,22 @@ export class SecurityTrimming {
         return this._master_in_tournaments;
     }
 
-    setMastersTournaments(tournaments: [Tournament]) {
+    setMastersTournaments(tournaments: any) {
+        // console.log('tournamentai ' + JSON.stringify({data: tournaments}, null, 4));
         this._master_in_tournaments = tournaments.map(tournament => {
             if (tournament.tournament_master === this.tokenHolder.getUserID()) {
-                return tournament._id;
+                // console.log(tournament._id);
+                return tournament;
             }
         });
+        // console.log('lis of masters: ' + this._master_in_tournaments);
+        // console.log('user id  ' + this.tokenHolder.getUserID());
     }
 
     isAllowedMasterRights(tournamentId) {
-        console.log(this._master_in_tournaments);
+        // console.log('master in tournaments: ' + this._master_in_tournaments);
         if (this._master_in_tournaments.indexOf(tournamentId) !== -1) {
             return true;
-        }
-        ;
+        };
     }
 }

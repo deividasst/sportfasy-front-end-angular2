@@ -25,7 +25,7 @@ export class TournamentUserlistComponentComponent implements OnInit {
                 private ds: DService,
                 private router: Router,
                 private securityTrimm: SecurityTrimming) {
-        console.log('this is also must be id' + this.is_allowed);
+        // console.log('is_allowed ' + this.is_allowed);
     }
 
     delete(user) {

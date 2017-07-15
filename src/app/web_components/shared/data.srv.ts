@@ -8,13 +8,13 @@ export class DService {
     constructor(public http: Http) {
     }
 
-    getUsers() {
-        return this.http.get('/api/users/registration')
+    getUserCredentials() {
+        return this.http.get('/api/users')
             .map((res: Response) => res.json());
     }
 
     registerUser(user: string) {
-        return this.http.post('/api/users/registration', user).map(res => res.json());
+        return this.http.post('/api/users', user).map(res => res.json());
     }
 
     loginUser(user: string) {

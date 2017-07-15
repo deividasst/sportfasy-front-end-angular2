@@ -14,7 +14,7 @@ import {SecurityTrimming} from '../../../shared/security-trimming.srv';
     styleUrls: ['./over-all-tournaments-widget.component.sass']
 })
 export class OverAllTournamentsWidgetComponent implements OnInit {
-    tournaments: Tournament[];
+    tournaments: [Tournament];
     constructor(private ds: DService,
                 public dialog: MdDialog,
                 private router: Router,
@@ -22,11 +22,11 @@ export class OverAllTournamentsWidgetComponent implements OnInit {
     }
 
     openDialog(tournament) {
-
+        // console.log('tournament: ' + tournament._id);
         const dialogRef = this.dialog.open(TournamentDialogComponent, {
             data: tournament,
             height: '400px',
-            width: '600px'
+            width: '600px',
         });
     }
 
@@ -41,6 +41,7 @@ export class OverAllTournamentsWidgetComponent implements OnInit {
         this.ds.getAllTournaments().subscribe(tournament => {
             this.tournaments = tournament;
             this.secureTrim.setMastersTournaments(tournament);
+            // console.log('all tournaments: ' + JSON.stringify({data: this.tournaments},null, 4));
         })
     }
 
