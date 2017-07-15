@@ -19,20 +19,19 @@ export class UserProfileComponent implements OnInit {
                 private tokenHolder: TokenHolderServise,
                 public dialog: MdDialog) {
         this.tokenHolder.nameChange$.subscribe(item => this.name = item);
+
     }
 
     ngOnInit() {
-        this.getUserTurnaments();
+        this.tokenHolder.idChange$.subscribe(item => {this.userId = item});
+        this.getUserTurnaments(this.userId);
     }
 
-    getUserTurnaments(): void {
-        this.tokenHolder.idChange$.subscribe(item => {
-            this.userId = item;
-            this.ds.getUserTurnaments(this.userId).subscribe(tournament => {
-                if (tournament.length === 0) {
-                    this.sugestToJoinTournament();
-                }
-            })
+    getUserTurnaments(userId): void {
+        this.ds.getUserTurnaments(userId).subscribe(tournament => {
+            if (tournament.length === 0) {
+                this.sugestToJoinTournament();
+            }
         });
     }
 
