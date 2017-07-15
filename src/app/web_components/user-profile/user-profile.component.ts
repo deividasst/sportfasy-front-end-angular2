@@ -1,10 +1,9 @@
-import {Component, OnInit, OnDestroy} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {DService} from '../shared/data.srv';
 import {LogOutComponent} from '../sign_log/log-out/log-out.component';
 import {TokenHolderServise} from '../shared/tokenholder.srv';
 import {PopupComponent} from '../../popup/popup.component';
 import {MdDialog, MdDialogRef} from '@angular/material';
-import {Subscription} from 'rxjs/Subscription';
 
 @Component({
     selector: 'app-user-profile',
@@ -13,48 +12,35 @@ import {Subscription} from 'rxjs/Subscription';
 })
 export class UserProfileComponent implements OnInit {
     name: string;
-    subscription: Subscription;
+    userId: string;
+
     constructor(private ds: DService,
                 private logout: LogOutComponent,
                 private tokenHolder: TokenHolderServise,
                 public dialog: MdDialog) {
-        // this.getUserTurnaments();
-        // this.subscription = this.tokenHolder.navItem$
-        //     .subscribe(item => this.name = item);
+        this.tokenHolder.nameChange$.subscribe(item => this.name = item);
     }
 
     ngOnInit() {
-        this.subscription = this.tokenHolder.navItem$
-            .subscribe(item => this.name = item);
         this.getUserTurnaments();
     }
 
     getUserTurnaments(): void {
-        this.ds.getUserTurnaments(
-            this.tokenHolder.getUserID()).subscribe(tournament => {
-            if (tournament.length === 0) {
-                this.sugestToJoinTournament();
-            }
-        })
+        this.tokenHolder.idChange$.subscribe(item => {
+            this.userId = item;
+            this.ds.getUserTurnaments(this.userId).subscribe(tournament => {
+                if (tournament.length === 0) {
+                    this.sugestToJoinTournament();
+                }
+            })
+        });
     }
 
     sugestToJoinTournament(): void {
         const dialogRef = this.dialog.open(PopupComponent);
     }
 
-    // getUsers(): void {
-    //     this.ds.getUsers()
-    //         .subscribe(obj => {
-    //             this.dataHolder.push(JSON.stringify(obj))
-    //         });
-    // }
-
     logOut(): void {
         this.logout.logOut();
-    }
-
-    ngOnDestroy() {
-        // prevent memory leak when component is destroyed
-        this.subscription.unsubscribe();
     }
 }

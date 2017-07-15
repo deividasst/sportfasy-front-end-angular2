@@ -13,23 +13,12 @@ export class AppComponent {
 
     constructor(private tokenHolder: TokenHolderServise,
                 private ds: DService) {
-
-        console.log(typeof localStorage.getItem('id_token'));
-        console.log(!localStorage.getItem('id_token'));
-
-        if (localStorage.getItem('id_token') && !this.tokenHolder.userID) {
-            console.log('epty local');
+        if (localStorage.getItem('id_token') && !this.tokenHolder.getUserID()) {
             this.refreshUSerData();
-            console.log(this.tokenHolder.userID);
         }
     }
 
     OnInit() {
-        // if (localStorage.getItem('id_token') && !this.tokenHolder.userID) {
-        //     console.log('epty local');
-        //     this.refreshUSerData();
-        //     console.log(this.tokenHolder.userID);
-        // }
     }
 
     private refreshUSerData() {
@@ -38,7 +27,6 @@ export class AppComponent {
                 this.tokenHolder.setUserID(obj._id);
                 this.tokenHolder.setUserEmail(obj.email);
                 this.tokenHolder.setUserName(obj.name);
-                console.log(' ' + JSON.stringify({data: obj}, null, 4));
             }
         )
     }

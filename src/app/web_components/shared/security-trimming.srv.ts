@@ -21,11 +21,12 @@ export class SecurityTrimming {
         this._master_in_tournaments = tournaments.map(tournament => {
             if (tournament.tournament_master === this.tokenHolder.getUserID()) {
                 // console.log(tournament._id);
-                return tournament;
+                return tournament._id;
             }
         });
         // console.log('lis of masters: ' + this._master_in_tournaments);
         // console.log('user id  ' + this.tokenHolder.getUserID());
+        console.log('master tournamentai ' + JSON.stringify({data: this._master_in_tournaments}, null, 4));
     }
 
     isAllowedMasterRights(tournamentId) {

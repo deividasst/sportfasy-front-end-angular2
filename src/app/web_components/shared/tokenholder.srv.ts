@@ -1,19 +1,25 @@
-import {Component, EventEmitter, Injectable} from '@angular/core';
+import {Injectable} from '@angular/core';
 import 'rxjs/add/operator/map';
-import {Subject} from "rxjs/Subject";
-import {BehaviorSubject} from "rxjs/BehaviorSubject";
+import {ReplaySubject} from 'rxjs/ReplaySubject';
+import set = Reflect.set;
 
 
 @Injectable()
 export class TokenHolderServise {
-    // private _userMail: string;
-    // private _userID: string;
-    private _navItemSource = new BehaviorSubject<string>(null);
-    navItem$ = this._navItemSource.asObservable();
+
     token: any;
-    userID: any;
-    userEmail: any;
-    public userName: any;
+    _userID: any;
+    _userEmail: any;
+    _userName: any;
+    // Observable sources
+    private _nameChange = new ReplaySubject<string>();
+    private _idChange = new ReplaySubject<string>();
+    private _emailChange = new ReplaySubject<string>();
+
+    // Observable streams
+    nameChange$ = this._nameChange.asObservable();
+    idChange$ = this._idChange.asObservable();
+    emailChange$ = this._emailChange.asObservable();
 
     constructor() {
     }
@@ -27,50 +33,36 @@ export class TokenHolderServise {
         localStorage.setItem('id_token', value);
     }
 
-    // setuserMail(value: string): void {
-    //     this._userMail = value;
-    // }
-
-
-    getUserID(): string {
-        return this.userID;
+    getUserID(): any {
+        return this._userID;
     }
 
-    setUserID(value: string): void {
-        this.userID = value;
-    }
-
-    getID() {
-        return this.userID;
+    setUserID(value: any) {
+        this._userID = value;
+        this._idChange.next(value);
     }
 
     getEmail() {
-        return this.userEmail;
+        return this._userEmail;
     }
-
 
     setUserEmail(value: any) {
-        this.userEmail = value;
+        this._userEmail = value;
     }
 
-    getName() {
-        return this.userName;
+    getUserName() {
+        return this._userName;
     }
-
 
     setUserName(value: any) {
-        this.userName = value;
-        this._navItemSource.next(value);
+        this._userName = value;
+        this._nameChange.next(value);
     }
 
-    storeUserData(value, id_user, email_user, name_user) {
-        this.token = value;
-        this.userID = id_user;
-        this.userEmail = email_user;
-        this.userName = this.setUserName(name_user);
-        localStorage.setItem('id_token', value);
-        // localStorage.setItem('id_user', id_user);
-        // localStorage.setItem('email_user', email_user);
-        // localStorage.setItem('name_user', name_user);
+    storeUserData(token, id_user, email_user, name_user) {
+        this.setUserEmail(email_user);
+        this.setUserName(name_user);
+        this.setUserID(id_user);
+        this.setToken(token);
     }
 }
