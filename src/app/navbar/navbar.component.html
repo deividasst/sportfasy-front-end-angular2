@@ -1,23 +1,21 @@
-<div *ngIf="isLogged" id="navbar-wrapper" class="container">
-    <div class="body">
-
+<div class="body">
+    <div id="navbar-wrapper">
         <header>
             <p routerLink="/userprofile" class="logo text-left">Sportfasy</p>
         </header>
     </div>
-
     <div id="wrapper">
         <div id="sidebar-wrapper">
             <aside id="sidebar">
                 <ul id="sidemenu" class="sidebar-nav">
                     <li>
-                        <a routerLink="/userprofile">
+                        <a class="icon" routerLink="/userprofile">
                             <span class="sidebar-icon"><i class="fa fa-newspaper-o"></i></span>
                             <span class="sidebar-title"><b>PROFILE</b></span>
                         </a>
                         <div class="profile prof">
                             <p class="p"><b>Hello,</b></p>
-                            {{name1}}
+                            {{name}}
                             <p></p>
                             <p class="p">Budget: 200$</p>
                             <p class="p">W: 0 L: 0</p>

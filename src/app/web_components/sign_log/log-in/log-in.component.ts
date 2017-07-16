@@ -33,8 +33,6 @@ export class LogInComponent implements OnInit {
             .subscribe(
                 obj => {
                     if (obj.success) {
-                        this.tokenHolder.setToken(obj.token),
-                            console.log(obj.token),
                         this.tokenHolder.storeUserData(
                             obj.token,
                             obj.userID,

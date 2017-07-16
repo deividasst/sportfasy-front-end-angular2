@@ -4,12 +4,12 @@ import {MD_DIALOG_DATA} from '@angular/material';
 import {DService} from '../../../shared/data.srv';
 import {Router} from '@angular/router';
 import {SecurityTrimming} from '../../../shared/security-trimming.srv';
-
+import { DialogService, DialogCloseResult } from '@progress/kendo-angular-dialog';
 
 @Component({
     selector: 'app-tournament-userlist-component',
     templateUrl: './tournament-userlist-component.component.html',
-    styleUrls: ['./tournament-userlist-component.component.scss']
+    styleUrls: ['./tournament-userlist-component.component.sass']
 })
 export class TournamentUserlistComponentComponent implements OnInit {
 
@@ -21,11 +21,22 @@ export class TournamentUserlistComponentComponent implements OnInit {
     @Input()
     is_allowed: boolean;
 
-    constructor(@Inject(MD_DIALOG_DATA) public data: any,
+    constructor(@Inject(MD_DIALOG_DATA ) public data: any,
+                private dialogService: DialogService,
                 private ds: DService,
                 private router: Router,
                 private securityTrimm: SecurityTrimming) {
         console.log('this is also must be id' + this.is_allowed);
+    }
+    public result;
+    public opened: boolean = false;
+
+    public close(status) {
+      this.opened = false;
+    }
+
+    public open() {
+      this.opened = true;
     }
 
     delete(user) {
@@ -33,6 +44,7 @@ export class TournamentUserlistComponentComponent implements OnInit {
         this.users.splice(index, 1);
         this.ds.updateTournament(JSON.stringify(this.data)).subscribe(obj => {
             this.router.navigate(['/userprofile'])
+             this.opened = false;
         });
 
     }

@@ -6,7 +6,6 @@ export class TokenHolderServise {
     private _userMail: string;
     private _userID: string;
 
-
     token: any;
     userID: any;
     userEmail: any;
@@ -15,15 +14,9 @@ export class TokenHolderServise {
     constructor() {
     }
 
-
     getToken() {
         return this.token;
     }
-
-    setToken(value): void {
-        this.token = value;
-    }
-
 
     setuserMail(value: string): void {
         this._userMail = value;

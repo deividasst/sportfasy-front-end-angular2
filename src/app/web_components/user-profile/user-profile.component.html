@@ -1,88 +1,11 @@
-<div class="body">
-    <div id="navbar-wrapper">
-        <header>
-            <p routerLink="/userprofile" class="logo text-left">Sportfasy</p>
-        </header>
-    </div>
-    <div id="wrapper">
-        <div id="sidebar-wrapper" >
-            <aside id="sidebar">
-                <ul id="sidemenu" class="sidebar-nav">
-                    <li>
-                        <a class="icon" routerLink="/userprofile">
-                            <span class="sidebar-icon"><i class="fa fa-newspaper-o"></i></span>
-                            <span  class="sidebar-title"><b>PROFILE</b></span>
-                        </a>
-                        <div class="profile prof">
-                            <p class="p"><b>Hello,</b></p>
-                            {{name}}
-                            <p></p>
-                            <p class="p">Budget: 200$</p>
-                            <p class="p">W: 0 L: 0</p>
-                            <a (click)="logOut()" >
-                                <span><i class="fa fa-sign-out i" aria-hidden="true"></i></span>
-                                <span class="i">LogOut</span>
-                            </a>
-                        </div>
-                    </li>
-                    <li>
-                        <a class="accordion-toggle collapsed toggle-switch" data-toggle="collapse">
-                            <span class="sidebar-icon"><i class="fa fa-users"></i></span>
-                            <span class="sidebar-title"><b>TOURNAMENT</b></span>
-                            <b class="caret"></b>
-                        </a>
-                    </li>
-
-                    <li>
-                        <a class="accordion-toggle collapsed toggle-switch" data-toggle="collapse" routerLink="/createtournment">
-                            <span class="sidebar-icon"><i class="fa fa-pencil-square-o i"></i></span>
-                            <span class="sidebar-title2">Create New</span>
-                            <b class="caret"></b>
-                        </a>
-                    </li>
-                    <li>
-                        <a class="accordion-toggle collapsed toggle-switch" data-toggle="collapse" routerLink="/jointournment">
-                            <span class="sidebar-icon"><i class="fa fa-user-plus i"></i></span>
-                            <span class="sidebar-title2">Join</span>
-                            <b class="caret"></b>
-                        </a>
-                    </li>
-
-                    <li>
-                        <a class="accordion-toggle collapsed toggle-switch" data-toggle="collapse">
-                            <span class="sidebar-icon"><i class="fa fa-dashboard"></i></span>
-                            <span class="sidebar-title"><b>MY TEAM</b></span>
-                            <b class="caret"></b>
-                        </a>
-                    </li>
-
-                    <li>
-                        <a class="accordion-toggle collapsed toggle-switch" data-toggle="collapse" routerLink="/creatteam">
-                            <span class="sidebar-icon"><i class="fa fa-plus i"></i></span>
-                            <span class="sidebar-title2">Create New</span>
-                            <b class="caret"></b>
-                        </a>
-                    </li>
-                    <li>
-                        <a class="accordion-toggle collapsed toggle-switch" data-toggle="collapse" routerLink="/listteam">
-                            <span class="sidebar-icon"><i class="fa fa-bars i"></i></span>
-                            <span class="sidebar-title2">View List</span>
-                            <b class="caret"></b>
-                        </a>
-                    </li>
-                </ul>
-            </aside>
-        </div>
-        <main id="page-content-wrapper" role="main">
-            <div id="pav">
-                <br>
-            </div>
+<app-navbar></app-navbar>
+<div>
+    <main id="page-content-wrapper" role="main">
             <div id="all_tour">
                 <app-over-all-tournaments-widget></app-over-all-tournaments-widget>
             </div>
             <div id="all_teams">
-                <app-over-all-teams-widget ></app-over-all-teams-widget>
+                <app-over-all-teams-widget></app-over-all-teams-widget>
             </div>
         </main>
-    </div>
 </div>

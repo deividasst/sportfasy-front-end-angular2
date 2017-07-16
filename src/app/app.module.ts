@@ -15,43 +15,48 @@ import {JoinTournmentComponent} from './web_components/game_components/tournment
 import {ListTeamComponent} from './web_components/game_components/team/list-team/list-team.component';
 import {CreateTeamComponent} from './web_components/game_components/team/create-team/create-team.component';
 import {UserProfileComponent} from './web_components/user-profile/user-profile.component';
-import {AlertModule} from 'ngx-bootstrap';
+import { AlertModule } from 'ngx-bootstrap';
 import {DService} from './web_components/shared/data.srv';
 import {httpFactory} from './http.factory';
 import {Http, XHRBackend, RequestOptions} from '@angular/http';
 import {TokenHolderServise} from './web_components/shared/tokenholder.srv';
-import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import {DatepickerModule} from 'ngx-bootstrap';
-import {CustomFormsModule} from 'ng2-validation';
+import { DatepickerModule } from 'ngx-bootstrap';
+import { CustomFormsModule } from 'ng2-validation';
 import {MaterialModule, MdNativeDateModule} from '@angular/material';
-
-import {OverAllTeamsWidgetComponent} from './web_components/game_components/team/over-all-teams-widget/over-all-teams-widget.component';
-import {OverAllTournamentsWidgetComponent} from './web_components/game_components/tournment/over-all-tournaments-widget/over-all-tournaments-widget.component';
-import {HomeComponent} from './web_components/home/home.component';
-import {TournamentDialogComponent} from './web_components/game_components/tournment/tournament-dialog/tournament-dialog.component';
-import {TournamentUserlistComponentComponent} from './web_components/game_components/tournment/tournament-userlist-component/tournament-userlist-component.component';
-import {PopupComponent} from './popup/popup.component';
+import { OverAllTeamsWidgetComponent } from './web_components/game_components/team/over-all-teams-widget/over-all-teams-widget.component';
+import { OverAllTournamentsWidgetComponent } from './web_components/game_components/tournment/over-all-tournaments-widget/over-all-tournaments-widget.component';
+import { HomeComponent } from './web_components/home/home.component';
+import { TournamentDialogComponent } from './web_components/game_components/tournment/tournament-dialog/tournament-dialog.component';
+import { TournamentUserlistComponentComponent } from './web_components/game_components/tournment/tournament-userlist-component/tournament-userlist-component.component';
+import { PopupComponent } from './popup/popup.component';
 import {SecurityTrimming} from './web_components/shared/security-trimming.srv';
-import {TopbarSidebarComponent} from './topbar-sidebar/topbar-sidebar.component';
+// Import the Animations module
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+// Import the ButtonsModule
+import { ButtonsModule } from '@progress/kendo-angular-buttons';
+import { IntlModule } from '@progress/kendo-angular-intl';
+import { DateInputsModule } from '@progress/kendo-angular-dateinputs';
+import { DialogModule } from '@progress/kendo-angular-dialog';
+import { NavbarComponent } from './navbar/navbar.component';
 
 @NgModule({
-    declarations: [
-        AppComponent,
-        LogOutComponent,
-        LogInComponent,
-        SingUpComponent,
-        CreatTournmentComponent,
-        JoinTournmentComponent,
-        ListTeamComponent,
-        CreateTeamComponent,
-        UserProfileComponent,
-        OverAllTeamsWidgetComponent,
-        OverAllTournamentsWidgetComponent,
-        HomeComponent,
-        TournamentDialogComponent,
-        TournamentUserlistComponentComponent,
-        PopupComponent,
-        TopbarSidebarComponent
+  declarations: [
+    AppComponent,
+    LogOutComponent,
+    LogInComponent,
+    SingUpComponent,
+    CreatTournmentComponent,
+    JoinTournmentComponent,
+    ListTeamComponent,
+    CreateTeamComponent,
+    UserProfileComponent,
+    OverAllTeamsWidgetComponent,
+    OverAllTournamentsWidgetComponent,
+    HomeComponent,
+    TournamentDialogComponent,
+    TournamentUserlistComponentComponent,
+    PopupComponent,
+    NavbarComponent
     ],
     imports: [
         BrowserModule,
@@ -61,7 +66,11 @@ import {TopbarSidebarComponent} from './topbar-sidebar/topbar-sidebar.component'
         ReactiveFormsModule,
         DatepickerModule,
         CustomFormsModule,
+        DialogModule,
         BrowserAnimationsModule,
+        ButtonsModule,
+        IntlModule,
+        DateInputsModule,
         MaterialModule,
         MdNativeDateModule,
         AlertModule.forRoot(),

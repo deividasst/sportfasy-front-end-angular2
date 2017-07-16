@@ -1,8 +1,8 @@
 import {Http, Response} from '@angular/http'
 import {Component, Injectable} from '@angular/core';
 import 'rxjs/add/operator/map';
-import {TokenHolderServise} from "./tokenholder.srv";
-import {Tournament} from "./Tournament";
+import {TokenHolderServise} from './tokenholder.srv';
+import {Tournament} from './Tournament';
 
 
 @Injectable()
@@ -18,7 +18,7 @@ export class SecurityTrimming {
 
     setMastersTournaments(tournaments: [Tournament]) {
         this._master_in_tournaments = tournaments.map(tournament => {
-            if (tournament.tournament_master === this.tokenHolder.getUserID()) {
+            if (tournament._tournament_master === this.tokenHolder.getUserID()) {
                 return tournament._id;
             }
         });
