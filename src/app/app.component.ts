@@ -13,14 +13,14 @@ export class AppComponent {
 
     constructor(private tokenHolder: TokenHolderServise, private ds: DService) {
         if (localStorage.getItem('id_token') && !this.tokenHolder.getUserID()) {
-            this.refreshUSerData();
+            this.refreshUserData();
         }
     }
 
     OnInit() {
     }
 
-    private refreshUSerData() {
+    private refreshUserData() {
         this.ds.getUserCredentials().subscribe(
             obj => {
                 this.tokenHolder.setUserID(obj._id);

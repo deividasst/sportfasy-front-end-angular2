@@ -8,9 +8,9 @@ import set = Reflect.set;
 export class TokenHolderServise {
 
     token: any;
-    _userID: any;
-    _userEmail: any;
-    _userName: any;
+    _userID: string;
+    _userEmail: string;
+    _userName: string;
     // Observable sources
     private _nameChange = new ReplaySubject<string>();
     private _idChange = new ReplaySubject<string>();
