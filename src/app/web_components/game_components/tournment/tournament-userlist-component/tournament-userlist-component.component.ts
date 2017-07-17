@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 import {Component, OnInit, Input, Inject} from '@angular/core';
 import {Tournament} from '../../../shared/Tournament';
 import {MD_DIALOG_DATA} from '@angular/material';
@@ -22,15 +21,14 @@ export class TournamentUserlistComponentComponent implements OnInit {
     @Input()
     is_allowed: boolean;
 
+    public opened = false;
+
     constructor(@Inject(MD_DIALOG_DATA ) public data: any,
                 private dialogService: DialogService,
                 private ds: DService,
                 private router: Router,
                 private securityTrimm: SecurityTrimming) {
-        console.log('this is also must be id' + this.is_allowed);
     }
-    public result;
-    public opened: boolean = false;
 
     public close(status) {
       this.opened = false;
@@ -44,7 +42,6 @@ export class TournamentUserlistComponentComponent implements OnInit {
         const index = this.users.indexOf(user);
         this.users.splice(index, 1);
         this.ds.updateTournament(JSON.stringify(this.data)).subscribe(obj => {
-            this.router.navigate(['/userprofile'])
              this.opened = false;
         });
 
@@ -53,7 +50,6 @@ export class TournamentUserlistComponentComponent implements OnInit {
     ngOnInit() {
 
     }
-
 
     conceal(user) {
         if (document.getElementById('userContent').style.display === 'block') {
@@ -70,82 +66,5 @@ export class TournamentUserlistComponentComponent implements OnInit {
             document.getElementById('contentas1').style.display = 'block';
 
         }
-        console.log(user);
     }
 }
-=======
-import {Component, OnInit, Input, Inject} from '@angular/core';
-import {Tournament} from '../../../shared/Tournament';
-import {MD_DIALOG_DATA} from '@angular/material';
-import {DService} from '../../../shared/data.srv';
-import {Router} from '@angular/router';
-import {SecurityTrimming} from '../../../shared/security-trimming.srv';
-import { DialogService, DialogCloseResult } from '@progress/kendo-angular-dialog';
-
-@Component({
-    selector: 'app-tournament-userlist-component',
-    templateUrl: './tournament-userlist-component.component.html',
-    styleUrls: ['./tournament-userlist-component.component.sass']
-})
-export class TournamentUserlistComponentComponent implements OnInit {
-
-    @Input()
-    tournament: any;
-
-    @Input()
-    users: any;
-    @Input()
-    is_allowed: boolean;
-
-    constructor(@Inject(MD_DIALOG_DATA ) public data: any,
-                private dialogService: DialogService,
-                private ds: DService,
-                private router: Router,
-                private securityTrimm: SecurityTrimming) {
-        console.log('this is also must be id' + this.is_allowed);
-    }
-    public result;
-    public opened: boolean = false;
-
-    public close(status) {
-      this.opened = false;
-    }
-
-    public open() {
-      this.opened = true;
-    }
-
-    delete(user) {
-        const index = this.users.indexOf(user);
-        this.users.splice(index, 1);
-        this.ds.updateTournament(JSON.stringify(this.data)).subscribe(obj => {
-            this.router.navigate(['/userprofile'])
-             this.opened = false;
-        });
-
-    }
-
-    ngOnInit() {
-
-    }
-
-
-    conceal(user) {
-        if (document.getElementById('userContent').style.display === 'block') {
-            document.getElementById('userContent').style.display = 'none';
-            document.getElementById('contentas1').style.display = 'none';
-
-        }
-    }
-
-    show(user) {
-        if (document.getElementById('userContent').style.display === 'none') {
-            document.getElementById('userContent').innerHTML = 'Name: ' + user.name + '<br/>' + 'Surname: ' + user.surname + '<br/>' + 'Email: ' + user.email;
-            document.getElementById('userContent').style.display = 'block';
-            document.getElementById('contentas1').style.display = 'block';
-
-        }
-        console.log(user);
-    }
-}
->>>>>>> 587cdac7a0dc4f56f9217caa81a799a70f7ca327
