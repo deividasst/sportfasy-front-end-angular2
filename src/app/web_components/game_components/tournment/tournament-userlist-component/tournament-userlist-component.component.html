@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <div *ngFor="let user of users">
     <div id="userContent" style="display: none;">
     </div>
@@ -16,4 +17,24 @@
         </kendo-dialog>
       </div>
 </div>
+=======
+<div *ngFor="let user of users">
+    <div id="userContent" style="display: none;">
+    </div>
+    <button style="display: none;" id="contentas1" class="text-right" type="button" class="btn btn-danger "
+            (click)="conceal()"><i> close</i></button>
+    <br/>
+    <button class="text-right" type="button" class="btn " (click)="show(user)"><i>View info</i></button>
+    {{user.name}}<button kendoButton *ngIf="!opened" class="fa fa-close" (click)="open()"> Delete</button>
+       <div class="example-wrapper">
+        <kendo-dialog title="Please confirm" *ngIf="opened" (close)="close('cancel')">
+            <p style="margin: 30px; text-align: center;">This user will be deleted</p>
+            <kendo-dialog-actions>
+                <button kendoButton (click)="close('no')">Cancel</button>
+                <button kendoButton (click)="delete(user)" primary="true">Delete</button>
+            </kendo-dialog-actions>
+        </kendo-dialog>
+      </div>
+</div>
+>>>>>>> 587cdac7a0dc4f56f9217caa81a799a70f7ca327
 <!--(click)="delete(user)"-->
