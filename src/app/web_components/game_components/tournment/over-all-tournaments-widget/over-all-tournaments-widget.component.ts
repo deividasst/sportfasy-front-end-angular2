@@ -17,7 +17,6 @@ export class OverAllTournamentsWidgetComponent implements OnInit {
     tournaments: Tournament[];
     constructor(private ds: DService,
                 public dialog: MdDialog,
-                private router: Router,
                 private secureTrim: SecurityTrimming) {
     }
 

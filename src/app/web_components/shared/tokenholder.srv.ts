@@ -1,15 +1,25 @@
-import {Component, Injectable} from '@angular/core';
+import {Injectable} from '@angular/core';
 import 'rxjs/add/operator/map';
+import {ReplaySubject} from 'rxjs/ReplaySubject';
+import set = Reflect.set;
+
 
 @Injectable()
 export class TokenHolderServise {
-    private _userMail: string;
-    private _userID: string;
 
     token: any;
-    userID: any;
-    userEmail: any;
-    userName: any;
+    _userID: string;
+    _userEmail: string;
+    _userName: string;
+    // Observable sources
+    private _nameChange = new ReplaySubject<string>();
+    private _idChange = new ReplaySubject<string>();
+    private _emailChange = new ReplaySubject<string>();
+
+    // Observable streams
+    nameChange$ = this._nameChange.asObservable();
+    idChange$ = this._idChange.asObservable();
+    emailChange$ = this._emailChange.asObservable();
 
     constructor() {
     }
@@ -18,39 +28,41 @@ export class TokenHolderServise {
         return this.token;
     }
 
-    setuserMail(value: string): void {
-        this._userMail = value;
+    setToken(value: any): void {
+        this.token = value;
+        localStorage.setItem('id_token', value);
     }
 
-
-    getUserID(): string {
+    getUserID(): any {
         return this._userID;
     }
 
-    setUserID(value: string): void {
+    setUserID(value: any) {
         this._userID = value;
-    }
-
-    getID() {
-        return this.userID;
+        this._idChange.next(value);
     }
 
     getEmail() {
-        return this.userEmail;
+        return this._userEmail;
     }
 
-    getName() {
-        return this.userName;
+    setUserEmail(value: any) {
+        this._userEmail = value;
     }
 
-    storeUserData(value, id_user, email_user, name_user) {
-        this.token = value;
-        this.userID = id_user;
-        this.userEmail = email_user;
-        this.userName = name_user;
-        localStorage.setItem('id_token', value);
-        localStorage.setItem('id_user', id_user);
-        localStorage.setItem('email_user', email_user);
-        localStorage.setItem('name_user', name_user);
+    getUserName() {
+        return this._userName;
+    }
+
+    setUserName(value: any) {
+        this._userName = value;
+        this._nameChange.next(value);
+    }
+
+    storeUserData(token, id_user, email_user, name_user) {
+        this.setUserEmail(email_user);
+        this.setUserName(name_user);
+        this.setUserID(id_user);
+        this.setToken(token);
     }
 }

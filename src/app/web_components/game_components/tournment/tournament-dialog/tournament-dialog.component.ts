@@ -12,7 +12,6 @@ import {SecurityTrimming} from '../../../shared/security-trimming.srv';
 
 export class TournamentDialogComponent implements OnInit {
     users: any;
-    view: any;
     is_allowed: boolean;
 
     constructor(@Inject(MD_DIALOG_DATA) public data: any,
@@ -20,7 +19,7 @@ export class TournamentDialogComponent implements OnInit {
                 private securityTrimm: SecurityTrimming) {
         this.users = data._users;
         this.is_allowed = this.securityTrimm.isAllowedMasterRights(data._id);
-        this.view = data._user;
+        console.log('data._id' + data._id);
     }
 
     ngOnInit() {

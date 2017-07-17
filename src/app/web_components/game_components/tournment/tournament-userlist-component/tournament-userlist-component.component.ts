@@ -3,7 +3,6 @@ import {Tournament} from '../../../shared/Tournament';
 import {MD_DIALOG_DATA} from '@angular/material';
 import {DService} from '../../../shared/data.srv';
 import {Router} from '@angular/router';
-import {SecurityTrimming} from '../../../shared/security-trimming.srv';
 import { DialogService, DialogCloseResult } from '@progress/kendo-angular-dialog';
 
 @Component({
@@ -25,9 +24,8 @@ export class TournamentUserlistComponentComponent implements OnInit {
 
     constructor(@Inject(MD_DIALOG_DATA ) public data: any,
                 private dialogService: DialogService,
-                private ds: DService,
-                private router: Router,
-                private securityTrimm: SecurityTrimming) {
+                private ds: DService) {
+        console.log('is_allowed ' + this.is_allowed)
     }
 
     public close(status) {

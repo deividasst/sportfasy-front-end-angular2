@@ -1,6 +1,5 @@
 import {Component, OnInit} from '@angular/core';
 import {DService} from '../shared/data.srv';
-import {LogOutComponent} from '../sign_log/log-out/log-out.component';
 import {TokenHolderServise} from '../shared/tokenholder.srv';
 import {PopupComponent} from '../../popup/popup.component';
 import {MdDialog, MdDialogRef} from '@angular/material';
@@ -11,41 +10,29 @@ import {MdDialog, MdDialogRef} from '@angular/material';
     styleUrls: ['./user-profile.component.sass']
 })
 export class UserProfileComponent implements OnInit {
-    dataHolder = [];
-    tokenEmail: string;
-    name: string = localStorage.getItem('name_user');
+    userId: string;
+
     constructor(private ds: DService,
-                private logout: LogOutComponent,
                 private tokenHolder: TokenHolderServise,
                 public dialog: MdDialog) {
-        this.tokenEmail = this.tokenHolder.getEmail();
     }
 
     ngOnInit() {
-        this.getUserTurnaments();
+        this.tokenHolder.idChange$.subscribe(item => {
+            this.userId = item;
+            this.getUserTurnaments(item);
+        });
     }
 
-    getUserTurnaments(): void {
-        this.ds.getUserTurnaments(
-            localStorage.getItem('id_user')).subscribe(tournament => {
+    getUserTurnaments(userId): void {
+        this.ds.getUserTurnaments(userId).subscribe(tournament => {
             if (tournament.length === 0) {
                 this.sugestToJoinTournament();
             }
-        })
+        });
     }
 
     sugestToJoinTournament(): void {
         const dialogRef = this.dialog.open(PopupComponent);
-    }
-
-    getUsers(): void {
-        this.ds.getUsers()
-            .subscribe(obj => {
-                this.dataHolder.push(JSON.stringify(obj))
-            });
-    }
-
-    logOut(): void {
-        this.logout.logOut();
     }
 }
