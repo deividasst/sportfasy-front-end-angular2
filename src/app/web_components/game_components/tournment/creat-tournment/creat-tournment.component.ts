@@ -38,8 +38,9 @@ export class CreatTournmentComponent implements OnInit {
     }
     ngOnInit() {
         this.tournament = new Tournament();
-        this.tournament._tournament_master = localStorage.getItem('id_user');
-        console.log(JSON.stringify({data: this.tournament}, null, 4));
+        this.tokenHolder.idChange$.subscribe(item => {
+            this.tournament._tournament_master = item;
+        });
     }
     save(model: Tournament, isValid: boolean) {
         // call API to save customer
