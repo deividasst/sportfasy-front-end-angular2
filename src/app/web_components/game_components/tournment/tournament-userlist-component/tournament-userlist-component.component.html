@@ -4,8 +4,10 @@
     <button style="display: none;" id="contentas1" class="text-right" type="button" class="btn btn-danger "
             (click)="conceal()"><i> close</i></button>
     <br/>
+    {{user.name}}
     <button class="text-right" type="button" class="btn " (click)="show(user)"><i>View info</i></button>
-    {{user.name}}<button kendoButton *ngIf="is_allowed" class="fa fa-close" (click)="open()"> Delete</button>
+
+    <button kendoButton *ngIf="is_allowed" class="fa fa-close" (click)="open()"> Delete</button>
        <div class="example-wrapper">
         <kendo-dialog title="Please confirm" *ngIf="opened" (close)="close('cancel')">
             <p style="margin: 30px; text-align: center;">This user will be deleted</p>

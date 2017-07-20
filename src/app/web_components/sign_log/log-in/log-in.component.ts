@@ -13,11 +13,9 @@ import {Router} from '@angular/router';
 export class LogInComponent implements OnInit {
     user: User;
     error;
-    value: any;
     id_user: any;
     email_user: any;
     name_user: any;
-    obj;
 
     constructor(private ds: DService, private tokenHolder: TokenHolderServise, private router: Router) {
     }
