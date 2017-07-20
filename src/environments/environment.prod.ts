@@ -1,7 +1,7 @@
 // production evironment
 export const environment = {
     production: true,
-    origin: 'http://localhost:3001'
+    origin: 'http://http://88.119.200.69:3001'
 };
 // #build
 // $ ng build --environment=production
