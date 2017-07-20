@@ -1,3 +1,3 @@
 export const environment = {
-  origin: 'http://127.0.0.1:3000'
+  origin: 'http://http://88.119.200.69:3000'
 };
