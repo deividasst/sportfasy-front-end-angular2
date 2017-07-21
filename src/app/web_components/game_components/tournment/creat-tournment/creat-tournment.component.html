@@ -1,82 +1,5 @@
-<div class="body">
-
-  <div id="navbar-wrapper">
-    <header>
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-
-        <p routerLink="/userprofile" class="logo text-left">Sportfasy</p>
-    </header>
-  </div>
-  <div id="wrapper">
-    <div id="sidebar-wrapper" >
-      <aside id="sidebar">
-        <ul id="sidemenu" class="sidebar-nav">
-          <li>
-            <a routerLink="/userprofile">
-              <span class="sidebar-icon"><i class="fa fa-newspaper-o"></i></span>
-              <span  class="sidebar-title"><b>PROFILE</b></span>
-            </a>
-            <div class="profile">
-              <p class="p"><b>Hello, </b></p>
-                {{tokenEmail}}
-                <p></p>
-              <p class="p">Budget: 200$</p>
-              <p class="p">W: 0 L: 0</p>
-              <a routerLink="/logout">
-                <span><i class="fa fa-sign-out i" aria-hidden="true"></i></span>
-                <span class="i">LogOut</span>
-              </a>
-            </div>
-          </li>
-          <li>
-            <a class="accordion-toggle collapsed toggle-switch" data-toggle="collapse">
-              <span class="sidebar-icon"><i class="fa fa-users"></i></span>
-              <span class="sidebar-title"><b>TOURNAMENT</b></span>
-              <b class="caret"></b>
-            </a>
-          </li>
-
-          <li>
-            <a class="accordion-toggle collapsed toggle-switch" data-toggle="collapse" routerLink="/createtournment">
-              <span class="sidebar-icon"><i class="fa fa-pencil-square-o i"></i></span>
-              <span class="sidebar-title2">Create New</span>
-              <b class="caret"></b>
-            </a>
-          </li>
-          <li>
-            <a class="accordion-toggle collapsed toggle-switch" data-toggle="collapse" routerLink="/jointournment">
-              <span class="sidebar-icon"><i class="fa fa-user-plus i"></i></span>
-              <span class="sidebar-title2">Join</span>
-              <b class="caret"></b>
-            </a>
-          </li>
-
-          <li>
-            <a class="accordion-toggle collapsed toggle-switch" data-toggle="collapse">
-              <span class="sidebar-icon"><i class="fa fa-dashboard"></i></span>
-              <span class="sidebar-title"><b>MY TEAM</b></span>
-              <b class="caret"></b>
-            </a>
-          </li>
-
-          <li>
-            <a class="accordion-toggle collapsed toggle-switch" data-toggle="collapse" routerLink="/creatteam">
-              <span class="sidebar-icon"><i class="fa fa-plus i"></i></span>
-              <span class="sidebar-title2">Create New</span>
-              <b class="caret"></b>
-            </a>
-          </li>
-          <li>
-            <a class="accordion-toggle collapsed toggle-switch" data-toggle="collapse" routerLink="/listteam">
-              <span class="sidebar-icon"><i class="fa fa-bars i"></i></span>
-              <span class="sidebar-title2">View List</span>
-              <b class="caret"></b>
-            </a>
-          </li>
-        </ul>
-      </aside>
-    </div>
-    <main id="page-content-wrapper" role="main">
+<app-navbar></app-navbar>
+ <main id="page-content-wrapper" role="main">
 
         <div class="container">
 
@@ -102,11 +25,11 @@
                -->
                 <br>
                 <label for="teams" class="label">Maximum teams:</label>
-                <input type="number" id="teams" name="teams" [(ngModel)]="tournament.teams" #teams="ngModel"  [min]="2" class="form-control" placeholder="Maximum teams" required>
+                <input type="number" id="teams" name="teams" [(ngModel)]="tournament.max_teams" #teams="ngModel"  [min]="2" class="form-control" placeholder="Maximum teams" required>
                 <p  class="alert alert-danger" *ngIf="teams.errors?.min">there should be 2 teams at least</p>
                 <br>
                 <label for="players" class="label">Maximum Players in team: </label>
-                <input type="number" id="players" name="players" [(ngModel)]="tournament.players" #players="ngModel"  [min]="3" [max]="10" class="form-control" placeholder="Maximum players in team" required>
+                <input type="number" id="players" name="players" [(ngModel)]="tournament.max_players" #players="ngModel"  [min]="3" [max]="10" class="form-control" placeholder="Maximum players in team" required>
                 <p  class="alert alert-danger" *ngIf="players.errors?.min">there should be at least 3 players in team</p>
                 <p  class="alert alert-danger" *ngIf="players.errors?.max">you can have more than 10 players</p>
                 <br>
@@ -114,27 +37,35 @@
                 <input type="number" id="budget" name="budget" [(ngModel)]="tournament.budget" #budget="ngModel"  [min]="200" [max]="2000"class="form-control" placeholder="Maximum budget" required>
                 <p  class="alert alert-danger" *ngIf="budget.errors?.min">minimum budget is 200</p>
                 <p  class="alert alert-danger" *ngIf="budget.errors?.max">maximum budget is 2000</p>
-
                 <br>
-                <div class="row">
-                    <div class="col-md-6"><h4>Tournament starts:  <em *ngIf="tournament.start">{{ getDate() | date:'fullDate'}}</em></h4>
-                        <div style="display:inline-block; min-height:290px;">
-                            <datepicker name="start" [(ngModel)]="tournament.start" [minDate]="minDate" [showWeeks]="true" [dateDisabled]="dateDisabled"></datepicker>
-                        </div></div>
-                    <div class="col-md-6"><h4>Tournament ends: <em *ngIf="tournament.end">{{ getDate2() | date:'fullDate'}}</em></h4>
-                        <div style="display:inline-block; min-height:290px;">
-                            <datepicker name="end" [(ngModel)]="tournament.end" [minDate]="minDate" [showWeeks]="true" [dateDisabled]="dateDisabled"></datepicker>
-                        </div></div>
+                <div class="example-wrapper">
+                    <p>Start date:</p>
+                    <kendo-datepicker
+                        name="start"
+                        [min]="min"
+                        [max]="min2"
+                        [(ngModel)]="value"
+                        [(ngModel)]="tournament.start"
+                        #dateModel="ngModel"
+                    ></kendo-datepicker>
+                </div>
+                <div class="example-wrapper">
+                    <p>End date:</p>
+                    <kendo-datepicker
+                        name="end"
+                        [min]="max"
+                        [max]="max2"
+                        [(ngModel)]="tournament.end"
+                        #dateModel="ngModel"
+                    ></kendo-datepicker>
                 </div>
                 <div *ngIf="err" class="error alert alert-danger text-center"><span >{{err}}</span></div><br>
                 <div class="text-center">
-                <button type="submit"  class="btn btn-danger button " [disabled]="!tournamentForm.form.valid" (click)="addTournament()" >Create Tournament</button>
+                 <button type="submit"  class="btn btn-danger button " [disabled]="!tournamentForm.form.valid" (click)="addTournament()" >Create Tournament</button>
                 </div>
             </form>
         </div> <!-- /container -->
     </main>
-  </div>
-</div>
 
 
 

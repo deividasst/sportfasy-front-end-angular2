@@ -2,21 +2,19 @@ import {Http, Response} from '@angular/http'
 import {Component, Injectable} from '@angular/core';
 import 'rxjs/add/operator/map';
 
-
 @Injectable()
 export class DService {
-
 
     constructor(public http: Http) {
     }
 
-    getUsers() {
-        return this.http.get('/api/users/registration')
+    getUserCredentials() {
+        return this.http.get('/api/users')
             .map((res: Response) => res.json());
     }
 
     registerUser(user: string) {
-        return this.http.post('/api/users/registration', user).map(res => res.json());
+        return this.http.post('/api/users', user).map(res => res.json());
     }
 
     loginUser(user: string) {
@@ -39,4 +37,12 @@ export class DService {
         return this.http.get('/api/tournaments').map(res => res.json());
     }
 
+    updateTournament(tournament: string) {
+        return this.http.put('/api/tournaments', tournament).map(res => res.json());
+    }
+
+    getUserTurnaments(userID): any {
+        return this.http.get(`/api/tournaments/?userID=${userID}`).map(res => res.json())
+    }
 }
+

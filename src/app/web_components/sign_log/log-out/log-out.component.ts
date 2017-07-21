@@ -19,7 +19,11 @@ export class LogOutComponent implements OnInit {
     }
 
     logOut() {
-        this.tokenHolder.setToken(null);
+        localStorage.removeItem('id_token');
+        localStorage.removeItem('id_user');
+        localStorage.removeItem('email_user');
+        localStorage.removeItem('name_user');
+        localStorage.clear();
         this.router.navigate(['/login']);
     }
 }

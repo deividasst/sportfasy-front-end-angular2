@@ -1,6 +1,12 @@
 import {Component, OnInit} from '@angular/core';
 import {DService} from '../../../shared/data.srv';
 import {Tournament} from '../../../shared/Tournament'
+import {MdDialog, MdDialogRef} from '@angular/material';
+import {TournamentDialogComponent} from '../tournament-dialog/tournament-dialog.component'
+import {MD_DIALOG_DATA} from '@angular/material';
+import {Router} from '@angular/router';
+import {PopupComponent} from '../../../../popup/popup.component';
+import {SecurityTrimming} from '../../../shared/security-trimming.srv';
 
 @Component({
     selector: 'app-over-all-tournaments-widget',
@@ -9,18 +15,33 @@ import {Tournament} from '../../../shared/Tournament'
 })
 export class OverAllTournamentsWidgetComponent implements OnInit {
     tournaments: Tournament[];
+    constructor(private ds: DService,
+                public dialog: MdDialog,
+                private secureTrim: SecurityTrimming) {
+    }
 
-    constructor(private ds: DService) {
+    openDialog(tournament) {
+
+        const dialogRef = this.dialog.open(TournamentDialogComponent, {
+            data: tournament,
+            height: '600px',
+            width: '600px'
+        });
+    }
+
+    sugestToJoinTournament() {
+        const dialogRef = this.dialog.open(PopupComponent, {
+        });
     }
 
     getTournaments(): void {
         this.ds.getAllTournaments().subscribe(tournament => {
-            this.tournaments = tournament
+            this.tournaments = tournament;
+            this.secureTrim.setMastersTournaments(tournament);
         })
     }
 
     ngOnInit() {
         this.getTournaments();
     }
-
 }
