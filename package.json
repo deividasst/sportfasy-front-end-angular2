@@ -11,8 +11,8 @@
     "e2e": "ng e2e",
     "prebuild-dev": "npm install",
     "prebuild-prod": "npm install",
-    "build-dev" : "ng b --env=dev-server --watch",
-    "build-prod" : "ng b --env=dev-prod --watch",
+    "build-dev" : "ng b --env=dev-server",
+    "build-prod" : "ng b --env=dev-prod",
     "serve-dev" : "ng serve --env=dev-prod",
     "serve-prod" : "ng serve -prod --aot=false"
   },
