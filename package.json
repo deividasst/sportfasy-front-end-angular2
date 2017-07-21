@@ -11,7 +11,7 @@
     "e2e": "ng e2e",
     "prebuild-dev": "npm install",
     "prebuild-prod": "npm install",
-    "build-dev" : "ng b --env=dev-server -op '/var/www/html/dev'",
+    "build-dev" : "ng b --deploy-url dev --base-href dev --env=dev-server -op /var/www/html/dev",
     "build-prod" : "ng b --env=dev-prod -op '/var/www/html/release'",
     "serve-dev" : "ng serve --env=dev-prod",
     "serve-prod" : "ng serve -prod --aot=false"
