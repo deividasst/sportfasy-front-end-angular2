@@ -16,10 +16,13 @@ import {Tournament} from '../../../shared/Tournament';
 export class TournamentDialogComponent implements OnInit {
 
     is_allowed: boolean;
-    // user: User;
     id_user: any;
     usrID: any;
+    usrName: any;
+    usrEmail: any;
     users: User[];
+    tournaments: Tournament[];
+    usrObject: any;
 
     public opened = false;
 
@@ -33,72 +36,24 @@ export class TournamentDialogComponent implements OnInit {
         this.is_allowed = this.securityTrimm.isAllowedMasterRights(data._id);
         console.log('data._id' + data._id);
     }
-     ngOnInit() {
-     }
 
-    public close(status) {
-        this.opened = false;
+    ngOnInit() {
     }
 
-    public open() {
-        this.opened = true;
-    }
+    // Adds user to tournament then join btn is pressed
     join() {
         this.users = this.data._users;
         this.usrID = this.tokenHolder.getUserID();
-        console.log(this.usrID, 'SENPAI NOTICE ME');
-        console.log(this.users, 'onichan');
-        let user = new User();
-        this.users.push(this.usrID);
+        this.usrName = this.tokenHolder.getUserName();
+        this.usrEmail = this.tokenHolder.getEmail();
+        this.usrObject = ({
+            _id: this.usrID,
+            name: this.usrName,
+            // surname:,
+            email: this.usrEmail
+        });
+        this.users.push(this.usrObject);
         this.ds.updateTournament(JSON.stringify(this.data)).subscribe(obj => {
-            console.log(obj._users.slice(-1)[0].name);
-            user = obj._users.slice(-1)[0];
-            this.users.push(user);
-
-            // alert('Jus esate pridėtas!');
         });
     }
-
-    }
-
-
-
-
-
-// import { Component, OnInit, Inject, Input, Optional} from '@angular/core';
-// import {MD_DIALOG_DATA} from '@angular/material';
-// import {DService} from '../../../shared/data.srv';
-// import {SecurityTrimming} from '../../../shared/security-trimming.srv';
-// import {TokenHolderServise} from '../../../shared/tokenholder.srv';
-// import {User} from '../../../shared/User'
-// import {TournamentUserlistComponentComponent} from '../tournament-userlist-component/tournament-userlist-component.component';
-//
-//
-// @Component({
-//     selector: 'app-tournament-dialog',
-//     templateUrl: './tournament-dialog.component.html',
-//     styleUrls: ['./tournament-dialog.component.sass']
-// })
-//
-// export class TournamentDialogComponent implements OnInit {
-//     users: User[];
-//     is_allowed: boolean;
-//     user: User;
-//
-//     constructor(@Optional() @Inject(MD_DIALOG_DATA) public data: any,
-//                 private ds: DService,
-//                 private securityTrimm: SecurityTrimming,
-//                 private  userList: TournamentUserlistComponentComponent) {
-//         this.users = data._users;
-//         this.is_allowed = this.securityTrimm.isAllowedMasterRights(data._id);
-//         console.log('data._id' + data._id);
-//     }
-//
-//     ngOnInit() {
-//
-//     }
-//     joinUser() {
-//         this.userList.join(this.user);
-//     alert('Jus esate pridėtas !')
-//     }
-// }
+}

@@ -6,7 +6,6 @@
     <br/>
     {{user.name}}
     <button class="text-right" type="button" class="btn " (click)="show(user)"><i>View info</i></button>
-
     <button kendoButton *ngIf="is_allowed" class="fa fa-close" (click)="open()"> Delete</button>
        <div class="example-wrapper">
         <kendo-dialog title="Please confirm" *ngIf="opened" (close)="close('cancel')">
@@ -18,4 +17,3 @@
         </kendo-dialog>
       </div>
 </div>
-

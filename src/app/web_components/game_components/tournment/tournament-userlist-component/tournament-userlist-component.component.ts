@@ -48,19 +48,6 @@ export class TournamentUserlistComponentComponent implements OnInit {
              this.opened = false;
         });
     }
-    // join(user) {
-    //     this.users = this.data._users;
-    //     this.usrID = this.tokenHolder.getUserID();
-    //     console.log(this.usrID, 'SENPAI NOTICE ME');
-    //     console.log(this.users, 'onichan');
-    //     this.users.push(this.usrID);
-    //     this.ds.updateTournament(JSON.stringify(this.data)).subscribe(obj => {
-    //         console.log(obj);
-    //         // location.reload();
-    //
-    //         alert('Jus esate pridėtas!');
-    //     });
-    // }
 
     ngOnInit() {
 
