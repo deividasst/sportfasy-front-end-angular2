@@ -1,10 +1,15 @@
 <app-navbar></app-navbar>
+
 <main id="page-content-wrapper" role="main">
     <div class="container">
-<p>
-    Overall Teams
-</p>
-
+<div id="name">
+<label for="teams" class="label">Name your team!</label><br>
+<input  placeholder="            Team name" required>
+</div>
+<div id="out">
+Your Current team:
+</div>
+<div id="table">
 <table class="table">
     <tr>
         <th>Player name</th>
@@ -15,8 +20,28 @@
         <td>{{player.name}}</td>
         <td>{{player.surname}}</td>
         <td>{{player.real_team}}</td>
+        <td><button md-button (click)="addPlayer(player)" >Add </button></td>
+        <td><button md-button (click)="removePlayer(player)">Remove </button></td>
     </tr>
 </table>
-
-    </div>
+</div>
+   <button id="button">Create Team </button>
+</div>
 </main>
+    <!--<select data-value-field="id" data-text-field="name"
+   data-bind="value: selectedProducts, source: products" multiple="multiple">
+</select>
+<script>
+var viewModel = kendo.observable({
+    selectedProducts: [],
+    products: [
+        { id: 1, name: "Coffee" },
+        { id: 2, name: "Tea" },
+        { id: 3, name: "Juice" }
+    ]
+});
+
+viewModel.selectedProducts.push(viewModel.products[1]);
+
+kendo.bind($("select"), viewModel);
+</script>-->
