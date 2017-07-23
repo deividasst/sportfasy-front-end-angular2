@@ -33,6 +33,7 @@ import {SecurityTrimming} from './web_components/shared/security-trimming.srv';
 // Import the Animations module
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 // Import the ButtonsModule
+import { GridModule } from '@progress/kendo-angular-grid';
 import { ButtonsModule } from '@progress/kendo-angular-buttons';
 import { IntlModule } from '@progress/kendo-angular-intl';
 import { DateInputsModule } from '@progress/kendo-angular-dateinputs';
@@ -73,6 +74,7 @@ import { NavbarComponent } from './navbar/navbar.component';
         DateInputsModule,
         MaterialModule,
         MdNativeDateModule,
+        GridModule,
         AlertModule.forRoot(),
         DatepickerModule.forRoot(),
         BsDropdownModule.forRoot(),

@@ -1,4 +1,4 @@
-export class Team {
+export class Players {
     name: string;
     surname: string;
     age: number;
