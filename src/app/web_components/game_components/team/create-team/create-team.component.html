@@ -20,8 +20,8 @@ Your Current team:
         <td>{{player.name}}</td>
         <td>{{player.surname}}</td>
         <td>{{player.real_team}}</td>
-        <td><button md-button (click)="addPlayer(player)" >Add </button></td>
-        <td><button md-button (click)="removePlayer(player)">Remove </button></td>
+        <td><button md-button class="select" (click)="addPlayer(player)" (click)="happen()" >Add </button></td>
+        <td><button md-button class="select" (click)="removePlayer(player)">Remove </button></td>
     </tr>
 </table>
 </div>

@@ -14,13 +14,20 @@ export class CreateTeamComponent implements OnInit {
   players: Players[];
   list: Array<any> = new Array;
   list2
-
+//cia tures buti itemai, kurie nurodyti turnyre, ir jie turi atsidurti per create team mygtuka, kuris atsius to turnyro kuriam kuriama teama info: budget max plaers in team kuris bus reikalingas happen funkcijai
   constructor(private ds: DService) {
 
    }
        getPlayers(): void {
          this.ds.getTeamPlayers().subscribe(player => {this.players = player})
     }
+happen(){
+  if(this.list.length > 3){ //cia atkeliaus inputas is tournament kuris nustatys koks turi buti komandos dydis nustatytas tame turnyre
+    console.log('per daug');
+    //disable add button
+  }
+  console.log(this.list.length);
+}
 
 addPlayer(player) {
 
