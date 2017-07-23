@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
 import {DService} from '../../../shared/data.srv';
 import {Router} from '@angular/router';
 import {TokenHolderServise} from '../../../shared/tokenholder.srv';
@@ -14,6 +14,7 @@ export class CreateTeamComponent implements OnInit {
   players: Players[];
   list: Array<any> = new Array;
   list2
+  i: number;
 //cia tures buti itemai, kurie nurodyti turnyre, ir jie turi atsidurti per create team mygtuka, kuris atsius to turnyro kuriam kuriama teama info: budget max plaers in team kuris bus reikalingas happen funkcijai
   constructor(private ds: DService) {
 
@@ -22,10 +23,13 @@ export class CreateTeamComponent implements OnInit {
          this.ds.getTeamPlayers().subscribe(player => {this.players = player})
     }
 happen(){
-  if(this.list.length > 3){ //cia atkeliaus inputas is tournament kuris nustatys koks turi buti komandos dydis nustatytas tame turnyre
+  if(this.list.length >= 3){ //cia atkeliaus inputas is tournament kuris nustatys koks turi buti komandos dydis nustatytas tame turnyre
     console.log('per daug');
-    //disable add button
+    document.getElementById('preventas').classList.add('prevent');
+     document.getElementById('out1').innerHTML = "Your team is full "
   }
+  else{}
+
   console.log(this.list.length);
 }
 
@@ -50,6 +54,8 @@ addPlayer(player) {
                    this.list2 = (this.list.map(item => item.name)
                   .filter((value, index, self) => self.indexOf(value) === index))
                   document.getElementById('out').innerHTML = "Current team is:  " + this.list2;
+                  document.getElementById('preventas').classList.remove('prevent');
+                  document.getElementById('out1').innerHTML = ""
           }
       }
   }
