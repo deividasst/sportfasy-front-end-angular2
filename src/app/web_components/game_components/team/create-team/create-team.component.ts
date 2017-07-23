@@ -38,7 +38,7 @@ addPlayer(player) {
   if (this.list.indexOf(player) == -1) {
     this.list.push(player);
      console.log(this.list);
-     this.list2 = (this.list.map(item => item.name)
+     this.list2 = (this.list.map(item => " " + item.name)
   .filter((value, index, self) => self.indexOf(value) === index))
   document.getElementById('out').innerHTML = "Current team is:  " + this.list2;
 }else
