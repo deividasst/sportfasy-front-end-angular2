@@ -33,7 +33,6 @@ export class TournamentDialogComponent implements OnInit {
                 private tokenHolder: TokenHolderServise) {
         this.users = data._users;
         this.is_allowed = this.securityTrimm.isAllowedMasterRights(data._id);
-        console.log('data._id' + data._id);
     }
 
     ngOnInit() {
@@ -55,5 +54,6 @@ export class TournamentDialogComponent implements OnInit {
         this.users.push(this.usrObject);
         this.ds.updateTournament(JSON.stringify(this.data)).subscribe(obj => {
         });
+        document.getElementById('join').classList.add('prevent');
     }
 }
