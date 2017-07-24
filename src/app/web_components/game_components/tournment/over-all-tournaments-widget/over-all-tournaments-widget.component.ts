@@ -5,7 +5,6 @@ import {MdDialog, MdDialogRef} from '@angular/material';
 import {TournamentDialogComponent} from '../tournament-dialog/tournament-dialog.component'
 import {MD_DIALOG_DATA} from '@angular/material';
 import {Router} from '@angular/router';
-import {PopupComponent} from '../../../../popup/popup.component';
 import {SecurityTrimming} from '../../../shared/security-trimming.srv';
 
 @Component({
@@ -26,11 +25,6 @@ export class OverAllTournamentsWidgetComponent implements OnInit {
             data: tournament,
             height: '600px',
             width: '600px'
-        });
-    }
-
-    sugestToJoinTournament() {
-        const dialogRef = this.dialog.open(PopupComponent, {
         });
     }
 
