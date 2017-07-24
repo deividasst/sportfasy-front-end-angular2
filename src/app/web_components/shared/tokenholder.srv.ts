@@ -11,15 +11,18 @@ export class TokenHolderServise {
     _userID: string;
     _userEmail: string;
     _userName: string;
+    _userSurname: string;
     // Observable sources
     private _nameChange = new ReplaySubject<string>();
     private _idChange = new ReplaySubject<string>();
     private _emailChange = new ReplaySubject<string>();
+    private _surnameChange = new ReplaySubject<string>();
 
     // Observable streams
     nameChange$ = this._nameChange.asObservable();
     idChange$ = this._idChange.asObservable();
     emailChange$ = this._emailChange.asObservable();
+    surnameChange$ = this._surnameChange.asObservable();
 
     constructor() {
     }
@@ -50,6 +53,15 @@ export class TokenHolderServise {
         this._userEmail = value;
     }
 
+    setUserSurname(value: any) {
+        this._userSurname = value;
+        this._surnameChange.next(value);
+    }
+
+    getUserSurname() {
+        return this._userSurname;
+    }
+
     getUserName() {
         return this._userName;
     }
@@ -59,10 +71,11 @@ export class TokenHolderServise {
         this._nameChange.next(value);
     }
 
-    storeUserData(token, id_user, email_user, name_user) {
+    storeUserData(token, id_user, email_user, name_user, surname_user) {
         this.setUserEmail(email_user);
         this.setUserName(name_user);
         this.setUserID(id_user);
         this.setToken(token);
+        this.setUserSurname(surname_user);
     }
 }

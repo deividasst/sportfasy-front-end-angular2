@@ -19,9 +19,9 @@ export class TournamentDialogComponent implements OnInit {
     id_user: any;
     usrID: any;
     usrName: any;
-    usrEmail: any;
+    usrEmail: any
+    usrSurname: any;
     users: User[];
-    tournaments: Tournament[];
     usrObject: any;
 
     public opened = false;
@@ -30,8 +30,7 @@ export class TournamentDialogComponent implements OnInit {
     constructor(@Optional() @Inject(MD_DIALOG_DATA) public data: any,
                 private ds: DService,
                 private securityTrimm: SecurityTrimming,
-                private tokenHolder: TokenHolderServise,
-                private  userList: TournamentUserlistComponentComponent) {
+                private tokenHolder: TokenHolderServise) {
         this.users = data._users;
         this.is_allowed = this.securityTrimm.isAllowedMasterRights(data._id);
         console.log('data._id' + data._id);
@@ -45,11 +44,12 @@ export class TournamentDialogComponent implements OnInit {
         this.users = this.data._users;
         this.usrID = this.tokenHolder.getUserID();
         this.usrName = this.tokenHolder.getUserName();
+        this.usrSurname = this.tokenHolder.getUserSurname();
         this.usrEmail = this.tokenHolder.getEmail();
         this.usrObject = ({
             _id: this.usrID,
             name: this.usrName,
-            // surname:,
+            surname: this.usrSurname,
             email: this.usrEmail
         });
         this.users.push(this.usrObject);

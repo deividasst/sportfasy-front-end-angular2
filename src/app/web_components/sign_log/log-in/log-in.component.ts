@@ -16,6 +16,7 @@ export class LogInComponent implements OnInit {
     id_user: any;
     email_user: any;
     name_user: any;
+    surname_user: any;
 
     constructor(private ds: DService, private tokenHolder: TokenHolderServise, private router: Router) {
     }
@@ -35,7 +36,8 @@ export class LogInComponent implements OnInit {
                             obj.token,
                             obj.userID,
                             obj.userEmail,
-                            obj.userName),
+                            obj.userName,
+                            obj.userSurname),
                             this.router.navigate(['/userprofile'])
                     }
                 },
