@@ -2,50 +2,39 @@
 
 <main id="page-content-wrapper" role="main">
     <div class="container">
-<div id="name">
-<label for="teams" class="label">Name your team!</label><br>
-<input  placeholder="            Team name" required>
-</div>
-<div id="out">
-Your Current team:
-</div>
-    <div id="out1">
-</div><br>
-<div id="table">
-<table class="table" id="preventas">
-    <tr>
-        <th>Player name</th>
-        <th>Player surname</th>
-        <th>Player Team</th>
-        <th>        </th>
-        <th>        </th>
-    </tr>
-    <tr *ngFor="let player of players ">
-        <td>{{player.name}}</td>
-        <td>{{player.surname}}</td>
-        <td>{{player.real_team}}</td>
-        <td><button md-button id="add" class="select" (click)="addPlayer(player)" (click)="happen()" >Add </button></td>
-        <td><button md-button class="select" (click)="removePlayer(player)">Remove </button></td>
-    </tr>
-</table>
-</div>
-   <button id="button">Create Team </button>
-</div>
+        <div id="name">
+            <label for="teams" class="label">Name your team!</label><br>
+            <input placeholder="            Team name" required>
+        </div>
+        <div id="out">
+            Your Current team:
+        </div>
+        <div id="out1">
+        </div>
+        <br>
+        <div id="table">
+            <table class="table" id="preventas">
+                <tr>
+                    <th>Player name</th>
+                    <th>Player surname</th>
+                    <th>Player Team</th>
+                    <th></th>
+                    <th></th>
+                </tr>
+                <tr *ngFor="let player of players ">
+                    <td>{{player.name}}</td>
+                    <td>{{player.surname}}</td>
+                    <td>{{player.real_team}}</td>
+                    <td>
+                        <button md-button id="add" class="select" (click)="addPlayer(player)" (click)="happen()">Add
+                        </button>
+                    </td>
+                    <td>
+                        <button md-button class="select" (click)="removePlayer(player)">Remove</button>
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <button id="button">Create Team</button>
+    </div>
 </main>
-    <!--<select data-value-field="id" data-text-field="name"
-   data-bind="value: selectedProducts, source: products" multiple="multiple">
-</select>
-<script>
-var viewModel = kendo.observable({
-    selectedProducts: [],
-    products: [
-        { id: 1, name: "Coffee" },
-        { id: 2, name: "Tea" },
-        { id: 3, name: "Juice" }
-    ]
-});
-
-viewModel.selectedProducts.push(viewModel.products[1]);
-
-kendo.bind($("select"), viewModel);
-</script>-->
