@@ -1,4 +1,4 @@
 export const environment = {
     production: true,
-    origin: 'http://localhost:3001'
-};
+    origin: 'http://88.119.200.69:3001'
+}
