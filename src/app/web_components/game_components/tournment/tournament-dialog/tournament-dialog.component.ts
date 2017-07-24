@@ -4,8 +4,6 @@ import {DService} from '../../../shared/data.srv';
 import {SecurityTrimming} from '../../../shared/security-trimming.srv';
 import {TokenHolderServise} from '../../../shared/tokenholder.srv';
 import {User} from '../../../shared/User'
-import {TournamentUserlistComponentComponent} from '../tournament-userlist-component/tournament-userlist-component.component';
-import {Tournament} from '../../../shared/Tournament';
 
 @Component({
     selector: 'app-tournament-dialog',
@@ -17,13 +15,13 @@ export class TournamentDialogComponent implements OnInit {
 
     is_allowed: boolean;
     id_user: any;
-    usrID: any;
-    usrName: any;
-    usrEmail: any
-    usrSurname: any;
+    usrID = this.tokenHolder.getUserID();
+    usrName = this.tokenHolder.getUserName();
+    usrSurname = this.tokenHolder.getUserSurname();
+    usrEmail = this.tokenHolder.getEmail();
     users: User[];
     usrObject: any;
-
+    check = true;
     public opened = false;
 
 
@@ -32,28 +30,32 @@ export class TournamentDialogComponent implements OnInit {
                 private securityTrimm: SecurityTrimming,
                 private tokenHolder: TokenHolderServise) {
         this.users = data._users;
+        console.log(data._users);
         this.is_allowed = this.securityTrimm.isAllowedMasterRights(data._id);
     }
 
+    // Check if user already joined to tournament
     ngOnInit() {
+        for (let i = 0; i < this.users.length; i++ ) {
+            if (this.data._users[i].name === this.usrName) {
+                console.log('Name check:', this.data._users[i].name);
+                this.check = false;
+            }
+        }
     }
 
     // Adds user to tournament then join btn is pressed
     join() {
-        this.users = this.data._users;
-        this.usrID = this.tokenHolder.getUserID();
-        this.usrName = this.tokenHolder.getUserName();
-        this.usrSurname = this.tokenHolder.getUserSurname();
-        this.usrEmail = this.tokenHolder.getEmail();
-        this.usrObject = ({
-            _id: this.usrID,
-            name: this.usrName,
-            surname: this.usrSurname,
-            email: this.usrEmail
-        });
-        this.users.push(this.usrObject);
-        this.ds.updateTournament(JSON.stringify(this.data)).subscribe(obj => {
-        });
-        document.getElementById('join').classList.add('prevent');
+                this.users = this.data._users;
+                this.usrObject = ({
+                    _id: this.usrID,
+                    name: this.usrName,
+                    surname: this.usrSurname,
+                    email: this.usrEmail
+                });
+                this.users.push(this.usrObject);
+                this.ds.updateTournament(JSON.stringify(this.data)).subscribe(obj => {
+                });
+                document.getElementById('join').classList.add('prevent');
     }
 }
