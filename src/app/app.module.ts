@@ -125,7 +125,8 @@ import { NavbarComponent } from './navbar/navbar.component';
         DService,
         TokenHolderServise,
         LogOutComponent,
-        SecurityTrimming
+        SecurityTrimming,
+        TournamentUserlistComponentComponent
     ],
     bootstrap: [AppComponent
     ],

@@ -3,8 +3,6 @@ import {DService} from '../../../shared/data.srv';
 import {Tournament} from '../../../shared/Tournament'
 import {MdDialog, MdDialogRef} from '@angular/material';
 import {TournamentDialogComponent} from '../tournament-dialog/tournament-dialog.component'
-import {MD_DIALOG_DATA} from '@angular/material';
-import {Router} from '@angular/router';
 import {SecurityTrimming} from '../../../shared/security-trimming.srv';
 
 @Component({

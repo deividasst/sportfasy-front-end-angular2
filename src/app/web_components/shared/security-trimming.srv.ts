@@ -23,7 +23,6 @@ export class SecurityTrimming {
                 console.log('tournament._id ' + tournament._id);
                 return tournament._id;
             }
-
         });
         console.log('_master_in_tournaments ' + this._master_in_tournaments );
         console.log('this.tokenHolder.getUserID() ' + this.tokenHolder.getUserID() );
