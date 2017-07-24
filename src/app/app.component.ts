@@ -26,6 +26,7 @@ export class AppComponent {
                 this.tokenHolder.setUserID(obj._id);
                 this.tokenHolder.setUserEmail(obj.email);
                 this.tokenHolder.setUserName(obj.name);
+                this.tokenHolder.setUserSurname(obj.surname);
             }
         )
     }

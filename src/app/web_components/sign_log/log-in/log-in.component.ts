@@ -13,11 +13,10 @@ import {Router} from '@angular/router';
 export class LogInComponent implements OnInit {
     user: User;
     error;
-    value: any;
     id_user: any;
     email_user: any;
     name_user: any;
-    obj;
+    surname_user: any;
 
     constructor(private ds: DService, private tokenHolder: TokenHolderServise, private router: Router) {
     }
@@ -37,7 +36,8 @@ export class LogInComponent implements OnInit {
                             obj.token,
                             obj.userID,
                             obj.userEmail,
-                            obj.userName),
+                            obj.userName,
+                            obj.userSurname),
                             this.router.navigate(['/userprofile'])
                     }
                 },

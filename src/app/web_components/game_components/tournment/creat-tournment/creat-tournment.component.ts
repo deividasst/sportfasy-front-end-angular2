@@ -33,7 +33,11 @@ export class CreatTournmentComponent implements OnInit {
     public getDate2(): number {
         return this.tournament.end && this.tournament.end.getTime() || new Date().getTime();
     }
-    constructor(piker: DatepickerModule, private ds: DService, private router: Router, private tokenHolder: TokenHolderServise, private logout: LogOutComponent) {
+    constructor(piker: DatepickerModule,
+                private ds: DService,
+                private router: Router,
+                private tokenHolder: TokenHolderServise,
+                private logout: LogOutComponent) {
         this.tokenEmail = this.tokenHolder.getEmail();
     }
     ngOnInit() {
