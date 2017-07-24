@@ -1,10 +1,10 @@
 <div class="body">
-    <div id="navbar-wrapper">
+    <div id="navbar-wrapper" *ngIf="name">
         <header>
             <p routerLink="/userprofile" class="logo text-left">Sportfasy</p>
         </header>
     </div>
-    <div id="wrapper">
+    <div id="wrapper" *ngIf="name">
         <div id="sidebar-wrapper">
             <aside id="sidebar">
                 <ul id="sidemenu" class="sidebar-nav">
@@ -41,12 +41,14 @@
                     </li>
                     <li>
                         <a class="accordion-toggle collapsed toggle-switch" data-toggle="collapse"
-                           routerLink="/jointournment">
-                            <span class="sidebar-icon"><i class="fa fa-user-plus i"></i></span>
-                            <span class="sidebar-title2">Join</span>
+                           routerLink="/listtournment">
+                            <span class="sidebar-icon"><i class="fa fa-bars i"></i></span>
+                            <span class="sidebar-title2">My tournament list</span>
                             <b class="caret"></b>
                         </a>
+                        <p></p>
                     </li>
+
 
                     <li>
                         <a class="accordion-toggle collapsed toggle-switch" data-toggle="collapse">
@@ -76,7 +78,7 @@
                 </ul>
             </aside>
         </div>
-            <router-outlet></router-outlet>
-    </div>
 
+    </div>
+    <router-outlet></router-outlet>
 </div>

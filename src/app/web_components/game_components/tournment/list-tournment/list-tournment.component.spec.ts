@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { JoinTournmentComponent } from './join-tournment.component';
+import { ListTournmentComponent } from './list-tournment.component';
 
 describe('JoinTournmentComponent', () => {
-  let component: JoinTournmentComponent;
-  let fixture: ComponentFixture<JoinTournmentComponent>;
+  let component: ListTournmentComponent;
+  let fixture: ComponentFixture<ListTournmentComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ JoinTournmentComponent ]
+      declarations: [ ListTournmentComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(JoinTournmentComponent);
+    fixture = TestBed.createComponent(ListTournmentComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
