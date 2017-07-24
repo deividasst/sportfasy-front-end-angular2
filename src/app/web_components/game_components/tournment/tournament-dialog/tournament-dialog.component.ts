@@ -22,7 +22,6 @@ export class TournamentDialogComponent implements OnInit {
     users: User[];
     usrObject: any;
     check = true;
-    public opened = false;
 
 
     constructor(@Optional() @Inject(MD_DIALOG_DATA) public data: any,
@@ -30,7 +29,6 @@ export class TournamentDialogComponent implements OnInit {
                 private securityTrimm: SecurityTrimming,
                 private tokenHolder: TokenHolderServise) {
         this.users = data._users;
-        console.log(data._users);
         this.is_allowed = this.securityTrimm.isAllowedMasterRights(data._id);
     }
 
@@ -38,7 +36,6 @@ export class TournamentDialogComponent implements OnInit {
     ngOnInit() {
         for (let i = 0; i < this.users.length; i++ ) {
             if (this.data._users[i].name === this.usrName) {
-                console.log('Name check:', this.data._users[i].name);
                 this.check = false;
             }
         }
