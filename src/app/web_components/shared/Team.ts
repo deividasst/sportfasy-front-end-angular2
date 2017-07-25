@@ -1,5 +1,5 @@
 export class Team {
     name: string;
-    master: string;
-    players: number;
+    _team_master: any;
+    _players: any;
 }

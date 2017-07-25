@@ -5,6 +5,7 @@ import {TokenHolderServise} from '../../../shared/tokenholder.srv';
 import {LogOutComponent} from '../../../sign_log/log-out/log-out.component';
 import {Team} from '../../../shared/Team'
 import {Players} from '../../../shared/Players'
+import {Tournament} from '../../../shared/Tournament'
 @Component({
     selector: 'app-create-team',
     templateUrl: './create-team.component.html',
@@ -13,11 +14,25 @@ import {Players} from '../../../shared/Players'
 export class CreateTeamComponent implements OnInit {
     players: Players[];
     list: Array<any> = new Array;
+    tournaments: Tournament[];
+    team: Team;
     list2
+    userId: string;
+    playermuch: number;
     i: number;
-//cia tures buti itemai, kurie nurodyti turnyre, ir jie turi atsidurti per create team mygtuka, kuris atsius to turnyro kuriam kuriama teama info: budget max plaers in team kuris bus reikalingas happen funkcijai
-    constructor(private ds: DService) {
+    err;
 
+//cia tures buti itemai, kurie nurodyti turnyre, ir jie turi atsidurti per create team mygtuka, kuris atsius to turnyro kuriam kuriama teama info: budget max plaers in team kuris bus reikalingas happen funkcijai
+    constructor(private ds: DService,
+                private tokenHolder: TokenHolderServise,
+                private router: Router,) {
+
+    }
+
+    loginti(tournament) {
+        console.log(tournament.max_players);
+        console.log(tournament.name);
+        return this.playermuch = tournament.max_players
     }
 
     getPlayers(): void {
@@ -26,8 +41,14 @@ export class CreateTeamComponent implements OnInit {
         })
     }
 
+    getUserTurnaments(userId): void {
+        this.ds.getUserTurnaments(userId).subscribe(tournament => {
+            this.tournaments = tournament
+        });
+    }
+
     happen() {
-        if (this.list.length >= 3) { //cia atkeliaus inputas is tournament kuris nustatys koks turi buti komandos dydis nustatytas tame turnyre
+        if (this.list.length >= this.playermuch) { //cia atkeliaus inputas is tournament kuris nustatys koks turi buti komandos dydis nustatytas tame turnyre
             console.log('per daug');
             document.getElementById('preventas').classList.add('prevent');
             document.getElementById('out1').innerHTML = "Your team is full "
@@ -65,7 +86,23 @@ export class CreateTeamComponent implements OnInit {
         }
     }
 
+
     ngOnInit() {
+        this.team = new Team();
         this.getPlayers();
+        this.tokenHolder.idChange$.subscribe(item => {
+            this.userId = item;
+            this.getUserTurnaments(item);
+            this.team._team_master = item;
+        });
+
+    }
+
+    sendTeam(team) {
+        this.team._players = this.list
+        this.ds.registerTeam(JSON.stringify(this.team))
+            .subscribe(obj => {
+                this.router.navigate(['/userprofile'])
+            }, err => this.err = 'Tournament with this name already exists')
     }
 }

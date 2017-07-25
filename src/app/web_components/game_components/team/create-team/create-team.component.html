@@ -2,10 +2,16 @@
 
 <main id="page-content-wrapper" role="main">
     <div class="container">
+        <form class="" #tournamentForm="ngForm" method="post" novalidate>
         <div id="name">
             <label for="teams" class="label">Name your team!</label><br>
-            <input placeholder="            Team name" required>
+            <input placeholder="            Team name" [(ngModel)]="team.name" name="team_name" required>
         </div>
+        <label  class="label">Select tournament!</label><br>
+        <div *ngFor="let tournament of tournaments ">
+            <p>{{tournament.name}} <button (click)="loginti(tournament)">select</button></p>
+        </div>
+
         <div id="out">
             Your Current team:
         </div>
@@ -35,6 +41,7 @@
                 </tr>
             </table>
         </div>
-        <button id="button">Create Team</button>
+        <button id="button" (click)="sendTeam(team)">Create Team</button>
+        </form>
     </div>
 </main>

@@ -14,6 +14,7 @@ import {SecurityTrimming} from '../../../shared/security-trimming.srv';
 })
 export class OverAllTournamentsWidgetComponent implements OnInit {
     tournaments: Tournament[];
+
     constructor(private ds: DService,
                 public dialog: MdDialog,
                 private secureTrim: SecurityTrimming) {
@@ -29,8 +30,7 @@ export class OverAllTournamentsWidgetComponent implements OnInit {
     }
 
     sugestToJoinTournament() {
-        const dialogRef = this.dialog.open(PopupComponent, {
-        });
+        const dialogRef = this.dialog.open(PopupComponent, {});
     }
 
     getTournaments(): void {

@@ -38,6 +38,7 @@ import { IntlModule } from '@progress/kendo-angular-intl';
 import { DateInputsModule } from '@progress/kendo-angular-dateinputs';
 import { DialogModule } from '@progress/kendo-angular-dialog';
 import { NavbarComponent } from './navbar/navbar.component';
+import { TeamPlayersComponent } from './web_components/game_components/team/team-players/team-players.component';
 
 @NgModule({
   declarations: [
@@ -56,7 +57,8 @@ import { NavbarComponent } from './navbar/navbar.component';
     TournamentDialogComponent,
     TournamentUserlistComponentComponent,
     PopupComponent,
-    NavbarComponent
+    NavbarComponent,
+    TeamPlayersComponent
     ],
     imports: [
         BrowserModule,

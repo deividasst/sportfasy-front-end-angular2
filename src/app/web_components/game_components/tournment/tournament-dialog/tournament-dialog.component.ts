@@ -56,4 +56,5 @@ export class TournamentDialogComponent implements OnInit {
         });
         document.getElementById('join').classList.add('prevent');
     }
+
 }
