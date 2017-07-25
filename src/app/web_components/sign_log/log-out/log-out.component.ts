@@ -23,6 +23,7 @@ export class LogOutComponent implements OnInit {
     logOut() {
         localStorage.removeItem('id_token');
         localStorage.clear();
+        this.tokenHolder.setUserName('');
         this.router.navigate(['/login']);
     }
 }
