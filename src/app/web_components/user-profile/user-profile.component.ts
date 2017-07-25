@@ -18,14 +18,16 @@ export class UserProfileComponent implements OnInit {
     }
 
     ngOnInit() {
-        this.tokenHolder.idChange$.subscribe(item => {
+        this.tokenHolder.idChange$.first().subscribe(item => {
             this.userId = item;
+            console.log('userID ' + item);
             this.getUserTurnaments(item);
         });
     }
 
     getUserTurnaments(userId): void {
         this.ds.getUserTurnaments(userId).subscribe(tournament => {
+            console.log('tournaments ' + tournament);
             if (tournament.length === 0) {
                 this.sugestToJoinTournament();
             }

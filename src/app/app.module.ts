@@ -11,7 +11,7 @@ import {LogOutComponent} from './web_components/sign_log/log-out/log-out.compone
 import {LogInComponent} from './web_components/sign_log/log-in/log-in.component';
 import {SingUpComponent} from './web_components/sign_log/sing-up/sing-up.component';
 import {CreatTournmentComponent} from './web_components/game_components/tournment/creat-tournment/creat-tournment.component';
-import {JoinTournmentComponent} from './web_components/game_components/tournment/join-tournment/join-tournment.component';
+import {ListTournmentComponent} from './web_components/game_components/tournment/list-tournment/list-tournment.component';
 import {ListTeamComponent} from './web_components/game_components/team/list-team/list-team.component';
 import {CreateTeamComponent} from './web_components/game_components/team/create-team/create-team.component';
 import {UserProfileComponent} from './web_components/user-profile/user-profile.component';
@@ -47,7 +47,7 @@ import { TeamPlayersComponent } from './web_components/game_components/team/team
     LogInComponent,
     SingUpComponent,
     CreatTournmentComponent,
-    JoinTournmentComponent,
+    ListTournmentComponent,
     ListTeamComponent,
     CreateTeamComponent,
     UserProfileComponent,
@@ -100,8 +100,8 @@ import { TeamPlayersComponent } from './web_components/game_components/team/team
                 component: CreatTournmentComponent
             },
             {
-                path: 'jointournment',
-                component: JoinTournmentComponent
+                path: 'listtournment',
+                component: ListTournmentComponent
             },
             {
                 path: 'listteam',
