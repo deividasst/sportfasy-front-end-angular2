@@ -4,7 +4,7 @@ import {MD_DIALOG_DATA} from '@angular/material';
 import {DService} from '../../../shared/data.srv';
 import {DialogService, DialogCloseResult} from '@progress/kendo-angular-dialog';
 import {TokenHolderServise} from '../../../shared/tokenholder.srv';
-import {TournamentDialogComponent} from '../tournament-dialog/tournament-dialog.component'
+import {OverAllTournamentsWidgetComponent} from '../over-all-tournaments-widget/over-all-tournaments-widget.component'
 import {User} from '../../../shared/User';
 
 @Injectable()
@@ -24,16 +24,15 @@ export class TournamentUserlistComponentComponent implements OnInit {
     is_allowed: boolean;
 
     public opened = false;
-
+    usrObject: any;
     usrID: any;
 
     constructor(@Optional() @Inject(MD_DIALOG_DATA) public data: any,
-                private dialogService: DialogService,
-                private tokenHolder: TokenHolderServise,
-                private ds: DService) {
+                private ds: DService,
+                private overlalltournament: OverAllTournamentsWidgetComponent) {
     }
 
-    public close(status) {
+    public close() {
         this.opened = false;
     }
 
@@ -44,13 +43,35 @@ export class TournamentUserlistComponentComponent implements OnInit {
     delete(user) {
         const index = this.users.indexOf(user);
         this.users.splice(index, 1);
-        this.ds.updateTournament(JSON.stringify(this.data)).subscribe(obj => {
+        this.usrObject = ({
+            name: this.data.name,
+            _users: this.users
+        });
+
+        this.ds.updateTournament(JSON.stringify(this.usrObject)).subscribe(obj => {
+            console.log(obj);
             this.opened = false;
         });
     }
 
-    ngOnInit() {
+    // delete(user) {
+    //     this.overlalltournament.getTournaments();
+    //     for (let i = 0; i < this.users.length; i++) {
+    //         if (this.users[i] === user) {
+    //             this.users.splice(i, 1);
+    //         }
+    //     }
+    //     this.ds.updateTournament(this.data).map(data =>
+    //         data.json).subscribe(obj => {
+    //             console.log('=====> subscribe OBJ', obj);
+    //         this.opened = false;
+    //     });
+    //     console.log(this.data, 'Senpai');
+    //     console.log(this.users, 'SonGoku');
+    // }
 
+
+    ngOnInit() {
     }
 
     conceal(user) {

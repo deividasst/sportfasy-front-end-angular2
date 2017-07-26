@@ -128,7 +128,8 @@ import { TeamPlayersComponent } from './web_components/game_components/team/team
         TokenHolderServise,
         LogOutComponent,
         SecurityTrimming,
-        TournamentUserlistComponentComponent
+        TournamentUserlistComponentComponent,
+        OverAllTournamentsWidgetComponent
     ],
     bootstrap: [AppComponent
     ],
