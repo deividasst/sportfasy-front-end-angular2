@@ -24,7 +24,7 @@ export class TournamentUserlistComponentComponent implements OnInit {
     is_allowed: boolean;
 
     public opened = false;
-    usrObject: any;
+    tournamentObject: any;
     usrID: any;
 
     constructor(@Optional() @Inject(MD_DIALOG_DATA) public data: any,
@@ -36,38 +36,41 @@ export class TournamentUserlistComponentComponent implements OnInit {
         this.opened = false;
     }
 
-    public open() {
+    public open(user) {
+        const index = this.users.indexOf(user);
+        console.log('Sasuke:', index);
+        if (index !== -1) {
+            this.users.splice(index, 1);
+        }
         this.opened = true;
     }
 
     delete(user) {
-        const index = this.users.indexOf(user);
-        this.users.splice(index, 1);
-        this.usrObject = ({
+        this.tournamentObject = ({
             name: this.data.name,
             _users: this.users
         });
-
-        this.ds.updateTournament(JSON.stringify(this.usrObject)).subscribe(obj => {
+        this.ds.updateTournament(JSON.stringify(this.tournamentObject)).subscribe(obj => {
             console.log(obj);
             this.opened = false;
         });
     }
 
     // delete(user) {
-    //     this.overlalltournament.getTournaments();
     //     for (let i = 0; i < this.users.length; i++) {
     //         if (this.users[i] === user) {
     //             this.users.splice(i, 1);
     //         }
     //     }
-    //     this.ds.updateTournament(this.data).map(data =>
-    //         data.json).subscribe(obj => {
+    //     this.tournamentObject = ({
+    //         name: this.data.name,
+    //         _users: this.users
+    //     });
+    //     this.ds.updateTournament(this.tournamentObject).map(tournamentObject =>
+    //         tournamentObject.json).subscribe(obj => {
     //             console.log('=====> subscribe OBJ', obj);
     //         this.opened = false;
     //     });
-    //     console.log(this.data, 'Senpai');
-    //     console.log(this.users, 'SonGoku');
     // }
 
 

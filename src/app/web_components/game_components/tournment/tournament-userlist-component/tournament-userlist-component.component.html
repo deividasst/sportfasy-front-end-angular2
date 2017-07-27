@@ -6,8 +6,8 @@
     <br/>
     {{user.name}}
     <button class="text-right" type="button" class="btn " (click)="show(user)"><i>View info</i></button>
-    <button kendoButton *ngIf="is_allowed" class="fa fa-close" (click)="open()"> Delete</button>
-       <div class="example-wrapper">
+    <button kendoButton *ngIf="is_allowed" class="fa fa-close" (click)="open(user)"> Delete</button>
+    <div class="example-wrapper">
         <kendo-dialog title="Please confirm" *ngIf="opened" (close)="close('cancel')">
             <p style="margin: 30px; text-align: center;">This user will be deleted</p>
             <kendo-dialog-actions>
@@ -15,5 +15,21 @@
                 <button kendoButton (click)="delete(user)">Delete</button>
             </kendo-dialog-actions>
         </kendo-dialog>
-      </div>
+    </div>
 </div>
+
+
+<!--<div>-->
+    <!--<div id="userContent" style="display: none;">&ndash;&gt;-->
+    <!--</div>-->
+    <!--<button style="display: none;" id="contentas1" class="text-right" type="button" class="btn btn-danger "-->
+            <!--(click)="conceal()"><i> close</i></button>-->
+    <!--<ul class="list-group">-->
+        <!--<li *ngFor="let user of users" #ival>-->
+            <!--{{user.name}}-->
+            <!--<button class="text-right" type="button" class="btn " (click)="show(user)"><i>View info</i></button>-->
+            <!--<button kendoButton (click)="delete(user)">Delete</button>-->
+            <!--&lt;!&ndash;<button class="pull-right btn btn-sm btn-warning" (click)="delete(user)">Delete</button>&ndash;&gt;-->
+        <!--</li>-->
+    <!--</ul>-->
+<!--</div>-->
