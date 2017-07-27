@@ -37,10 +37,11 @@ export class TournamentUserComponentComponent implements OnInit {
     }
 
     // Deletes user from tournament then delete btn is pressed
-    delete(): void {
+    delete() {
+        this.users.splice(this.index, 1);
         this.tournamentObject = ({
             name: this.data.name,
-            _users: this.users.splice(this.index, 1)
+            _users: this.users
         });
         this.ds.updateTournament(JSON.stringify(this.tournamentObject)).subscribe(obj => {
             this.opened = false;
