@@ -1,19 +1,15 @@
 import {Component, OnInit, Input, Inject, Injectable, Optional} from '@angular/core';
-import {Tournament} from '../../../shared/Tournament';
 import {MD_DIALOG_DATA} from '@angular/material';
 import {DService} from '../../../shared/data.srv';
-import {DialogService, DialogCloseResult} from '@progress/kendo-angular-dialog';
-import {TokenHolderServise} from '../../../shared/tokenholder.srv';
-import {OverAllTournamentsWidgetComponent} from '../over-all-tournaments-widget/over-all-tournaments-widget.component'
 import {User} from '../../../shared/User';
 
 @Injectable()
 @Component({
-    selector: 'app-tournament-userlist-component',
-    templateUrl: './tournament-userlist-component.component.html',
-    styleUrls: ['./tournament-userlist-component.component.sass']
+    selector: 'app-tournament-user-component',
+    templateUrl: './tournament-user-component.component.html',
+    styleUrls: ['./tournament-user-component.component.sass']
 })
-export class TournamentUserlistComponentComponent implements OnInit {
+export class TournamentUserComponentComponent implements OnInit {
 
     @Input()
     tournament: any;
@@ -28,8 +24,7 @@ export class TournamentUserlistComponentComponent implements OnInit {
     index: any;
 
     constructor(@Optional() @Inject(MD_DIALOG_DATA) public data: any,
-                private ds: DService,
-                private overlalltournament: OverAllTournamentsWidgetComponent) {
+                private ds: DService) {
     }
 
     public close() {
@@ -41,8 +36,8 @@ export class TournamentUserlistComponentComponent implements OnInit {
         this.opened = true;
     }
 
-    delete() {
-        console.log('Sasuke:', this.index);
+    // Deletes user from tournament then delete btn is pressed
+    delete(): void {
         this.tournamentObject = ({
             name: this.data.name,
             _users: this.users.splice(this.index, 1)
@@ -55,6 +50,7 @@ export class TournamentUserlistComponentComponent implements OnInit {
     ngOnInit() {
     }
 
+    // Closes user credentials field
     conceal(user) {
         if (document.getElementById('userContent').style.display === 'block') {
             document.getElementById('userContent').style.display = 'none';
@@ -62,6 +58,7 @@ export class TournamentUserlistComponentComponent implements OnInit {
         }
     }
 
+    // Shows user credentials field
     show(user) {
         if (document.getElementById('userContent').style.display === 'none') {
             document.getElementById('userContent').innerHTML = 'Name: ' + user.name + '<br/>' + 'Surname: ' + user.surname + '<br/>' + 'Email: ' + user.email;

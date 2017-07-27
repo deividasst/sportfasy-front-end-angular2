@@ -27,7 +27,7 @@ import { OverAllTeamsWidgetComponent } from './web_components/game_components/te
 import { OverAllTournamentsWidgetComponent } from './web_components/game_components/tournment/over-all-tournaments-widget/over-all-tournaments-widget.component';
 import { HomeComponent } from './web_components/home/home.component';
 import { TournamentDialogComponent } from './web_components/game_components/tournment/tournament-dialog/tournament-dialog.component';
-import { TournamentUserlistComponentComponent } from './web_components/game_components/tournment/tournament-userlist-component/tournament-userlist-component.component';
+import { TournamentUserComponentComponent } from './web_components/game_components/tournment/tournament-user-component/tournament-user-component.component';
 import { PopupComponent } from './popup/popup.component';
 import {SecurityTrimming} from './web_components/shared/security-trimming.srv';
 // Import the Animations module
@@ -55,7 +55,7 @@ import { TeamPlayersComponent } from './web_components/game_components/team/team
     OverAllTournamentsWidgetComponent,
     HomeComponent,
     TournamentDialogComponent,
-    TournamentUserlistComponentComponent,
+    TournamentUserComponentComponent,
     PopupComponent,
     NavbarComponent,
     TeamPlayersComponent
@@ -128,7 +128,7 @@ import { TeamPlayersComponent } from './web_components/game_components/team/team
         TokenHolderServise,
         LogOutComponent,
         SecurityTrimming,
-        TournamentUserlistComponentComponent,
+        TournamentUserComponentComponent,
         OverAllTournamentsWidgetComponent
     ],
     bootstrap: [AppComponent
