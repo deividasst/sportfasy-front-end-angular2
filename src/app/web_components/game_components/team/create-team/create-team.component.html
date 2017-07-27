@@ -6,9 +6,12 @@
             <input placeholder="            Team name" [(ngModel)]="team.name" name="team_name" required>
         </div>
         <label  class="label">Select tournament!</label><br>
-        <div *ngFor="let tournament of tournaments ">
-            <p>{{tournament.name}} <button (click)="loginti(tournament)">select</button></p>
-        </div>
+
+            <ul>
+                <li *ngFor="let tournament of tournaments"  [ngClass]="{'active': tournament.active}">
+                    {{tournament.name}} <button (click)="loginti(tournament)" (click)="activateClass(tournament)">select</button>
+                </li>
+            </ul>
 
         <div id="out">
             Your Current team:
@@ -26,17 +29,17 @@
                     <th></th>
                     <th></th>
                 </tr>
-                <tr *ngFor="let player of players ">
+                <tr *ngFor="let player of players" [ngClass]="{'active': player.active}">
                     <td>{{player.name}}</td>
                     <td>{{player.surname}}</td>
                     <td>{{player.real_team}}</td>
                     <td>{{player.price}}</td>
                     <td>
-                        <button md-button id="add" class="select" (click)="addPlayer(player)" (click)="happen()">Add
+                        <button md-button id="add" class="select"(click)="activateClasss(player)" (click)="addPlayer(player)" (click)="happen()">Add
                         </button>
                     </td>
                     <td>
-                        <button md-button class="select" (click)="removePlayer(player)">Remove</button>
+                        <button md-button class="select" (click)="activateClasss(player)" (click)="removePlayer(player)">Remove</button>
                     </td>
                 </tr>
             </table>

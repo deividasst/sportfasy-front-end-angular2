@@ -6,6 +6,7 @@ import {LogOutComponent} from '../../../sign_log/log-out/log-out.component';
 import {Team} from '../../../shared/Team'
 import {Players} from '../../../shared/Players'
 import {Tournament} from '../../../shared/Tournament'
+import {Tournament_teams} from '../../../shared/Tournament-teams'
 @Component({
     selector: 'app-create-team',
     templateUrl: './create-team.component.html',
@@ -20,7 +21,12 @@ export class CreateTeamComponent implements OnInit {
     userId: string;
     playermuch: number;
     i: number;
+    usrObject: any;
     err;
+    tournament_budget: number;
+    tournament_name: string;
+    tournament_team_object: any;
+    tournament_id: any;
 
 //cia tures buti itemai, kurie nurodyti turnyre, ir jie turi atsidurti per create team mygtuka, kuris atsius to turnyro kuriam kuriama teama info: budget max plaers in team kuris bus reikalingas happen funkcijai
     constructor(private ds: DService,
@@ -29,12 +35,32 @@ export class CreateTeamComponent implements OnInit {
 
     }
 
+    calculate() {
+        let sum = 0
+        for (let i = 0; i < this.list.length; i++) {
+            sum += this.list[i].price;
+        }
+        if (sum <= this.tournament_budget) {
+            return console.log(sum);
+        }
+        else {
+            return console.log("virsija bl ", sum)
+        }
+    }
+    activateClass(tournament){
+        tournament.active=! tournament.active;
+    }
+    activateClasss(player){
+        player.active=! player.active;
+    }
+
     loginti(tournament) {
         console.log(tournament.max_players);
         console.log(tournament.name);
-        return this.playermuch = tournament.max_players
+        console.log(tournament.budget);
+        console.log(tournament._id);
+        return this.tournament_name = tournament.name, this.tournament_budget = tournament.budget, this.tournament_id = tournament._id
     }
-
     getPlayers(): void {
         this.ds.getTeamPlayers().subscribe(player => {
             this.players = player
@@ -67,6 +93,8 @@ export class CreateTeamComponent implements OnInit {
             this.list2 = (this.list.map(item => " " + item.name)
                 .filter((value, index, self) => self.indexOf(value) === index))
             document.getElementById('out').innerHTML = "Current team is:  " + this.list2;
+            this.join();
+            this.calculate();
         } else
             alert("You can't add this player twice");
     }
@@ -82,6 +110,8 @@ export class CreateTeamComponent implements OnInit {
                 document.getElementById('out').innerHTML = "Current team is:  " + this.list2;
                 document.getElementById('preventas').classList.remove('prevent');
                 document.getElementById('out1').innerHTML = ""
+                this.join();
+                this.calculate();
             }
         }
     }
@@ -102,7 +132,25 @@ export class CreateTeamComponent implements OnInit {
         this.team._players = this.list
         this.ds.registerTeam(JSON.stringify(this.team))
             .subscribe(obj => {
+                this.addTeamTounament(obj);
                 this.router.navigate(['/userprofile'])
             }, err => this.err = 'Tournament with this name already exists')
+    }
+    addTeamTounament(obj) {
+        this.tournament_team_object = ({
+            _tournament_id : this.tournament_id,
+            _team_id: obj.team._id
+        });
+        this.ds.TeamToTournament(JSON.stringify(this.tournament_team_object)).subscribe(obj => {
+        });
+    }
+
+    join() {
+        this.usrObject = ({
+            name: this.tournament_name,
+            sumUsers: this.list
+        });
+        this.ds.updateTournament(JSON.stringify(this.usrObject)).subscribe(obj => {
+        });
     }
 }

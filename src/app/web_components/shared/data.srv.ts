@@ -50,5 +50,9 @@ export class DService {
     getTeamPlayers(): any {
        return this.http.get('/api/player').map(res => res.json());
     }
+    TeamToTournament(tournament_teams: string){
+        return this.http.post('/api/tournament/teams', tournament_teams).map(res => res.json())
+
+    }
 }
 
