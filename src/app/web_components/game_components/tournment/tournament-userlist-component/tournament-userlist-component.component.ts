@@ -25,7 +25,7 @@ export class TournamentUserlistComponentComponent implements OnInit {
 
     public opened = false;
     tournamentObject: any;
-    usrID: any;
+    index: any;
 
     constructor(@Optional() @Inject(MD_DIALOG_DATA) public data: any,
                 private ds: DService,
@@ -37,42 +37,20 @@ export class TournamentUserlistComponentComponent implements OnInit {
     }
 
     public open(user) {
-        const index = this.users.indexOf(user);
-        console.log('Sasuke:', index);
-        if (index !== -1) {
-            this.users.splice(index, 1);
-        }
+        this.index = this.users.indexOf(user);
         this.opened = true;
     }
 
-    delete(user) {
+    delete() {
+        console.log('Sasuke:', this.index);
         this.tournamentObject = ({
             name: this.data.name,
-            _users: this.users
+            _users: this.users.splice(this.index, 1)
         });
         this.ds.updateTournament(JSON.stringify(this.tournamentObject)).subscribe(obj => {
-            console.log(obj);
             this.opened = false;
         });
     }
-
-    // delete(user) {
-    //     for (let i = 0; i < this.users.length; i++) {
-    //         if (this.users[i] === user) {
-    //             this.users.splice(i, 1);
-    //         }
-    //     }
-    //     this.tournamentObject = ({
-    //         name: this.data.name,
-    //         _users: this.users
-    //     });
-    //     this.ds.updateTournament(this.tournamentObject).map(tournamentObject =>
-    //         tournamentObject.json).subscribe(obj => {
-    //             console.log('=====> subscribe OBJ', obj);
-    //         this.opened = false;
-    //     });
-    // }
-
 
     ngOnInit() {
     }
