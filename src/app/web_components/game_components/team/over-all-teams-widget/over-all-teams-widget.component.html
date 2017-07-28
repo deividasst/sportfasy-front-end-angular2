@@ -2,15 +2,17 @@
     <b>Overall Teams</b>
 </p>
 
-<table class="table">
-    <tr>
-        <td><b>Team name</b></td>
-        <td><b>Team master</b></td>
-        <td><b>Players in team</b></td>
-    </tr>
-    <tr *ngFor="let team of teams">
-        <td>{{team.name}}</td>
-        <td>{{team._team_master.name}}</td>
-        <td><app-team-players [players]="team._players"></app-team-players></td>
-    </tr>
-</table>
+<kendo-grid
+    [data]="gridView"
+    [pageSize]="pageSize"
+    [skip]="skip"
+    [pageable]="true"
+    (pageChange)="pageChange($event)"
+>
+    <kendo-grid-column field="name" title="Name">
+    </kendo-grid-column>
+    <kendo-grid-column field="_team_master.name" title="Team master">
+    </kendo-grid-column>
+    <kendo-grid-column field="_players.toString()" title="Players">
+    </kendo-grid-column>
+</kendo-grid>

@@ -40,6 +40,7 @@ import { DialogModule } from '@progress/kendo-angular-dialog';
 import { NavbarComponent } from './navbar/navbar.component';
 import { TeamPlayersComponent } from './web_components/game_components/team/team-players/team-players.component';
 import {GridModule} from "@progress/kendo-angular-grid";
+import {KendoUiSettings} from "./web_components/shared/kendo-ui-settings.srv";
 
 @NgModule({
   declarations: [
@@ -127,6 +128,7 @@ import {GridModule} from "@progress/kendo-angular-grid";
         },
 
         DService,
+        KendoUiSettings,
         TokenHolderServise,
         LogOutComponent,
         SecurityTrimming,

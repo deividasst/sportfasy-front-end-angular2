@@ -1,5 +1,6 @@
 import {Component, OnInit, Injectable} from '@angular/core';
 import {DService} from '../../../shared/data.srv';
+import {KendoUiSettings} from '../../../shared/kendo-ui-settings.srv';
 import {Tournament} from '../../../shared/Tournament'
 import {MdDialog, MdDialogRef} from '@angular/material';
 import {TournamentDialogComponent} from '../tournament-dialog/tournament-dialog.component'
@@ -14,14 +15,18 @@ import {GridDataResult, PageChangeEvent} from '@progress/kendo-angular-grid';
 })
 export class OverAllTournamentsWidgetComponent implements OnInit {
     tournaments: Tournament[];
+    // Kendo grid params
     gridView: GridDataResult;
     data: Object[];
-    pageSize = 3;
-    skip = 0;
+    pageSize: number;
+    skip: number;
 
     constructor(private ds: DService,
                 public dialog: MdDialog,
-                private secureTrim: SecurityTrimming) {
+                private secureTrim: SecurityTrimming,
+                private  kendoSettings: KendoUiSettings) {
+        this.pageSize = this.kendoSettings.getPageSize();
+        this.skip = this.kendoSettings.getSkip();
     }
 
     openDialog(tournament) {
