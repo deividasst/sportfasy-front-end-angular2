@@ -39,6 +39,7 @@ import { DateInputsModule } from '@progress/kendo-angular-dateinputs';
 import { DialogModule } from '@progress/kendo-angular-dialog';
 import { NavbarComponent } from './navbar/navbar.component';
 import { TeamPlayersComponent } from './web_components/game_components/team/team-players/team-players.component';
+import {GridModule} from "@progress/kendo-angular-grid";
 
 @NgModule({
   declarations: [
@@ -58,7 +59,7 @@ import { TeamPlayersComponent } from './web_components/game_components/team/team
     TournamentUserComponentComponent,
     PopupComponent,
     NavbarComponent,
-    TeamPlayersComponent
+    TeamPlayersComponent,
     ],
     imports: [
         BrowserModule,
@@ -75,6 +76,7 @@ import { TeamPlayersComponent } from './web_components/game_components/team/team
         DateInputsModule,
         MaterialModule,
         MdNativeDateModule,
+        GridModule,
         AlertModule.forRoot(),
         DatepickerModule.forRoot(),
         BsDropdownModule.forRoot(),

@@ -2,20 +2,18 @@
     <b>Overall Toutnaments</b>
 </p>
 
-<table class="table">
-    <tr>
-        <td><b>Tournament's name</b></td>
-        <td><b>Tournament's players</b></td>
-        <td><b>Tournament's budget</b></td>
-    </tr>
 
-    <tr *ngFor="let tournament of tournaments">
-        <td>{{tournament.name}}</td>
-        <td>{{tournament.max_players}}</td>
-        <td>{{tournament.budget}}</td>
-        <button md-button (click)="openDialog(tournament)">More info</button>
-
-
-    </tr>
-
-</table>
+<kendo-grid
+    [data]="gridView"
+    [pageSize]="pageSize"
+    [skip]="skip"
+    [pageable]="true"
+    (pageChange)="pageChange($event)"
+>
+    <kendo-grid-column field="name" title="Name" >
+    </kendo-grid-column>
+    <kendo-grid-column field="max_players" title="Max players" >
+    </kendo-grid-column>
+    <kendo-grid-column field="budget" title="Budget">
+    </kendo-grid-column>
+</kendo-grid>
