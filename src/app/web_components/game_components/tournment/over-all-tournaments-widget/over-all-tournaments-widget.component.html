@@ -1,19 +1,24 @@
-<p>
-    <b>Overall Toutnaments</b>
-</p>
+<!--<main id="page-content-wrapper" role="main">-->
+    <!--<div class="container">-->
+
+        <p>
+            <b>Overall Toutnaments</b>
+        </p>
 
 
-<kendo-grid
-    [data]="gridView"
-    [pageSize]="pageSize"
-    [skip]="skip"
-    [pageable]="true"
-    (pageChange)="pageChange($event)"
->
-    <kendo-grid-column field="name" title="Name" >
-    </kendo-grid-column>
-    <kendo-grid-column field="max_players" title="Max players" >
-    </kendo-grid-column>
-    <kendo-grid-column field="budget" title="Budget">
-    </kendo-grid-column>
-</kendo-grid>
+        <kendo-grid
+            [data]="gridView"
+            [pageSize]="pageSize"
+            [skip]="skip"
+            [pageable]="true"
+            (pageChange)="pageChange($event)"
+        >
+            <kendo-grid-column field="name" title="Name">
+            </kendo-grid-column>
+            <kendo-grid-column field="max_players" title="Max players">
+            </kendo-grid-column>
+            <kendo-grid-column field="budget" title="Budget">
+            </kendo-grid-column>
+        </kendo-grid>
+    <!--</div>-->
+<!--</main>-->
