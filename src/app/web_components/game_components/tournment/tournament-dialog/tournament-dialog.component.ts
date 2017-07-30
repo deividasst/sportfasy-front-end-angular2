@@ -37,6 +37,7 @@ export class TournamentDialogComponent implements OnInit {
 }
 
     public open() {
+        document.getElementById('join').classList.add('prevent');
         this.opened = true;
     }
 
@@ -60,9 +61,10 @@ export class TournamentDialogComponent implements OnInit {
                 });
                 this.users.push(this.usrObject);
                 this.ds.updateTournament(JSON.stringify(this.data)).subscribe(obj => {
-                    this.opened = false;
                 });
-                document.getElementById('join').classList.add('prevent');
+                this.opened = false;
+                this.check = false;
+
     }
 
 }
