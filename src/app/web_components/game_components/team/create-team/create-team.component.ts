@@ -21,12 +21,21 @@ export class CreateTeamComponent implements OnInit {
     playermuch: number;
     i: number;
     err;
+    public opened;
 
 //cia tures buti itemai, kurie nurodyti turnyre, ir jie turi atsidurti per create team mygtuka, kuris atsius to turnyro kuriam kuriama teama info: budget max plaers in team kuris bus reikalingas happen funkcijai
     constructor(private ds: DService,
                 private tokenHolder: TokenHolderServise,
                 private router: Router,) {
 
+    }
+
+    public close() {
+        this.opened = false;
+    }
+
+    public open() {
+        this.opened = true;
     }
 
     loginti(tournament) {

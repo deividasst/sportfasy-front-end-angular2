@@ -17,6 +17,7 @@ export class CreatTournmentComponent implements OnInit {
     yy: any;
     mm: any;
     dd: any;
+    public opened;
     public min: Date = new Date(this.dateObj.getUTCFullYear(), this.dateObj.getUTCMonth(), this.dateObj.getUTCDate());
     public max: Date = new Date(this.dateObj.getUTCFullYear(), this.dateObj.getUTCMonth() + 1, this.dateObj.getUTCDate());
     public value: Date = new Date(this.yy = this.dateObj.getUTCFullYear(), this.mm = this.dateObj.getUTCMonth(), this.dd = this.dateObj.getUTCDate());
@@ -33,6 +34,14 @@ export class CreatTournmentComponent implements OnInit {
 
     public getDate2(): number {
         return this.tournament.end && this.tournament.end.getTime() || new Date().getTime();
+    }
+
+    public close() {
+        this.opened = false;
+    }
+
+    public open() {
+        this.opened = true;
     }
 
     constructor(piker: DatepickerModule,

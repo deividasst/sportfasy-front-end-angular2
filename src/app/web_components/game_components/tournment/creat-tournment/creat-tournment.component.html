@@ -60,7 +60,16 @@
                 </div>
                 <div *ngIf="err" class="error alert alert-danger text-center"><span >{{err}}</span></div><br>
                 <div class="text-center">
-                 <button type="submit"  class="btn btn-danger button " [disabled]="!tournamentForm.form.valid" (click)="addTournament()" >Create Tournament</button>
+                    <div class="example-wrapper">
+                        <button type="submit"  class="btn btn-danger button " *ngIf="!opened" [disabled]="!tournamentForm.form.valid" (click)="open()" >Create Tournament</button>
+                        <kendo-dialog title="Please confirm" *ngIf="opened" (close)="close('cancel')">
+                            <p style="margin: 30px; text-align: center;">Create tournament <b>{{tournament.name}}</b>?<br>After pressing this button no future changes will be allowed.</p>
+                            <kendo-dialog-actions>
+                                <button kendoButton (click)="close('no')">Cancel</button>
+                                <button kendoButton (click)="addTournament()" primary="true">Create</button>
+                            </kendo-dialog-actions>
+                        </kendo-dialog>
+                    </div>
                 </div>
             </form>
         </div>
