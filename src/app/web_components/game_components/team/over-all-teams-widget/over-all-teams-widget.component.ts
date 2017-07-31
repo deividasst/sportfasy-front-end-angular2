@@ -11,13 +11,17 @@ import {GridDataResult, PageChangeEvent} from "@progress/kendo-angular-grid";
     styleUrls: ['./over-all-teams-widget.component.scss']
 })
 export class OverAllTeamsWidgetComponent implements OnInit {
-    teams: Team[];
+    teams: any;
     players: any;
     // Kendo grid params
     gridView: GridDataResult;
     data: Object[];
     pageSize: number;
     skip: number;
+    columns: any = [{'field': '_team.name', 'title': 'Name'},
+        {'field': '_team._team_master.name', 'title': 'Team master'},
+        {'field': '_tournament._tournament_master', 'title': 'Tournaments'}]
+
 
     constructor(private ds: DService,
                 private  kendoSettings: KendoUiSettings) {
@@ -28,7 +32,7 @@ export class OverAllTeamsWidgetComponent implements OnInit {
     getTeams(): void {
         this.ds.getAllTeams().subscribe(team => {
             this.teams = team;
-            console.log('teams2: ' + JSON.stringify({ datateams: this.teams}, null, 4));
+            console.log('teams2: ' + JSON.stringify({datateams: this.teams}, null, 4));
             this.loadItems();
         })
     }

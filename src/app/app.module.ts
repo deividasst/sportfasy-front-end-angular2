@@ -42,6 +42,7 @@ import { TeamPlayersComponent } from './web_components/game_components/team/team
 import {GridModule} from "@progress/kendo-angular-grid";
 import {KendoUiSettings} from "./web_components/shared/kendo-ui-settings.srv";
 import {DropDownsModule} from "@progress/kendo-angular-dropdowns";
+import { GridPlayerComponent } from './web_components/game_components/player/grid-player/grid-player.component';
 
 @NgModule({
   declarations: [
@@ -62,6 +63,7 @@ import {DropDownsModule} from "@progress/kendo-angular-dropdowns";
     PopupComponent,
     NavbarComponent,
     TeamPlayersComponent,
+    GridPlayerComponent,
     ],
     imports: [
         BrowserModule,

@@ -33,7 +33,7 @@ export class DService {
     }
 
     getAllTeams() {
-        return this.http.get('/api/teams').map(res => res.json());
+        return this.http.get('/api/tournament/teams').map(res => res.json());
     }
 
     getAllTournaments() {
