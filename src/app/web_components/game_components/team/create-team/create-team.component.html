@@ -20,15 +20,21 @@
             </div>
             <label class="label">Select tournament!</label><br>
 
-            <ul required>
-                <li *ngFor="let tournament of tournaments" [ngClass]="{'active': tournament.active}" required>
-                    {{tournament.name}}
-                    <button type="button" class="btn btn-default" (click)="loginti(tournament)"
-                            (click)="activateClass(tournament)">
-                        select
-                    </button>
-                </li>
-            </ul>
+            <!--<ul>-->
+                <!--<li class="li" *ngFor="let tournament of tournaments" [ngClass]="{'active': tournament.active}" required>-->
+                    <!--{{tournament.name}}-->
+                    <!--<button type="button" class="btn btn-default"-->
+                            <!--(click)="activateClass(tournament)">-->
+                        <!--select-->
+                    <!--</button>-->
+                <!--</li>-->
+            <!--</ul>-->
+            <div class="example-wrapper">
+                <p>Select tournament :</p>
+                <kendo-dropdownlist [data]="listItems" (selectionChange)="selectionChange($event)">
+                </kendo-dropdownlist>
+            </div>
+>>>>>>> team-form-verify1
 
             <div id="out">
                 Your Current team:

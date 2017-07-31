@@ -15,7 +15,7 @@ import {Tournament_teams} from '../../../shared/Tournament-teams'
 export class CreateTeamComponent implements OnInit {
     players: Players[];
     list: Array<any> = new Array;
-    tournaments: Tournament[];
+    tournaments: Tournament [];
     team: Team;
     list2
     userId: string;
@@ -30,6 +30,9 @@ export class CreateTeamComponent implements OnInit {
     tournament_id: any;
     disabled: boolean = true;
     remove_disable: boolean = true;
+    public listItems: Array<string> = new Array;
+    name
+
 
     constructor(private ds: DService,
                 private tokenHolder: TokenHolderServise,
@@ -72,11 +75,18 @@ export class CreateTeamComponent implements OnInit {
 
     loginti(tournament) {
         console.log(tournament.max_players);
-        console.log(tournament.name);
+        console.log(tournament);
         console.log(tournament.budget);
         console.log(tournament._id);
         this.disabled = !this.disabled
         return this.tournament_name = tournament.name, this.tournament_budget = tournament.budget, this.tournament_id = tournament._id
+    }
+    public selectionChange(name: any): void {
+        for (let i = 0; i < this.tournaments.length; i++) {
+            if (this.tournaments[i].name === name) {
+                this.loginti(this.tournaments[i])
+            }
+        }
     }
 
     getPlayers(): void {
@@ -88,6 +98,10 @@ export class CreateTeamComponent implements OnInit {
     getUserTurnaments(userId): void {
         this.ds.getUserTurnaments(userId).subscribe(tournament => {
             this.tournaments = tournament
+            for (let i = 0; i < this.tournaments.length; i++  ) {
+                this.listItems.push(this.tournaments[i].name);
+                console.log (this.tournaments[i].name)
+            }
         });
     }
 
@@ -145,7 +159,6 @@ export class CreateTeamComponent implements OnInit {
             this.getUserTurnaments(item);
             this.team._team_master = item;
         });
-
     }
 
     sendTeam(team) {
