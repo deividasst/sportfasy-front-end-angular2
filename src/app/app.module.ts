@@ -27,7 +27,7 @@ import { OverAllTeamsWidgetComponent } from './web_components/game_components/te
 import { OverAllTournamentsWidgetComponent } from './web_components/game_components/tournment/over-all-tournaments-widget/over-all-tournaments-widget.component';
 import { HomeComponent } from './web_components/home/home.component';
 import { TournamentDialogComponent } from './web_components/game_components/tournment/tournament-dialog/tournament-dialog.component';
-import { TournamentUserlistComponentComponent } from './web_components/game_components/tournment/tournament-userlist-component/tournament-userlist-component.component';
+import { TournamentUserComponentComponent } from './web_components/game_components/tournment/tournament-user-component/tournament-user-component.component';
 import { PopupComponent } from './popup/popup.component';
 import {SecurityTrimming} from './web_components/shared/security-trimming.srv';
 // Import the Animations module
@@ -39,6 +39,7 @@ import { DateInputsModule } from '@progress/kendo-angular-dateinputs';
 import { DialogModule } from '@progress/kendo-angular-dialog';
 import { NavbarComponent } from './navbar/navbar.component';
 import { TeamPlayersComponent } from './web_components/game_components/team/team-players/team-players.component';
+import {GridModule} from "@progress/kendo-angular-grid";
 
 @NgModule({
   declarations: [
@@ -55,10 +56,10 @@ import { TeamPlayersComponent } from './web_components/game_components/team/team
     OverAllTournamentsWidgetComponent,
     HomeComponent,
     TournamentDialogComponent,
-    TournamentUserlistComponentComponent,
+    TournamentUserComponentComponent,
     PopupComponent,
     NavbarComponent,
-    TeamPlayersComponent
+    TeamPlayersComponent,
     ],
     imports: [
         BrowserModule,
@@ -75,6 +76,7 @@ import { TeamPlayersComponent } from './web_components/game_components/team/team
         DateInputsModule,
         MaterialModule,
         MdNativeDateModule,
+        GridModule,
         AlertModule.forRoot(),
         DatepickerModule.forRoot(),
         BsDropdownModule.forRoot(),
@@ -128,7 +130,8 @@ import { TeamPlayersComponent } from './web_components/game_components/team/team
         TokenHolderServise,
         LogOutComponent,
         SecurityTrimming,
-        TournamentUserlistComponentComponent
+        TournamentUserComponentComponent,
+        OverAllTournamentsWidgetComponent
     ],
     bootstrap: [AppComponent
     ],

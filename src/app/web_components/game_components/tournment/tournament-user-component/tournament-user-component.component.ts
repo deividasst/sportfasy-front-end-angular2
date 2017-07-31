@@ -1,19 +1,15 @@
 import {Component, OnInit, Input, Inject, Injectable, Optional} from '@angular/core';
-import {Tournament} from '../../../shared/Tournament';
 import {MD_DIALOG_DATA} from '@angular/material';
 import {DService} from '../../../shared/data.srv';
-import {DialogService, DialogCloseResult} from '@progress/kendo-angular-dialog';
-import {TokenHolderServise} from '../../../shared/tokenholder.srv';
-import {TournamentDialogComponent} from '../tournament-dialog/tournament-dialog.component'
 import {User} from '../../../shared/User';
 
 @Injectable()
 @Component({
-    selector: 'app-tournament-userlist-component',
-    templateUrl: './tournament-userlist-component.component.html',
-    styleUrls: ['./tournament-userlist-component.component.sass']
+    selector: 'app-tournament-user-component',
+    templateUrl: './tournament-user-component.component.html',
+    styleUrls: ['./tournament-user-component.component.sass']
 })
-export class TournamentUserlistComponentComponent implements OnInit {
+export class TournamentUserComponentComponent implements OnInit {
 
     @Input()
     tournament: any;
@@ -24,35 +20,38 @@ export class TournamentUserlistComponentComponent implements OnInit {
     is_allowed: boolean;
 
     public opened = false;
-
-    usrID: any;
+    tournamentObject: any;
+    index: any;
 
     constructor(@Optional() @Inject(MD_DIALOG_DATA) public data: any,
-                private dialogService: DialogService,
-                private tokenHolder: TokenHolderServise,
                 private ds: DService) {
     }
 
-    public close(status) {
+    public close() {
         this.opened = false;
     }
 
-    public open() {
+    public open(user) {
+        this.index = this.users.indexOf(user);
         this.opened = true;
     }
 
-    delete(user) {
-        const index = this.users.indexOf(user);
-        this.users.splice(index, 1);
-        this.ds.updateTournament(JSON.stringify(this.data)).subscribe(obj => {
+    // Deletes user from tournament then delete btn is pressed
+    delete() {
+        this.users.splice(this.index, 1);
+        this.tournamentObject = ({
+            name: this.data.name,
+            _users: this.users
+        });
+        this.ds.updateTournament(JSON.stringify(this.tournamentObject)).subscribe(obj => {
             this.opened = false;
         });
     }
 
     ngOnInit() {
-
     }
 
+    // Closes user credentials field
     conceal(user) {
         if (document.getElementById('userContent').style.display === 'block') {
             document.getElementById('userContent').style.display = 'none';
@@ -60,6 +59,7 @@ export class TournamentUserlistComponentComponent implements OnInit {
         }
     }
 
+    // Shows user credentials field
     show(user) {
         if (document.getElementById('userContent').style.display === 'none') {
             document.getElementById('userContent').innerHTML = 'Name: ' + user.name + '<br/>' + 'Surname: ' + user.surname + '<br/>' + 'Email: ' + user.email;
