@@ -40,6 +40,7 @@ import { DialogModule } from '@progress/kendo-angular-dialog';
 import { NavbarComponent } from './navbar/navbar.component';
 import { TeamPlayersComponent } from './web_components/game_components/team/team-players/team-players.component';
 import {GridModule} from "@progress/kendo-angular-grid";
+import { DropDownsModule } from '@progress/kendo-angular-dropdowns';
 
 @NgModule({
   declarations: [
@@ -77,6 +78,7 @@ import {GridModule} from "@progress/kendo-angular-grid";
         MaterialModule,
         MdNativeDateModule,
         GridModule,
+        DropDownsModule,
         AlertModule.forRoot(),
         DatepickerModule.forRoot(),
         BsDropdownModule.forRoot(),
