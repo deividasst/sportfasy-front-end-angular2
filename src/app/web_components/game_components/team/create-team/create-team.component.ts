@@ -41,10 +41,14 @@ export class CreateTeamComponent implements OnInit {
         for (let i = 0; i < this.list.length; i++) {
             sum += this.list[i].price;
         }
-        if (sum <= this.tournament_budget) {
+        if (sum <= this.tournament_budget){
+            return true
+        }
+        else if (sum == 0) {
             return true
         }
         else {
+            console.log('virsija fakkk')
             return false
         }
     }

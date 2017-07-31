@@ -3,11 +3,24 @@
         <form class="" #teamForm="ngForm" method="post" novalidate>
             <div id="name">
                 <label for="teams" class="label">Name your team!</label><br>
-                <input placeholder="            Team name" [(ngModel)]="team.name" name="team_name" required>
+                <input placeholder="            Team name"   name="name" [(ngModel)]="team.name" name="team_name"
+                       #name="ngModel"  minlength="4" maxlength="24"required>
+            </div>
+            <div *ngIf="name.errors && (name.dirty || name.touched)"
+                 class="alert alert-danger">
+                <div [hidden]="!name.errors.required">
+                    Name is required
+                </div>
+                <div [hidden]="!name.errors.minlength">
+                    Name must be at least 4 characters long.
+                </div>
+                <div [hidden]="!name.errors.maxlength">
+                    Name cannot be more than 24 characters long.
+                </div>
             </div>
             <label class="label">Select tournament!</label><br>
 
-            <ul>
+            <ul required>
                 <li *ngFor="let tournament of tournaments" [ngClass]="{'active': tournament.active}" required>
                     {{tournament.name}}
                     <button type="button" class="btn btn-default" (click)="loginti(tournament)"
@@ -20,7 +33,7 @@
             <div id="out">
                 Your Current team:
             </div>
-            <div class="alert alert-danger">
+            <div class="alert alert-danger" [hidden]="calculate()">
                 <strong>Danger!</strong> {{error}}
             </div>
             <div id="out1">
@@ -54,7 +67,7 @@
                     </tr>
                 </table>
             </div>
-            <button id="button" [disabled]="!teamForm.form.valid" (click)="sendTeam(team)">Create Team</button>
+            <button id="button" [disabled]="!teamForm.form.valid" [disabled]="!calculate()" (click)="sendTeam(team)">Create Team</button>
         </form>
     </div>
 </main>
