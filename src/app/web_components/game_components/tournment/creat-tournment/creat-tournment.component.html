@@ -33,9 +33,9 @@
                 <p  class="alert alert-danger" *ngIf="players.errors?.max">you can have more than 10 players</p>
                 <br>
                 <label for="budget" class="label">Maximum budget: </label>
-                <input type="number" id="budget" name="budget" [(ngModel)]="tournament.budget" #budget="ngModel"  [min]="200" [max]="2000"class="form-control" placeholder="Maximum budget" required>
-                <p  class="alert alert-danger" *ngIf="budget.errors?.min">minimum budget is 200</p>
-                <p  class="alert alert-danger" *ngIf="budget.errors?.max">maximum budget is 2000</p>
+                <input type="number" id="budget" name="budget" [(ngModel)]="tournament.budget" #budget="ngModel"  [min]="500000" [max]="2000000"class="form-control" placeholder="Maximum budget" required>
+                <p  class="alert alert-danger" *ngIf="budget.errors?.min">minimum budget is 500000</p>
+                <p  class="alert alert-danger" *ngIf="budget.errors?.max">maximum budget is 2000000</p>
                 <br>
                 <div class="example-wrapper">
                     <p>Start date:</p>
