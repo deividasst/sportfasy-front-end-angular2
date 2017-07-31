@@ -28,6 +28,7 @@ export class OverAllTeamsWidgetComponent implements OnInit {
     getTeams(): void {
         this.ds.getAllTeams().subscribe(team => {
             this.teams = team;
+            console.log('teams2: ' + JSON.stringify({ datateams: this.teams}, null, 4));
             this.loadItems();
         })
     }
@@ -42,6 +43,10 @@ export class OverAllTeamsWidgetComponent implements OnInit {
             data: this.teams.slice(this.skip, this.skip + this.pageSize),
             total: this.teams.length
         };
+    }
+
+    public showOnlyBeveragesDetails(dataItem: any, index: number): boolean {
+        return dataItem._players !== [];
     }
 
     ngOnInit() {

@@ -13,6 +13,15 @@
     </kendo-grid-column>
     <kendo-grid-column field="_team_master.name" title="Team master">
     </kendo-grid-column>
-    <kendo-grid-column field="_players.toString()" title="Players">
+    <kendo-grid-column field="_players" title="Tournaments">
     </kendo-grid-column>
+    <ng-template kendoGridDetailTemplate let-dataItem
+                 [kendoGridDetailTemplateShowIf]="showOnlyBeveragesDetails">
+        <div *ngIf="dataItem._players">
+            <header>Players</header>
+            <ul *ngFor="let player of dataItem._players">
+                <li>{{player.name}}</li>
+            </ul>
+        </div>
+    </ng-template>
 </kendo-grid>
