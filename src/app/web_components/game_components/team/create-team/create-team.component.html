@@ -8,7 +8,7 @@
             <label class="label">Select tournament!</label><br>
 
             <ul>
-                <li *ngFor="let tournament of tournaments" [ngClass]="{'active': tournament.active}" required>
+                <li class="li" *ngFor="let tournament of tournaments" [ngClass]="{'active': tournament.active}" required>
                     {{tournament.name}}
                     <button type="button" class="btn btn-default" (click)="loginti(tournament)"
                             (click)="activateClass(tournament)">
