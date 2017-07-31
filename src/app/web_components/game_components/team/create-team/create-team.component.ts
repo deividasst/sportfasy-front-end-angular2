@@ -29,10 +29,15 @@ export class CreateTeamComponent implements OnInit {
     tournament_team_object: any;
     tournament_id: any;
     disabled: boolean = true;
+    remove_disable: boolean = true;
 
     constructor(private ds: DService,
                 private tokenHolder: TokenHolderServise,
                 private router: Router,) {
+
+    }
+    removeDisable(){
+        this.remove_disable = !this.remove_disable;
 
     }
 
@@ -91,6 +96,7 @@ export class CreateTeamComponent implements OnInit {
             console.log('per daug');
             document.getElementById('preventas').classList.add('prevent');
             document.getElementById('out1').innerHTML = "Your team is full "
+            return true;
         }
         else {
         }

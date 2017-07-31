@@ -56,11 +56,11 @@
                         <td>{{player.price}}</td>
                         <td>
                             <button [disabled]=disabled md-button id="add" class="select"
-                                    (click)="activateClasss(player)" (click)="addPlayer(player)" (click)="happen()">Add
+                                    (click)="activateClasss(player)" (click)="addPlayer(player)" (click)="happen()" (click)="removeDisable()">Add
                             </button>
                         </td>
                         <td>
-                            <button [disabled]=disabled md-button class="select" (click)="activateClasss(player)"
+                            <button [disabled]=disabled md-button [hidden]=remove_disable class="select"(click)="activateClasss(player)"
                                     (click)="removePlayer(player)">Remove
                             </button>
                         </td>
