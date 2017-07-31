@@ -20,6 +20,7 @@
                             <a>
                                 <span><i class="fa fa-sign-out i" aria-hidden="true"></i></span>
                                 <span class="i" *ngIf="!opened" (click)="open()">LogOut</span>
+                                <div id="kendo">
                                 <div class="example-wrapper">
                                     <kendo-dialog title="Please confirm" *ngIf="opened" (close)="close('cancel')">
                                         <p style="margin: 30px; text-align: center;">LogOut user <b>{{name}}</b>?</p>
@@ -28,6 +29,7 @@
                                             <button kendoButton (click)="logOut()" primary="true">LogOut</button>
                                         </kendo-dialog-actions>
                                     </kendo-dialog>
+                                </div>
                                 </div>
                             </a>
                         </div>
