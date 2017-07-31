@@ -23,12 +23,13 @@ export class CreateTeamComponent implements OnInit {
     i: number;
     usrObject: any;
     err;
+    error;
     tournament_budget: number;
     tournament_name: string;
     tournament_team_object: any;
     tournament_id: any;
+    disabled: boolean = true;
 
-//cia tures buti itemai, kurie nurodyti turnyre, ir jie turi atsidurti per create team mygtuka, kuris atsius to turnyro kuriam kuriama teama info: budget max plaers in team kuris bus reikalingas happen funkcijai
     constructor(private ds: DService,
                 private tokenHolder: TokenHolderServise,
                 private router: Router,) {
@@ -41,26 +42,34 @@ export class CreateTeamComponent implements OnInit {
             sum += this.list[i].price;
         }
         if (sum <= this.tournament_budget) {
-            return console.log(sum);
+            return true
         }
         else {
-            return console.log("virsija bl ", sum)
+            return false
         }
     }
-    activateClass(tournament){
-        tournament.active=! tournament.active;
+
+    activateClass(tournament) {
+        tournament.active = !tournament.active;
     }
-    activateClasss(player){
-        player.active=! player.active;
+
+    activateClasss(player) {
+        player.active = !player.active;
     }
+
+    // activateClassss(player){
+    //     player.active1=! player.active1;
+    // }
 
     loginti(tournament) {
         console.log(tournament.max_players);
         console.log(tournament.name);
         console.log(tournament.budget);
         console.log(tournament._id);
+        this.disabled = !this.disabled
         return this.tournament_name = tournament.name, this.tournament_budget = tournament.budget, this.tournament_id = tournament._id
     }
+
     getPlayers(): void {
         this.ds.getTeamPlayers().subscribe(player => {
             this.players = player
@@ -74,7 +83,7 @@ export class CreateTeamComponent implements OnInit {
     }
 
     happen() {
-        if (this.list.length >= this.playermuch) { //cia atkeliaus inputas is tournament kuris nustatys koks turi buti komandos dydis nustatytas tame turnyre
+        if (this.list.length >= this.playermuch) {
             console.log('per daug');
             document.getElementById('preventas').classList.add('prevent');
             document.getElementById('out1').innerHTML = "Your team is full "
@@ -110,6 +119,7 @@ export class CreateTeamComponent implements OnInit {
                 document.getElementById('out').innerHTML = "Current team is:  " + this.list2;
                 document.getElementById('preventas').classList.remove('prevent');
                 document.getElementById('out1').innerHTML = ""
+                this.error = "";
                 this.join();
                 this.calculate();
             }
@@ -136,9 +146,10 @@ export class CreateTeamComponent implements OnInit {
                 this.router.navigate(['/userprofile'])
             }, err => this.err = 'Tournament with this name already exists')
     }
+
     addTeamTounament(obj) {
         this.tournament_team_object = ({
-            _tournament_id : this.tournament_id,
+            _tournament_id: this.tournament_id,
             _team_id: obj.team._id
         });
         this.ds.TeamToTournament(JSON.stringify(this.tournament_team_object)).subscribe(obj => {
@@ -151,6 +162,7 @@ export class CreateTeamComponent implements OnInit {
             sumUsers: this.list
         });
         this.ds.updateTournament(JSON.stringify(this.usrObject)).subscribe(obj => {
-        });
+            },
+            err => this.error = 'players price exceeds tournament budget limit');
     }
 }

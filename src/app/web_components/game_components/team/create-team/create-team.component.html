@@ -1,50 +1,60 @@
 <main id="page-content-wrapper" role="main">
     <div class="container">
-        <form class="" #tournamentForm="ngForm" method="post" novalidate>
-        <div id="name">
-            <label for="teams" class="label">Name your team!</label><br>
-            <input placeholder="            Team name" [(ngModel)]="team.name" name="team_name" required>
-        </div>
-        <label  class="label">Select tournament!</label><br>
+        <form class="" #teamForm="ngForm" method="post" novalidate>
+            <div id="name">
+                <label for="teams" class="label">Name your team!</label><br>
+                <input placeholder="            Team name" [(ngModel)]="team.name" name="team_name" required>
+            </div>
+            <label class="label">Select tournament!</label><br>
 
             <ul>
-                <li *ngFor="let tournament of tournaments"  [ngClass]="{'active': tournament.active}">
-                    {{tournament.name}} <button (click)="loginti(tournament)" (click)="activateClass(tournament)">select</button>
+                <li *ngFor="let tournament of tournaments" [ngClass]="{'active': tournament.active}" required>
+                    {{tournament.name}}
+                    <button type="button" class="btn btn-default" (click)="loginti(tournament)"
+                            (click)="activateClass(tournament)">
+                        select
+                    </button>
                 </li>
             </ul>
 
-        <div id="out">
-            Your Current team:
-        </div>
-        <div id="out1">
-        </div>
-        <br>
-        <div id="table">
-            <table class="table" id="preventas">
-                <tr>
-                    <th>Player name</th>
-                    <th>Player surname</th>
-                    <th>Player Team</th>
-                    <th>Player price</th>
-                    <th></th>
-                    <th></th>
-                </tr>
-                <tr *ngFor="let player of players" [ngClass]="{'active': player.active}">
-                    <td>{{player.name}}</td>
-                    <td>{{player.surname}}</td>
-                    <td>{{player.real_team}}</td>
-                    <td>{{player.price}}</td>
-                    <td>
-                        <button md-button id="add" class="select"(click)="activateClasss(player)" (click)="addPlayer(player)" (click)="happen()">Add
-                        </button>
-                    </td>
-                    <td>
-                        <button md-button class="select" (click)="activateClasss(player)" (click)="removePlayer(player)">Remove</button>
-                    </td>
-                </tr>
-            </table>
-        </div>
-        <button id="button" (click)="sendTeam(team)">Create Team</button>
+            <div id="out">
+                Your Current team:
+            </div>
+            <div class="alert alert-danger">
+                <strong>Danger!</strong> {{error}}
+            </div>
+            <div id="out1">
+            </div>
+            <br>
+            <div id="table">
+                <table class="table" id="preventas">
+                    <tr>
+                        <th>Player name</th>
+                        <th>Player surname</th>
+                        <th>Player Team</th>
+                        <th>Player price</th>
+                        <th></th>
+                        <th></th>
+                    </tr>
+                    <tr *ngFor="let player of players" [ngClass]="{'active': player.active}">
+                        <td> {{player.name}}</td>
+                        <td>{{player.surname}}</td>
+                        <td>{{player.real_team}}</td>
+                        <td>{{player.price}}</td>
+                        <td>
+                            <button [disabled]=disabled md-button id="add" class="select"
+                                    (click)="activateClasss(player)" (click)="addPlayer(player)" (click)="happen()">Add
+                            </button>
+                        </td>
+                        <td>
+                            <button [disabled]=disabled md-button class="select" (click)="activateClasss(player)"
+                                    (click)="removePlayer(player)">Remove
+                            </button>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <button id="button" [disabled]="!teamForm.form.valid" (click)="sendTeam(team)">Create Team</button>
         </form>
     </div>
 </main>
