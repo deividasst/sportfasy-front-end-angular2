@@ -16,5 +16,14 @@
             </div>
         </md-tab>
     </md-tab-group>
-    <button class="btn btn-primary margintop"  id="join" *ngIf="check" (click)="join()">join</button>
+    <div class="example-wrapper" *ngIf="check">
+        <button class="btn btn-primary margintop" *ngIf="!opened" id="join" (click)="open()">join</button>
+        <kendo-dialog title="Please confirm" *ngIf="opened" (close)="close('cancel')">
+            <p style="margin: 30px; text-align: center;">Join tournament <b>{{data.name}}</b>?</p>
+            <kendo-dialog-actions>
+                <button kendoButton (click)="close('no')">Cancel</button>
+                <button kendoButton (click)="join()" primary="true">Join</button>
+            </kendo-dialog-actions>
+        </kendo-dialog>
+    </div>
 </div>

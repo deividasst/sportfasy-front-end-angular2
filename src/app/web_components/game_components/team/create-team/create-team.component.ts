@@ -33,6 +33,7 @@ export class CreateTeamComponent implements OnInit {
     quit: boolean = false;
     public listItems: Array<string> = new Array;
     name
+    public opened;
 
     constructor(private ds: DService,
                 private tokenHolder: TokenHolderServise,
@@ -59,6 +60,14 @@ export class CreateTeamComponent implements OnInit {
 
     activateClasss(player) {
         player.active = !player.active;
+    }
+
+    public close() {
+        this.opened = false;
+    }
+
+    public open() {
+        this.opened = true;
     }
 
     loginti(tournament) {
