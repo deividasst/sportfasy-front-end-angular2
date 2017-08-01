@@ -82,6 +82,8 @@ export class InterceptedHttp extends Http {
                         return Observable.throw(err);
                     case 409:
                         return Observable.throw(err);
+                    case 404:
+                        return Observable.throw(err);
                 }
             }
         });
