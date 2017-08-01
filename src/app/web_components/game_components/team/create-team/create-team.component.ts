@@ -30,7 +30,9 @@ export class CreateTeamComponent implements OnInit {
     tournament_team_object: any;
     tournament_id: any;
     disabled: boolean = true;
+    quit: boolean =false;
     public listItems: Array<string> = new Array;
+    name
 
     constructor(private ds: DService,
                 private tokenHolder: TokenHolderServise,
@@ -42,10 +44,14 @@ export class CreateTeamComponent implements OnInit {
         for (let i = 0; i < this.list.length; i++) {
             sum += this.list[i].price;
         }
-        if (sum <= this.tournament_budget) {
+        if (sum <= this.tournament_budget){
+            return true
+        }
+        else if (sum == 0) {
             return true
         }
         else {
+            console.log('virsija fakkk')
             return false
         }
     }
@@ -73,6 +79,14 @@ export class CreateTeamComponent implements OnInit {
         }
     }
 
+    doit() {
+    if (this.quit) {
+        return;
+    }
+    this.quit = true;
+        this.disabled = !this.disabled
+    }
+
     getPlayers(): void {
         this.ds.getTeamPlayers().subscribe(player => {
             this.players = player
@@ -81,8 +95,8 @@ export class CreateTeamComponent implements OnInit {
 
     getUserTurnaments(userId): void {
         this.ds.getUserTurnaments(userId).subscribe(tournament => {
-            this.tournaments = tournament
             this.listItems = [];
+            this.tournaments = tournament
             for (let i = 0; i < this.tournaments.length; i++  ) {
                 this.listItems.push(this.tournaments[i].name);
                 console.log (this.tournaments[i].name)
@@ -95,6 +109,7 @@ export class CreateTeamComponent implements OnInit {
             console.log('per daug');
             document.getElementById('preventas').classList.add('prevent');
             document.getElementById('out1').innerHTML = "Your team is full "
+            return true;
         }
         else {
         }

@@ -3,24 +3,36 @@
         <form class="" #teamForm="ngForm" method="post" novalidate>
             <div id="name">
                 <label for="teams" class="label">Name your team!</label><br>
-                <input placeholder="Team name" [(ngModel)]="team.name" name="team_name" required>
+                <input placeholder="Team name" [(ngModel)]="team.name" name="team_name"  #name="ngModel"  minlength="4" maxlength="24" required>
             </div>
             <div class="example-wrapper">
                 <p class="label">Select tournament :</p>
-                <kendo-dropdownlist [data]="listItems" [value]="'select your option'"(selectionChange)="selectionChange($event)">
+                <kendo-dropdownlist [data]="listItems" [value]="'select your option'" (selectionChange)="doit()" (selectionChange)="selectionChange($event)">
                 </kendo-dropdownlist>
             </div>
             <div id="out">
                 Your Current team:
             </div>
-            <div *ngIf="error" class="alert alert-danger">
+            <div *ngIf="error" class="alert alert-danger" [hidden]="calculate()">
                 {{error}}
+            </div>
+            <div *ngIf="name.errors && (name.dirty || name.touched)"
+                 class="alert alert-danger">
+                <div [hidden]="!name.errors.required">
+                    Name is required
+                </div>
+                <div [hidden]="!name.errors.minlength">
+                    Name must be at least 4 characters long.
+                </div>
+                <div [hidden]="!name.errors.maxlength">
+                    Name cannot be more than 24 characters long.
+                </div>
             </div>
             <div id="out1">
             </div>
             <br>
-            <div id="table">
-                <table class="table" id="preventas">
+            <div id="table" class="disable">
+                <table class="table" id="preventas" >
                     <tr>
                         <th>Player name</th>
                         <th>Player surname</th>
@@ -36,18 +48,18 @@
                         <td>{{player.price}}</td>
                         <td>
                             <button [disabled]=disabled md-button id="add" class="select"
-                                    (click)="activateClasss(player)" (click)="addPlayer(player)" (click)="happen()">Add
+                                    (click)="activateClasss(player)" (click)="addPlayer(player)" (click)="happen()" >Add
                             </button>
                         </td>
                         <td>
-                            <button [disabled]=disabled md-button class="select" (click)="activateClasss(player)"
+                            <button [disabled]=disabled md-button class="select"(click)="activateClasss(player)"
                                     (click)="removePlayer(player)">Remove
                             </button>
                         </td>
                     </tr>
                 </table>
             </div>
-            <button id="button" [disabled]="!teamForm.form.valid" (click)="sendTeam(team)">Create Team</button>
+            <button id="button" [disabled]="!teamForm.form.valid" [disabled]="!calculate()" (click)="sendTeam(team)">Create Team</button>
         </form>
     </div>
 </main>
