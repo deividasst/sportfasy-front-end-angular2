@@ -17,6 +17,7 @@ export class ListTeamComponent implements OnInit {
     getTeams(): void {
         this.ds.getAllTeams().subscribe(team => {
             this.teams = team
+            console.log("Team", team[0].name)
         })
     }
 

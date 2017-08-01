@@ -3,29 +3,18 @@
         <form class="" #teamForm="ngForm" method="post" novalidate>
             <div id="name">
                 <label for="teams" class="label">Name your team!</label><br>
-                <input placeholder="            Team name" [(ngModel)]="team.name" name="team_name" required>
+                <input placeholder="Team name" [(ngModel)]="team.name" name="team_name" required>
             </div>
-            <label class="label">Select tournament!</label><br>
-            <!--<ul>-->
-                <!--<li class="li" *ngFor="let tournament of tournaments" [ngClass]="{'active': tournament.active}" required>-->
-                    <!--{{tournament.name}}-->
-                    <!--<button type="button" class="btn btn-default"-->
-                            <!--(click)="activateClass(tournament)">-->
-                        <!--select-->
-                    <!--</button>-->
-                <!--</li>-->
-            <!--</ul>-->
             <div class="example-wrapper">
-                <p>Select tournament :</p>
-                <kendo-dropdownlist [data]="listItems" (selectionChange)="selectionChange($event)">
+                <p class="label">Select tournament :</p>
+                <kendo-dropdownlist [data]="listItems" [value]="'select your option'"(selectionChange)="selectionChange($event)">
                 </kendo-dropdownlist>
             </div>
-
             <div id="out">
                 Your Current team:
             </div>
-            <div class="alert alert-danger">
-                <strong>Danger!</strong> {{error}}
+            <div *ngIf="error" class="alert alert-danger">
+                {{error}}
             </div>
             <div id="out1">
             </div>

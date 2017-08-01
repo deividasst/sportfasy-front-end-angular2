@@ -7,6 +7,7 @@ import {Team} from '../../../shared/Team'
 import {Players} from '../../../shared/Players'
 import {Tournament} from '../../../shared/Tournament'
 import {Tournament_teams} from '../../../shared/Tournament-teams'
+
 @Component({
     selector: 'app-create-team',
     templateUrl: './create-team.component.html',
@@ -30,14 +31,20 @@ export class CreateTeamComponent implements OnInit {
     tournament_id: any;
     disabled: boolean = true;
     public listItems: Array<string> = new Array;
-    name
 
     constructor(private ds: DService,
                 private tokenHolder: TokenHolderServise,
-                private router: Router,) {
+                private router: Router) {
 
     }
-
+    // $("#inp1").kendoDropDownList({
+    //                                  dataTextField : "text",
+    //                                  dataValueField: "value",
+    //                                  dataSource    : data1,
+    //                                  placeholder:"select your option",
+    //                                  select        : onSelect,
+    //                                  value         :1
+    //                              });
     calculate() {
         let sum = 0
         for (let i = 0; i < this.list.length; i++) {
@@ -68,7 +75,6 @@ export class CreateTeamComponent implements OnInit {
         console.log(tournament);
         console.log(tournament.budget);
         console.log(tournament._id);
-        this.disabled = !this.disabled
         return this.tournament_name = tournament.name, this.tournament_budget = tournament.budget, this.tournament_id = tournament._id
     }
     public selectionChange(name: any): void {
@@ -88,6 +94,7 @@ export class CreateTeamComponent implements OnInit {
     getUserTurnaments(userId): void {
         this.ds.getUserTurnaments(userId).subscribe(tournament => {
             this.tournaments = tournament
+            this.listItems = [];
             for (let i = 0; i < this.tournaments.length; i++  ) {
                 this.listItems.push(this.tournaments[i].name);
                 console.log (this.tournaments[i].name)
