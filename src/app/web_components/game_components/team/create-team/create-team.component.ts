@@ -30,7 +30,7 @@ export class CreateTeamComponent implements OnInit {
     tournament_team_object: any;
     tournament_id: any;
     disabled: boolean = true;
-    quit: boolean =false;
+    quit: boolean = false;
     public listItems: Array<string> = new Array;
     name
 
@@ -39,27 +39,22 @@ export class CreateTeamComponent implements OnInit {
                 private router: Router) {
 
     }
+
     calculate() {
-        let sum =0
+        let sum = 0
         let sum2
         for (let i = 0; i < this.list.length; i++) {
             sum += this.list[i].price;
         }
-        if (sum <= this.tournament_budget){
+        if (sum <= this.tournament_budget) {
             sum2 = this.tournament_budget - sum;
             document.getElementById('budget').innerHTML = 'Your budget left: ' + sum2;
             return true
-        }
-        else if (sum === 0) {
+        } else if (sum === 0) {
             return true
-        }
-        else {
+        } else {
             return false
         }
-    }
-
-    activateClass(tournament) {
-        tournament.active = !tournament.active;
     }
 
     activateClasss(player) {
@@ -73,6 +68,7 @@ export class CreateTeamComponent implements OnInit {
         console.log(tournament._id);
         return this.tournament_name = tournament.name, this.tournament_budget = tournament.budget, this.tournament_id = tournament._id
     }
+
     public selectionChange(name: any): void {
         for (let i = 0; i < this.tournaments.length; i++) {
             if (this.tournaments[i].name === name) {
@@ -82,10 +78,10 @@ export class CreateTeamComponent implements OnInit {
     }
 
     doit() {
-    if (this.quit) {
-        return;
-    }
-    this.quit = true;
+        if (this.quit) {
+            return;
+        }
+        this.quit = true;
         this.disabled = !this.disabled
     }
 
@@ -99,9 +95,9 @@ export class CreateTeamComponent implements OnInit {
         this.ds.getUserTurnaments(userId).subscribe(tournament => {
             this.listItems = [];
             this.tournaments = tournament
-            for (let i = 0; i < this.tournaments.length; i++  ) {
+            for (let i = 0; i < this.tournaments.length; i++) {
                 this.listItems.push(this.tournaments[i].name);
-                console.log (this.tournaments[i].name)
+                console.log(this.tournaments[i].name)
             }
         });
     }
@@ -110,47 +106,43 @@ export class CreateTeamComponent implements OnInit {
         if (this.list.length >= this.playermuch) {
             console.log('per daug');
             document.getElementById('preventas').classList.add('prevent');
-            document.getElementById('out1').innerHTML = "Your team is full "
+            document.getElementById('out1').innerHTML = 'Your team is full ';
             return true;
-        }
-        else {
+        } else {
         }
 
         console.log(this.list.length);
     }
 
     addPlayer(player) {
-
         if (this.list.indexOf(player) === -1) {
             this.list.push(player);
             console.log(this.list);
-            this.list2 = (this.list.map(item => " " + item.name)
+            this.list2 = (this.list.map(item => ' ' + item.name)
                 .filter((value, index, self) => self.indexOf(value) === index))
-            document.getElementById('out').innerHTML = "Current team is:  " + this.list2;
+            document.getElementById('out').innerHTML = 'Current team is:  ' + this.list2;
             this.join();
             this.calculate();
-        } else
-            alert("You can't add this player twice");
+        } else {alert(`You can't add this player twice`)};
     }
 
     removePlayer(player) {
         for (let i = this.list.length; i--;) {
             if (this.list[i] === player) {
                 this.list.splice(i, 1);
-                alert(player.name + " removed");
+                alert(player.name + ' removed');
                 console.log(this.list);
                 this.list2 = (this.list.map(item => item.name)
                     .filter((value, index, self) => self.indexOf(value) === index))
-                document.getElementById('out').innerHTML = "Current team is:  " + this.list2;
+                document.getElementById('out').innerHTML = 'Current team is: ' + this.list2;
                 document.getElementById('preventas').classList.remove('prevent');
-                document.getElementById('out1').innerHTML = ""
-                this.error = "";
+                document.getElementById('out1').innerHTML = ' ';
+                this.error = ' ';
                 this.join();
                 this.calculate();
             }
         }
     }
-
 
     ngOnInit() {
         this.team = new Team();

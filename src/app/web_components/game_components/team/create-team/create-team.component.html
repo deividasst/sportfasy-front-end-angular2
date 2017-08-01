@@ -3,11 +3,13 @@
         <form class="" #teamForm="ngForm" method="post" novalidate>
             <div id="name">
                 <label for="teams" class="label">Name your team!</label><br>
-                <input placeholder="Team name" [(ngModel)]="team.name" name="team_name"  #name="ngModel"  minlength="4" maxlength="24" required>
+                <input placeholder="Team name" [(ngModel)]="team.name" name="team_name" #name="ngModel" minlength="4"
+                       maxlength="24" required>
             </div>
             <div class="example-wrapper">
                 <p class="label">Select tournament :</p>
-                <kendo-dropdownlist [data]="listItems" [value]="'select your option'" (selectionChange)="doit()" (selectionChange)="selectionChange($event)">
+                <kendo-dropdownlist [data]="listItems" [value]="'select your option'" (selectionChange)="doit()"
+                                    (selectionChange)="selectionChange($event)">
                 </kendo-dropdownlist>
             </div>
             <div id="budget">
@@ -34,7 +36,7 @@
             </div>
             <br>
             <div id="table" class="disable">
-                <table class="table" id="preventas" >
+                <table class="table" id="preventas">
                     <tr>
                         <th>Player name</th>
                         <th>Player surname</th>
@@ -50,18 +52,20 @@
                         <td>{{player.price}}</td>
                         <td>
                             <button [disabled]=disabled md-button id="add" class="select"
-                                    (click)="activateClasss(player)" (click)="addPlayer(player)" (click)="happen()" >Add
+                                    (click)="activateClasss(player)" (click)="addPlayer(player)" (click)="happen()">Add
                             </button>
                         </td>
                         <td>
-                            <button [disabled]=disabled md-button class="select"(click)="activateClasss(player)"
+                            <button [disabled]=disabled md-button class="select" (click)="activateClasss(player)"
                                     (click)="removePlayer(player)">Remove
                             </button>
                         </td>
                     </tr>
                 </table>
             </div>
-            <button class="btn" id="button" [disabled]="!teamForm.form.valid" [disabled]="!calculate()" (click)="sendTeam(team)">Create Team</button>
+            <button class="btn" id="button" [disabled]="!teamForm.form.valid" [disabled]="!calculate()"
+                    (click)="sendTeam(team)">Create Team
+            </button>
         </form>
     </div>
 </main>
