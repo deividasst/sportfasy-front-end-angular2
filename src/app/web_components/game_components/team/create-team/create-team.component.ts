@@ -40,18 +40,20 @@ export class CreateTeamComponent implements OnInit {
 
     }
     calculate() {
-        let sum = 0
+        let sum =0
+        let sum2
         for (let i = 0; i < this.list.length; i++) {
             sum += this.list[i].price;
         }
         if (sum <= this.tournament_budget){
+            sum2 = this.tournament_budget - sum;
+            document.getElementById('budget').innerHTML = 'Your budget left: ' + sum2;
             return true
         }
-        else if (sum == 0) {
+        else if (sum === 0) {
             return true
         }
         else {
-            console.log('virsija fakkk')
             return false
         }
     }
@@ -119,7 +121,7 @@ export class CreateTeamComponent implements OnInit {
 
     addPlayer(player) {
 
-        if (this.list.indexOf(player) == -1) {
+        if (this.list.indexOf(player) === -1) {
             this.list.push(player);
             console.log(this.list);
             this.list2 = (this.list.map(item => " " + item.name)
@@ -132,10 +134,10 @@ export class CreateTeamComponent implements OnInit {
     }
 
     removePlayer(player) {
-        for (var i = this.list.length; i--;) {
+        for (let i = this.list.length; i--;) {
             if (this.list[i] === player) {
                 this.list.splice(i, 1);
-                alert("removed");
+                alert(player.name + " removed");
                 console.log(this.list);
                 this.list2 = (this.list.map(item => item.name)
                     .filter((value, index, self) => self.indexOf(value) === index))

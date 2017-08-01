@@ -10,6 +10,8 @@
                 <kendo-dropdownlist [data]="listItems" [value]="'select your option'" (selectionChange)="doit()" (selectionChange)="selectionChange($event)">
                 </kendo-dropdownlist>
             </div>
+            <div id="budget">
+            </div>
             <div id="out">
                 Your Current team:
             </div>
@@ -59,7 +61,7 @@
                     </tr>
                 </table>
             </div>
-            <button id="button" [disabled]="!teamForm.form.valid" [disabled]="!calculate()" (click)="sendTeam(team)">Create Team</button>
+            <button class="btn" id="button" [disabled]="!teamForm.form.valid" [disabled]="!calculate()" (click)="sendTeam(team)">Create Team</button>
         </form>
     </div>
 </main>
