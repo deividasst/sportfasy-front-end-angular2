@@ -20,7 +20,7 @@ export class OverAllTeamsWidgetComponent implements OnInit {
     skip: number;
     columns: any = [{'field': '_team.name', 'title': 'Name'},
         {'field': '_team._team_master.name', 'title': 'Team master'},
-        {'field': '_tournament._tournament_master', 'title': 'Tournaments'}]
+        {'field': '_tournament.name', 'title': 'Tournaments'}]
 
 
     constructor(private ds: DService,
