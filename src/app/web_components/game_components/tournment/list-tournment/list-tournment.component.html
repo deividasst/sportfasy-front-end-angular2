@@ -1,34 +1,11 @@
-<main id="page-content-wrapper" role="main">
-    <div class="container">
-        <div id="all_tour">
-            <p><b>My TOURNAMENTS</b></p>
-            <div>
-                <table class="table">
-                    <tr>
-                        <td><b>Tournament's name</b></td>
-                        <td><b>Tournament's players</b></td>
-                        <td><b>Tournament's budget</b></td>
-                    </tr>
+<main>
 
-                    <tr *ngFor="let tournament of tournaments">
-                        <td>{{tournament.name}}</td>
-                        <td>{{tournament.max_players}}</td>
-                        <td>{{tournament.budget}}</td>
-                    </tr>
-
-                </table>
-            </div>
-        </div>
-        <div id="all_teams">
-            <p>TOURNAMENT STATS:</p>
-            <ul>
-                <a>List</a><br>
-                <a>List</a><br>
-                <a>List</a><br>
-                <a>List</a><br>
-                <a>List</a><br>
-                <a>List</a><br>
-            </ul>
+    <div id="all_tour">
+        <p>
+            <b>My Toutnaments</b>
+        </p>
+        <div *ngIf="tournaments">
+            <app-grid-tournaments [tournaments]="tournaments"></app-grid-tournaments>
         </div>
     </div>
 </main>

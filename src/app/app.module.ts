@@ -39,10 +39,11 @@ import { DateInputsModule } from '@progress/kendo-angular-dateinputs';
 import { DialogModule } from '@progress/kendo-angular-dialog';
 import { NavbarComponent } from './navbar/navbar.component';
 import { TeamPlayersComponent } from './web_components/game_components/team/team-players/team-players.component';
-import {GridModule} from "@progress/kendo-angular-grid";
-import {KendoUiSettings} from "./web_components/shared/kendo-ui-settings.srv";
-import {DropDownsModule} from "@progress/kendo-angular-dropdowns";
+import {GridModule} from '@progress/kendo-angular-grid';
+import {KendoUiSettings} from './web_components/shared/kendo-ui-settings.srv';
+import {DropDownsModule} from '@progress/kendo-angular-dropdowns';
 import { GridPlayerComponent } from './web_components/game_components/player/grid-player/grid-player.component';
+import {GridTournamentsComponent} from './web_components/game_components/tournment/grid-tournaments/grid-tournaments.component';
 
 @NgModule({
   declarations: [
@@ -64,6 +65,7 @@ import { GridPlayerComponent } from './web_components/game_components/player/gri
     NavbarComponent,
     TeamPlayersComponent,
     GridPlayerComponent,
+    GridTournamentsComponent,
     ],
     imports: [
         BrowserModule,

@@ -15,47 +15,18 @@ import {GridDataResult, PageChangeEvent} from '@progress/kendo-angular-grid';
 })
 export class OverAllTournamentsWidgetComponent implements OnInit {
     tournaments: Tournament[];
-    // Kendo grid params
-    gridView: GridDataResult;
-    data: Object[];
-    pageSize: number;
-    skip: number;
 
     constructor(private ds: DService,
                 public dialog: MdDialog,
                 private secureTrim: SecurityTrimming,
                 private  kendoSettings: KendoUiSettings) {
-        this.pageSize = this.kendoSettings.getPageSize();
-        this.skip = this.kendoSettings.getSkip();
-    }
-
-    openDialog(tournament) {
-
-        const dialogRef = this.dialog.open(TournamentDialogComponent, {
-            data: tournament,
-            height: '600px',
-            width: '600px'
-        });
     }
 
     getTournaments(): void {
         this.ds.getAllTournaments().subscribe(tournament => {
             this.tournaments = tournament;
-            this.loadItems();
             this.secureTrim.setMastersTournaments(tournament);
         })
-    }
-
-    protected pageChange(event: PageChangeEvent): void {
-        this.skip = event.skip;
-        this.loadItems();
-    }
-
-    private loadItems(): void {
-        this.gridView = {
-            data: this.tournaments.slice(this.skip, this.skip + this.pageSize),
-            total: this.tournaments.length
-        };
     }
 
     ngOnInit() {

@@ -1,0 +1,20 @@
+<kendo-grid
+    [data]="gridView"
+    [pageSize]="pageSize"
+    [skip]="skip"
+    [pageable]="true"
+    (pageChange)="pageChange($event)"
+>
+    <kendo-grid-column field="name" title="Name">
+    </kendo-grid-column>
+    <kendo-grid-column field="max_players" title="Max players">
+    </kendo-grid-column>
+    <kendo-grid-column field="budget" title="Budget">
+    </kendo-grid-column>
+    <kendo-grid-column title="Options">
+        <ng-template kendoGridCellTemplate let-dataItem let-rowIndex="rowIndex">
+            <button kendoButton (click)="openDialog(dataItem)">Expand Tournament</button>
+        </ng-template>
+    </kendo-grid-column>
+
+</kendo-grid>
