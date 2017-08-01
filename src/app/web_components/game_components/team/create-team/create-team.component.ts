@@ -37,14 +37,6 @@ export class CreateTeamComponent implements OnInit {
                 private router: Router) {
 
     }
-    // $("#inp1").kendoDropDownList({
-    //                                  dataTextField : "text",
-    //                                  dataValueField: "value",
-    //                                  dataSource    : data1,
-    //                                  placeholder:"select your option",
-    //                                  select        : onSelect,
-    //                                  value         :1
-    //                              });
     calculate() {
         let sum = 0
         for (let i = 0; i < this.list.length; i++) {
@@ -65,10 +57,6 @@ export class CreateTeamComponent implements OnInit {
     activateClasss(player) {
         player.active = !player.active;
     }
-
-    // activateClassss(player){
-    //     player.active1=! player.active1;
-    // }
 
     loginti(tournament) {
         console.log(tournament.max_players);
