@@ -31,11 +31,9 @@
             <!--</ul>-->
             <div class="example-wrapper">
                 <p>Select tournament :</p>
-                <kendo-dropdownlist [data]="listItems" (selectionChange)="selectionChange($event)">
+                <kendo-dropdownlist required [data]="listItems" (selectionChange)="selectionChange($event)" (selectionChange)="doit()" >
                 </kendo-dropdownlist>
             </div>
->>>>>>> team-form-verify1
-
             <div id="out">
                 Your Current team:
             </div>
@@ -45,8 +43,8 @@
             <div id="out1">
             </div>
             <br>
-            <div id="table">
-                <table class="table" id="preventas">
+            <div id="table" class="disable">
+                <table class="table" id="preventas" >
                     <tr>
                         <th>Player name</th>
                         <th>Player surname</th>
@@ -62,11 +60,11 @@
                         <td>{{player.price}}</td>
                         <td>
                             <button [disabled]=disabled md-button id="add" class="select"
-                                    (click)="activateClasss(player)" (click)="addPlayer(player)" (click)="happen()" (click)="removeDisable()">Add
+                                    (click)="activateClasss(player)" (click)="addPlayer(player)" (click)="happen()" >Add
                             </button>
                         </td>
                         <td>
-                            <button [disabled]=disabled md-button [hidden]=remove_disable class="select"(click)="activateClasss(player)"
+                            <button [disabled]=disabled md-button class="select"(click)="activateClasss(player)"
                                     (click)="removePlayer(player)">Remove
                             </button>
                         </td>

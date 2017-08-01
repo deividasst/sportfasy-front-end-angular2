@@ -29,7 +29,9 @@ export class CreateTeamComponent implements OnInit {
     tournament_team_object: any;
     tournament_id: any;
     disabled: boolean = true;
-    remove_disable: boolean = true;
+    myFunc: any;
+    quit: boolean =false;
+
     public listItems: Array<string> = new Array;
     name
 
@@ -37,10 +39,6 @@ export class CreateTeamComponent implements OnInit {
     constructor(private ds: DService,
                 private tokenHolder: TokenHolderServise,
                 private router: Router,) {
-
-    }
-    removeDisable(){
-        this.remove_disable = !this.remove_disable;
 
     }
 
@@ -78,7 +76,6 @@ export class CreateTeamComponent implements OnInit {
         console.log(tournament);
         console.log(tournament.budget);
         console.log(tournament._id);
-        this.disabled = !this.disabled
         return this.tournament_name = tournament.name, this.tournament_budget = tournament.budget, this.tournament_id = tournament._id
     }
     public selectionChange(name: any): void {
@@ -89,6 +86,19 @@ export class CreateTeamComponent implements OnInit {
         }
     }
 
+    doit() {
+    if(this.quit) {
+        return;
+    }
+    this.quit = true;
+        this.disabled = !this.disabled
+    }
+//     doit(){
+//     this.myFunc = function(){}; // kill it as soon as it was called
+//     console.log('call once and never again!'); // your stuff here
+//         this.disabled = !this.disabled
+// };
+
     getPlayers(): void {
         this.ds.getTeamPlayers().subscribe(player => {
             this.players = player
@@ -97,6 +107,7 @@ export class CreateTeamComponent implements OnInit {
 
     getUserTurnaments(userId): void {
         this.ds.getUserTurnaments(userId).subscribe(tournament => {
+            this.listItems = [];
             this.tournaments = tournament
             for (let i = 0; i < this.tournaments.length; i++  ) {
                 this.listItems.push(this.tournaments[i].name);
