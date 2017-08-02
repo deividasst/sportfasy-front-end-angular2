@@ -22,7 +22,7 @@ export class TournamentDialogComponent implements OnInit {
     users: User[];
     usrObject: any;
     check = true;
-
+    public opened;
 
     constructor(@Optional() @Inject(MD_DIALOG_DATA) public data: any,
                 private ds: DService,
@@ -30,6 +30,15 @@ export class TournamentDialogComponent implements OnInit {
                 private tokenHolder: TokenHolderServise) {
         this.users = data._users;
         this.is_allowed = this.securityTrimm.isAllowedMasterRights(data._id);
+    }
+
+    public close() {
+        this.opened = false;
+}
+
+    public open() {
+        document.getElementById('join').classList.add('prevent');
+        this.opened = true;
     }
 
     // Check if user already joined to tournament
@@ -53,7 +62,9 @@ export class TournamentDialogComponent implements OnInit {
                 this.users.push(this.usrObject);
                 this.ds.updateTournament(JSON.stringify(this.data)).subscribe(obj => {
                 });
-                document.getElementById('join').classList.add('prevent');
+                this.opened = false;
+                this.check = false;
+
     }
 
 }

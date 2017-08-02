@@ -1,24 +1,12 @@
 <div id="main">
-    <p><b>OVERALL TEAM RANKING</b></p>
-    <table class="table">
-        <tr>
-            <td><b>Team name</b></td>
-            <td><b>Team master</b></td>
-            <td><b>Players in team</b></td>
-            <td><b>Points</b></td>
-            <td><b>Position</b></td>
-        </tr>
-        <tr *ngFor="let team of teams">
-            <td>{{team.name}}</td>
-            <td>{{team._team_master.name}}</td>
-            <td>
-                <app-team-players [players]="team._players"></app-team-players>
-            </td>
-            <td>{{team.points}}</td>
-            <td>{{team.rank}}</td>
-        </tr>
-
-    </table>
+    <div id="all_tour">
+        <p>
+            <b>MY TEAMS</b>
+        </p>
+        <div *ngIf="teams">
+            <app-grid-teams [teams]="teams"></app-grid-teams>
+        </div>
+    </div>
 </div>
 
 

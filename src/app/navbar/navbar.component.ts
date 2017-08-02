@@ -13,6 +13,16 @@ import {DService} from '../web_components/shared/data.srv';
 export class NavbarComponent implements OnInit {
     name: string;
 
+    public opened;
+
+    public close() {
+        this.opened = false;
+    }
+
+    public open() {
+        this.opened = true;
+    }
+
     constructor(private ds: DService,
                 private logout: LogOutComponent,
                 private tokenHolder: TokenHolderServise,
