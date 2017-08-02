@@ -1,4 +1,4 @@
-<main id="page-content-wrapper" role="main">
+<div id="main">
     <div class="container">
         <form class="" #teamForm="ngForm" method="post" novalidate>
             <div id="name">
@@ -57,4 +57,4 @@
             <button id="button" [disabled]="!teamForm.form.valid" (click)="sendTeam(team)">Create Team</button>
         </form>
     </div>
-</main>
+</div>

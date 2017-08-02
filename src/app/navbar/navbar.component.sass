@@ -1,8 +1,21 @@
+#mainsidebar
+  margin: 0
+  padding:  0
+  height: 100vh
+  background-color: #ffad01
+
+  #sidebar #sidemenu li ul
+      position: fixed
+      left: 45px
+      margin-top: -45px
+      z-index: 0
+      width: 200px
+      height: 100%
+
 @import url('//maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css')
 
 .sidenav
   height: 100%
-  width: 250px
   position: fixed
   z-index: 0
   top: 0
@@ -12,23 +25,6 @@
   transition: 0.5s
   padding-top: 60px
   display: block
-
-header
-  background: #212121
-  padding-bottom: 0.01%
-  position: fixed
-  top: 0
-  z-index: 5555
-  width: 110%
-  height: 70px
-  float: right
-
-main
-  position: relative
-  width: 100%
-  height: 100%
-  background-color: #d2d2d2
-  overflow: scroll
 
 #pav
   text-align: center
@@ -42,44 +38,25 @@ main
   margin-top: 2px
   margin-bottom: 2%
 
-#all_tour
-  text-align: center
-  text-decoration: none
-  float: left
-  width: 92%
-  height: 55%
-  color: #ffad01
-  background-color: #212121
-  margin-bottom: 1%
-  margin-left: 4%
-
-#all_teams
-  text-align: center
-  text-decoration: none
-  float: left
-  width: 92%
-  height: 55%
-  background-color: #212121
-  color: #ffad01
-  margin-bottom: 1%
-  margin-left: 4%
-
 .sidebar-nav
-
   background-color: #ffad01
   height: 100%
   max-height: 100%
-  position: fixed
-  overflow: hidden
   bottom: 0
-  width: 40%
 
-
-.logo
-  padding-left: 2%
-  font-size: 230%
-  color: white
-  text-decoration: none
+.sidebar-nav
+    float: left
+    display: block
+    font-size: 14px
+    margin: 0
+    list-style: none
+    li
+      text-indent: 0
+      line-height: 45px
+      a
+        display: block
+        text-decoration: none
+        color: #428bca
 
 .sidebar-title
   color: #212121
@@ -110,7 +87,6 @@ i
   padding: 0%
   margin: 0%
 
-
 .profile
   position: relative
   border-radius: 10px
@@ -122,110 +98,6 @@ i
   background-color: #212121
   color: white
 
-.navbar-default .navbar-nav #user-profile
-  height: 50px
-  padding-top: 15px
-  padding-left: 58px
-  img
-    height: 45px
-    width: 45px
-    position: absolute
-    top: 2px
-    left: 8px
-    padding: 1px
-
-#wrapper
-  padding-left: 0
-  -webkit-transition: all .5s ease
-  -moz-transition: all .5s ease
-  -o-transition: all .5s ease
-  transition: all .5s ease
-  display: block
-
-@media (min-width: 992px)
-  #wrapper
-    padding-left: 225px
-
-@media (min-width: 992px)
-  #wrapper #sidebar-wrapper
-    width: 225px
-
-#sidebar-wrapper
-
-  border-right: 1px solid #e7e7e7
-  z-index: 0
-  position: fixed
-  left: 225px
-  width: 0
-  height: 100%
-  margin-left: -225px
-  background: #f8f8f8
-  -webkit-transition: all .5s ease
-  -moz-transition: all .5s ease
-  -o-transition: all .5s ease
-  transition: all .5s ease
-
-  .sidebar-nav
-    float: left
-    display: block
-    position: absolute
-    top: 0
-    width: 225px
-    overflow: hidden
-    font-size: 14px
-    margin: 0
-    padding: 90px 0 0 0
-    list-style: none
-    li
-      text-indent: 0
-      line-height: 45px
-      a
-        display: block
-        text-decoration: none
-        color: #428bca
-
-#sidebar-wrapper .sidebar-nav li
-  a
-    .sidebar-icon
-      width: 45px
-      height: 45px
-      font-size: 14px
-      padding: 0 2px
-      display: inline-block
-      text-indent: 7px
-      margin-right: 10px
-      color: #fff
-      float: left
-    .caret
-      position: absolute
-      right: 23px
-      top: auto
-      margin-top: 20px
-  ul.panel-collapse
-    list-style: none
-    -moz-padding-start: 0
-    -webkit-padding-start: 0
-    -khtml-padding-start: 0
-    -o-padding-start: 0
-    padding-start: 0
-    padding: 0
-    li
-      i
-        margin-right: 10px
-      text-indent: 15px
-
-@media (max-width: 992px)
-  #wrapper #sidebar-wrapper
-    width: 45px
-    #sidebar #sidemenu li ul
-      position: fixed
-      left: 45px
-      margin-top: -45px
-      z-index: 0
-      width: 200px
-      height: 0
-
-
 .button
   background-color: #ffad01
   color: #212121
@@ -233,4 +105,4 @@ i
 
 .body
   background-color: #ffad01
-
+//

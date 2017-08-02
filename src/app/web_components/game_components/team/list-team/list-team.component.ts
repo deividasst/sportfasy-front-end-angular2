@@ -29,6 +29,6 @@ export class ListTeamComponent implements OnInit {
     }
 
     ngOnInit() {
-        this.getTeams();
+        // this.getTeams();
     }
 }

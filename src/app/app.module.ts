@@ -44,6 +44,7 @@ import {KendoUiSettings} from './web_components/shared/kendo-ui-settings.srv';
 import {DropDownsModule} from '@progress/kendo-angular-dropdowns';
 import { GridPlayerComponent } from './web_components/game_components/player/grid-player/grid-player.component';
 import {GridTournamentsComponent} from './web_components/game_components/tournment/grid-tournaments/grid-tournaments.component';
+import { MainHeaderComponent } from './main-header/main-header.component';
 
 @NgModule({
   declarations: [
@@ -66,6 +67,7 @@ import {GridTournamentsComponent} from './web_components/game_components/tournme
     TeamPlayersComponent,
     GridPlayerComponent,
     GridTournamentsComponent,
+    MainHeaderComponent,
     ],
     imports: [
         BrowserModule,

@@ -23,7 +23,8 @@ export class ListTournmentComponent implements OnInit {
   }
     getUserTurnaments(userId): void {
         this.ds.getUserTurnaments(userId).subscribe(tournament => {
-            this.tournaments = tournament
+            this.tournaments = tournament;
+
         });
     }
 
