@@ -10,8 +10,10 @@ import {TokenHolderServise} from './web_components/shared/tokenholder.srv';
 })
 export class AppComponent {
     title = 'app';
+    name: string;
 
     constructor(private tokenHolder: TokenHolderServise, private ds: DService) {
+        this.tokenHolder.nameChange$.subscribe(item => this.name = item);
         if (localStorage.getItem('id_token') && !this.tokenHolder.getUserID()) {
             this.refreshUserData();
         }
