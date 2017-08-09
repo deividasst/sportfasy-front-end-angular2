@@ -13,7 +13,7 @@ export class TokenHolderServise {
     _userName: string;
     _userSurname: string;
     // Observable sources
-    private _nameChange = new ReplaySubject<string>();
+    public _nameChange = new ReplaySubject<string>();
     private _idChange = new ReplaySubject<string>();
     private _emailChange = new ReplaySubject<string>();
     private _surnameChange = new ReplaySubject<string>();

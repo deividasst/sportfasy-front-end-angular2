@@ -12,7 +12,6 @@ import {DService} from '../web_components/shared/data.srv';
 })
 export class NavbarComponent implements OnInit {
     name: string;
-
     public opened;
 
     public close() {
@@ -36,6 +35,7 @@ export class NavbarComponent implements OnInit {
 
     logOut(): void {
         this.logout.logOut();
+        this.opened = false;
     }
 
 }

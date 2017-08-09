@@ -2,7 +2,7 @@ import {Component, OnInit, Injectable} from '@angular/core';
 import {DService} from '../../shared/data.srv';
 import {TokenHolderServise} from '../../shared/tokenholder.srv';
 import {Router} from '@angular/router';
-import {isNullOrUndefined, isUndefined} from "util";
+import {isNullOrUndefined, isUndefined} from 'util';
 
 
 @Injectable()
@@ -22,8 +22,8 @@ export class LogOutComponent implements OnInit {
 
     logOut() {
         localStorage.removeItem('id_token');
-        localStorage.clear();
         this.tokenHolder.setUserName('');
+        localStorage.clear();
         this.router.navigate(['/login']);
     }
 }
