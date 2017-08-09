@@ -1,40 +1,15 @@
-import {Component, OnInit} from '@angular/core';
-import {DService} from '../shared/data.srv';
-import {TokenHolderServise} from '../shared/tokenholder.srv';
-import {PopupComponent} from '../../popup/popup.component';
-import {MdDialog, MdDialogRef} from '@angular/material';
+import { Component, OnInit } from '@angular/core';
 
 @Component({
-    selector: 'app-user-profile',
-    templateUrl: './user-profile.component.html',
-    styleUrls: ['./user-profile.component.sass']
+  selector: 'app-user-profile',
+  templateUrl: './user-profile.component.html',
+  styleUrls: ['./user-profile.component.sass']
 })
 export class UserProfileComponent implements OnInit {
-    userId: string;
 
-    constructor(private ds: DService,
-                private tokenHolder: TokenHolderServise,
-                public dialog: MdDialog) {
-    }
+  constructor() { }
 
-    ngOnInit() {
-        this.tokenHolder.idChange$.first().subscribe(item => {
-            this.userId = item;
-            console.log('userID ' + item);
-            this.getUserTurnaments(item);
-        });
-    }
+  ngOnInit() {
+  }
 
-    getUserTurnaments(userId): void {
-        this.ds.getUserTurnaments(userId).subscribe(tournament => {
-            console.log('tournaments ' + tournament);
-            if (tournament.length === 0) {
-                this.sugestToJoinTournament();
-            }
-        });
-    }
-
-    sugestToJoinTournament(): void {
-        const dialogRef = this.dialog.open(PopupComponent);
-    }
 }

@@ -14,7 +14,7 @@ import {CreatTournmentComponent} from './web_components/game_components/tournmen
 import {ListTournmentComponent} from './web_components/game_components/tournment/list-tournment/list-tournment.component';
 import {ListTeamComponent} from './web_components/game_components/team/list-team/list-team.component';
 import {CreateTeamComponent} from './web_components/game_components/team/create-team/create-team.component';
-import {UserProfileComponent} from './web_components/user-profile/user-profile.component';
+import {DashboardComponent} from './web_components/dashboard/dashboard.component';
 import { AlertModule } from 'ngx-bootstrap';
 import {DService} from './web_components/shared/data.srv';
 import {httpFactory} from './http.factory';
@@ -46,6 +46,7 @@ import { GridPlayerComponent } from './web_components/game_components/player/gri
 import {GridTournamentsComponent} from './web_components/game_components/tournment/grid-tournaments/grid-tournaments.component';
 import { MainHeaderComponent } from './main-header/main-header.component';
 import { GridTeamsComponent } from './web_components/game_components/team/grid-teams/grid-teams.component';
+import { UserProfileComponent } from './web_components/user-profile/user-profile.component';
 
 @NgModule({
   declarations: [
@@ -57,7 +58,7 @@ import { GridTeamsComponent } from './web_components/game_components/team/grid-t
     ListTournmentComponent,
     ListTeamComponent,
     CreateTeamComponent,
-    UserProfileComponent,
+      DashboardComponent,
     OverAllTeamsWidgetComponent,
     OverAllTournamentsWidgetComponent,
     HomeComponent,
@@ -70,6 +71,7 @@ import { GridTeamsComponent } from './web_components/game_components/team/grid-t
     GridTournamentsComponent,
     MainHeaderComponent,
     GridTeamsComponent,
+    UserProfileComponent,
     ],
     imports: [
         BrowserModule,
@@ -123,6 +125,10 @@ import { GridTeamsComponent } from './web_components/game_components/team/grid-t
             {
                 path: 'creatteam',
                 component: CreateTeamComponent
+            },
+            {
+                path: 'dashboard',
+                component: DashboardComponent
             },
             {
                 path: 'userprofile',

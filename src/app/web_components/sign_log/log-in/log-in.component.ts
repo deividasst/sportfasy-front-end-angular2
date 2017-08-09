@@ -38,7 +38,7 @@ export class LogInComponent implements OnInit {
                             obj.userEmail,
                             obj.userName,
                             obj.userSurname),
-                            this.router.navigate(['/userprofile'])
+                            this.router.navigate(['/dashboard'])
                     }
                 },
                 err => this.error = 'Email or password invalid. Please try again.');
