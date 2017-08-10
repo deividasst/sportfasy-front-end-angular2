@@ -33,13 +33,8 @@ export class UserProfileComponent implements OnInit {
         this.skip = this.kendoSettings.getSkip();
     }
 
-    openDialog(tournament) {
+    function(){
 
-        const dialogRef = this.dialog.open(TournamentDialogComponent, {
-            data: tournament,
-            height: '600px',
-            width: '600px'
-        });
     }
 
 
