@@ -16,16 +16,11 @@ export class SecurityTrimming {
     }
 
     setMastersTournaments(tournaments: Tournament[]) {
-        console.log('tournaments ' + tournaments);
         this._master_in_tournaments = tournaments.map(tournament => {
-            console.log('tournament._tournament_master ' + JSON.stringify({data : tournament._tournament_master}, null, 4));
             if (tournament._tournament_master._id === this.tokenHolder.getUserID()) {
-                console.log('tournament._id ' + tournament._id);
                 return tournament._id;
             }
         });
-        console.log('_master_in_tournaments ' + this._master_in_tournaments );
-        console.log('this.tokenHolder.getUserID() ' + this.tokenHolder.getUserID() );
     }
 
     isAllowedMasterRights(tournamentId) {

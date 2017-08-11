@@ -68,7 +68,7 @@ export class CreatTournmentComponent implements OnInit {
     addTournament(tournament) {
         this.ds.registerTournament(JSON.stringify(this.tournament))
             .subscribe(obj => {
-                this.router.navigate(['/userprofile'])
+                this.router.navigate(['/dashboard'])
             }, err => this.err = 'Tournament with this name already exists')
     }
 

@@ -1,9 +1,7 @@
 import {Component, OnInit} from '@angular/core';
-import {Team} from '../../../shared/Team'
 import {DService} from '../../../shared/data.srv';
-import {TeamPlayersComponent} from '../team-players/team-players.component'
-import {KendoUiSettings} from "../../../shared/kendo-ui-settings.srv";
-import {GridDataResult, PageChangeEvent} from "@progress/kendo-angular-grid";
+import {KendoUiSettings} from '../../../shared/kendo-ui-settings.srv';
+import {GridDataResult, PageChangeEvent} from '@progress/kendo-angular-grid';
 
 @Component({
     selector: 'app-over-all-teams-widget',
@@ -19,7 +17,7 @@ export class OverAllTeamsWidgetComponent implements OnInit {
     pageSize: number;
     skip: number;
     columns: any = [{'field': '_team.name', 'title': 'Name'},
-        {'field': '_team._team_master.name', 'title': 'Team master'},
+        {'field': '_team_master.name', 'title': 'Team master'},
         {'field': '_tournament.name', 'title': 'Tournaments'}]
 
 
@@ -32,7 +30,6 @@ export class OverAllTeamsWidgetComponent implements OnInit {
     getTeams(): void {
         this.ds.getAllTeams().subscribe(team => {
             this.teams = team;
-            console.log('teams2: ' + JSON.stringify({datateams: this.teams}, null, 4));
             this.loadItems();
         })
     }
@@ -56,6 +53,4 @@ export class OverAllTeamsWidgetComponent implements OnInit {
     ngOnInit() {
         this.getTeams();
     }
-
-
 }

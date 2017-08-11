@@ -33,25 +33,24 @@ export class UserProfileComponent implements OnInit {
         this.skip = this.kendoSettings.getSkip();
     }
 
-    function(){
-
-    }
-
-
-    protected pageChange(event: PageChangeEvent): void {
-        this.skip = event.skip;
-        this.loadItems();
-    }
-
-    private loadItems(): void {
-        this.gridView = {
-            data: this.tournaments.slice(this.skip, this.skip + this.pageSize),
-            total: this.tournaments.length
-        };
-    }
+    // function(){
+    // }
+    //
+    //
+    // protected pageChange(event: PageChangeEvent): void {
+    //     this.skip = event.skip;
+    //     this.loadItems();
+    // }
+    //
+    // private loadItems(): void {
+    //     this.gridView = {
+    //         data: this.tournaments.slice(this.skip, this.skip + this.pageSize),
+    //         total: this.tournaments.length
+    //     };
+    // }
 
     ngOnInit() {
-        this.loadItems();
+        // this.loadItems();
     }
 
 }

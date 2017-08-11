@@ -20,7 +20,6 @@ export class DashboardComponent implements OnInit {
     ngOnInit() {
         this.tokenHolder.idChange$.first().subscribe(item => {
             this.userId = item;
-            console.log('userID ' + item);
             this.getUserTurnaments(item);
         });
     }

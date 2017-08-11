@@ -32,13 +32,12 @@ export class CreateTeamComponent implements OnInit {
     disabled: boolean = true;
     quit: boolean = false;
     public listItems: Array<string> = new Array;
-    name
+    name;
     public opened;
 
     constructor(private ds: DService,
                 private tokenHolder: TokenHolderServise,
                 private router: Router) {
-
     }
 
     calculate() {
@@ -168,14 +167,15 @@ export class CreateTeamComponent implements OnInit {
         this.ds.registerTeam(JSON.stringify(this.team))
             .subscribe(obj => {
                 this.addTeamTounament(obj);
-                this.router.navigate(['/userprofile'])
+                this.router.navigate(['/dashboard'])
             }, err => this.err = 'Tournament with this name already exists')
     }
 
     addTeamTounament(obj) {
         const tournament_team_object = ({
             _tournament_id: this.tournament_id,
-            _team_id: obj.team._id
+            _team_id: obj.team._id,
+            _team_master: this.userId
         });
         this.ds.TeamToTournament(JSON.stringify(tournament_team_object)).subscribe(object => {
         });
