@@ -47,6 +47,7 @@ import {GridTournamentsComponent} from './web_components/game_components/tournme
 import { MainHeaderComponent } from './main-header/main-header.component';
 import { GridTeamsComponent } from './web_components/game_components/team/grid-teams/grid-teams.component';
 import { UserProfileComponent } from './web_components/user-profile/user-profile.component';
+import { TeamDialogComponent } from './web_components/game_components/team/team-dialog/team-dialog.component';
 
 @NgModule({
   declarations: [
@@ -72,6 +73,7 @@ import { UserProfileComponent } from './web_components/user-profile/user-profile
     MainHeaderComponent,
     GridTeamsComponent,
     UserProfileComponent,
+    TeamDialogComponent,
     ],
     imports: [
         BrowserModule,
@@ -155,6 +157,7 @@ import { UserProfileComponent } from './web_components/user-profile/user-profile
     ],
     entryComponents: [
         TournamentDialogComponent,
+        TeamDialogComponent,
         PopupComponent
     ]
 

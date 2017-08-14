@@ -3,7 +3,8 @@ import {GridDataResult, PageChangeEvent} from '@progress/kendo-angular-grid';
 import {DService} from '../../../shared/data.srv';
 import {KendoUiSettings} from '../../../shared/kendo-ui-settings.srv';
 import {Team} from '../../../shared/Team';
-
+import {MdDialog} from '@angular/material';
+import {TeamDialogComponent} from '../team-dialog/team-dialog.component';
 @Component({
   selector: 'app-grid-teams',
   templateUrl: './grid-teams.component.html',
@@ -24,12 +25,20 @@ export class GridTeamsComponent implements OnInit {
 
 
     constructor(private ds: DService,
+                public dialog: MdDialog,
                 private  kendoSettings: KendoUiSettings) {
         this.pageSize = this.kendoSettings.getPageSize();
         this.skip = this.kendoSettings.getSkip();
     }
 
+    openDialog(team) {
 
+        const dialogRef = this.dialog.open(TeamDialogComponent, {
+            data: team,
+            height: '600px',
+            width: '600px'
+        });
+    }
     protected pageChange(event: PageChangeEvent): void {
         this.skip = event.skip;
         this.loadItems();
@@ -49,9 +58,7 @@ export class GridTeamsComponent implements OnInit {
     ngOnInit() {
         this.loadItems();
     }
-    openDialog(dataItem){
-        console.log(dataItem);
-    }
+
 
 
 }
