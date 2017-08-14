@@ -10,4 +10,9 @@
     <ng-template kendoGridDetailTemplate let-dataItem>
         <app-grid-player [players]="dataItem._team._players"></app-grid-player>
     </ng-template>
+    <kendo-grid-column title="Options">
+        <ng-template kendoGridCellTemplate let-dataItem let-rowIndex="rowIndex">
+            <button kendoButton (click)="openDialog(dataItem)">Expand Tournament</button>
+        </ng-template>
+    </kendo-grid-column>
 </kendo-grid>

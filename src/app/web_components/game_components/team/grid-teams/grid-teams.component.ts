@@ -49,6 +49,9 @@ export class GridTeamsComponent implements OnInit {
     ngOnInit() {
         this.loadItems();
     }
+    openDialog(dataItem){
+        console.log(dataItem);
+    }
 
 
 }
