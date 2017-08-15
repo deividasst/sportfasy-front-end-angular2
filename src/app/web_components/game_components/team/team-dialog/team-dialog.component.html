@@ -1,4 +1,11 @@
 <p>
   team-dialog works!
-Max players allowed: <a>{{data._players}}</a></p>
+
+    {{data._team.name}}
+    {{data._tournament.name}}
+    <app-grid-team-players>
+        [data]="data"
+    </app-grid-team-players>
+
+</p>
 

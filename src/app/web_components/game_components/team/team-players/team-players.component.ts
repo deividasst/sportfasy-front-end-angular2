@@ -8,6 +8,7 @@ import {Component, OnInit, Input} from '@angular/core';
 export class TeamPlayersComponent implements OnInit {
     @Input() players: any;
 
+
     constructor() {
     }
 

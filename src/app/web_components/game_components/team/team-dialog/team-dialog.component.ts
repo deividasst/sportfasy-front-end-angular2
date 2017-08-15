@@ -1,4 +1,4 @@
-import {Component, OnInit, Input, Inject, Injectable, Optional} from '@angular/core';
+import {Component, OnInit, Input, Output, Inject, Injectable, Optional} from '@angular/core';
 import {MD_DIALOG_DATA} from '@angular/material';
 import {DService} from '../../../shared/data.srv';
 import {User} from '../../../shared/User';
