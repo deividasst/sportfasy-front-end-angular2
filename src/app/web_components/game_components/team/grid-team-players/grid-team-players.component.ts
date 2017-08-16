@@ -7,7 +7,7 @@ import {PlayersLedger} from '../../../shared/PlayersLedger';
 import {Tournament_teams} from '../../../shared/Tournament-teams';
 import {MD_DIALOG_DATA, MdDialog} from '@angular/material';
 import {TeamDialogComponent} from '../team-dialog/team-dialog.component';
-import {KendoUiSettings} from '../../../shared/kendo-ui-settings.srv'; 
+import {KendoUiSettings} from '../../../shared/kendo-ui-settings.srv';
 @Component({
     selector: 'app-grid-team-players',
     templateUrl: './grid-team-players.component.html',
@@ -55,8 +55,19 @@ export class GridTeamPlayersComponent implements OnInit {
         return dataItem._players !== [];
     }
     sell(dataItem){
-        console.log("data", dataItem._id, "team id", this.data._team._id, "tournament id", this.data._tournament._id);
+        console.log("data", dataItem._id[0], "team id", this.data._team._id, "tournament id", this.data._tournament._id
+        , "price", dataItem.price);
+        const playerledger = ({
+            tournament_id: this.data._tournament._id,
+            team_id: this.data._team._id,
+            player_id: dataItem._id[0],
+            total_income: dataItem.price
+        });
+        console.log("objektas "+(JSON.stringify(playerledger)));
+        this.ds.SellPlayer(JSON.stringify(playerledger)).subscribe(object => {
+        });
     }
+
 
     ngOnInit() {
         this.loadItems();
