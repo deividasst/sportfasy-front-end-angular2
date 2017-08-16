@@ -1,11 +1,12 @@
 import {Component, Input,Inject, OnInit, Optional} from '@angular/core';
 import {GridDataResult, PageChangeEvent} from '@progress/kendo-angular-grid';
 import {DService} from '../../../shared/data.srv';
-import {KendoUiSettings} from '../../../shared/kendo-ui-settings.srv';
+import {Router} from '@angular/router';
 import {Team} from '../../../shared/Team';
 import {Tournament_teams} from '../../../shared/Tournament-teams';
 import {MD_DIALOG_DATA, MdDialog} from '@angular/material';
 import {TeamDialogComponent} from '../team-dialog/team-dialog.component';
+import {KendoUiSettings} from '../../../shared/kendo-ui-settings.srv';
 @Component({
     selector: 'app-grid-team-players',
     templateUrl: './grid-team-players.component.html',
@@ -22,9 +23,10 @@ export class GridTeamPlayersComponent implements OnInit {
     list: Array<any> = new Array;
     skip: number;
 
-    columns: any = [{'field': 'data._team._players', 'title': 'Name'},
-        {'field': 'data._team_master.name',  'title': 'Team master'},
-        {'field': '_tournament.name', 'title': 'Tournaments'}]
+    // columns: any = [{'field': '.data_team._players.name', 'title': 'Players'},
+    //    {'field': 'data._team_master.name',  'title': 'Income'}
+    //     //{'field': '_tournament.name', 'title': 'Tournaments'}
+    //     ]
 
 
     constructor(@Optional() @Inject(MD_DIALOG_DATA) public data: any,
@@ -43,13 +45,16 @@ export class GridTeamPlayersComponent implements OnInit {
 
     private loadItems(): void {
         this.gridView = {
-            data: this.list.slice(this.skip, this.skip + this.pageSize),
-            total: this.list.length
+            data: this.data._team._players.slice(this.skip, this.skip + this.pageSize),
+            total: this.data._team._players.length
         };
     }
 
     public showOnlyBeveragesDetails(dataItem: any, index: number): boolean {
         return dataItem._players !== [];
+    }
+    sell(dataItem){
+        console.log("data", dataItem._id, "team id", this.data._team._id, "tournament id", this.data._tournament._id);
     }
 
     ngOnInit() {

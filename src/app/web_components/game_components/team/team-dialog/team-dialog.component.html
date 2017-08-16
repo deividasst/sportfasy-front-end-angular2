@@ -3,9 +3,9 @@
 <div class="container">
     <h1>{{data._team.name}}</h1>
     <h5>info</h5>
-    <h4>Number of players: {{data._team._players.length}}/{{data._tournament.max_players}}</h4>
-    <h4>Position: XXX</h4>
-    <h4>Points: XXX</h4>
+    <h5 class="bold">Number of players: {{data._team._players.length}}/{{data._tournament.max_players}}</h5>
+    <h5 class="bold">Position: XXX</h5>
+    <h5 class="bold">Points: XXX</h5>
     <app-grid-team-players>
         [data]="data"
     </app-grid-team-players>

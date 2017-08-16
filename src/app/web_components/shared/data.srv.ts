@@ -60,5 +60,9 @@ export class DService {
         return this.http.post('/api/tournament/teams', tournament_teams).map(res => res.json())
 
     }
+    SellPlayer(playersLedge: string){
+        return this.http.post('/api/tournament/players_ledger', playersLedge).map(res => res.json())
+
+    }
 }
 
