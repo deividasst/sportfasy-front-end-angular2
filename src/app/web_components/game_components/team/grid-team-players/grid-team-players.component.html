@@ -1,5 +1,5 @@
 <kendo-grid
-    [data]="gridView"
+    [data]="data"
     [pageSize]="pageSize"
     [skip]="skip"
     [pageable]="true"
@@ -8,7 +8,7 @@
     <kendo-grid-column *ngFor="let column of columns" field={{column.field}} title={{column.title}}>
     </kendo-grid-column>
     <ng-template kendoGridDetailTemplate let-dataItem>
-        <app-grid-player [players]="data._team._players"></app-grid-player>
+         <app-grid-player [players]="dataItem._team._players"></app-grid-player>
     </ng-template>
     <kendo-grid-column title="Options">
         <ng-template kendoGridCellTemplate let-dataItem let-rowIndex="rowIndex">
@@ -16,3 +16,4 @@
         </ng-template>
     </kendo-grid-column>
 </kendo-grid>
+  <app-grid-player [players]="data._team._players"></app-grid-player>

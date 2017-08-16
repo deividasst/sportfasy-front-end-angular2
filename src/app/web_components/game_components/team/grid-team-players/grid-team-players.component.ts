@@ -21,8 +21,9 @@ export class GridTeamPlayersComponent implements OnInit {
     pageSize: number;
     list: Array<any> = new Array;
     skip: number;
+
     columns: any = [{'field': 'data._team._players', 'title': 'Name'},
-        {'field': '_team_master.name',  'title': 'Team master'},
+        {'field': 'data._team_master.name',  'title': 'Team master'},
         {'field': '_tournament.name', 'title': 'Tournaments'}]
 
 
