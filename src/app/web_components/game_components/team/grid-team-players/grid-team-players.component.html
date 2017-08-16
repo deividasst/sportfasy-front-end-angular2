@@ -19,7 +19,7 @@
     </kendo-grid-column>
     <kendo-grid-column title="Sell">
         <ng-template kendoGridCellTemplate let-dataItem let-rowIndex="rowIndex">
-            <button kendoButton (click)="sell(dataItem)">Sell</button>
+            <button kendoButton (click)="sell(dataItem)" (click)="delete(dataItem)">Sell</button>
         </ng-template>
     </kendo-grid-column>
 </kendo-grid>

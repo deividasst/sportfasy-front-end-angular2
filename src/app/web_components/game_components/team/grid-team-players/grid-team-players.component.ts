@@ -22,6 +22,7 @@ export class GridTeamPlayersComponent implements OnInit {
     gridView: GridDataResult;
     pageSize: number;
     list: Array<any> = new Array;
+    listas: Array<any> = new Array;
     skip: number;
 
     // columns: any = [{'field': '.data_team._players.name', 'title': 'Players'},
@@ -67,6 +68,31 @@ export class GridTeamPlayersComponent implements OnInit {
         this.ds.SellPlayer(JSON.stringify(playerledger)).subscribe(object => {
         });
     }
+    delete(dataItem){
+        for(var i=0; i<this.data._team._players.length; i++){
+            if(this.data._team._players[i].name == dataItem.name){
+                this.data._team._players.splice(i, 1);  //removes 1 element at position i
+                this.loadItems();
+
+                break;
+            }
+        }
+
+        console.log(this.data._team._players);
+        this.listas = (this.data._team._players.map(function (obj) {
+            return obj._id;
+        }));
+        console.log(this.listas);
+         const teamObject = ({
+            name: this.data._team.name,
+            _players: this.listas
+        });
+         console.log(JSON.stringify(teamObject));
+        this.ds.updateTeam(JSON.stringify(teamObject)).subscribe(obj => {
+
+        });
+    }
+
 
 
     ngOnInit() {
