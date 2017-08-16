@@ -105,27 +105,22 @@ export class CreateTeamComponent implements OnInit {
             this.tournaments = tournament
             for (let i = 0; i < this.tournaments.length; i++) {
                 this.listItems.push(this.tournaments[i].name);
-                console.log(this.tournaments[i].name)
             }
         });
     }
 
     happen() {
         if (this.list.length >= this.playermuch) {
-            console.log('per daug');
             document.getElementById('preventas').classList.add('prevent');
             document.getElementById('out1').innerHTML = 'Your team is full ';
             return true;
         } else {
         }
-
-        console.log(this.list.length);
     }
 
     addPlayer(player) {
         if (this.list.indexOf(player) === -1) {
             this.list.push(player);
-            console.log(this.list);
             this.list2 = (this.list.map(item => ' ' + item.name)
                 .filter((value, index, self) => self.indexOf(value) === index))
             document.getElementById('out').innerHTML = 'Current team is:  ' + this.list2;
@@ -139,7 +134,6 @@ export class CreateTeamComponent implements OnInit {
             if (this.list[i] === player) {
                 this.list.splice(i, 1);
                 alert(player.name + ' removed');
-                console.log(this.list);
                 this.list2 = (this.list.map(item => item.name)
                     .filter((value, index, self) => self.indexOf(value) === index))
                 document.getElementById('out').innerHTML = 'Current team is: ' + this.list2;

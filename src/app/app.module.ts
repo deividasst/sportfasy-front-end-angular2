@@ -4,7 +4,6 @@ import {RouterModule, Router} from '@angular/router';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {HttpModule, JsonpModule} from '@angular/http';
 import {BsDropdownModule} from 'ngx-bootstrap/dropdown';
-import {InterceptedHttp} from './http.interceptor';
 
 import {AppComponent} from './app.component';
 import {LogOutComponent} from './web_components/sign_log/log-out/log-out.component';
@@ -48,6 +47,7 @@ import { MainHeaderComponent } from './main-header/main-header.component';
 import { GridTeamsComponent } from './web_components/game_components/team/grid-teams/grid-teams.component';
 import { UserProfileComponent } from './web_components/user-profile/user-profile.component';
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -71,7 +71,7 @@ import { UserProfileComponent } from './web_components/user-profile/user-profile
     GridTournamentsComponent,
     MainHeaderComponent,
     GridTeamsComponent,
-    UserProfileComponent,
+    UserProfileComponent
     ],
     imports: [
         BrowserModule,

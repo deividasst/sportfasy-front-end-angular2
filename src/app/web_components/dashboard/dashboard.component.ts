@@ -26,7 +26,6 @@ export class DashboardComponent implements OnInit {
 
     getUserTurnaments(userId): void {
         this.ds.getUserTurnaments(userId).subscribe(tournament => {
-            console.log('tournaments ' + tournament);
             if (tournament.length === 0) {
                 this.sugestToJoinTournament();
             }

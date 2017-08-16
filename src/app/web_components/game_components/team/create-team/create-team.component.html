@@ -1,8 +1,10 @@
 <div id="main">
     <div class="container">
         <form class="" #teamForm="ngForm" method="post" novalidate>
+
+            <div id="out2">
             <div id="name">
-                <label for="teams" class="label">Name your team!</label><br>
+                <label for="teams" class="label"><b>Name your team!</b></label><br>
                 <input placeholder="Team name" [(ngModel)]="team.name" name="team_name" #name="ngModel" minlength="4"
                        maxlength="24" required>
             </div>
@@ -14,6 +16,8 @@
             </div>
             <div id="budget">
             </div>
+            </div>
+
             <div id="out">
                 Your Current team:
             </div>
