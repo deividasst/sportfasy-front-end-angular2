@@ -99,7 +99,7 @@ export class GridTeamPlayersComponent implements OnInit {
         this.loadItems();
         console.log(this.data)
         this.list.push(this.data);
-        console.log("cia yra listasssssss"+ this.data._team._players[0].name);
+        //console.log("cia yra listasssssss"+ this.data._team._players[0].name);
     }
 
 
