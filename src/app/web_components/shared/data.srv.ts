@@ -49,6 +49,9 @@ export class DService {
     updateTeam(team: string) {
         return this.http.put('/api/teams', team).map(res => res.json());
     }
+    getTeam(name: string) {
+        return this.http.put('/api/teams', name).map(res => res.json());
+    }
 
     getUserTurnaments(userID): any {
         return this.http.get(`/api/tournaments/?userID=${userID}`).map(res => res.json())
