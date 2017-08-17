@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {TokenHolderServise} from "../shared/tokenholder.srv";
 
 @Component({
   selector: 'app-home',
@@ -6,10 +7,11 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./home.component.sass']
 })
 export class HomeComponent implements OnInit {
-
-  constructor() { }
-
+  constructor(private tokenHolder: TokenHolderServise) {
+      this.tokenHolder.setToken('');
+  }
   ngOnInit() {
+
   }
 
 }

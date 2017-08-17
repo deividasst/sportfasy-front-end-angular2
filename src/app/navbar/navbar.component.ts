@@ -27,6 +27,9 @@ export class NavbarComponent implements OnInit {
                 private tokenHolder: TokenHolderServise,
                 public dialog: MdDialog) {
         this.tokenHolder.nameChange$.subscribe(item => this.name = item);
+        if (this.tokenHolder.getToken() === '') {
+            this.name = '';
+        }
 
     }
 
