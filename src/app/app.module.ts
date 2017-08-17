@@ -49,6 +49,7 @@ import { GridTeamsComponent } from './web_components/game_components/team/grid-t
 import { UserProfileComponent } from './web_components/user-profile/user-profile.component';
 import { TeamDialogComponent } from './web_components/game_components/team/team-dialog/team-dialog.component';
 import {GridTeamPlayersComponent} from './web_components/game_components/team/grid-team-players/grid-team-players.component';
+import { GridTeamPlayersSellComponent } from './web_components/game_components/team/grid-team-players-sell/grid-team-players-sell.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -75,6 +76,7 @@ import {GridTeamPlayersComponent} from './web_components/game_components/team/gr
     GridTeamsComponent,
     UserProfileComponent,
     TeamDialogComponent,
+    GridTeamPlayersSellComponent,
     ],
     imports: [
         BrowserModule,
