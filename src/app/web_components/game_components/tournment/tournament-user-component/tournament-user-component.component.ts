@@ -12,6 +12,9 @@ import {User} from '../../../shared/User';
 export class TournamentUserComponentComponent implements OnInit {
 
     @Input()
+    team: any;
+
+    @Input()
     tournament: any;
 
     @Input()

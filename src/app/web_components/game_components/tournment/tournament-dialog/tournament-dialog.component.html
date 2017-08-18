@@ -1,21 +1,35 @@
 <div id="main"><h1>Tournament info</h1>
     <md-tab-group>
+
         <md-tab id="tab" label="Main info">
             <p class="infotext paddingtop">Name: <a>{{data.name}}</a></p>
-            <p class="infotext">Master: <a class = "up">{{data._tournament_master.name}} {{data._tournament_master.surname}}</a></p>
+            <p class="infotext">Master: <a class="up">{{data._tournament_master.name}}
+                {{data._tournament_master.surname}}</a></p>
             <p class="infotext">Max players allowed: <a>{{data.max_players}}</a></p>
             <p class="infotext">Max teams allowed: <a>{{data.max_teams}}</a></p>
             <p class="infotext">Budget: <a>{{data.budget}}</a></p>
             <p class="infotext underline text-center">Tournament starts: <a>{{data.start| date: 'yyyy-MM-dd'}}</a></p>
             <p class="infotext underline text-center">Tournament ends: <a>{{data.end| date: 'yyyy-MM-dd'}}</a></p>
         </md-tab>
-        <md-tab  label="Tournament players list">
+
+        <md-tab label="Tournament players list">
             <div id="tabas2">
                 <app-tournament-user-component [is_allowed]="is_allowed"
-                                                   [users]="users"></app-tournament-user-component>
+                                               [users]="users"></app-tournament-user-component>
             </div>
         </md-tab>
+
+        <md-tab label="Tournament teams list">
+            <div id="tab3">
+            <app-tournament-team-component [teams]="teams"></app-tournament-team-component>
+            <!--<div *ngFor="let team of teams">-->
+                <!--<br/>-->
+                <!--{{teaminfo}}-->
+            </div>
+        </md-tab>
+
     </md-tab-group>
+
     <div class="example-wrapper" *ngIf="check">
         <button class="btn btn-primary margintop" *ngIf="!opened" id="join" (click)="open()">join</button>
         <kendo-dialog title="Please confirm" *ngIf="opened" (close)="close('cancel')">

@@ -4,6 +4,7 @@ import {DService} from '../../../shared/data.srv';
 import {SecurityTrimming} from '../../../shared/security-trimming.srv';
 import {TokenHolderServise} from '../../../shared/tokenholder.srv';
 import {User} from '../../../shared/User'
+import {Team} from '../../../shared/Team';
 
 @Component({
     selector: 'app-tournament-dialog',
@@ -14,12 +15,13 @@ import {User} from '../../../shared/User'
 export class TournamentDialogComponent implements OnInit {
 
     is_allowed: boolean;
-    id_user: any;
+    teaminfo: any;
     usrID = this.tokenHolder.getUserID();
     usrName = this.tokenHolder.getUserName();
     usrSurname = this.tokenHolder.getUserSurname();
     usrEmail = this.tokenHolder.getEmail();
     users: User[];
+    teams: Team[];
     usrObject: any;
     check = true;
     public opened;
@@ -29,6 +31,8 @@ export class TournamentDialogComponent implements OnInit {
                 private securityTrimm: SecurityTrimming,
                 private tokenHolder: TokenHolderServise) {
         this.users = data._users;
+        console.log(data._id, 'cia yra DATA');
+        this.getTournamentTeamsbyID(data._id);
         this.is_allowed = this.securityTrimm.isAllowedMasterRights(data._id);
     }
 
@@ -65,6 +69,18 @@ export class TournamentDialogComponent implements OnInit {
                 this.opened = false;
                 this.check = false;
 
+    }
+    getTournamentTeamsbyID(tournamentID): void {
+        this.ds.getTournamentTeamsbyID(tournamentID).subscribe(team => {
+            this.teams = team;
+            // this.teaminfo = (team.map(function (obj) {
+            //     return obj._team;
+            // }));
+            this.teaminfo = (team.map(function (obj) {
+                return obj._team.name;
+            }));
+            console.log(this.teaminfo, 'the Teams')
+        })
     }
 
 }
