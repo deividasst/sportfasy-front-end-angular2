@@ -1,5 +1,4 @@
 import {Component, OnInit} from '@angular/core';
-
 import {MdDialog, MdDialogRef} from '@angular/material';
 import {TokenHolderServise} from '../web_components/shared/tokenholder.srv';
 import {LogOutComponent} from '../web_components/sign_log/log-out/log-out.component';

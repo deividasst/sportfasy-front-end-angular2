@@ -16,7 +16,9 @@ export class LogInComponent implements OnInit {
     name_user: any;
 
 
-    constructor(private ds: DService, private tokenHolder: TokenHolderServise, private router: Router) {
+    constructor(private ds: DService,
+                private tokenHolder: TokenHolderServise,
+                private router: Router) {
     }
 
     ngOnInit() {

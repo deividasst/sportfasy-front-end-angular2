@@ -9,8 +9,11 @@ import {DService} from '../../../shared/data.srv';
   styleUrls: ['./tournament-team-component.component.sass']
 })
 export class TournamentTeamComponentComponent implements OnInit {
-
+    @Input()
     teams: Team[];
+    teamArray: any[];
+    teamSomething: any;
+
     teaminfo: any;
     kazkas: any;
 
@@ -26,13 +29,14 @@ export class TournamentTeamComponentComponent implements OnInit {
     getTournamentTeamsbyID(tournamentID): void {
         this.ds.getTournamentTeamsbyID(tournamentID).subscribe(team => {
             this.teams = team;
-            // this.teaminfo = (team.map(function (obj) {
-            //     return obj._team;
-            // }));
-            this.teaminfo = (team.map(function (obj) {
-                return obj._team.name;
+
+            this.teamArray = (team.map(function (obj) {
+                return obj._team;
+
+
             }));
-            console.log(this.teaminfo, 'the Teams')
+
+             console.log(this.teamArray, 'the Teams')
         })
     }
 
