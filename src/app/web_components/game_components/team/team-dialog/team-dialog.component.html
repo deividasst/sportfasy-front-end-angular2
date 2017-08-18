@@ -10,7 +10,10 @@
         [data]="data"
     </app-grid-team-players>
 
-    <!--<app-grid-team-players-sell> [players]="players"</app-grid-team-players-sell>-->
+    <!--<app-grid-team-players-sell>-->
+        <!--[players]="players"-->
+    <!--</app-grid-team-players-sell>-->
+
     <tr *ngFor="let player of players" [ngClass]="{'active': player.active}">
         <td> {{player.name}}</td>
         <td>{{player.surname}}</td>

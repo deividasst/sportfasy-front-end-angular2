@@ -37,7 +37,7 @@ export class TeamDialogComponent implements OnInit {
     ngOnInit() {
         this.getPlayers();
         console.log("id"+ this.data._team._id)
-        this.getPoints(this.data._team._id)
+        //this.getPoints(this.data._team._id)
         console.log(this.teams);
 
     }

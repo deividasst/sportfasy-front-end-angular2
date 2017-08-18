@@ -164,6 +164,7 @@ export class CreateTeamComponent implements OnInit {
 
     sendTeam(team) {
         this.team._players = this.list
+        this.team._tournament = this.tournament_id,
         this.ds.registerTeam(JSON.stringify(this.team))
             .subscribe(obj => {
                 this.addTeamTounament(obj);
