@@ -1,13 +1,3 @@
-<div class="tournamentTeam">
-    <b>Team name: </b>
-</div>
-
-<div *ngFor="let team of teamArray">
-<br/>
-{{team.name}}, {{team._team_master}}
-</div>
-
-
 <kendo-grid
     [data]="gridView"
     [pageSize]="pageSize"

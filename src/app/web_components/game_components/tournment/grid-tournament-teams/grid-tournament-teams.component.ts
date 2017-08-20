@@ -5,11 +5,12 @@ import {KendoUiSettings} from '../../../shared/kendo-ui-settings.srv';
 import {Team} from '../../../shared/Team';
 
 @Component({
-  selector: 'app-grid-teams',
-  templateUrl: './grid-teams.component.html',
-  styleUrls: ['./grid-teams.component.sass']
+  selector: 'app-grid-tournament-teams',
+  templateUrl: './grid-tournament-teams.component.html',
+  styleUrls: ['./grid-tournament-teams.component.sass']
 })
-export class GridTeamsComponent implements OnInit {
+export class GridTournamentTeamsComponent implements OnInit {
+
     @Input()
     teams: Team[];
     players: any;
@@ -19,8 +20,8 @@ export class GridTeamsComponent implements OnInit {
     pageSize: number;
     skip: number;
     columns: any = [{'field': '_team.name', 'title': 'Name'},
-        {'field': '_team_master.name',  'title': 'Team master'},
-        {'field': '_tournament.name', 'title': 'Tournaments'}]
+        {'field': '_team_master.name',  'title': 'Budget'},
+        {'field': '_tournament.name', 'title': 'Position'}]
 
 
     constructor(private ds: DService,
@@ -41,12 +42,12 @@ export class GridTeamsComponent implements OnInit {
             total: this.teams.length
         };
     }
-
-    public showOnlyBeveragesDetails(dataItem: any, index: number): boolean {
-        return dataItem._players !== [];
-    }
-
     ngOnInit() {
         this.loadItems();
     }
 }
+
+
+
+
+

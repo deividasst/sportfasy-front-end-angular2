@@ -53,6 +53,10 @@ export class DService {
         return this.http.get(`/api/tournaments/?userID=${userID}`).map(res => res.json())
     }
 
+    teamIncome(team_id): any {
+        return this.http.get(`/api/teams/?team_id=${team_id}`).map(res => res.json())
+    }
+
     getTournamentTeams(teamMaster): any {
         return this.http.get(`/api/tournament/teams/?teamMaster=${teamMaster}`).map(res => res.json())
     }
