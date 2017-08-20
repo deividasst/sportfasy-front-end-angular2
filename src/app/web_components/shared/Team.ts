@@ -6,4 +6,5 @@ export class Team {
     _players: any;
     points: number;
     rank: number;
+    total_income: number;
 }

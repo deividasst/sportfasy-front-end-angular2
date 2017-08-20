@@ -39,10 +39,10 @@ export class GridTeamPlayersSellComponent implements OnInit {
     }
 
     private loadItems(): void {
-        this.gridView = {
-            data: this.players.slice(this.skip, this.skip + this.pageSize),
-            total: this.players.length
-        };
+        // this.gridView = {
+        //     data: this.players.slice(this.skip, this.skip + this.pageSize),
+        //     total: this.players.length
+        // };
     }
 
     // public showOnlyBeveragesDetails(dataItem: any, index: number): boolean {
@@ -51,7 +51,7 @@ export class GridTeamPlayersSellComponent implements OnInit {
 
     ngOnInit() {
         this.loadItems();
-        console.log(this.players);
+        console.log("there are players"+ this.players);
     }
 
 

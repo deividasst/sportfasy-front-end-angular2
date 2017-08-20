@@ -16,7 +16,7 @@ export class TeamDialogComponent implements OnInit {
     public opened;
     players: Players[];
     teams: Team[];
-
+    teamTotals: any;
     constructor(@Optional() @Inject(MD_DIALOG_DATA) public data: any,
                 private ds: DService,
                 private securityTrimm: SecurityTrimming,
@@ -36,9 +36,10 @@ export class TeamDialogComponent implements OnInit {
 
     ngOnInit() {
         this.getPlayers();
-        console.log("id"+ this.data._team._id)
-        //this.getPoints(this.data._team._id)
-        console.log(this.teams);
+        console.log("team id is"+ this.data._team._id);
+        console.log("this is data", this.data);
+        this.getPoints( this.data._team._id);
+        
 
     }
 
@@ -49,9 +50,11 @@ export class TeamDialogComponent implements OnInit {
     }
 
     getPoints(teamid): void {
-        this.ds.getTeam(teamid).subscribe(team => {
-            this.teams = team;
+        this.ds.getTeamTotal(teamid).subscribe(teamtotals => {
+            this.teamTotals = teamtotals;
+            this.teamTotals = teamtotals.total_income;
+            console.log(this.teamTotals);
         })
-
+        console.log(this.teamTotals);
     }
 }
