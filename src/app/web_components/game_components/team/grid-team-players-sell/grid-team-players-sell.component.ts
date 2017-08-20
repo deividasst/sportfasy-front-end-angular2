@@ -35,25 +35,26 @@ export class GridTeamPlayersSellComponent implements OnInit {
 
     protected pageChange(event: PageChangeEvent): void {
         this.skip = event.skip;
-        this.loadItems();
+       // this.loadItems();
     }
 
-    private loadItems(): void {
-        // this.gridView = {
-        //     data: this.players.slice(this.skip, this.skip + this.pageSize),
-        //     total: this.players.length
-        // };
-    }
+    // private loadItems(): void {
+    //     this.gridView = {
+    //         // data: this.players.slice(this.skip, this.skip + this.pageSize),
+    //         // total: this.players.length
+    //     };
+    // }
 
     // public showOnlyBeveragesDetails(dataItem: any, index: number): boolean {
     //     return dataItem._players !== [];
     // }
 
     ngOnInit() {
-        this.loadItems();
+       // this.loadItems();
         console.log("there are players"+ this.players);
     }
 
 
 
 }
+

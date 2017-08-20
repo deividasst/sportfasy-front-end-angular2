@@ -9,9 +9,20 @@ import {MdDialog, MdDialogRef} from '@angular/material';
     templateUrl: './dashboard.component.html',
     styleUrls: ['./dashboard.component.sass']
 })
+
+    
 export class DashboardComponent implements OnInit {
     userId: string;
-
+text:any = {
+    Year: 'Year',
+    Month: 'Month',
+    Weeks: "Weeks",
+    Days: "Days",
+    Hours: "Hours",
+    Minutes: "Minutes",
+    Seconds: "Seconds",
+    MilliSeconds: "MilliSeconds"
+  };
     constructor(private ds: DService,
                 private tokenHolder: TokenHolderServise,
                 public dialog: MdDialog) {
@@ -36,4 +47,7 @@ export class DashboardComponent implements OnInit {
     sugestToJoinTournament(): void {
         const dialogRef = this.dialog.open(PopupComponent);
     }
+
+
+    
 }
