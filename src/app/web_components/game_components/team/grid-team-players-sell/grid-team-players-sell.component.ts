@@ -75,8 +75,19 @@ export class GridTeamPlayersSellComponent implements OnInit {
             }
         }
     }
+
     buy(dataItem){
-        console.log(dataItem);
+        console.log("data", dataItem._id[0], "team id", this.data._team._id, "tournament id", this.data._tournament._id
+            , "price", dataItem.price);
+        const playerledger = ({
+            tournament_id: this.data._tournament._id,
+            team_id: this.data._team._id,
+            player_id: dataItem._id[0],
+            total_income: -dataItem.price
+        });
+        console.log("objektas "+(JSON.stringify(playerledger)));
+        this.ds.SellPlayer(JSON.stringify(playerledger)).subscribe(object => {
+        });
     }
     ngOnInit() {
         this.getPlayers();
