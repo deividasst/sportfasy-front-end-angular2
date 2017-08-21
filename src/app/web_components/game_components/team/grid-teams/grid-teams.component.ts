@@ -49,6 +49,4 @@ export class GridTeamsComponent implements OnInit {
     ngOnInit() {
         this.loadItems();
     }
-
-
 }

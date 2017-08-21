@@ -13,7 +13,8 @@ export class AppComponent {
     name: string;
     token: string;
 
-    constructor(private tokenHolder: TokenHolderServise, private ds: DService) {
+    constructor(private tokenHolder: TokenHolderServise,
+                private ds: DService) {
         this.tokenHolder.nameChange$.subscribe(item => this.name = item);
         if (localStorage.getItem('id_token') && !this.tokenHolder.getUserID()) {
             this.refreshUserData();
@@ -21,6 +22,10 @@ export class AppComponent {
     }
 
     OnInit() {
+        this.refreshUserData();
+        localStorage.removeItem('id_token');
+        this.tokenHolder.setUserName('');
+        localStorage.clear();
     }
 
     private refreshUserData() {

@@ -46,6 +46,7 @@ import {GridTournamentsComponent} from './web_components/game_components/tournme
 import { MainHeaderComponent } from './main-header/main-header.component';
 import { GridTeamsComponent } from './web_components/game_components/team/grid-teams/grid-teams.component';
 import { UserProfileComponent } from './web_components/user-profile/user-profile.component';
+import { TournamentTeamComponentComponent } from './web_components/game_components/tournment/tournament-team-component/tournament-team-component.component';
 
 
 @NgModule({
@@ -71,7 +72,8 @@ import { UserProfileComponent } from './web_components/user-profile/user-profile
     GridTournamentsComponent,
     MainHeaderComponent,
     GridTeamsComponent,
-    UserProfileComponent
+    UserProfileComponent,
+    TournamentTeamComponentComponent,
     ],
     imports: [
         BrowserModule,
@@ -96,7 +98,7 @@ import { UserProfileComponent } from './web_components/user-profile/user-profile
         RouterModule.forRoot([
             {
                 path: '',
-                component: HomeComponent
+                component: HomeComponent,
             },
             {
                 path: 'logout',
