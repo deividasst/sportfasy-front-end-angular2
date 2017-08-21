@@ -1,10 +1,11 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, Input, OnInit, Optional, Inject} from '@angular/core';
 import {GridDataResult, PageChangeEvent} from '@progress/kendo-angular-grid';
 import {DService} from '../../../shared/data.srv';
 import {KendoUiSettings} from '../../../shared/kendo-ui-settings.srv';
 import {Team} from '../../../shared/Team';
 import {Tournament_teams} from '../../../shared/Tournament-teams';
 import {MdDialog} from '@angular/material';
+import {MD_DIALOG_DATA} from '@angular/material';
 import {Players} from '../../../shared/Players'
 import {TeamDialogComponent} from '../team-dialog/team-dialog.component';
 @Component({
@@ -13,19 +14,22 @@ import {TeamDialogComponent} from '../team-dialog/team-dialog.component';
     styleUrls: ['./grid-team-players-sell.component.sass']
 })
 export class GridTeamPlayersSellComponent implements OnInit {
-    @Input()
+    teamArray:Array<any> = new Array
+    playersArray:Array<any> = new Array;
     players: Players[];
     // Kendo grid params
     gridView: GridDataResult;
-    data: Object[];
+    //data: Object[];
     pageSize: number;
+    teamTotals: any;
     skip: number;
-    columns: any = [{'field': 'name', 'title': 'Name'},
-        {'field': 'surname',  'title': 'Surname'},
-        {'field': 'price.name', 'title': 'Price'}]
+    columns: any = [{'field': 'price', 'title': 'Price'},
+        {'field': 'name',  'title': 'Player name'},
+        {'field': 'surname', 'title': 'Player surname'}]
 
 
-    constructor(private ds: DService,
+    constructor(@Optional() @Inject(MD_DIALOG_DATA) public data: any,
+        private ds: DService,
                 public dialog: MdDialog,
                 private  kendoSettings: KendoUiSettings) {
         this.pageSize = this.kendoSettings.getPageSize();
@@ -35,23 +39,52 @@ export class GridTeamPlayersSellComponent implements OnInit {
 
     protected pageChange(event: PageChangeEvent): void {
         this.skip = event.skip;
-       // this.loadItems();
+        this.loadItems();
+    }
+    private loadItems(): void {
+        this.gridView = {
+            data: this.teamArray.slice(this.skip, this.skip + this.pageSize),
+            total: this.teamArray.length
+        };
     }
 
-    // private loadItems(): void {
-    //     this.gridView = {
-    //         // data: this.players.slice(this.skip, this.skip + this.pageSize),
-    //         // total: this.players.length
-    //     };
-    // }
 
     // public showOnlyBeveragesDetails(dataItem: any, index: number): boolean {
     //     return dataItem._players !== [];
     // }
+    getPlayers() {
+        this.ds.getTeamPlayers().subscribe(player => {
+            this.players = player;
+            this.teamArray = [];
+            this.teamArray = (this.players.map(function (obj) {
+                return obj;
+            }))
+            this.compare();
+            this.loadItems();
+            console.log("array"+ this.teamArray);
 
+        })
+    }
+    compare() {
+        for (var i = 0; i < this.data._team._players.length; i++) {
+            for (var j = 0; j < this.teamArray.length; j++) {
+                if (this.data._team._players[i].name === this.teamArray[j].name) {
+                    this.teamArray.splice(j, 1);
+                    break;
+                }
+            }
+        }
+    }
+    buy(dataItem){
+        console.log(dataItem);
+    }
     ngOnInit() {
-       // this.loadItems();
-        console.log("there are players"+ this.players);
+        this.getPlayers();
+        this.playersArray.push(this.data._team._players);
+        this.compare();
+        this.loadItems();
+
+        console.log(this.data._team._players);
     }
 
 

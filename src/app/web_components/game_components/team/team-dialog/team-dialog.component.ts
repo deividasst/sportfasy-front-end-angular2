@@ -16,7 +16,9 @@ export class TeamDialogComponent implements OnInit {
     public opened;
     players: Players[];
     teams: Team[];
+    teamArray: any;
     teamTotals: any;
+    list: Array<any> = new Array;
     constructor(@Optional() @Inject(MD_DIALOG_DATA) public data: any,
                 private ds: DService,
                 private securityTrimm: SecurityTrimming,
@@ -39,14 +41,21 @@ export class TeamDialogComponent implements OnInit {
         console.log("team id is"+ this.data._team._id);
         console.log("this is data", this.data);
         this.getPoints( this.data._team._id);
-        
+        console.log(this.list);
+        console.log(this.teamArray);
 
     }
 
-    getPlayers(): void {
+    getPlayers() {
         this.ds.getTeamPlayers().subscribe(player => {
-            this.players = player
+            this.players = player;
+            this.teamArray = [];
+            this.teamArray = (this.players.map(function (obj) {
+                return obj;
+            }))
+            console.log(this.teamArray);
         })
+
     }
 
     getPoints(teamid): void {
@@ -55,6 +64,5 @@ export class TeamDialogComponent implements OnInit {
             this.teamTotals = teamtotals.total_income;
             console.log(this.teamTotals);
         })
-        console.log(this.teamTotals);
     }
 }

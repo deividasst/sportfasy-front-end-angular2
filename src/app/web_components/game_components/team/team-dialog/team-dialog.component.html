@@ -7,23 +7,15 @@
     <h5 class="bold">Position: XXX</h5>
     <h5 class="bold">Points: XXX</h5>
     <h5 class="bold">Total income: {{teamTotals}}</h5>
-<div *ngIf=players id="grid1">
+<div *ngIf=data id="grid1">
     <app-grid-team-players>
         [data]="data"
     </app-grid-team-players>
 </div>
 
- 
-    <tr *ngFor="let player of players" [ngClass]="{'active': player.active}">
-        <td> {{player.name}}</td>
-        <td>{{player.surname}}</td>
-        <td>{{player.real_team}}</td>
-        <td>{{player.price}}</td>
-        <td>
 </div>
 
-    <div *ngIf=players>
+    <div *ngIf=teamArray>
         <app-grid-team-players-sell>
-            [players]="players"
         </app-grid-team-players-sell>
     </div>
