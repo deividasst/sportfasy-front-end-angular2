@@ -33,7 +33,6 @@ export class TournamentDialogComponent implements OnInit {
 
         this.users = data._users;
         this.teams = data._teams;
-        console.log(data._teams, 'cia yra DATA');
 
         this.is_allowed = this.securityTrimm.isAllowedMasterRights(data._id);
     }
