@@ -32,7 +32,8 @@
                 <br>
                 <input type="number" id="players" name="players" [(ngModel)]="tournament.max_players" #players="ngModel"
                        [min]="3" [max]="10" class="form-control" placeholder="Maximum players in team" required>
-                <p class="alert alert-danger" *ngIf="players.errors?.min">there should be at least 3 players in team!</p>
+                <p class="alert alert-danger" *ngIf="players.errors?.min">there should be at least 3 players in
+                    team!</p>
                 <p class="alert alert-danger" *ngIf="players.errors?.max">you can have more than 10 players!</p>
                 <br>
                 <input type="number" id="budget" name="budget" [(ngModel)]="tournament.budget" #budget="ngModel"
@@ -70,19 +71,19 @@
             </form>
         </div>
 
-            <div>
-                <kendo-dialog title="Please confirm" *ngIf="opened" (close)="close('cancel')">
-                    <p style="margin: 30px; text-align: center;">Create tournament
-                        <b>{{tournament.name}}</b>?<br>After pressing this button no future changes will be
-                        allowed.</p>
-                    <kendo-dialog-actions>
-                        <button kendoButton (click)="close('no')">Cancel</button>
-                        <button kendoButton (click)="addTournament()" primary="true">Create</button>
-                    </kendo-dialog-actions>
-                </kendo-dialog>
-            </div>
+        <div>
+            <kendo-dialog title="Please confirm" *ngIf="opened" (close)="close('cancel')">
+                <p style="margin: 30px; text-align: center;">Create tournament
+                    <b>{{tournament.name}}</b>?<br>After pressing this button no future changes will be
+                    allowed.</p>
+                <kendo-dialog-actions>
+                    <button kendoButton (click)="close('no')">Cancel</button>
+                    <button kendoButton (click)="addTournament()" primary="true">Create</button>
+                </kendo-dialog-actions>
+            </kendo-dialog>
         </div>
     </div>
+</div>
 
 
 
