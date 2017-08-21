@@ -89,6 +89,16 @@ export class GridTeamPlayersSellComponent implements OnInit {
         this.ds.SellPlayer(JSON.stringify(playerledger)).subscribe(object => {
         });
     }
+    delete(dataItem){
+        for(var i=0; i<this.teamArray.length; i++){
+            if(this.teamArray[i].name == dataItem.name){
+                this.teamArray.splice(i, 1);  //removes 1 element at position i
+                this.loadItems();
+                break;
+            }
+        }
+    }
+
     ngOnInit() {
         this.getPlayers();
         this.playersArray.push(this.data._team._players);
