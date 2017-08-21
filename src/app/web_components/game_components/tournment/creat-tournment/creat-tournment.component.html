@@ -2,24 +2,23 @@
 
     <div class="container">
 
-        <div id="out">
+        <div id="out" class="container">
 
 
             <form class="form-signin" #tournamentForm="ngForm" method="post" novalidate>
-                <h2 class="form-signin-heading">Create your tournament!</h2>
-                <label for="name" class="label">Tournament name: </label>
+                <p class="form-signin-heading form_name">Create your tournament!</p>
                 <input type="text" id="name" class="form-control" name="name" [(ngModel)]="tournament.name"
                        placeholder="Tournament name" required minlength="4" maxlength="24" #name="ngModel" autofocus>
                 <div *ngIf="name.errors && (name.dirty || name.touched)"
                      class="alert alert-danger">
                     <div [hidden]="!name.errors.required">
-                        Name is required
+                        Name is required!
                     </div>
                     <div [hidden]="!name.errors.minlength">
-                        Name must be at least 4 characters long.
+                        Name must be at least 4 characters long!
                     </div>
                     <div [hidden]="!name.errors.maxlength">
-                        Name cannot be more than 24 characters long.
+                        Name cannot be more than 24 characters long!
                     </div>
                 </div>
 
@@ -27,25 +26,22 @@
                  Tournament ends: <material-datepicker name="end" [(ngModel)]="tournament.end" placeholder="end date" [rangeEnd]='maxDate' [rangeStart]='minDate' [(date)]="yourModelDate1"  ngDefaultControl></material-datepicker>
                 -->
                 <br>
-                <label for="teams" class="label">Maximum teams:</label>
                 <input type="number" id="teams" name="teams" [(ngModel)]="tournament.max_teams" #teams="ngModel"
                        [min]="2" class="form-control" placeholder="Maximum teams" required>
-                <p class="alert alert-danger" *ngIf="teams.errors?.min">there should be 2 teams at least</p>
+                <p class="alert alert-danger" *ngIf="teams.errors?.min">there should be 2 teams at least!</p>
                 <br>
-                <label for="players" class="label">Maximum Players in team: </label>
                 <input type="number" id="players" name="players" [(ngModel)]="tournament.max_players" #players="ngModel"
                        [min]="3" [max]="10" class="form-control" placeholder="Maximum players in team" required>
-                <p class="alert alert-danger" *ngIf="players.errors?.min">there should be at least 3 players in team</p>
-                <p class="alert alert-danger" *ngIf="players.errors?.max">you can have more than 10 players</p>
+                <p class="alert alert-danger" *ngIf="players.errors?.min">there should be at least 3 players in team!</p>
+                <p class="alert alert-danger" *ngIf="players.errors?.max">you can have more than 10 players!</p>
                 <br>
-                <label for="budget" class="label">Maximum budget: </label>
                 <input type="number" id="budget" name="budget" [(ngModel)]="tournament.budget" #budget="ngModel"
                        [min]="500000" [max]="2000000" class="form-control" placeholder="Maximum budget" required>
-                <p class="alert alert-danger" *ngIf="budget.errors?.min">minimum budget is 500000</p>
-                <p class="alert alert-danger" *ngIf="budget.errors?.max">maximum budget is 2000000</p>
+                <p class="alert alert-danger" *ngIf="budget.errors?.min">minimum budget is 500000!</p>
+                <p class="alert alert-danger" *ngIf="budget.errors?.max">maximum budget is 2000000!</p>
                 <br>
-                <div class="example-wrapper">
-                    <p>Start date:</p>
+                <div class="example-wrapper date_input">
+                    <p class="form_name2">Start date:</p>
                     <kendo-datepicker
                         name="start"
                         [min]="min"
@@ -54,8 +50,9 @@
                         #dateModel="ngModel"
                     ></kendo-datepicker>
                 </div>
-                <div class="example-wrapper">
-                    <p>End date:</p>
+                <div class="example-wrapper date_input">
+                    <p></p>
+                    <p class="form_name2">End date:</p>
                     <kendo-datepicker
                         name="end"
                         [min]="max"
@@ -64,6 +61,9 @@
                         #dateModel="ngModel"
                     ></kendo-datepicker>
                 </div>
+                <button type="submit" class="btn button buttonCreate" *ngIf="!opened" (click)="open()"
+                        [disabled]="!tournamentForm.form.valid">Create Tournament
+                </button>
                 <div *ngIf="err" class="error alert alert-danger text-center"><span>{{err}}</span></div>
                 <br>
 
@@ -71,9 +71,6 @@
         </div>
 
             <div>
-                <button type="submit" class="btn button buttonCreate" *ngIf="!opened" (click)="open()"
-                        [disabled]="!tournamentForm.form.valid">Create Tournament
-                </button>
                 <kendo-dialog title="Please confirm" *ngIf="opened" (close)="close('cancel')">
                     <p style="margin: 30px; text-align: center;">Create tournament
                         <b>{{tournament.name}}</b>?<br>After pressing this button no future changes will be
