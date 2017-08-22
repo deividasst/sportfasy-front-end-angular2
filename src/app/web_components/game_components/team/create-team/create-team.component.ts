@@ -70,10 +70,10 @@ export class CreateTeamComponent implements OnInit {
     }
 
     loginti(tournament) {
-        console.log(tournament.max_players);
-        console.log(tournament);
-        console.log(tournament.budget);
-        console.log(tournament._id);
+        // console.log(tournament.max_players);
+        // console.log(tournament);
+        // console.log(tournament.budget);
+        // console.log(tournament._id);
         return this.tournament_name = tournament.name, this.tournament_budget = tournament.budget, this.tournament_id = tournament._id
     }
 
@@ -175,6 +175,16 @@ export class CreateTeamComponent implements OnInit {
         });
         this.ds.TeamToTournament(JSON.stringify(tournament_team_object)).subscribe(object => {
         });
+        for (let i = 0; i < this.list.length; i++) {
+            const players_ledger = ({
+                tournament_id: this.tournament_id,
+                team_id: obj.team._id,
+                player_id: this.list[i]._id,
+                total_income: this.list[i].price * -1
+            });
+            this.ds.postPlayersLedger(JSON.stringify(players_ledger)).subscribe(object => {
+            });
+        }
     }
 
     join() {
