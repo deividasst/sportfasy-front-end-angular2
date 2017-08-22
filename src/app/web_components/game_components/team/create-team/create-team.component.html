@@ -26,6 +26,18 @@
             </div>
             <div id="out1">
             </div>
+            <div *ngIf="name.errors && (name.dirty || name.touched)"
+                 class="alert alert-danger">
+                <div [hidden]="!name.errors.required">
+                    Name is required!
+                </div>
+                <div [hidden]="!name.errors.minlength">
+                    Name must be at least 4 characters long!
+                </div>
+                <div [hidden]="!name.errors.maxlength">
+                    Name cannot be more than 24 characters long!
+                </div>
+            </div>
             <br>
             <div id="table" class="disable">
                 <table class="table" id="preventas">
@@ -55,20 +67,8 @@
                     </tr>
                 </table>
             </div>
-            <div *ngIf="name.errors && (name.dirty || name.touched)"
-                 class="alert alert-danger">
-                <div [hidden]="!name.errors.required">
-                    Name is required!
-                </div>
-                <div [hidden]="!name.errors.minlength">
-                    Name must be at least 4 characters long!
-                </div>
-                <div [hidden]="!name.errors.maxlength">
-                    Name cannot be more than 24 characters long!
-                </div>
-            </div>
             <div class="example-wrapper">
-                <button class="btn" id="button" *ngIf="!opened" (click)="open()" [disabled]="!teamForm.form.valid"
+                <button class="btn" id="button" *ngIf="!opened" (click)="open()" [disabled]="!teamForm.form.valid && !team.name"
                         [disabled]="!calculate()">Create Team
                 </button>
                 <kendo-dialog title="Please confirm" *ngIf="opened" (close)="close('cancel')">

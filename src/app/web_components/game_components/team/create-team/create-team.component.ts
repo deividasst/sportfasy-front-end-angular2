@@ -7,6 +7,7 @@ import {Team} from '../../../shared/Team'
 import {Players} from '../../../shared/Players'
 import {Tournament} from '../../../shared/Tournament'
 import {Tournament_teams} from '../../../shared/Tournament-teams'
+import {disableDebugTools} from "@angular/platform-browser";
 
 @Component({
     selector: 'app-create-team',
@@ -26,14 +27,13 @@ export class CreateTeamComponent implements OnInit {
     err;
     error;
     tournament_budget: number;
-    tournament_name: string;
-    tournament_team_object: any;
-    tournament_id: any;
+    tournament_name: string;tournament_id: any;
     disabled: boolean = true;
     quit: boolean = false;
     public listItems: Array<string> = new Array;
     name;
     public opened;
+    tournament;
 
     constructor(private ds: DService,
                 private tokenHolder: TokenHolderServise,
@@ -81,6 +81,7 @@ export class CreateTeamComponent implements OnInit {
         for (let i = 0; i < this.tournaments.length; i++) {
             if (this.tournaments[i].name === name) {
                 this.loginti(this.tournaments[i])
+                this.tournament = this.tournaments[i];
             }
         }
     }
@@ -110,11 +111,12 @@ export class CreateTeamComponent implements OnInit {
     }
 
     happen() {
-        if (this.list.length >= this.playermuch) {
+        if (this.list.length >= this.tournament.max_players) {
             document.getElementById('preventas').classList.add('prevent');
             document.getElementById('out1').innerHTML = 'Your team is full ';
-            return true;
-        } else {
+            this.error = 'Your team is full';
+            return true; } else {
+            return false;
         }
     }
 
