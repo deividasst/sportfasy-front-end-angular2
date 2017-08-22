@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {TokenHolderServise} from '../shared/tokenholder.srv';
+import {DService} from "app/web_components/shared/data.srv";
 
 @Component({
     selector: 'app-home',
@@ -8,18 +9,11 @@ import {TokenHolderServise} from '../shared/tokenholder.srv';
 })
 
 export class HomeComponent implements OnInit {
-  constructor(private tokenHolder: TokenHolderServise) {
-      this.logOut();
-      localStorage.clear();
+    name: string;
+  constructor(private tokenHolder: TokenHolderServise, private ds: DService) {
   }
-
   ngOnInit() {
-      this.logOut();
+
   }
 
-    logOut() {
-        localStorage.removeItem('id_token');
-        this.tokenHolder.setUserName('');
-        localStorage.clear();
-    }
 }

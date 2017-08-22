@@ -6,6 +6,7 @@ import {FormBuilder, Validators} from '@angular/forms';
 import {Router} from '@angular/router';
 import {FormGroup, FormControl} from '@angular/forms';
 import {User} from '../../shared/User'
+import {TokenHolderServise} from "../../shared/tokenholder.srv";
 
 @Component({
     selector: 'app-sing-up',
@@ -20,7 +21,8 @@ export class SingUpComponent implements OnInit {
     errorMsg: string;
     dataHolder = [];
 
-    constructor(private ds: DService, private router: Router, fb: FormBuilder) {
+    constructor(private ds: DService, private router: Router, fb: FormBuilder, private tokenHolder: TokenHolderServise) {
+        this.tokenHolder.setUserName('');
         this.form = fb.group({
 
             name: ['', Validators.compose([Validators.required,
@@ -105,6 +107,9 @@ export class SingUpComponent implements OnInit {
 
     ngOnInit() {
         this.user = new User();
+        localStorage.removeItem('id_token');
+        this.tokenHolder.setUserName('');
+        localStorage.clear();
     }
 
     addUser(user) {
