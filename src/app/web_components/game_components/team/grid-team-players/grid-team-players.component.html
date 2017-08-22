@@ -16,7 +16,12 @@
     </kendo-grid-column>
        <kendo-grid-column title="Player name">
         <ng-template kendoGridCellTemplate let-dataItem let-rowIndex="rowIndex">
-              {{dataItem.name}} {{dataItem.surname}}
+              {{dataItem.name}}
+        </ng-template>
+    </kendo-grid-column>
+    <kendo-grid-column title="Player surname">
+        <ng-template kendoGridCellTemplate let-dataItem let-rowIndex="rowIndex">
+            {{dataItem.surname}}
         </ng-template>
     </kendo-grid-column>
     <kendo-grid-column title="Sell">

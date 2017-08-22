@@ -16,6 +16,7 @@ import {TeamDialogComponent} from '../team-dialog/team-dialog.component';
 export class GridTeamPlayersSellComponent implements OnInit {
     teamArray:Array<any> = new Array
     playersArray:Array<any> = new Array;
+    boughtPlayers:Array<any> = new Array;
     players: Players[];
     // Kendo grid params
     gridView: GridDataResult;
@@ -96,7 +97,21 @@ export class GridTeamPlayersSellComponent implements OnInit {
                 this.loadItems();
                 break;
             }
+
         }
+        this.data._team._players.push(dataItem);
+        this.loadItems();
+        this.boughtPlayers = (this.data._team._players.map(function (obj) {
+            return obj._id;
+        }));
+        const teamObject = ({
+            name: this.data._team.name,
+            _players: this.boughtPlayers
+        });
+        console.log(JSON.stringify(teamObject));
+        this.ds.updateTeam(JSON.stringify(teamObject)).subscribe(obj => {
+
+        });
     }
 
     ngOnInit() {
@@ -105,7 +120,6 @@ export class GridTeamPlayersSellComponent implements OnInit {
         this.compare();
         this.loadItems();
 
-        console.log(this.data._team._players);
     }
 
 

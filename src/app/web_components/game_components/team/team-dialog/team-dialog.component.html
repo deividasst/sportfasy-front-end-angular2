@@ -8,14 +8,13 @@
     <h5 class="bold">Points: XXX</h5>
     <h5 class="bold">Total income: {{teamTotals}}</h5>
 <div *ngIf=data id="grid1">
-    <app-grid-team-players>
+    <app-grid-team-players #grid1>
         [data]="data"
     </app-grid-team-players>
-</div>
-
 </div>
 
     <div *ngIf=teamArray>
         <app-grid-team-players-sell>
         </app-grid-team-players-sell>
     </div>
+</div>
