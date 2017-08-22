@@ -1,5 +1,5 @@
-
-<div *ngFor="let team of tournament_team">
-    <p class="white"> <a id="a">{{team.name}}<br></a> budget: <a id="a1">{{team.budget}}  </a></p>
+<div id="all_tour">
+    <div class="table" *ngIf="tournament_team">
+        <app-team-list-grid [tournament_team]="tournament_team"></app-team-list-grid>
+    </div>
 </div>
-

@@ -41,8 +41,8 @@ export class DService {
         return this.http.get('/api/tournaments').map(res => res.json());
     }
 
-    getTournament(name: string) {
-        return this.http.get(`api/tournaments/?name=${name}`).map(res => res.json())
+    getTournament(tournament_id: string) {
+        return this.http.get(`/api/tournaments/?tournament_id=${tournament_id}`).map(res => res.json())
     }
 
     updateTournament(tournament: string) {

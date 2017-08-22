@@ -14,39 +14,30 @@ export class TournamentTeamComponentComponent implements OnInit {
     teams: Team[];
 
     team: Tournament_teams[];
-    teamArray: any;
-    teaminfo: any;
-    n: any;
-    tournament_team: Array<any>= new Array;
+    tournamentID: string;
+    tournament_team;
 
     constructor(@Optional() @Inject(MD_DIALOG_DATA) public data: any,
                 private ds: DService) {
-        this.teaminfo = data._users;
-        this.getTournamentTeamsbyID(data._id);
+        this.tournamentID = data._id;
     }
 
     ngOnInit() {
-    }
 
-    // Gets tournament teams by tournament ID
-    getTournamentTeamsbyID(tournamentID): void {
-        this.ds.getTournamentTeamsbyID(tournamentID).subscribe(team => {
-            this.teams = team;
-            this.teamArray = [];
-            this.teamArray = (team.map(function (obj) {
-                return obj._team;
-            }))
-            for (let i = 0; i < this.teamArray.length; i++) {
-            this.ds.getTeamsIncomes(this.teamArray[i]._id).subscribe(income => {
+        this.ds.getTournament(this.tournamentID).subscribe(tournament => {
+            this.tournament_team = new Array;
+            tournament.forEach((team) => {
                 const object = {
-                    name: String,
-                    budget: Number,
-                };
-                object.name = this.teamArray[i].name;
-                object.budget = income.total_income;
+                        name: String,
+                        budget: Number,
+                        position: Number
+                        };
+                object.name = team._team.name;
+                object.budget = team.team_total;
+                object.position = team.position;
                 this.tournament_team.push(object);
-            })
-            }
+            });
         })
     }
+
 }
