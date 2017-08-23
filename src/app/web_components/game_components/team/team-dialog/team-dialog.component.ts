@@ -7,6 +7,7 @@ import {TokenHolderServise} from '../../../shared/tokenholder.srv';
 import {Players} from '../../../shared/Players'
 import {Team} from '../../../shared/Team'
 import {GridTeamPlayersComponent} from '../grid-team-players/grid-team-players.component';
+import {GridTeamPlayersSellComponent} from '../grid-team-players-sell/grid-team-players-sell.component';
 @Component({
     selector: 'app-team-dialog',
     templateUrl: './team-dialog.component.html',
@@ -15,7 +16,9 @@ import {GridTeamPlayersComponent} from '../grid-team-players/grid-team-players.c
 export class TeamDialogComponent implements OnInit {
     public opened;
     players: Players[];
+    total_players: Players[];
     remainedPlayers: Players[];
+    team_players: Players[];
     teams: Team[];
     teamArray: any;
     teamTotals: any;
@@ -23,7 +26,8 @@ export class TeamDialogComponent implements OnInit {
 
     @Input() onPlayerSold: EventEmitter<any>;
 
-    @ViewChild(AppGridTeamPlayersSell) PlayerBuyGRid: AppGridTeamPlayersSell
+    @ViewChild(GridTeamPlayersSellComponent) playerBuyGRid: GridTeamPlayersSellComponent
+    @ViewChild(GridTeamPlayersComponent) teamGrid: GridTeamPlayersComponent
 
     constructor(@Optional() @Inject(MD_DIALOG_DATA) public data: any,
                 private ds: DService,
@@ -32,11 +36,15 @@ export class TeamDialogComponent implements OnInit {
         this.onPlayerSold = new EventEmitter();
     }
 
-    setRemainedPlayersInTeam(remainedPlayers: Players[]){
-        this.remainedPlayers = remainedPlayers;
-        console.log('eventemiter' + JSON.stringify(remainedPlayers,null,2));
-        this.compare();
-        this.onPlayerSold.emit(this.players);
+    setRemainedPlayersInTeam(remainedPlayersInTeam: Players[]) {
+        this.remainedPlayers = remainedPlayersInTeam;
+        this.players = this.compare();
+        console.log('try call remainded players: ' + remainedPlayersInTeam.length);
+        this.playerBuyGRid.changeFreePlayerList(this.players);
+    }
+
+    putBougthPlayerToTeam(player: any){
+        this.teamGrid.pushPlayerToTeam(player);
     }
 
 
@@ -50,26 +58,10 @@ export class TeamDialogComponent implements OnInit {
     }
 
 
-    ngOnInit() {
-        this.getPlayers();
-        // console.log('team id is' + this.data._team._id);
-        // console.log('this is data', this.data);
-        this.getPoints(this.data._team._id);
-        // console.log(this.list);
-        // console.log(this.teamArray);
-
-    }
-
     getPlayers() {
         this.ds.getTeamPlayers().subscribe(player => {
-            this.players = player;
-            this.compare();
-            // this.teamArray = [];
-            // this.players = (this.players.map(function (obj) {
-            //     return obj;
-            // }))
-            // console.log(this.teamArray);
-            // console.log('markoplayers' + JSON.stringify(player,null,2));
+            this.total_players = player;
+            this.players = this.compare();
         })
 
     }
@@ -78,18 +70,30 @@ export class TeamDialogComponent implements OnInit {
         this.ds.getTeamTotal(teamid).subscribe(teamtotals => {
             this.teamTotals = teamtotals;
             this.teamTotals = teamtotals.total_income;
-            // console.log(this.teamTotals);
         })
     }
 
     compare() {
-        for (let i = 0; i < this.data._team._players.length; i++) {
-            for (let j = 0; j < this.players.length; j++) {
-                if (this.data._team._players[i].name === this.players[j].name) {
-                    this.players.splice(j, 1);
-                    break;
+        let players = this.total_players;
+        players = players.filter((player) => {
+            let exists_in_team = this.data._team._players.filter((team_player) => {
+                if (team_player.name === player.name) {
+                    return true;
                 }
+            })
+            if (exists_in_team.length === 0 ) {
+                return player;
             }
-        }
+        })
+        console.log('new compare' + players.length);
+        return players;
     }
+
+
+    ngOnInit() {
+        this.getPlayers();
+        this.getPoints(this.data._team._id);
+        // this.team_players = this.data._team._players;
+    }
+
 }

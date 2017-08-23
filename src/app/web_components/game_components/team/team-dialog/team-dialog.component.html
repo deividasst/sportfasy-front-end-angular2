@@ -18,8 +18,8 @@
 
     <div *ngIf="players">
         <app-grid-team-players-sell
-            [players]="players"
-            [changeFreePlayerList]="onPlayerSold"
+            [input_players]="players"
+            (boughtPlayer)="putBougthPlayerToTeam($event)"
         >
         </app-grid-team-players-sell>
     </div>

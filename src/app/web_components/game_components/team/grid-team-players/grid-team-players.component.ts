@@ -19,7 +19,7 @@ import {Players} from '../../../shared/Players';
     styleUrls: ['./grid-team-players.component.sass'],
 
 })
-export class GridTeamPlayersComponent implements OnInit, OnChanges {
+export class GridTeamPlayersComponent implements OnInit {
     @Input() team: any;
     tournament_teams: Tournament_teams[];
     players: Players[];
@@ -47,6 +47,12 @@ export class GridTeamPlayersComponent implements OnInit, OnChanges {
         this.remainedPlayersInTeam = new EventEmitter();
     }
 
+    pushPlayerToTeam(player: any) {
+        console.log('bougth player added to team');
+        this.data._team._players.push(player);
+        this.loadItems();
+    }
+
 
     protected pageChange(event: PageChangeEvent): void {
         this.skip = event.skip;
@@ -60,11 +66,6 @@ export class GridTeamPlayersComponent implements OnInit, OnChanges {
         };
     }
 
-    ngOnChanges() {
-        this.loadItems();
-        // console.log('testt');
-
-    }
 
     public showOnlyBeveragesDetails(dataItem: any, index: number): boolean {
         return dataItem._players !== [];
@@ -93,17 +94,13 @@ export class GridTeamPlayersComponent implements OnInit, OnChanges {
                 break;
             }
         }
-
-        // console.log(this.data._team._players);
         this.listas = (this.data._team._players.map(function (obj) {
             return obj._id;
         }));
-        // console.log(this.listas);
         const teamObject = ({
             name: this.data._team.name,
             _players: this.listas
         });
-        // console.log(JSON.stringify(teamObject));
         this.ds.updateTeam(JSON.stringify(teamObject)).subscribe(obj => {
 
         });
@@ -112,10 +109,7 @@ export class GridTeamPlayersComponent implements OnInit, OnChanges {
 
     ngOnInit() {
         this.loadItems();
-        // console.log('marko data' + JSON.stringify(this.data, null, 2));
         this.list.push(this.data);
-        //console.log('cia yra listasssssss'+ this.data._team._players[0].name);
-
     }
 
 
