@@ -16,13 +16,19 @@ export class LogInComponent implements OnInit {
     name_user: any;
 
 
-    constructor(private ds: DService, private tokenHolder: TokenHolderServise, private router: Router) {
+    constructor(private ds: DService,
+                private tokenHolder: TokenHolderServise,
+                private router: Router) {
+        this.tokenHolder.setUserName('');
     }
 
     ngOnInit() {
         this.user = new User();
         this.user.password = '123456';
         this.user.email = 'root@gmail.com';
+        localStorage.removeItem('id_token');
+        this.tokenHolder.setUserName('');
+        localStorage.clear();
     }
 
     loginUser(user): void {

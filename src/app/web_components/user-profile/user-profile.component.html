@@ -1,28 +1,28 @@
-<!--<div id="main">-->
+<div id="main">
 
-    <!--<div id="all_tour">-->
-        <!--<p>-->
-            <!--<b>My Toutnaments Activity</b>-->
-        <!--</p>-->
-        <!--<kendo-grid-->
-            <!--[data]="gridView"-->
-            <!--[pageSize]="pageSize"-->
-            <!--[skip]="skip"-->
-            <!--[pageable]="true"-->
-            <!--(pageChange)="pageChange($event)"-->
-        <!--&gt;-->
-            <!--<kendo-grid-column field="name" title="Name">-->
-            <!--</kendo-grid-column>-->
-            <!--<kendo-grid-column field="max_players" title="Max players">-->
-            <!--</kendo-grid-column>-->
-            <!--<kendo-grid-column field="budget" title="Budget">-->
-            <!--</kendo-grid-column>-->
-            <!--<kendo-grid-column title="Options">-->
-                <!--<ng-template kendoGridCellTemplate let-dataItem let-rowIndex="rowIndex">-->
-                    <!--<button kendoButton (click)="function()">?Convert to Points</button>-->
-                <!--</ng-template>-->
-            <!--</kendo-grid-column>-->
+    <div id="all_tour">
+        <p>
+            <b>My Toutnaments Activity</b>
+        </p>
+        <kendo-grid
+            [data]="gridView"
+            [pageSize]="pageSize"
+            [skip]="skip"
+            [pageable]="true"
+            (pageChange)="pageChange($event)"
+        >
+            <kendo-grid-column field="name" title="Name">
+            </kendo-grid-column>
+            <kendo-grid-column field="max_players" title="Max players">
+            </kendo-grid-column>
+            <kendo-grid-column field="budget" title="Budget">
+            </kendo-grid-column>
+            <kendo-grid-column title="Options">
+                <ng-template kendoGridCellTemplate let-dataItem let-rowIndex="rowIndex">
+                    <button kendoButton (click)="function()">?Convert to Points</button>
+                </ng-template>
+            </kendo-grid-column>
 
-        <!--</kendo-grid>-->
-    <!--</div>-->
-<!--</div>-->
+        </kendo-grid>
+    </div>
+</div>

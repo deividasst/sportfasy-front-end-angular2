@@ -72,7 +72,4 @@ export class CreatTournmentComponent implements OnInit {
             }, err => this.err = 'Tournament with this name already exists')
     }
 
-    logOut() {
-        this.logout.logOut();
-    }
 }

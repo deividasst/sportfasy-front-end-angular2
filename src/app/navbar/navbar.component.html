@@ -2,21 +2,12 @@
     <div>
         <ul id="sidemenu" class="sidebar-nav">
             <li>
-                <a class="icon" routerLink="/dashboard">
-                    <span class="sidebar-icon"><i class="fa fa-newspaper-o"></i></span>
-                    <span class="sidebar-title"><b>DASHBOARD</b></span>
-                </a>
-                <a class="icon" routerLink="/userprofile">
-                    <span class="sidebar-icon"><i class="fa fa-user-circle-o"></i></span>
-                    <span class="sidebar-title"><b>USER PROFILE</b></span>
-                </a>
                 <div class="profile prof">
-                    <p class="p"><b>Hello, </b>{{name}}</p>
-                    <p class="p"><b>Points:</b> 200</p>
-                    <p class="p"><b>W:</b> 0 <b>L:</b> 0</p>
+                    <p class="p"><b>Hello, </b><span class="orange"> {{name}}</span></p>
+                    <p class="p"><b>Points:</b><span class="orange"> 200</span></p>
                     <a>
-                        <span><i class="fa fa-sign-out i" aria-hidden="true"></i></span>
-                        <span class="i" *ngIf="!opened" (click)="open()">LogOut</span>
+                        <span><i class="fa fa-sign-out orange" aria-hidden="true"></i></span>
+                        <span class="orange" *ngIf="!opened" (click)="open()">LogOut</span>
                         <div id="kendo">
                             <div class="example-wrapper">
                                 <kendo-dialog title="Please confirm" *ngIf="opened" (close)="close('cancel')">
@@ -30,58 +21,62 @@
                         </div>
                     </a>
                 </div>
+                <a class="icon" routerLink="/dashboard" routerLinkActive="active-link">
+                    <span class="sidebar-icon"><i class="fa fa-newspaper-o"></i></span>
+                    <span class="sidebar-title2">Dashboard</span>
+                </a>
+                <a class="icon" routerLink="/userprofile" routerLinkActive="active-link">
+                    <span class="sidebar-icon"><i class="fa fa-user-circle-o"></i></span>
+                    <span class="sidebar-title2">User Profile</span>
+                </a>
             </li>
             <li>
-                <a class="accordion-toggle collapsed toggle-switch" data-toggle="collapse">
-                    <span class="sidebar-icon"><i class="fa fa-users"></i></span>
-                    <span class="sidebar-title"><b>TOURNAMENT</b></span>
+                <a class="accordion-toggle collapsed toggle-switch a" data-toggle="collapse">
+                    <span class="sidebar-title">TOURNAMENT</span>
                     <b class="caret"></b>
                 </a>
             </li>
 
             <li>
                 <a class="accordion-toggle collapsed toggle-switch" data-toggle="collapse"
-                   routerLink="/createtournment">
-                    <span class="sidebar-icon"><i class="fa fa-pencil-square-o i"></i></span>
+                   routerLink="/createtournment" routerLinkActive="active-link">
+                    <span class="sidebar-icon"><i class="fa fa-pencil-square-o"></i></span>
                     <span class="sidebar-title2">Create New</span>
                     <b class="caret"></b>
                 </a>
             </li>
             <li>
                 <a class="accordion-toggle collapsed toggle-switch" data-toggle="collapse"
-                   routerLink="/listtournment">
-                    <span class="sidebar-icon"><i class="fa fa-bars i"></i></span>
+                   routerLink="/listtournment" routerLinkActive="active-link">
+                    <span class="sidebar-icon"><i class="fa fa-bars"></i></span>
                     <span class="sidebar-title2">My Tournament List</span>
                     <b class="caret"></b>
                 </a>
-                <p></p>
             </li>
 
 
             <li>
-                <a class="accordion-toggle collapsed toggle-switch" data-toggle="collapse">
-                    <span class="sidebar-icon"><i class="fa fa-dashboard"></i></span>
-                    <span class="sidebar-title"><b>TEAM</b></span>
+                <a class="accordion-toggle collapsed toggle-switch a" data-toggle="collapse">
+                    <span class="sidebar-title">TEAM</span>
                     <b class="caret"></b>
                 </a>
             </li>
 
             <li>
                 <a class="accordion-toggle collapsed toggle-switch" data-toggle="collapse"
-                   routerLink="/creatteam">
-                    <span class="sidebar-icon"><i class="fa fa-plus i"></i></span>
+                   routerLink="/creatteam" routerLinkActive="active-link">
+                    <span class="sidebar-icon"><i class="fa fa-plus"></i></span>
                     <span class="sidebar-title2">Create New</span>
                     <b class="caret"></b>
                 </a>
             </li>
             <li>
                 <a class="accordion-toggle collapsed toggle-switch" data-toggle="collapse"
-                   routerLink="/listteam">
-                    <span class="sidebar-icon"><i class="fa fa-bars i"></i></span>
+                   routerLink="/listteam" routerLinkActive="active-link">
+                    <span class="sidebar-icon"><i class="fa fa-bars"></i></span>
                     <span class="sidebar-title2">My Team List</span>
                     <b class="caret"></b>
                 </a>
-                <p></p>
             </li>
         </ul>
     </div>

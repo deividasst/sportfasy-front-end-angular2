@@ -1,38 +1,42 @@
 <div id="main">
-    <div class="container">
-        <form class="" #teamForm="ngForm" method="post" novalidate>
-            <div id="name">
-                <label for="teams" class="label">Name your team!</label><br>
-                <input placeholder="Team name" [(ngModel)]="team.name" name="team_name" #name="ngModel" minlength="4"
-                       maxlength="24" required>
+    <div class="container div">
+        <form class="container" #teamForm="ngForm" method="post" novalidate>
+            <div id="out2">
+                <div id="name">
+                    <label for="teams" class="label">Create your team!</label><br>
+                    <input class="form-control name_input" placeholder="Team name" [(ngModel)]="team.name"
+                           name="team_name" #name="ngModel" minlength="4"
+                           maxlength="24" required>
+                </div>
+                <div class="example-wrapper">
+                    <p class="label2">Select tournament :</p>
+                    <kendo-dropdownlist [data]="listItems" [value]="'select your option'" (selectionChange)="doit()"
+                                        (selectionChange)="selectionChange($event)">
+                    </kendo-dropdownlist>
+                </div>
+                <div id="budget">
+                </div>
             </div>
-            <div class="example-wrapper">
-                <p class="label">Select tournament :</p>
-                <kendo-dropdownlist [data]="listItems" [value]="'select your option'" (selectionChange)="doit()"
-                                    (selectionChange)="selectionChange($event)">
-                </kendo-dropdownlist>
-            </div>
-            <div id="budget">
-            </div>
-            <div id="out">
+
+            <div id="out" class="label2">
                 Your Current team:
             </div>
             <div *ngIf="error" class="alert alert-danger" [hidden]="calculate()">
                 {{error}}
             </div>
+            <div id="out1">
+            </div>
             <div *ngIf="name.errors && (name.dirty || name.touched)"
                  class="alert alert-danger">
                 <div [hidden]="!name.errors.required">
-                    Name is required
+                    Name is required!
                 </div>
                 <div [hidden]="!name.errors.minlength">
-                    Name must be at least 4 characters long.
+                    Name must be at least 4 characters long!
                 </div>
                 <div [hidden]="!name.errors.maxlength">
-                    Name cannot be more than 24 characters long.
+                    Name cannot be more than 24 characters long!
                 </div>
-            </div>
-            <div id="out1">
             </div>
             <br>
             <div id="table" class="disable">
@@ -64,9 +68,12 @@
                 </table>
             </div>
             <div class="example-wrapper">
-                <button class="btn" id="button" *ngIf="!opened" (click)="open()" [disabled]="!teamForm.form.valid" [disabled]="!calculate()">Create Team</button>
+                <button class="btn" id="button" *ngIf="!opened" (click)="open()" [disabled]="!teamForm.form.valid && !team.name"
+                        [disabled]="!calculate()">Create Team
+                </button>
                 <kendo-dialog title="Please confirm" *ngIf="opened" (close)="close('cancel')">
-                    <p style="margin: 30px; text-align: center;">Create team <b>{{team.name}}</b>?<br>After pressing this button no future changes will be allowed.</p>
+                    <p style="margin: 30px; text-align: center;">Create team <b>{{team.name}}</b>?<br>After pressing
+                        this button no future changes will be allowed.</p>
                     <kendo-dialog-actions>
                         <button kendoButton (click)="close('no')">No</button>
                         <button kendoButton (click)="sendTeam()" primary="true">create</button>

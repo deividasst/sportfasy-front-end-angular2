@@ -1,0 +1,15 @@
+<kendo-grid
+    [data]="gridView"
+    [pageSize]="pageSize"
+    [skip]="skip"
+    [pageable]="true"
+    (pageChange)="pageChange($event)"
+>
+    <kendo-grid-column field="position" title="Current position">
+    </kendo-grid-column>
+    <kendo-grid-column field="name" title="Name">
+    </kendo-grid-column>
+    <kendo-grid-column field="budget" title="Budget">
+    </kendo-grid-column>
+
+</kendo-grid>

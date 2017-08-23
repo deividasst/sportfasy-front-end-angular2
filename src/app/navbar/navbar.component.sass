@@ -1,15 +1,20 @@
+ul
+  margin-left: 0
+  padding-left: 26px
+  list-style-position: inside
+  list-style: none
+
 #mainsidebar
   margin: 0
   padding:  0
   height: 100vh
-  background-color: #ffad01
+  background-color: #212121
 
   #sidebar #sidemenu li ul
       position: fixed
       left: 45px
-      margin-top: -45px
       z-index: 0
-      width: 200px
+      width: 100%
       height: 100%
 
 @import url('//maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css')
@@ -17,13 +22,11 @@
 
 .sidenav
   height: 100%
-
   position: fixed
   z-index: 0
   top: 0
   left: 0
   background-color: #111
-  //overflow-x: hidden
   transition: 0.5s
   padding-top: 60px
   display: block
@@ -34,14 +37,10 @@
   width: 92%
   height: 40%
   background-color: #f8f9f9
-  color: #ffad01
-  margin-left: 4%
-  margin-right: 4%
-  margin-top: 2px
-  margin-bottom: 2%
+  color: #212121
 
 .sidebar-nav
-  background-color: #ffad01
+  background-color: #212121
   height: 100%
   max-height: 100%
   bottom: 0
@@ -50,27 +49,45 @@
     float: left
     display: block
     font-size: 14px
+
+    //list-style: none
     margin: 0
-    list-style: none
+    margin-right: 10%
+    width: 100%
     li
       text-indent: 0
-      line-height: 45px
+      float: left
+      line-height: 40px
+      width: 100%
       a
         display: block
-        text-decoration: none
-        color: #428bca
+        color: #ff9900
+        position: inherit
+        padding-left: 6%
+        margin-left: 0
+        width: 100%
 
 .sidebar-title
-  color: #212121
+  color: white
+  width: 100%
   font-size: 110%
+
+.a
+  padding-left: -25px
+  margin-top: 2%
+  margin-bottom: 2%
+  border-style: solid
+  border-color: #ff9900
+  border-width: 1px 0px 1px 1px
+
 
 .sidebar-title2
   color: white
   font-size: 110%
-  padding-bottom: 2%
+  padding: 2%
 
 i
-  color: #212121
+  color: white
 
 .i
   color: white
@@ -91,13 +108,14 @@ i
 
 .profile
   position: relative
-  border-radius: 10px
   height: 10%
-  padding: 5%
-  margin-left: 20%
-  margin-right: 20%
+  padding: 2%
+  margin-left: 0%
+  margin-right: 6%
+  margin-top: 11%
+  margin-bottom: 4%
   text-align: center
-  background-color: #212121
+  border: 1px solid #ff9900
   color: white
 
 .button
@@ -106,5 +124,14 @@ i
   border: 0px
 
 .body
-  background-color: #ffad01
+  background-color: #212121
+
+.active-link
+  background-color: #ff9900
+  text-decoration: none
+
+.orange
+  color: #ff9900
+
+
 

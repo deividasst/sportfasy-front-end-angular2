@@ -7,6 +7,7 @@ import {Team} from '../../../shared/Team'
 import {Players} from '../../../shared/Players'
 import {Tournament} from '../../../shared/Tournament'
 import {Tournament_teams} from '../../../shared/Tournament-teams'
+import {disableDebugTools} from "@angular/platform-browser";
 
 @Component({
     selector: 'app-create-team',
@@ -26,14 +27,13 @@ export class CreateTeamComponent implements OnInit {
     err;
     error;
     tournament_budget: number;
-    tournament_name: string;
-    tournament_team_object: any;
-    tournament_id: any;
+    tournament_name: string;tournament_id: any;
     disabled: boolean = true;
     quit: boolean = false;
     public listItems: Array<string> = new Array;
     name;
     public opened;
+    tournament;
 
     constructor(private ds: DService,
                 private tokenHolder: TokenHolderServise,
@@ -70,10 +70,10 @@ export class CreateTeamComponent implements OnInit {
     }
 
     loginti(tournament) {
-        console.log(tournament.max_players);
-        console.log(tournament);
-        console.log(tournament.budget);
-        console.log(tournament._id);
+        // console.log(tournament.max_players);
+        // console.log(tournament);
+        // console.log(tournament.budget);
+        // console.log(tournament._id);
         return this.tournament_name = tournament.name, this.tournament_budget = tournament.budget, this.tournament_id = tournament._id
     }
 
@@ -81,6 +81,7 @@ export class CreateTeamComponent implements OnInit {
         for (let i = 0; i < this.tournaments.length; i++) {
             if (this.tournaments[i].name === name) {
                 this.loginti(this.tournaments[i])
+                this.tournament = this.tournaments[i];
             }
         }
     }
@@ -105,27 +106,23 @@ export class CreateTeamComponent implements OnInit {
             this.tournaments = tournament
             for (let i = 0; i < this.tournaments.length; i++) {
                 this.listItems.push(this.tournaments[i].name);
-                console.log(this.tournaments[i].name)
             }
         });
     }
 
     happen() {
-        if (this.list.length >= this.playermuch) {
-            console.log('per daug');
+        if (this.list.length >= this.tournament.max_players) {
             document.getElementById('preventas').classList.add('prevent');
             document.getElementById('out1').innerHTML = 'Your team is full ';
-            return true;
-        } else {
+            this.error = 'Your team is full';
+            return true; } else {
+            return false;
         }
-
-        console.log(this.list.length);
     }
 
     addPlayer(player) {
         if (this.list.indexOf(player) === -1) {
             this.list.push(player);
-            console.log(this.list);
             this.list2 = (this.list.map(item => ' ' + item.name)
                 .filter((value, index, self) => self.indexOf(value) === index))
             document.getElementById('out').innerHTML = 'Current team is:  ' + this.list2;
@@ -139,7 +136,6 @@ export class CreateTeamComponent implements OnInit {
             if (this.list[i] === player) {
                 this.list.splice(i, 1);
                 alert(player.name + ' removed');
-                console.log(this.list);
                 this.list2 = (this.list.map(item => item.name)
                     .filter((value, index, self) => self.indexOf(value) === index))
                 document.getElementById('out').innerHTML = 'Current team is: ' + this.list2;
@@ -180,6 +176,16 @@ export class CreateTeamComponent implements OnInit {
         });
         this.ds.TeamToTournament(JSON.stringify(tournament_team_object)).subscribe(object => {
         });
+        for (let i = 0; i < this.list.length; i++) {
+            const players_ledger = ({
+                tournament_id: this.tournament_id,
+                team_id: obj.team._id,
+                player_id: this.list[i]._id,
+                total_income: this.list[i].price * -1
+            });
+            this.ds.postPlayersLedger(JSON.stringify(players_ledger)).subscribe(object => {
+            });
+        }
     }
 
     join() {
