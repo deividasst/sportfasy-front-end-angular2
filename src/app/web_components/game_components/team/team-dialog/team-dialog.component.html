@@ -7,14 +7,21 @@
     <h5 class="bold">Position: XXX</h5>
     <h5 class="bold">Points: XXX</h5>
     <h5 class="bold">Total income: {{teamTotals}}</h5>
-<div *ngIf=data id="grid1">
-    <app-grid-team-players #grid1>
-        [data]="data"
-    </app-grid-team-players>
-</div>
+    <div *ngIf=data id="grid1">
+        <app-grid-team-players
+            (remainedPlayersInTeam)="setRemainedPlayersInTeam($event)"
 
-    <div *ngIf=teamArray>
-        <app-grid-team-players-sell>
+            #grid1>
+            [data]="data"
+        </app-grid-team-players>
+    </div>
+
+    <div *ngIf="players">
+        <app-grid-team-players-sell
+            [players]="players"
+            [changeFreePlayerList]="onPlayerSold"
+        >
         </app-grid-team-players-sell>
     </div>
+
 </div>

@@ -7,28 +7,17 @@
     (pageChange)="pageChange($event)"
 >
 
-    <!--<kendo-grid-column *ngFor="let column of columns" field={{column.field}} title={{column.title}}>
-    </kendo-grid-column>-->
-    <kendo-grid-column title="Price">
-        <ng-template kendoGridCellTemplate let-dataItem let-rowIndex="rowIndex">
-              {{dataItem.price}}
-        </ng-template>
+
+    <kendo-grid-column *ngFor="let column of columns" field={{column.field}} title={{column.title}}>
     </kendo-grid-column>
-       <kendo-grid-column title="Player name">
-        <ng-template kendoGridCellTemplate let-dataItem let-rowIndex="rowIndex">
-              {{dataItem.name}}
-        </ng-template>
-    </kendo-grid-column>
-    <kendo-grid-column title="Player surname">
-        <ng-template kendoGridCellTemplate let-dataItem let-rowIndex="rowIndex">
-            {{dataItem.surname}}
-        </ng-template>
-    </kendo-grid-column>
-    <kendo-grid-column title="Sell">
+    <kendo-grid-column title="Options">
         <ng-template kendoGridCellTemplate let-dataItem let-rowIndex="rowIndex">
             <button kendoButton (click)="sell(dataItem)" (click)="delete(dataItem)">Sell</button>
         </ng-template>
     </kendo-grid-column>
 </kendo-grid>
+
+
+
 
  
