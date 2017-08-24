@@ -22,7 +22,6 @@ export class GridTeamsComponent implements OnInit {
     pageSize: number;
     skip: number;
     columns: any = [{'field': '_team.name', 'title': 'Name'},
-        {'field': '_team_master.name',  'title': 'Team master'},
         {'field': '_tournament.name', 'title': 'Tournaments'}]
 
 
