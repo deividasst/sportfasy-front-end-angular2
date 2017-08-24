@@ -4,9 +4,8 @@
     <h1>{{data._team.name}}</h1>
     <h5>info</h5>
     <h5 class="bold">Number of players: {{data._team._players.length}}/{{data._tournament.max_players}}</h5>
-    <h5 class="bold">Position: XXX</h5>
-    <h5 class="bold">Points: XXX</h5>
-    <h5 class="bold">Total income: {{teamTotals}}</h5>
+    <h5 class="bold">Position: {{data.position}}</h5>
+    <h5 class="bold">Total income: {{data.team_total}}</h5>
     <div *ngIf=data id="grid1">
         <app-grid-team-players
             (remainedPlayersInTeam)="setRemainedPlayersInTeam($event)"

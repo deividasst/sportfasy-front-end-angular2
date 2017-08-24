@@ -33,6 +33,9 @@ export class NavbarComponent implements OnInit {
     }
 
     logOut(): void {
+        // localStorage.removeItem('id_token');
+        // this.tokenHolder.setUserName('');
+        // localStorage.clear();
         this.logout.logOut();
         this.opened = false;
     }

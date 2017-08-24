@@ -26,7 +26,8 @@ export class ListTeamComponent implements OnInit {
 
     // Gets my tournament teams
     getTournamentTeams(teamMaster): void {
-        this.ds.getTournamentTeams(teamMaster).subscribe(team => {
+
+        this.ds.getMyTeams(teamMaster).subscribe(team => {
             this.teams = team;
 
         });
