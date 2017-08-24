@@ -86,5 +86,9 @@ export class DService {
     postPlayersLedger(players_ledger): any {
         return this.http.post('/api/tournament/players_ledger', players_ledger).map(res => res.json())
     }
+
+    getUserLedger(user_id): any {
+        return this.http.get(`/api/userledger/?user_id=${user_id}`).map(res => res.json())
+    }
 }
 

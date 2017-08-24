@@ -12,6 +12,8 @@ import {DService} from '../web_components/shared/data.srv';
 export class NavbarComponent implements OnInit {
     name: string;
     public opened;
+    userID;
+    points = 0;
 
     public close() {
         this.opened = false;
@@ -30,6 +32,12 @@ export class NavbarComponent implements OnInit {
     }
 
     ngOnInit() {
+        this.tokenHolder.idChange$.first().subscribe(item => {
+            this.userID = item;
+            this.ds.getUserLedger(item).subscribe(points => {
+                this.points = points.sum || 0;
+            });
+        });
     }
 
     logOut(): void {
