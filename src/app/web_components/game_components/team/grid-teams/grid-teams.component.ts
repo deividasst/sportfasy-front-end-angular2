@@ -22,7 +22,6 @@ export class GridTeamsComponent implements OnInit {
     pageSize: number;
     skip: number;
     columns: any = [{'field': '_team.name', 'title': 'Name'},
-        {'field': '_team_master.name',  'title': 'Team master'},
         {'field': '_tournament.name', 'title': 'Tournaments'}]
 
 
@@ -37,8 +36,8 @@ export class GridTeamsComponent implements OnInit {
 
         const dialogRef = this.dialog.open(TeamDialogComponent, {
             data: team,
-            height: '600px',
-            width: '700px'
+            height: '700px',
+            width: '650px'
         });
     }
     protected pageChange(event: PageChangeEvent): void {

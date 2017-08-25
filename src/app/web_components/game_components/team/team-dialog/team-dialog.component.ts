@@ -66,12 +66,12 @@ export class TeamDialogComponent implements OnInit {
 
     }
 
-    getPoints(teamid): void {
-        this.ds.getTeamTotal(teamid).subscribe(teamtotals => {
-            this.teamTotals = teamtotals;
-            this.teamTotals = teamtotals.total_income;
-        })
-    }
+    // getPoints(teamid): void {
+    //     this.ds.getTeamTotal(teamid).subscribe(teamtotals => {
+    //         this.teamTotals = teamtotals;
+    //         console.log(this.teamTotals);
+    //     })
+    // }
 
     compare() {
         let players = this.total_players;
@@ -92,7 +92,8 @@ export class TeamDialogComponent implements OnInit {
 
     ngOnInit() {
         this.getPlayers();
-        this.getPoints(this.data._team._id);
+        console.log(this.data);
+      //  this.getPoints("59632dab7d49e60864698049");
         // this.team_players = this.data._team._players;
     }
 

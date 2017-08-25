@@ -1,21 +1,18 @@
-
-
 <div class="container">
     <h1>{{data._team.name}}</h1>
     <h5>info</h5>
-    <h5 class="bold">Number of players: {{data._team._players.length}}/{{data._tournament.max_players}}</h5>
-    <h5 class="bold">Position: XXX</h5>
-    <h5 class="bold">Points: XXX</h5>
-    <h5 class="bold">Total income: {{teamTotals}}</h5>
+    <h5 class="bold">Number of players: <span class="white">{{data._team._players.length}}/{{data._tournament.max_players}}</span>
+    </h5>
+    <h5 class="bold">Position: <span class="white">{{data.position}}</span></h5>
+    <h5 class="bold">Total income: <span class="white">{{data.team_total}}</span></h5>
     <div *ngIf=data id="grid1">
         <app-grid-team-players
             (remainedPlayersInTeam)="setRemainedPlayersInTeam($event)"
-
             #grid1>
             [data]="data"
         </app-grid-team-players>
     </div>
-
+    <br>
     <div *ngIf="players">
         <app-grid-team-players-sell
             [input_players]="players"

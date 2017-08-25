@@ -37,6 +37,7 @@ export class GridTournamentsComponent implements OnInit {
             data: tournament,
             height: '600px',
             width: '600px'
+
         });
     }
 
