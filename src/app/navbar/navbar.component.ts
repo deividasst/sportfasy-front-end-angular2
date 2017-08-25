@@ -1,8 +1,9 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {MdDialog, MdDialogRef} from '@angular/material';
 import {TokenHolderServise} from '../web_components/shared/tokenholder.srv';
 import {LogOutComponent} from '../web_components/sign_log/log-out/log-out.component';
 import {DService} from '../web_components/shared/data.srv';
+import {PointsHolderServise} from '../web_components/shared/pointsholder';
 
 @Component({
     selector: 'app-navbar',
@@ -13,7 +14,7 @@ export class NavbarComponent implements OnInit {
     name: string;
     public opened;
     userID;
-    points = 0;
+    @ Input() points;
 
     public close() {
         this.opened = false;
@@ -26,18 +27,15 @@ export class NavbarComponent implements OnInit {
     constructor(private ds: DService,
                 private logout: LogOutComponent,
                 private tokenHolder: TokenHolderServise,
+                private pointsHolder: PointsHolderServise,
                 public dialog: MdDialog) {
         this.tokenHolder.nameChange$.subscribe(item => this.name = item);
-
+        this.tokenHolder.idChange$.subscribe(item => this.userID = item);
+        this.points = this.pointsHolder.getPoints();
     }
 
     ngOnInit() {
-        this.tokenHolder.idChange$.first().subscribe(item => {
-            this.userID = item;
-            this.ds.getUserLedger(item).subscribe(points => {
-                this.points = points.sum || 0;
-            });
-        });
+        console.log(this.points +" points")
     }
 
     logOut(): void {
@@ -47,5 +45,4 @@ export class NavbarComponent implements OnInit {
         this.logout.logOut();
         this.opened = false;
     }
-
 }

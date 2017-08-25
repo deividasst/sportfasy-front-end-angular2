@@ -1,9 +1,11 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, Injectable} from '@angular/core';
 import {User} from '../../shared/User'
 import {DService} from '../../shared/data.srv';
 import {TokenHolderServise} from '../../shared/tokenholder.srv';
 import {Router} from '@angular/router';
+import {PointsHolderServise} from '../../shared/pointsholder';
 
+@Injectable()
 @Component({
     selector: 'app-log-in',
     templateUrl: './log-in.component.html',
@@ -14,10 +16,14 @@ export class LogInComponent implements OnInit {
     user: User;
     error;
     name_user: any;
+    userID;
+    points;
+    p;
 
 
     constructor(private ds: DService,
                 private tokenHolder: TokenHolderServise,
+                private pointsHolder: PointsHolderServise,
                 private router: Router) {
         this.tokenHolder.setUserName('');
     }
@@ -40,9 +46,21 @@ export class LogInComponent implements OnInit {
                             obj.token,
                             obj.userID,
                             obj.userEmail,
-                             obj.userName,
+                            obj.userName,
                             obj.userSurname),
                             this.router.navigate(['/dashboard'])
+                            this.ds.getUserLedger(obj.userID).subscribe(points => {
+                                if (typeof points[0] !== 'undefined') {
+                                    this.points = points[0].sum;
+                                    console.log(this.points + " taskai");
+
+                                } else {
+                                    this.points = 0;
+                                    console.log(this.points + " taskai");
+                                }
+                                console.log(this.points + " ikjk");
+                                this.pointsHolder.setPoints(this.points);
+                        });
                     }
                 },
                 err => this.error = 'Email or password invalid. Please try again.');
