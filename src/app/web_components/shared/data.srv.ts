@@ -45,9 +45,11 @@ export class DService {
     updateTournament(tournament: string) {
         return this.http.put('/api/tournaments', tournament).map(res => res.json());
     }
+
     updateTeam(team: string) {
         return this.http.put('/api/teams', team).map(res => res.json());
     }
+
     getMyTeams(id: string) {
         return this.http.get(`/api/teams/?team_master_id=${id}`).map(res => res.json());
     }
@@ -56,29 +58,19 @@ export class DService {
         return this.http.get(`/api/tournaments/?userID=${userID}`).map(res => res.json())
     }
 
-    teamIncome(team_id): any {
-        return this.http.get(`/api/teams/?team_id=${team_id}`).map(res => res.json())
+    teamResults(team_master_id, flag): any {
+        return this.http.get(`/api/teams/?team_master_ids=${team_master_id}&flag=${flag}`).map(res => res.json())
     }
 
-    getTournamentTeams(teamMaster): any {
-        return this.http.get(`/api/tournament/teams/?teamMaster=${teamMaster}`).map(res => res.json())
-    }
     getTeamPlayers() {
         return this.http.get('/api/player').map(res => res.json());
-    }
-
-    getTeamsIncomes(team_id: string): any {
-        return this.http.get(`/api/teams?team_id=${team_id}`).map(res => res.json())
-    }
-
-    getTournamentTeamsbyID(tournamentID): any {
-        return this.http.get(`/api/tournament/teams/?tournamentID=${tournamentID}`).map(res => res.json())
     }
 
     TeamToTournament(tournament_teams: string) {
         return this.http.post('/api/tournament/teams', tournament_teams).map(res => res.json())
 
     }
+
     SellPlayer(playersLedger: string) {
         return this.http.post('/api/tournament/players_ledger', playersLedger).map(res => res.json())
     }

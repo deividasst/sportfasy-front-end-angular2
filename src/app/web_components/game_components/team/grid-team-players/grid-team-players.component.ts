@@ -4,14 +4,9 @@ import {
 } from '@angular/core';
 import {GridDataResult, PageChangeEvent} from '@progress/kendo-angular-grid';
 import {DService} from '../../../shared/data.srv';
-import {Router} from '@angular/router';
-import {Team} from '../../../shared/Team';
-import {PlayersLedger} from '../../../shared/PlayersLedger';
 import {Tournament_teams} from '../../../shared/Tournament-teams';
 import {MD_DIALOG_DATA, MdDialog} from '@angular/material';
-import {TeamDialogComponent} from '../team-dialog/team-dialog.component';
 import {KendoUiSettings} from '../../../shared/kendo-ui-settings.srv';
-import {GridTeamPlayersSellComponent} from '../grid-team-players-sell/grid-team-players-sell.component';
 import {Players} from '../../../shared/Players';
 @Component({
     selector: 'app-grid-team-players',

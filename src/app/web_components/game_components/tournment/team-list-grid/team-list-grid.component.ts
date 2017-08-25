@@ -1,5 +1,4 @@
 import {Component, Inject, Input, OnInit} from '@angular/core';
-import {Tournament} from '../../../shared/Tournament';
 import {GridDataResult, PageChangeEvent} from '@progress/kendo-angular-grid';
 import {DService} from '../../../shared/data.srv';
 import {MdDialog} from '@angular/material';

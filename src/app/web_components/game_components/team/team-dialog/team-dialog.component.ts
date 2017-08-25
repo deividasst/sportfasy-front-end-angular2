@@ -1,7 +1,6 @@
 import {Component, OnInit, Input, Output, Inject, Injectable, Optional, EventEmitter, ViewChild} from '@angular/core';
 import {MD_DIALOG_DATA} from '@angular/material';
 import {DService} from '../../../shared/data.srv';
-import {User} from '../../../shared/User';
 import {SecurityTrimming} from '../../../shared/security-trimming.srv';
 import {TokenHolderServise} from '../../../shared/tokenholder.srv';
 import {Players} from '../../../shared/Players'
@@ -47,7 +46,6 @@ export class TeamDialogComponent implements OnInit {
         this.teamGrid.pushPlayerToTeam(player);
     }
 
-
     public close() {
         this.opened = false;
     }
@@ -57,7 +55,6 @@ export class TeamDialogComponent implements OnInit {
         this.opened = true;
     }
 
-
     getPlayers() {
         this.ds.getTeamPlayers().subscribe(player => {
             this.total_players = player;
@@ -65,13 +62,6 @@ export class TeamDialogComponent implements OnInit {
         })
 
     }
-
-    // getPoints(teamid): void {
-    //     this.ds.getTeamTotal(teamid).subscribe(teamtotals => {
-    //         this.teamTotals = teamtotals;
-    //         console.log(this.teamTotals);
-    //     })
-    // }
 
     compare() {
         let players = this.total_players;
@@ -89,12 +79,9 @@ export class TeamDialogComponent implements OnInit {
         return players;
     }
 
-
     ngOnInit() {
         this.getPlayers();
         console.log(this.data);
-      //  this.getPoints("59632dab7d49e60864698049");
-        // this.team_players = this.data._team._players;
     }
 
 }
