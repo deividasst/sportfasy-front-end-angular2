@@ -1,3 +1,24 @@
 @import 'variables';
 @import '../node_modules/bootstrap/scss/bootstrap';
 @import "~@progress/kendo-theme-default/scss/all";
+.mat-dialog-container{
+  background-color: #212121}
+.mat-tab-label[_ngcontent-c13]{
+  color: white;
+}
+.k-dialog-buttongroup .k-button.k-primary {
+  color: #ff9900;
+  background: none;
+}
+.k-widget ::selection, .k-block ::selection {
+  background-color: #ff9900;
+  color: #ffffff;
+}
+.k-dialog-buttongroup .k-button.k-primary:hover{
+  background-color: #ff9900;
+  color: #ffffff;
+}
+.k-widget ::selection, .k-block ::selection {
+  background-color: #ff9900;
+  color: #ffffff;
+}
