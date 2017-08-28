@@ -33,9 +33,11 @@ export class CreateTeamComponent implements OnInit {
     quit = false;
     public listItems: Array<string> = new Array;
     name;
+    public teamList: Array<string> = new Array;
     public opened;
     tournament;
     budget_not_exceeded = false;
+    teams: Team[];
 
     constructor(private ds: DService,
                 private tokenHolder: TokenHolderServise,
@@ -113,7 +115,10 @@ export class CreateTeamComponent implements OnInit {
             this.tournaments = tournament
             for (let i = 0; i < this.tournaments.length; i++) {
                 this.listItems.push(this.tournaments[i].name);
+
             }
+            console.log("list itemai:" + this.listItems);
+            console.log("tournamentai:" + this.tournaments);
         });
     }
 
@@ -174,8 +179,10 @@ export class CreateTeamComponent implements OnInit {
             this.userId = item;
             this.getUserTurnaments(item);
             this.team._team_master = item;
+            this.getTournamentTeams(item);
         });
         console.log(JSON.stringify(this.list, null, 2));
+        console.log(this.teams);
     }
 
     sendTeam(team) {
@@ -234,4 +241,20 @@ export class CreateTeamComponent implements OnInit {
                 this.budget_not_exceeded = true;
             });
     }
+    // Gets my tournament teams
+    getTournamentTeams(teamMaster): void {
+
+        this.ds.getMyTeams(teamMaster).subscribe(team => {
+            this.teamList = [];
+            this.teams = team;
+
+            for(let i=0; i < this.teams.length; i++){
+                this.teamList.push(this.teams[i]._tournament.name)
+
+            }
+           this.listItems = this.listItems.filter(val => !this.teamList.includes(val));
+
+        });
+    }
 }
+
