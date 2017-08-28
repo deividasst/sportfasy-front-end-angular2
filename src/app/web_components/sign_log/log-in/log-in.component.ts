@@ -18,7 +18,6 @@ export class LogInComponent implements OnInit {
     name_user: any;
     userID;
     points;
-    p;
 
 
     constructor(private ds: DService,
@@ -26,6 +25,7 @@ export class LogInComponent implements OnInit {
                 private pointsHolder: PointsHolderServise,
                 private router: Router) {
         this.tokenHolder.setUserName('');
+       // this.pointsHolder.setPoints(this.points);
     }
 
     ngOnInit() {
@@ -52,14 +52,11 @@ export class LogInComponent implements OnInit {
                             this.ds.getUserLedger(obj.userID).subscribe(points => {
                                 if (typeof points[0] !== 'undefined') {
                                     this.points = points[0].sum;
-                                    console.log(this.points + " taskai");
-
+                                    this.pointsHolder.setPoints(points[0].sum);
                                 } else {
                                     this.points = 0;
-                                    console.log(this.points + " taskai");
+                                    this.pointsHolder.setPoints(0);
                                 }
-                                console.log(this.points + " ikjk");
-                                this.pointsHolder.setPoints(this.points);
                         });
                     }
                 },

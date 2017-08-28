@@ -14,7 +14,7 @@ export class NavbarComponent implements OnInit {
     name: string;
     public opened;
     userID;
-    @ Input() points;
+    points;
 
     public close() {
         this.opened = false;
@@ -31,11 +31,12 @@ export class NavbarComponent implements OnInit {
                 public dialog: MdDialog) {
         this.tokenHolder.nameChange$.subscribe(item => this.name = item);
         this.tokenHolder.idChange$.subscribe(item => this.userID = item);
-        this.points = this.pointsHolder.getPoints();
+       this.pointsHolder.pointsChange$.subscribe(item => this.points = item);
+        // this.points = this.pointsHolder.getPoints();
     }
 
     ngOnInit() {
-        console.log(this.points +" points")
+        console.log(this.points + " navbar");
     }
 
     logOut(): void {
