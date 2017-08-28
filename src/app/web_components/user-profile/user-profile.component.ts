@@ -18,18 +18,14 @@ import {TokenHolderServise} from "../shared/tokenholder.srv";
 export class UserProfileComponent implements OnInit {
 
     @Input() tournament_team;
+
+    tournaments: Tournament[];
+    teams: Team[];
     // Kendo grid params
     gridView: GridDataResult;
     data: Object[];
     pageSize: number;
     skip: number;
-
-    tournaments: Tournament[];
-
-    teams: Team[];
-
-    userId: string;
-    flag: boolean;
 
     constructor(private ds: DService,
                 public dialog: MdDialog,
@@ -41,31 +37,25 @@ export class UserProfileComponent implements OnInit {
 
     }
 
-
     protected pageChange(event: PageChangeEvent): void {
         this.skip = event.skip;
         // this.loadItems();
     }
 
-
     // It will be for claim points
     function () {
-    }
-
-    teamResults(team_master_id, flag) {
-        this.ds.teamResults(team_master_id, flag).subscribe(team => {
-            this.teams = team;
-            console.log(team, 'tournamentas ac')
-        })
     }
 
     // team results gets team master id
     ngOnInit() {
         this.tokenHolder.idChange$.subscribe(item => {
-            this.userId = item;
-            this.flag = true;
-            this.teamResults(item, this.flag);
+            this.teamResults(item, true);
         });
     }
 
+    teamResults(team_master_id, ended_tournaments) {
+        this.ds.teamResults(team_master_id, ended_tournaments).subscribe(team => {
+            this.teams = team;
+        })
+    }
 }

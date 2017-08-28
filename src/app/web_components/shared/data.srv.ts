@@ -58,8 +58,9 @@ export class DService {
         return this.http.get(`/api/tournaments/?userID=${userID}`).map(res => res.json())
     }
 
-    teamResults(team_master_id, flag): any {
-        return this.http.get(`/api/teams/?team_master_ids=${team_master_id}&flag=${flag}`).map(res => res.json())
+    teamResults(team_master_id, ended_tournaments): any {
+        return this.http.get(`/api/teams/?team_master_id=${team_master_id}&ended_tournaments=${ended_tournaments}`).map(res => res.json());
+        // http://localhost:3000     /api/teams/?team_master_id=597bb8685663bd209&ended_tournaments=true
     }
 
     getTeamPlayers() {
