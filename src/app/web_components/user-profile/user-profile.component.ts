@@ -21,6 +21,7 @@ export class UserProfileComponent implements OnInit {
 
     tournaments: Tournament[];
     teams: Team[];
+
     // Kendo grid params
     gridView: GridDataResult;
     data: Object[];
@@ -39,11 +40,7 @@ export class UserProfileComponent implements OnInit {
 
     protected pageChange(event: PageChangeEvent): void {
         this.skip = event.skip;
-        // this.loadItems();
-    }
 
-    // It will be for claim points
-    function () {
     }
 
     // team results gets team master id

@@ -12,7 +12,7 @@
     </ng-template>
     <kendo-grid-column title="Options">
         <ng-template kendoGridCellTemplate let-dataItem let-rowIndex="rowIndex">
-            <button kendoButton >Convert</button>
+            <button kendoButton *ngIf="!dataItem._team.user_points_converted" (click)="sendData(dataItem)">Convert</button>
         </ng-template>
     </kendo-grid-column>
 </kendo-grid>

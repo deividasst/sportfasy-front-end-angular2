@@ -79,5 +79,9 @@ export class DService {
     postPlayersLedger(players_ledger): any {
         return this.http.post('/api/tournament/players_ledger', players_ledger).map(res => res.json())
     }
+
+    postUserLedger(user_ledger): any {
+        return this.http.post('/api/userledger', user_ledger).map(res => res.json())
+    }
 }
 
