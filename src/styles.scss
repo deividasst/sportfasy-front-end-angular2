@@ -4,8 +4,8 @@
 .mat-dialog-container{
   background-color: #212121}
 .mat-tab-label[_ngcontent-c13]{
-  color: white;
-}
+   color: white;
+ }
 .k-dialog-buttongroup .k-button.k-primary {
   color: #ff9900;
   background: none;
@@ -21,4 +21,7 @@
 .k-widget ::selection, .k-block ::selection {
   background-color: #ff9900;
   color: #ffffff;
+}
+.mat-tab-label[_ngcontent-c12] {
+  color: white;
 }
