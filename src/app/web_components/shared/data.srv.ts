@@ -45,9 +45,11 @@ export class DService {
     updateTournament(tournament: string) {
         return this.http.put('/api/tournaments', tournament).map(res => res.json());
     }
+
     updateTeam(team: string) {
         return this.http.put('/api/teams', team).map(res => res.json());
     }
+
     getMyTeams(id: string) {
         return this.http.get(`/api/teams/?team_master_id=${id}`).map(res => res.json());
     }
@@ -63,6 +65,7 @@ export class DService {
     getTournamentTeams(teamMaster): any {
         return this.http.get(`/api/tournament/teams/?teamMaster=${teamMaster}`).map(res => res.json())
     }
+
     getTeamPlayers() {
         return this.http.get('/api/player').map(res => res.json());
     }
@@ -79,12 +82,21 @@ export class DService {
         return this.http.post('/api/tournament/teams', tournament_teams).map(res => res.json())
 
     }
+
     SellPlayer(playersLedger: string) {
         return this.http.post('/api/tournament/players_ledger', playersLedger).map(res => res.json())
     }
 
     postPlayersLedger(players_ledger): any {
         return this.http.post('/api/tournament/players_ledger', players_ledger).map(res => res.json())
+    }
+
+    buy_team_players(team_players: string) {
+        return this.http.post('/api/team/players/', team_players).map(res => res.json())
+    }
+
+    sell_team_players(team_players: string) {
+        return this.http.put('/api/team/players/', team_players).map(res => res.json())
     }
 }
 
