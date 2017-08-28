@@ -68,13 +68,22 @@ export class GridTeamPlayersSellComponent implements OnInit {
         });
         this.ds.SellPlayer(JSON.stringify(playerledger)).subscribe(object => {
         });
+        const team_players = {
+            _team: this.data._team._id,
+            _player: dataItem._id[0],
+            buy_p: dataItem.price
+        };
+        console.log(JSON.stringify(team_players, null, 2));
+        this.ds.buy_team_players(JSON.stringify(team_players)).subscribe(object => {
+        });
+
     }
 
     delete(dataItem) {
         for (let i = 0; i < this.players.length; i++) {
             if (this.players[i].name == dataItem.name) {
                 this.players.splice(i, 1);
-                 this.boughtPlayer.emit(dataItem);
+                this.boughtPlayer.emit(dataItem);
                 this.loadItems();
                 break;
             }

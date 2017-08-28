@@ -48,16 +48,15 @@ import { GridTeamsComponent } from './web_components/game_components/team/grid-t
 import { UserProfileComponent } from './web_components/user-profile/user-profile.component';
 import { TeamDialogComponent } from './web_components/game_components/team/team-dialog/team-dialog.component';
 import {GridTeamPlayersComponent} from './web_components/game_components/team/grid-team-players/grid-team-players.component';
-import {CountDown} from 'ng2-date-countdown'; //not sure
 import { GridTeamPlayersSellComponent } from './web_components/game_components/team/grid-team-players-sell/grid-team-players-sell.component';
 import { TournamentTeamComponentComponent } from './web_components/game_components/tournment/tournament-team-component/tournament-team-component.component';
 import { TeamListGridComponent } from './web_components/game_components/tournment/team-list-grid/team-list-grid.component';
+import {PointsHolderServise} from './web_components/shared/pointsholder';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    CountDown, //not sure
     LogOutComponent,
     LogInComponent,
     SingUpComponent,
@@ -159,6 +158,7 @@ import { TeamListGridComponent } from './web_components/game_components/tournmen
         KendoUiSettings,
         TokenHolderServise,
         LogOutComponent,
+        PointsHolderServise,
         SecurityTrimming,
         TournamentUserComponentComponent,
         OverAllTournamentsWidgetComponent
