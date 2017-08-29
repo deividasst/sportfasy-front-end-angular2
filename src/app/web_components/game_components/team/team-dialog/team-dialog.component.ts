@@ -47,9 +47,11 @@ export class TeamDialogComponent implements OnInit {
     }
     calculateIncome(player: any) {
         console.log(this.data.team_total - player.price)
+        return this.data.team_total = this.data.team_total - player.price;
     }
     calculateIncome1(player: any) {
         console.log(this.data.team_total + player.price)
+        return this.data.team_total = this.data.team_total + player.price;
     }
 
     public close() {
