@@ -24,8 +24,7 @@ export class GridUserProfileComponent implements OnInit {
     usrID: string;
     usr_points_status: any;
     button_status: boolean;
-
-    tournament_teams: Tournament_teams[];
+    flag: boolean;
     players: any;
     // Kendo grid params
     gridView: GridDataResult;
@@ -96,20 +95,21 @@ export class GridUserProfileComponent implements OnInit {
             console.log(dataItem, ' click');
 
             // Send status to back then points are converted
+            this.flag = true;
             this.usr_points_status = ({
                 name: dataItem._team.name,
-                user_points_converted: true
+                user_points_converted: this.flag
             });
             this.ds.updateTeam(JSON.stringify(this.usr_points_status)).subscribe(obj => {
             });
             this.button_status = false;
         }
     }
-
-    ngOnInit() {
-
-        this.loadItems();
+    activateClasss(dataItem) {
+        dataItem.active = !dataItem.active;
     }
 
-
+    ngOnInit() {
+        this.loadItems();
+    }
 }

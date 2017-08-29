@@ -1,15 +1,13 @@
-import {Component, Inject, Input, OnInit, Optional} from '@angular/core';
+import {Component, Inject, Injectable, Input, OnInit} from '@angular/core';
 import {GridDataResult, PageChangeEvent} from '@progress/kendo-angular-grid';
-import {MD_DIALOG_DATA, MdDialog} from '@angular/material';
+import { MdDialog} from '@angular/material';
 import {Tournament} from '../shared/Tournament';
 import {DService} from '../shared/data.srv';
 import {KendoUiSettings} from '../shared/kendo-ui-settings.srv';
-import {SecurityTrimming} from '../shared/security-trimming.srv';
 import {Team} from '../shared/Team';
-import {Players} from '../shared/Players';
-import {TokenHolderServise} from "../shared/tokenholder.srv";
+import {TokenHolderServise} from '../shared/tokenholder.srv';
 
-
+@Injectable()
 @Component({
     selector: 'app-user-profile',
     templateUrl: './user-profile.component.html',
@@ -30,17 +28,14 @@ export class UserProfileComponent implements OnInit {
 
     constructor(private ds: DService,
                 public dialog: MdDialog,
-                private secureTrim: SecurityTrimming,
                 private  kendoSettings: KendoUiSettings,
                 private tokenHolder: TokenHolderServise) {
         this.pageSize = this.kendoSettings.getPageSize();
         this.skip = this.kendoSettings.getSkip();
-
     }
 
     protected pageChange(event: PageChangeEvent): void {
         this.skip = event.skip;
-
     }
 
     // team results gets team master id
