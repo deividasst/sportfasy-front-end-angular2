@@ -78,6 +78,16 @@ export class GridTeamPlayersComponent implements OnInit {
         console.log('objektas ' + (JSON.stringify(playerledger)));
         this.ds.SellPlayer(JSON.stringify(playerledger)).subscribe(object => {
         });
+
+        const team_players = {
+            _team: this.data._team._id,
+            _player: dataItem._id[0],
+            sell_p: dataItem.price
+        };
+        console.log(JSON.stringify(team_players, null, 2));
+
+        this.ds.sell_team_players(JSON.stringify(team_players)).subscribe(object => {
+        });
     }
 
     delete(dataItem) {

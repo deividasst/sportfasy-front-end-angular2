@@ -63,6 +63,10 @@ export class DService {
         // http://localhost:3000     /api/teams/?team_master_id=597bb8685663bd209&ended_tournaments=true
     }
 
+    getTournamentTeams(teamMaster): any {
+        return this.http.get(`/api/tournament/teams/?teamMaster=${teamMaster}`).map(res => res.json())
+    }
+
     getTeamPlayers() {
         return this.http.get('/api/player').map(res => res.json());
     }
@@ -82,6 +86,19 @@ export class DService {
 
     postUserLedger(user_ledger): any {
         return this.http.post('/api/userledger', user_ledger).map(res => res.json())
+    }
+
+    getUserLedger(user_id): any {
+        return this.http.get(`/api/userledger/?user_id=${user_id}`).map(res => res.json())
+    }
+
+    buy_team_players(team_players: string) {
+        return this.http.post('/api/team/players/', team_players).map(res => res.json())
+    }
+
+    sell_team_players(team_players: string) {
+        return this.http.put('/api/team/players/', team_players).map(res => res.json())
+
     }
 }
 
