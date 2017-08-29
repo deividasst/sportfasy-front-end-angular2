@@ -36,7 +36,16 @@ export class NavbarComponent implements OnInit {
     }
 
     ngOnInit() {
-        console.log(this.points + " navbar");
+        this.ds.getUserLedger(this.userID).subscribe(points => {
+            if (typeof points[0] !== 'undefined') {
+                this.points = points[0].sum;
+                this.pointsHolder.setPoints(points[0].sum);
+            } else {
+                this.points = 0;
+                this.pointsHolder.setPoints(0);
+            }
+        });
+        this.pointsHolder.pointsChange$.subscribe(item => this.points = item);
     }
 
     logOut(): void {

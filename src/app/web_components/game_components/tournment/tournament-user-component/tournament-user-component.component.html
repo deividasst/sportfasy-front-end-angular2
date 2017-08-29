@@ -9,7 +9,7 @@
     <button kendoButton *ngIf="is_allowed" class="fa fa-close" (click)="open(user)"> Delete</button>
     <div class="example-wrapper">
         <kendo-dialog title="Please confirm" *ngIf="opened" (close)="close('cancel')">
-            <p style="margin: 30px; text-align: center;">Delete user <b>{{user.name}}</b>?</p>
+            <p style="margin: 30px; text-align: center;">Delete user <a>{{user.name}}</a>?</p>
             <kendo-dialog-actions>
                 <button kendoButton (click)="close('no')">Cancel</button>
                 <button kendoButton (click)="delete()">Delete</button>

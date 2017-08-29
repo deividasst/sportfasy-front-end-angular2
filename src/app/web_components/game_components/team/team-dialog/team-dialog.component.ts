@@ -42,14 +42,14 @@ export class TeamDialogComponent implements OnInit {
         this.playerBuyGRid.changeFreePlayerList(this.players);
     }
 
-    putBougthPlayerToTeam(player: any){
+    putBougthPlayerToTeam(player: any) {
         this.teamGrid.pushPlayerToTeam(player);
     }
-    calculateIncome(player: any){
+    calculateIncome(player: any) {
         console.log(this.data.team_total - player.price)
     }
-    calculateIncome1(player: any){
-        console.log(this.data.team_total - player.price)
+    calculateIncome1(player: any) {
+        console.log(this.data.team_total + player.price)
     }
 
     public close() {
