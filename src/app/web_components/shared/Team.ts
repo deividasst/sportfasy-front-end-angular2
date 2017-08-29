@@ -8,4 +8,5 @@ export class Team {
     points: number;
     rank: number;
     total_income: number;
+    team_total: number;
 }
