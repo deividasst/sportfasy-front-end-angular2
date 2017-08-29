@@ -36,7 +36,7 @@ export class GridTeamsComponent implements OnInit {
 
         const dialogRef = this.dialog.open(TeamDialogComponent, {
             data: team,
-            height: '700px',
+            height: '670px',
             width: '650px'
         });
     }
