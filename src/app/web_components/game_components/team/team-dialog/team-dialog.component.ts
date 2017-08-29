@@ -45,6 +45,12 @@ export class TeamDialogComponent implements OnInit {
     putBougthPlayerToTeam(player: any){
         this.teamGrid.pushPlayerToTeam(player);
     }
+    calculateIncome(player: any){
+        console.log(this.data.team_total - player.price)
+    }
+    calculateIncome1(player: any){
+        console.log(this.data.team_total - player.price)
+    }
 
     public close() {
         this.opened = false;

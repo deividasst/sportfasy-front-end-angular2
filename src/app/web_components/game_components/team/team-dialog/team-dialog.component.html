@@ -7,6 +7,7 @@
     <div *ngIf=data id="grid1">
         <app-grid-team-players
             (remainedPlayersInTeam)="setRemainedPlayersInTeam($event)"
+            (soldPlayer)="calculateIncome1($event)"
             #grid1>
             [data]="data"
         </app-grid-team-players>
@@ -16,6 +17,7 @@
         <app-grid-team-players-sell
             [input_players]="players"
             (boughtPlayer)="putBougthPlayerToTeam($event)"
+            (boughtPlayer)="calculateIncome($event)"
         >
         </app-grid-team-players-sell>
     </div>

@@ -24,7 +24,7 @@ export class GridTeamPlayersComponent implements OnInit {
     list: Array<any> = new Array;
     listas: Array<any> = new Array;
     skip: number;
-
+    @Output() soldPlayer: EventEmitter<any>;
     @Output() remainedPlayersInTeam: EventEmitter<any>;
 
     columns: any = [{'field': 'price', 'title': 'Price'},
@@ -40,6 +40,7 @@ export class GridTeamPlayersComponent implements OnInit {
         this.pageSize = this.kendoSettings.getPageSize();
         this.skip = this.kendoSettings.getSkip();
         this.remainedPlayersInTeam = new EventEmitter();
+        this.soldPlayer = new EventEmitter();
     }
 
     pushPlayerToTeam(player: any) {
@@ -96,6 +97,7 @@ export class GridTeamPlayersComponent implements OnInit {
                 this.data._team._players.splice(i, 1);  // removes 1 element at position i
                 this.loadItems();
                 this.remainedPlayersInTeam.emit(this.data._team._players);
+                this.soldPlayer.emit(dataItem);
                 break;
             }
         }
