@@ -32,9 +32,6 @@ export class LogInComponent implements OnInit {
         this.user = new User();
         this.user.password = '123456';
         this.user.email = 'root@gmail.com';
-        localStorage.removeItem('id_token');
-        this.tokenHolder.setUserName('');
-        localStorage.clear();
     }
 
     loginUser(user): void {

@@ -17,12 +17,14 @@ export class TokenHolderServise {
     private _idChange = new ReplaySubject<string>();
     private _emailChange = new ReplaySubject<string>();
     private _surnameChange = new ReplaySubject<string>();
+    private _tokenChange = new ReplaySubject<string>();
 
     // Observable streams
     nameChange$ = this._nameChange.asObservable();
     idChange$ = this._idChange.asObservable();
     emailChange$ = this._emailChange.asObservable();
     surnameChange$ = this._surnameChange.asObservable();
+    tokenChange$ = this._tokenChange.asObservable();
 
     constructor() {
     }
@@ -34,6 +36,7 @@ export class TokenHolderServise {
     setToken(value: any): void {
         this.token = value;
         localStorage.setItem('id_token', value);
+        this._tokenChange.next(value);
     }
 
     getUserID(): any {
