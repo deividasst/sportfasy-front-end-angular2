@@ -7,6 +7,7 @@ import {DService} from '../shared/data.srv';
 import {KendoUiSettings} from '../shared/kendo-ui-settings.srv';
 import {Tournament} from "../shared/Tournament";
 import {TokenHolderServise} from "../shared/tokenholder.srv";
+import {PointsHolderServise} from "../shared/pointsholder";
 
 @Component({
     selector: 'app-grid-user-profile',
@@ -40,6 +41,7 @@ export class GridUserProfileComponent implements OnInit {
     constructor(private ds: DService,
                 public dialog: MdDialog,
                 private tokenHolder: TokenHolderServise,
+                private pointsHolder: PointsHolderServise,
                 private  kendoSettings: KendoUiSettings) {
         this.pageSize = this.kendoSettings.getPageSize();
         this.skip = this.kendoSettings.getSkip();
@@ -60,6 +62,9 @@ export class GridUserProfileComponent implements OnInit {
 
     // It will be for claim points
     sendData(dataItem) {
+
+        this.activateClasss(dataItem);
+
         if (dataItem._team.user_points_converted === false) {
             switch (dataItem.position) {
                 case 1:
@@ -75,11 +80,14 @@ export class GridUserProfileComponent implements OnInit {
                     return this.points = 0;
             }
 
+            this.pointsHolder.setPoints(this.pointsHolder.getPoints() + this.points);
+
             this.tokenHolder.idChange$.subscribe(item => {
                 this.usrID = item;
             });
+
             this.teamID = dataItem._team._id;
-            console.log(this.teamID, 'teamID')
+            console.log(this.teamID, 'teamID');
             this.tournamentID = dataItem._tournament._id;
             console.log(this.tournamentID, 'tournamentID');
 
@@ -91,6 +99,7 @@ export class GridUserProfileComponent implements OnInit {
             });
 
             this.ds.postUserLedger(JSON.stringify(this.usrObject)).subscribe(obj => {
+
             });
             console.log(dataItem, ' click');
 
@@ -101,10 +110,11 @@ export class GridUserProfileComponent implements OnInit {
                 user_points_converted: this.flag
             });
             this.ds.updateTeam(JSON.stringify(this.usr_points_status)).subscribe(obj => {
+
             });
-            this.button_status = false;
         }
     }
+
     activateClasss(dataItem) {
         dataItem.active = !dataItem.active;
     }

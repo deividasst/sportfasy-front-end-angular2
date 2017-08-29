@@ -10,9 +10,10 @@
     <ng-template kendoGridDetailTemplate let-dataItem>
     </ng-template>
     <kendo-grid-column title="Options">
-        <ng-template kendoGridCellTemplate let-dataItem let-rowIndex="rowIndex" >
-            <button [ngClass]="{'active': dataItem.active}" kendoButton  id="add" class="select" *ngIf="!dataItem._team.user_points_converted" (click)="sendData(dataItem)"
-                    (click)="activateClasss(dataItem)">Convert
+        <ng-template kendoGridCellTemplate let-dataItem let-rowIndex="rowIndex">
+            <button [ngClass]="{'active': dataItem.active}" kendoButton id="add" class="select"
+                    *ngIf="!dataItem._team.user_points_converted" (click)="sendData(dataItem)"
+                    >Convert
             </button>
         </ng-template>
     </kendo-grid-column>

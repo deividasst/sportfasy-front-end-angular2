@@ -30,7 +30,10 @@ export class NavbarComponent implements OnInit {
                 private pointsHolder: PointsHolderServise,
                 public dialog: MdDialog) {
         this.tokenHolder.nameChange$.subscribe(item => this.name = item);
-        this.tokenHolder.idChange$.subscribe(item => this.userID = item);
+        this.tokenHolder.idChange$.subscribe(userId => {
+            this.userID = userId;
+            this.getUserPoints(userId);
+        });
        this.pointsHolder.pointsChange$.subscribe(item => this.points = item);
         // this.points = this.pointsHolder.getPoints();
     }
@@ -46,4 +49,14 @@ export class NavbarComponent implements OnInit {
         this.logout.logOut();
         this.opened = false;
     }
+
+   getUserPoints (userId): void {
+       this.ds.getUserLedger(userId).subscribe(points => {
+           if (typeof points[0] !== 'undefined') {
+               this.pointsHolder.setPoints(points[0].sum);
+           } else {
+               this.pointsHolder.setPoints(0);
+           }
+       });
+   }
 }
