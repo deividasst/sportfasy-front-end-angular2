@@ -32,9 +32,6 @@ export class LogInComponent implements OnInit {
         this.user = new User();
         this.user.password = '123456';
         this.user.email = 'root@gmail.com';
-        localStorage.removeItem('id_token');
-        this.tokenHolder.setUserName('');
-        localStorage.clear();
     }
 
     loginUser(user): void {
@@ -50,15 +47,6 @@ export class LogInComponent implements OnInit {
                             obj.userSurname),
 
                             this.router.navigate(['/dashboard'])
-                        this.ds.getUserLedger(obj.userID).subscribe(points => {
-                            if (typeof points[0] !== 'undefined') {
-                                this.points = points[0].sum;
-                                this.pointsHolder.setPoints(points[0].sum);
-                            } else {
-                                this.points = 0;
-                                this.pointsHolder.setPoints(0);
-                            }
-                        });
                     }
                 },
                 err => this.error = 'Email or password invalid. Please try again.');

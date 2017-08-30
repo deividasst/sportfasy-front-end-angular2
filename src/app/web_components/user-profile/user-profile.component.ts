@@ -1,6 +1,6 @@
 import {Component, Inject, Injectable, Input, OnInit} from '@angular/core';
 import {GridDataResult, PageChangeEvent} from '@progress/kendo-angular-grid';
-import { MdDialog} from '@angular/material';
+import {MdDialog} from '@angular/material';
 import {Tournament} from '../shared/Tournament';
 import {DService} from '../shared/data.srv';
 import {KendoUiSettings} from '../shared/kendo-ui-settings.srv';
@@ -40,8 +40,8 @@ export class UserProfileComponent implements OnInit {
 
     // team results gets team master id
     ngOnInit() {
-        this.tokenHolder.idChange$.subscribe(item => {
-            this.teamResults(item, true);
+        this.tokenHolder.idChange$.subscribe(userID => {
+                this.teamResults(this.tokenHolder.getUserID(), true);
         });
     }
 
