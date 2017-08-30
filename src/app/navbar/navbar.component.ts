@@ -33,15 +33,11 @@ export class NavbarComponent implements OnInit {
         this.tokenHolder.nameChange$.subscribe(item => this.name = item);
         this.tokenHolder.idChange$.subscribe(userId => {
             this.userID = userId;
-            // console.log('user id in navbar' + userId);
             if (localStorage.getItem('id_token')) {
-                // console.log('user id in navbar inf IF' + userId);
-                // console.log('navbar token: ' + localStorage.getItem('id_token'));
-                this.getUserPoints(userId);
+                this.getUserPoints(this.tokenHolder.getUserID());
             }
         });
         this.pointsHolder.pointsChange$.subscribe(item => this.points = item);
-        // this.points = this.pointsHolder.getPoints();
     }
 
     ngOnInit() {
@@ -58,9 +54,6 @@ export class NavbarComponent implements OnInit {
     }
 
     logOut(): void {
-        // localStorage.removeItem('id_token');
-        // this.tokenHolder.setUserName('');
-        // localStorage.clear();
         this.logout.logOut();
         this.opened = false;
     }

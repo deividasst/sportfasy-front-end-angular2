@@ -44,7 +44,6 @@ export class GridTeamPlayersComponent implements OnInit {
     }
 
     pushPlayerToTeam(player: any) {
-        console.log('bougth player added to team');
         this.data._team._players.push(player);
         this.loadItems();
     }
@@ -68,15 +67,12 @@ export class GridTeamPlayersComponent implements OnInit {
     }
 
     sell(dataItem) {
-        console.log('data', dataItem._id[0], 'team id', this.data._team._id, 'tournament id', this.data._tournament._id
-            , 'price', dataItem.price);
         const playerledger = ({
             tournament_id: this.data._tournament._id,
             team_id: this.data._team._id,
             player_id: dataItem._id[0],
             total_income: dataItem.price
         });
-        console.log('objektas ' + (JSON.stringify(playerledger)));
         this.ds.SellPlayer(JSON.stringify(playerledger)).subscribe(object => {
         });
 
@@ -85,8 +81,6 @@ export class GridTeamPlayersComponent implements OnInit {
             _player: dataItem._id[0],
             sell_p: dataItem.price
         };
-        console.log(JSON.stringify(team_players, null, 2));
-
         this.ds.sell_team_players(JSON.stringify(team_players)).subscribe(object => {
         });
     }

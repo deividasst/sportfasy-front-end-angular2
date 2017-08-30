@@ -41,11 +41,29 @@ export class UserProfileComponent implements OnInit {
     // team results gets team master id
     ngOnInit() {
         this.tokenHolder.idChange$.subscribe(userID => {
-                this.teamResults(this.tokenHolder.getUserID(), true);
+            if (userID) {
+                // console.log('user profile token: ' + localStorage.getItem('id_token'));
+                // console.log('user profile tokenHolder: ' + this.tokenHolder.getToken());
+
+                if (localStorage.getItem('id_token')) {
+                    console.log('token in local storage');
+                    this.teamResults(userID, true);
+                } else {
+                    this.tokenHolder.tokenChange$.subscribe(token => {
+
+                        console.log('token from subcribe');
+                        console.log('token from subcribe tokenHolder: ' + token);
+                        this.teamResults(userID, true);
+                    })
+                }
+
+                // this.teamResults(this.tokenHolder.getUserID(), true);
+            }
         });
     }
 
     teamResults(team_master_id, ended_tournaments) {
+        console.log('user profile team resultls');
         this.ds.teamResults(team_master_id, ended_tournaments).subscribe(team => {
             this.teams = team;
         })

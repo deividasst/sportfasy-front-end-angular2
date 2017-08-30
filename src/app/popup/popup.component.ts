@@ -12,9 +12,4 @@ export class PopupComponent implements OnInit {
 
   ngOnInit() {
   }
-
-    // closeDialog() {
-    //     this.dialog.close();
-    // }
-
 }

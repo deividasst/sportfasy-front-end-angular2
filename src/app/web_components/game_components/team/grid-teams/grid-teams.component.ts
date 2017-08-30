@@ -14,7 +14,6 @@ import {TeamDialogComponent} from '../team-dialog/team-dialog.component';
 export class GridTeamsComponent implements OnInit {
     @Input()
     teams: Team[];
-    tournament_teams : Tournament_teams[];
     players: any;
     // Kendo grid params
     gridView: GridDataResult;

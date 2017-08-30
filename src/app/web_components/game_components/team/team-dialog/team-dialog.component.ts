@@ -17,10 +17,7 @@ export class TeamDialogComponent implements OnInit {
     players: Players[];
     total_players: Players[];
     remainedPlayers: Players[];
-    team_players: Players[];
     teams: Team[];
-    teamArray: any;
-    teamTotals: any;
     list: Array<any> = new Array;
 
     @Input() onPlayerSold: EventEmitter<any>;
@@ -38,19 +35,18 @@ export class TeamDialogComponent implements OnInit {
     setRemainedPlayersInTeam(remainedPlayersInTeam: Players[]) {
         this.remainedPlayers = remainedPlayersInTeam;
         this.players = this.compare();
-        console.log('try call remainded players: ' + remainedPlayersInTeam.length);
         this.playerBuyGRid.changeFreePlayerList(this.players);
     }
 
     putBougthPlayerToTeam(player: any) {
         this.teamGrid.pushPlayerToTeam(player);
     }
+
     calculateIncome(player: any) {
-        console.log(this.data.team_total - player.price)
         return this.data.team_total = this.data.team_total - player.price;
     }
+
     calculateIncome1(player: any) {
-        console.log(this.data.team_total + player.price)
         return this.data.team_total = this.data.team_total + player.price;
     }
 
@@ -79,17 +75,15 @@ export class TeamDialogComponent implements OnInit {
                     return true;
                 }
             })
-            if (exists_in_team.length === 0 ) {
+            if (exists_in_team.length === 0) {
                 return player;
             }
         })
-        console.log('new compare' + players.length);
         return players;
     }
 
     ngOnInit() {
         this.getPlayers();
-        console.log(this.data);
     }
 
 }

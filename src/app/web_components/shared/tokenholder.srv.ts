@@ -75,10 +75,10 @@ export class TokenHolderServise {
     }
 
     storeUserData(token, id_user, email_user, name_user, surname_user) {
+        this.setToken(token);
         this.setUserEmail(email_user);
         this.setUserName(name_user);
         this.setUserID(id_user);
-        this.setToken(token);
         this.setUserSurname(surname_user);
     }
 }

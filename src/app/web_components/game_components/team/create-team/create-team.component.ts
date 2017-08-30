@@ -49,18 +49,11 @@ export class CreateTeamComponent implements OnInit {
             return sumator + value.price
         }, 0);
         if (budget_with_new_member <= this.tournament_budget) {
-            //
-            // const balance = this.tournament_budget - budget_with_new_member;
-            // document.getElementById('budget').innerHTML = 'Your budget left: ' + balance;
-            //
-            console.log('front budget ok');
             this.checkTeamBudget_server(player_list_to_check, budget_with_new_member, player);
         } else if (budget_with_new_member === 0) {
             alert('team budget exceeded');
-            console.log('team budget exceeded');
             this.budget_not_exceeded = true;
         } else {
-            console.log('team budget exceeded');
             this.budget_not_exceeded = true;
             alert('team budget exceeded');
         }
@@ -79,10 +72,6 @@ export class CreateTeamComponent implements OnInit {
     }
 
     loginti(tournament) {
-        // console.log(tournament.max_players);
-        // console.log(tournament);
-        // console.log(tournament.budget);
-        // console.log(tournament._id);
         return this.tournament_name = tournament.name, this.tournament_budget = tournament.budget, this.tournament_id = tournament._id
     }
 
@@ -117,8 +106,6 @@ export class CreateTeamComponent implements OnInit {
                 this.listItems.push(this.tournaments[i].name);
 
             }
-            console.log("list itemai:" + this.listItems);
-            console.log("tournamentai:" + this.tournaments);
         });
     }
 
@@ -137,13 +124,8 @@ export class CreateTeamComponent implements OnInit {
 
     addPlayer(player) {
         if (this.list.indexOf(player) === -1) {
-            // this.list.push(player);
-            console.log('this.list' + this.list.length);
             const player_list_to_check = Object.assign([], this.list);
             player_list_to_check.push(player);
-
-
-            // this.join();
             if (this.checkMaxPlayers()) {
                 this.checkTeamBudget(player_list_to_check, player);
             }
@@ -181,8 +163,6 @@ export class CreateTeamComponent implements OnInit {
             this.team._team_master = item;
             this.getTournamentTeams(item);
         });
-        console.log(JSON.stringify(this.list, null, 2));
-        console.log(this.teams);
     }
 
     sendTeam(team) {
@@ -212,6 +192,13 @@ export class CreateTeamComponent implements OnInit {
             });
             this.ds.postPlayersLedger(JSON.stringify(players_ledger)).subscribe(object => {
             });
+            const team_players = {
+                _team: obj.team._id,
+                _player: this.list[i]._id,
+                buy_p: this.list[i].price * -1
+            };
+            this.ds.buy_team_players(JSON.stringify(team_players)).subscribe(object => {
+            });
         }
     }
 
@@ -225,10 +212,6 @@ export class CreateTeamComponent implements OnInit {
                 const balance = this.tournament_budget - budget_with_new_member;
                 document.getElementById('budget').innerHTML = 'Your budget left: ' + balance;
                 this.activateClasss(player);
-                console.log('server budget ok');
-                console.log(JSON.stringify(player, null, 2));
-
-
                 // add new player name to list
                 this.list2 = (player_list_to_check.map(item => ' ' + item.name)
                     .filter((value, index, self) => self.indexOf(value) === index))
@@ -237,10 +220,10 @@ export class CreateTeamComponent implements OnInit {
             },
             err => {
                 this.error = 'players price exceeds tournament budget limit';
-                console.log('players price exceeds tournament budget limit');
                 this.budget_not_exceeded = true;
             });
     }
+
     // Gets my tournament teams
     getTournamentTeams(teamMaster): void {
 
@@ -248,11 +231,11 @@ export class CreateTeamComponent implements OnInit {
             this.teamList = [];
             this.teams = team;
 
-            for(let i=0; i < this.teams.length; i++){
+            for (let i = 0; i < this.teams.length; i++) {
                 this.teamList.push(this.teams[i]._tournament.name)
 
             }
-           this.listItems = this.listItems.filter(val => !this.teamList.includes(val));
+            this.listItems = this.listItems.filter(val => !this.teamList.includes(val));
 
         });
     }

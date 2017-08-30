@@ -14,8 +14,6 @@ import {TeamDialogComponent} from '../team-dialog/team-dialog.component';
     styleUrls: ['./grid-team-players-sell.component.sass']
 })
 export class GridTeamPlayersSellComponent implements OnInit {
-    teamArray: Array<any> = new Array
-    playersArray: Array<any> = new Array;
     boughtPlayers: Array<any> = new Array;
     @Input()
     input_players: Players[];
@@ -24,7 +22,6 @@ export class GridTeamPlayersSellComponent implements OnInit {
     gridView: GridDataResult;
     // data: Object[];
     pageSize: number;
-    teamTotals: any;
     skip: number;
     columns: any = [{'field': 'price', 'title': 'Price'},
         {'field': 'name', 'title': 'Player name'},
@@ -42,7 +39,6 @@ export class GridTeamPlayersSellComponent implements OnInit {
     }
 
     changeFreePlayerList(freePlayers: Players[]) {
-        console.log('change free player list' + freePlayers.length);
         this.players = freePlayers;
         this.loadItems();
     }
@@ -73,7 +69,6 @@ export class GridTeamPlayersSellComponent implements OnInit {
             _player: dataItem._id[0],
             buy_p: dataItem.price
         };
-        console.log(JSON.stringify(team_players, null, 2));
         this.ds.buy_team_players(JSON.stringify(team_players)).subscribe(object => {
         });
 

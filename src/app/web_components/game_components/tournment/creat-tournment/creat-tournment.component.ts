@@ -23,8 +23,6 @@ export class CreatTournmentComponent implements OnInit {
     public value: Date = new Date(this.yy = this.dateObj.getUTCFullYear(), this.mm = this.dateObj.getUTCMonth(), this.dd = this.dateObj.getUTCDate());
     public min2: Date = new Date(this.yy, this.mm, this.dd + 30);
     public max2: Date = new Date(this.yy, this.mm + 1, this.dd + 30);
-    name1: string = localStorage.getItem('name_user');
-    minDate = new Date(2017, 5);
     err;
     tokenEmail: string;
 

@@ -45,6 +45,7 @@ export class LogInComponent implements OnInit {
                             obj.userEmail,
                             obj.userName,
                             obj.userSurname),
+                            console.log('login'),
 
                             this.router.navigate(['/dashboard'])
                     }
