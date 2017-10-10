@@ -21,9 +21,9 @@ export class LogOutComponent implements OnInit {
     }
 
     logOut() {
-        // localStorage.removeItem('id_token');
+        localStorage.removeItem('id_token');
         this.tokenHolder.setUserName('');
-        // this.tokenHolder.setUserID('');
+        this.tokenHolder.setUserID('');
         localStorage.clear();
         this.router.navigate(['/login']);
     }

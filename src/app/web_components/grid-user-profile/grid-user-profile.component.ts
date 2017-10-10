@@ -120,6 +120,11 @@ export class GridUserProfileComponent implements OnInit {
     }
 
     ngOnInit() {
-        this.loadItems();
+        this.tokenHolder.idChange$.subscribe(item => {
+            this.usrID = item;
+        });
+        if (this.usrID) {
+            this.loadItems();
+        }
     }
 }

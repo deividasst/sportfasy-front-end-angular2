@@ -1,8 +1,10 @@
-<div id="main"  >
-        <div id="all_tour">
-            <app-over-all-tournaments-widget></app-over-all-tournaments-widget>
+<div id="main">
+    <div id="all_tour">
+        <p>
+            <b>My Teams Results</b>
+        </p>
+        <div *ngIf="teams">
+            <app-grid-user-profile [teams]="teams"></app-grid-user-profile>
         </div>
-        <div id="all_teams">
-            <app-over-all-teams-widget></app-over-all-teams-widget>
-        </div>
+    </div>
 </div>
