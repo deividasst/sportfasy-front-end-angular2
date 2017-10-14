@@ -9,8 +9,12 @@
             <p class="infotext">Current players: <a>{{this.data._users.length}} / {{data.max_players}}</a></p>
             <p class="infotext">Max teams allowed: <a>{{data.max_teams}}</a></p>
             <p class="infotext">Budget: <a>{{data.budget}}</a></p>
+            <div *ngIf="data._users.length == data.max_players">
+                <p class="infotext paddingtop">Status: <a style="color:red">Current tournament is full</a></p>
+            </div>
             <p class="infotext underline text-center">Tournament starts: <a>{{data.start| date: 'yyyy-MM-dd'}}</a></p>
             <p class="infotext underline text-center">Tournament ends: <a>{{data.end| date: 'yyyy-MM-dd'}}</a></p>
+
         </md-tab>
 
         <md-tab label="Tournament players list">
@@ -28,7 +32,7 @@
 
     </md-tab-group>
 
-    <div class="example-wrapper" *ngIf="check">
+    <div class="example-wrapper" *ngIf="check && this.data._users.length < data.max_players ">
         <button class="btn margintop" *ngIf="!opened" id="join" (click)="open()">join</button>
         <kendo-dialog title="Please confirm" *ngIf="opened" (close)="close('cancel')">
             <p style="margin: 30px; text-align: center;">Join tournament <b>{{data.name}}</b>?</p>
@@ -38,4 +42,5 @@
             </kendo-dialog-actions>
         </kendo-dialog>
     </div>
+
 </div>

@@ -55,28 +55,47 @@
 
         <!--</div>-->
 
-<div class="container">
-    <div class="centras">
-        <h2>Welcome to Sportfasy!<small>Login</small></h2>
-        <form>
+<!--<div class="container">-->
+    <!--<div class="centras">-->
+        <!--<h2>Welcome to Sportfasy!<small>Login</small></h2>-->
+        <!--<form>-->
 
-        <div class="group">
-        <input type="text" required name="email" [(ngModel)]="user.email" window.onload="this.value = ''">
-        <span class="highlight"></span>
-        <span class="bar"></span>
-        <label>Name</label>
-        </div>
+        <!--<div class="group">-->
+        <!--<input type="text" required name="email" [(ngModel)]="user.email" window.onload="this.value = ''">-->
+        <!--<span class="highlight"></span>-->
+        <!--<span class="bar"></span>-->
+        <!--<label>Name</label>-->
+        <!--</div>-->
 
-        <div class="group">
-        <input type="password" required  name="password" [(ngModel)]="user.password">
-        <span class="highlight"></span>
-        <span class="bar"></span>
-        <label>Email</label>
-        </div>
+        <!--<div class="group">-->
+        <!--<input type="password" required  name="password" [(ngModel)]="user.password">-->
+        <!--<span class="highlight"></span>-->
+        <!--<span class="bar"></span>-->
+        <!--<label>Email</label>-->
+        <!--</div>-->
 
-        <div class="error text-center"><span *ngIf="error">{{error}}</span></div><br>
-        <div class="text-center"><input class="btn button" type="submit" (click)="loginUser()" value="LOG IN"></div>
-        <p>Not a member yet? <a class="a" routerLink="/singup"><br>Join now!</a>   </p>
-        </form>
-    </div>
-</div>
+        <!--<div class="error text-center"><span *ngIf="error">{{error}}</span></div><br>-->
+        <!--<div class="text-center"><input class="btn button" type="submit" (click)="loginUser()" value="LOG IN"></div>-->
+        <!--<p>Not a member yet? <a class="a" routerLink="/singup"><br>Join now!</a>   </p>-->
+        <!--</form>-->
+    <!--</div>-->
+<!--</div>-->
+  <div class="container">
+  <div class="wrapper">
+      <div id="box">
+          <img src="https://image.freepik.com/free-icon/refresh_318-33117.jpg" alt="lock" />
+          <h2>Welcome to Sportfasy</h2>
+          <h3>Please sign in</h3>
+          <form>
+              <input type="text" placeholder="USERNAME" name="email" [(ngModel)]="user.email" />
+              <input type="text" placeholder="PASSWORD" type="password" required minlength="6" name="password" [(ngModel)]="user.password" />
+          </form>
+          <a href="#">forgot ?</a>
+          <input id="button" onclick="this.style.backgroundColor = '#df9700';" type="submit"  (click)="loginUser()"  value="Login"/>
+          <div class="error text-center"><span *ngIf="error">{{error}}</span></div><br>
+          <div class="signup">
+              <p>not a member ? <a routerLink="/singup">Join now!</a></p>
+          </div>
+      </div>
+  </div>
+  </div>

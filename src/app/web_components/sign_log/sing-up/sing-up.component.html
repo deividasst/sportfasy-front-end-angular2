@@ -1,114 +1,136 @@
 <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
-<div class="login-form">
+<!--<div class="login-form">-->
+    <!--<div class="container">-->
+        <!--<div class="row">-->
+            <!--<div class="col-md-offset-5 col-md-3">-->
+                <!--<div class="form-login">-->
+                    <!--<h4>Join us!</h4>-->
+                    <!--<form [formGroup]="form" #forma="ngForm" method="post" novalidate (ngSubmit)="onSubmit()">-->
+                        <!--<div class="form-group">-->
+                            <!--<label class="label" for="name">First Name:</label><br>-->
+                            <!--<div>-->
+                                <!--<input class="form-control" type="text" [formGroup]="form" id="name"-->
+                                       <!--formControlName="name" name="name" [(ngModel)]="user.name"-->
+                                       <!--onfocus="this.value = '';" placeholder="Name"><a href="#"></a><br>-->
+                                <!--<ul class="help-block error">-->
+                                    <!--<li *ngIf="form.controls.name.errors?.required && form.controls.name.dirty">This-->
+                                        <!--field is required-->
+                                    <!--</li>-->
+                                    <!--<li *ngIf="form.controls.name.errors?.minlength && form.controls.name.dirty || form.controls.name.errors?.maxlength && form.controls.name.dirty ">-->
+                                        <!--Minimum characters: 3, Maximum characters: 15-->
+                                    <!--</li>-->
+                                    <!--<li *ngIf="form.controls.name.errors?.validateUsername && form.controls.name.dirty">-->
+                                        <!--Username must not have any special characters-->
+                                    <!--</li>-->
+                                <!--</ul>-->
+                            <!--</div>-->
+                        <!--</div>-->
+                        <!--<div class="form-group">-->
+                            <!--<label class="label" for="surname">Last Name:</label><br>-->
+                            <!--<div>-->
+                                <!--<input class="form-control" [formGroup]="form" formControlName="surname" type="text"-->
+                                       <!--name="surname" [(ngModel)]="user.surname" onfocus="this.value = '';"-->
+                                       <!--placeholder="Surname"><a href="#"></a><br>-->
+                                <!--<ul class="help-block error">-->
+                                    <!--<li *ngIf="form.controls.surname.errors?.required && form.controls.surname.dirty">-->
+                                        <!--This field is required-->
+                                    <!--</li>-->
+                                    <!--<li *ngIf="form.controls.surname.errors?.minlength && form.controls.surname.dirty || form.controls.surname.errors?.maxlength && form.controls.surname.dirty ">-->
+                                        <!--Minimum characters: 3, Maximum characters: 15-->
+                                    <!--</li>-->
+                                    <!--<li *ngIf="form.controls.surname.errors?.validateUsername && form.controls.surname.dirty">-->
+                                        <!--Surname must not have any special characters-->
+                                    <!--</li>-->
+                                <!--</ul>-->
+                            <!--</div>-->
+                        <!--</div>-->
+                        <!--<div class="form-group">-->
+                            <!--<label class="label" for="password">Password:</label><br>-->
+                            <!--<div>-->
+                                <!--<input class="form-control" [formGroup]="form" formControlName="password" id="password"-->
+                                       <!--type="password" name="password" [(ngModel)]="user.password"-->
+                                       <!--onfocus="this.value = '';" placeholder="••••••••••••"><a href="#"></a><br>-->
+                                <!--<ul class="help-block error">-->
+                                    <!--<li *ngIf="form.controls.password.errors?.required && form.controls.password.dirty">-->
+                                        <!--This field is required-->
+                                    <!--</li>-->
+                                    <!--<li *ngIf="form.controls.password.errors?.minlength && form.controls.password.dirty || form.controls.password.errors?.maxlength && form.controls.password.dirty ">-->
+                                        <!--Minimum characters: 8, Maximum characters: 35-->
+                                    <!--</li>-->
+                                    <!--<li *ngIf="form.controls.password.errors?.validateUsername && form.controls.password.dirty">-->
+                                        <!--Password must not have any special characters-->
+                                    <!--</li>-->
+                                <!--</ul>-->
+                            <!--</div>-->
+                        <!--</div>-->
+                        <!--<div class="form-group">-->
+                            <!--<label class="label" for="cPassword">Confirm Password:</label><br>-->
+                            <!--<div>-->
+                                <!--<input class="form-control" [formGroup]="form" formControlName="cPassword"-->
+                                       <!--type="password" id="cPassword" name="cPassword" [(ngModel)]="user.cPassword"-->
+                                       <!--placeholder="••••••••••••"><br>-->
+                                <!--<ul class="help-block error">-->
+                                    <!--<li *ngIf="form.controls.cPassword.errors?.required && form.controls.cPassword.dirty">-->
+                                        <!--This field is required-->
+                                    <!--</li>-->
+                                    <!--<li *ngIf="form.errors?.matchingPasswords && form.controls.cPassword.dirty">Password-->
+                                        <!--do not match-->
+                                    <!--</li>-->
+                                <!--</ul>-->
+                            <!--</div>-->
+                        <!--</div>-->
+                        <!--<div class="alert alert-danger" *ngIf="form.controls.cPassword.errors?.MatchPassword">Password-->
+                            <!--not match-->
+                        <!--</div>-->
+
+                        <!--<div class="form-group">-->
+                            <!--<label class="label" for="email">Email:</label><br>-->
+                            <!--<div>-->
+                                <!--<input class="form-control" [formGroup]="form" formControlName="email" type="email"-->
+                                       <!--name="email" [(ngModel)]="user.email" required onfocus="this.value = '';"-->
+                                       <!--placeholder="Email address"><a href="#"></a>-->
+                                <!--<ul class="help-block error">-->
+                                    <!--<li *ngIf="form.controls.email.errors?.required && form.controls.email.dirty">This-->
+                                        <!--field is required-->
+                                    <!--</li>-->
+                                    <!--<li *ngIf="(form.controls.email.errors?.minlength && form.controls.email.dirty || form.controls.email.errors?.maxlength && form.controls.email.dirty ) && form.controls.email.dirty">-->
+                                        <!--Minimum characters: 5, Maximum characters: 30-->
+                                    <!--</li>-->
+                                    <!--<li *ngIf="form.controls.email.errors?.validateEmail && form.controls.email.dirty">-->
+                                        <!--This must be a valid e-mail-->
+                                    <!--</li>-->
+                                <!--</ul>-->
+                            <!--</div>-->
+                        <!--</div>-->
+
+                        <!--<div class="text-center">-->
+                            <!--<button type="submit" class="btn button " [disabled]="!forma.form.valid" (click)="addUser()">SIGN UP</button>-->
+                            <!--<h3 class="error">{{errorMsg}}</h3>-->
+                            <!--<p  style="color:white">Already have an account? <a class="a" routerLink="/login">Login</a></p>-->
+                        <!--</div>-->
+                    <!--</form>-->
+                <!--</div>-->
+            <!--</div>-->
+        <!--</div>-->
+    <!--</div>-->
+
     <div class="container">
-        <div class="row">
-            <div class="col-md-offset-5 col-md-3">
-                <div class="form-login">
-                    <h4>Join us!</h4>
-                    <form [formGroup]="form" #forma="ngForm" method="post" novalidate (ngSubmit)="onSubmit()">
-                        <div class="form-group">
-                            <label class="label" for="name">First Name:</label><br>
-                            <div>
-                                <input class="form-control" type="text" [formGroup]="form" id="name"
-                                       formControlName="name" name="name" [(ngModel)]="user.name"
-                                       onfocus="this.value = '';" placeholder="Name"><a href="#"></a><br>
-                                <ul class="help-block error">
-                                    <li *ngIf="form.controls.name.errors?.required && form.controls.name.dirty">This
-                                        field is required
-                                    </li>
-                                    <li *ngIf="form.controls.name.errors?.minlength && form.controls.name.dirty || form.controls.name.errors?.maxlength && form.controls.name.dirty ">
-                                        Minimum characters: 3, Maximum characters: 15
-                                    </li>
-                                    <li *ngIf="form.controls.name.errors?.validateUsername && form.controls.name.dirty">
-                                        Username must not have any special characters
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label class="label" for="surname">Last Name:</label><br>
-                            <div>
-                                <input class="form-control" [formGroup]="form" formControlName="surname" type="text"
-                                       name="surname" [(ngModel)]="user.surname" onfocus="this.value = '';"
-                                       placeholder="Surname"><a href="#"></a><br>
-                                <ul class="help-block error">
-                                    <li *ngIf="form.controls.surname.errors?.required && form.controls.surname.dirty">
-                                        This field is required
-                                    </li>
-                                    <li *ngIf="form.controls.surname.errors?.minlength && form.controls.surname.dirty || form.controls.surname.errors?.maxlength && form.controls.surname.dirty ">
-                                        Minimum characters: 3, Maximum characters: 15
-                                    </li>
-                                    <li *ngIf="form.controls.surname.errors?.validateUsername && form.controls.surname.dirty">
-                                        Surname must not have any special characters
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label class="label" for="password">Password:</label><br>
-                            <div>
-                                <input class="form-control" [formGroup]="form" formControlName="password" id="password"
-                                       type="password" name="password" [(ngModel)]="user.password"
-                                       onfocus="this.value = '';" placeholder="••••••••••••"><a href="#"></a><br>
-                                <ul class="help-block error">
-                                    <li *ngIf="form.controls.password.errors?.required && form.controls.password.dirty">
-                                        This field is required
-                                    </li>
-                                    <li *ngIf="form.controls.password.errors?.minlength && form.controls.password.dirty || form.controls.password.errors?.maxlength && form.controls.password.dirty ">
-                                        Minimum characters: 8, Maximum characters: 35
-                                    </li>
-                                    <li *ngIf="form.controls.password.errors?.validateUsername && form.controls.password.dirty">
-                                        Password must not have any special characters
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label class="label" for="cPassword">Confirm Password:</label><br>
-                            <div>
-                                <input class="form-control" [formGroup]="form" formControlName="cPassword"
-                                       type="password" id="cPassword" name="cPassword" [(ngModel)]="user.cPassword"
-                                       placeholder="••••••••••••"><br>
-                                <ul class="help-block error">
-                                    <li *ngIf="form.controls.cPassword.errors?.required && form.controls.cPassword.dirty">
-                                        This field is required
-                                    </li>
-                                    <li *ngIf="form.errors?.matchingPasswords && form.controls.cPassword.dirty">Password
-                                        do not match
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="alert alert-danger" *ngIf="form.controls.cPassword.errors?.MatchPassword">Password
-                            not match
-                        </div>
-
-                        <div class="form-group">
-                            <label class="label" for="email">Email:</label><br>
-                            <div>
-                                <input class="form-control" [formGroup]="form" formControlName="email" type="email"
-                                       name="email" [(ngModel)]="user.email" required onfocus="this.value = '';"
-                                       placeholder="Email address"><a href="#"></a>
-                                <ul class="help-block error">
-                                    <li *ngIf="form.controls.email.errors?.required && form.controls.email.dirty">This
-                                        field is required
-                                    </li>
-                                    <li *ngIf="(form.controls.email.errors?.minlength && form.controls.email.dirty || form.controls.email.errors?.maxlength && form.controls.email.dirty ) && form.controls.email.dirty">
-                                        Minimum characters: 5, Maximum characters: 30
-                                    </li>
-                                    <li *ngIf="form.controls.email.errors?.validateEmail && form.controls.email.dirty">
-                                        This must be a valid e-mail
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-
-                        <div class="text-center">
-                            <button type="submit" class="btn button " [disabled]="!forma.form.valid" (click)="addUser()">SIGN UP</button>
-                            <h3 class="error">{{errorMsg}}</h3>
-                            <p  style="color:white">Already have an account? <a class="a" routerLink="/login">Login</a></p>
-                        </div>
-                    </form>
+        <div class="wrapper">
+            <div id="box">
+                <img src="https://image.freepik.com/free-icon/refresh_318-33117.jpg" alt="lock" />
+                <h2>Welcome to Sportfasy</h2>
+                <h3>Please register</h3>
+                <form [formGroup]="form" #forma="ngForm" method="post" novalidate (ngSubmit)="onSubmit()">
+                    <input type="text" placeholder="FIRST NAME" name="name" [(ngModel)]="user.name" formControlName="name" [formGroup]="form" formControlName="name" />
+                    <input type="text" placeholder="LAST NAME" name="surname" [(ngModel)]="user.surname" formControlName="surname" [formGroup]="form"  formControlName="surname"/>
+                    <input type="text" placeholder="EMAIL" name="email" name="email" [(ngModel)]="user.email" [formGroup]="form"  formControlName="email" />
+                    <input type="text" placeholder="PASSWORD" type="password" name="password" [(ngModel)]="user.password" [formGroup]="form" formControlName="password" />
+                    <input type="text" placeholder="CONFIRM PASSWORD" type="password" required minlength="6" name="password" [(ngModel)]="user.cPassword" [formGroup]="form" formControlName="cPassword"/>
+                </form><br>
+                <input id="button" onclick="this.style.backgroundColor = '#df9700';" type="submit"  (click)="addUser()"  value="Login"/>
+                <div class="error text-center"><span *ngIf="errorMsg">{{errorMsg}}</span></div><br>
+                <div class="signup">
+                    <p>already a member ? <a routerLink="/login">Login here!</a></p>
                 </div>
             </div>
         </div>
