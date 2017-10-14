@@ -53,6 +53,7 @@ export class TournamentDialogComponent implements OnInit {
                 this.check = false;
             }
         }
+        console.log(this.data._users.length);
     }
 
     // Adds user to tournament then join btn is pressed
@@ -72,3 +73,5 @@ export class TournamentDialogComponent implements OnInit {
 
     }
 }
+
+

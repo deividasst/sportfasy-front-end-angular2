@@ -6,7 +6,7 @@
             <p class="infotext paddingtop">Name: <a>{{data.name}}</a></p>
             <p class="infotext">Master: <a class="up">{{data._tournament_master.name}}
                 {{data._tournament_master.surname}}</a></p>
-            <p class="infotext">Max players allowed: <a>{{data.max_players}}</a></p>
+            <p class="infotext">Current players: <a>{{this.data._users.length}} / {{data.max_players}}</a></p>
             <p class="infotext">Max teams allowed: <a>{{data.max_teams}}</a></p>
             <p class="infotext">Budget: <a>{{data.budget}}</a></p>
             <p class="infotext underline text-center">Tournament starts: <a>{{data.start| date: 'yyyy-MM-dd'}}</a></p>
