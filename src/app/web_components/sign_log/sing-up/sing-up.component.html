@@ -121,13 +121,65 @@
                 <h2>Welcome to Sportfasy</h2>
                 <h3>Please register</h3>
                 <form [formGroup]="form" #forma="ngForm" method="post" novalidate (ngSubmit)="onSubmit()">
-                    <input type="text" placeholder="FIRST NAME" name="name" [(ngModel)]="user.name" formControlName="name" [formGroup]="form" formControlName="name" />
+                    <input type="text" placeholder="FIRST NAME" name="name" [(ngModel)]="user.name" formControlName="name" [formGroup]="form" formControlName="name" maxlength="15"/>
+                    <ul class="help-block error">
+                        <li *ngIf="form.controls.name.errors?.required && form.controls.name.dirty">This
+                        field is required
+                        </li>
+                        <li *ngIf="form.controls.name.errors?.minlength && form.controls.name.dirty || form.controls.name.errors?.maxlength && form.controls.name.dirty ">
+                        Minimum characters: 3, Maximum characters: 15
+                        </li>
+                        <li *ngIf="form.controls.name.errors?.validateUsername && form.controls.name.dirty">
+                        Username must not have any special characters
+                        </li>
+                    </ul>
                     <input type="text" placeholder="LAST NAME" name="surname" [(ngModel)]="user.surname" formControlName="surname" [formGroup]="form"  formControlName="surname"/>
+                    <ul class="help-block error">
+                        <li *ngIf="form.controls.surname.errors?.required && form.controls.surname.dirty">
+                        This field is required
+                        </li>
+                        <li *ngIf="form.controls.surname.errors?.minlength && form.controls.surname.dirty || form.controls.surname.errors?.maxlength && form.controls.surname.dirty ">
+                        Minimum characters: 3, Maximum characters: 15
+                        </li>
+                        <li *ngIf="form.controls.surname.errors?.validateUsername && form.controls.surname.dirty">
+                        Surname must not have any special characters
+                        </li>
+                    </ul>
                     <input type="text" placeholder="EMAIL" name="email" name="email" [(ngModel)]="user.email" [formGroup]="form"  formControlName="email" />
+                        <ul class="help-block error">
+                            <li *ngIf="form.controls.email.errors?.required && form.controls.email.dirty">This
+                            field is required
+                            </li>
+                            <li *ngIf="(form.controls.email.errors?.minlength && form.controls.email.dirty || form.controls.email.errors?.maxlength && form.controls.email.dirty ) && form.controls.email.dirty">
+                            Minimum characters: 5, Maximum characters: 30
+                            </li>
+                            <li *ngIf="form.controls.email.errors?.validateEmail && form.controls.email.dirty">
+                            This must be a valid e-mail
+                            </li>
+                        </ul>
                     <input type="text" placeholder="PASSWORD" type="password" name="password" [(ngModel)]="user.password" [formGroup]="form" formControlName="password" />
+                        <ul class="help-block error">
+                            <li *ngIf="form.controls.password.errors?.required && form.controls.password.dirty">
+                            This field is required
+                            </li>
+                            <li *ngIf="form.controls.password.errors?.minlength && form.controls.password.dirty || form.controls.password.errors?.maxlength && form.controls.password.dirty ">
+                            Minimum characters: 5, Maximum characters: 15
+                            </li>
+                            <li *ngIf="form.controls.password.errors?.validateUsername && form.controls.password.dirty">
+                            Password must not have any special characters
+                            </li>
+                        </ul>
                     <input type="text" placeholder="CONFIRM PASSWORD" type="password" required minlength="6" name="password" [(ngModel)]="user.cPassword" [formGroup]="form" formControlName="cPassword"/>
+                        <ul class="help-block error">
+                            <li *ngIf="form.controls.cPassword.errors?.required && form.controls.cPassword.dirty">
+                            This field is required
+                            </li>
+                            <li *ngIf="form.errors?.matchingPasswords && form.controls.cPassword.dirty">Password
+                            do not match
+                            </li>
+                        </ul>
                 </form><br>
-                <input id="button" onclick="this.style.backgroundColor = '#df9700';" type="submit"  (click)="addUser()"  value="Login"/>
+                <input id="button"  onclick="this.style.backgroundColor = '#df9700';" [disabled]="!forma.form.valid"  type="submit"  (click)="addUser()"  value="Register"/>
                 <div class="error text-center"><span *ngIf="errorMsg">{{errorMsg}}</span></div><br>
                 <div class="signup">
                     <p>already a member ? <a routerLink="/login">Login here!</a></p>
