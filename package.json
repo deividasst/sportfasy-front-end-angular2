@@ -18,7 +18,7 @@
   },
   "private": true,
   "dependencies": {
-    "@angular/animations": "^4.3.2",
+    "@angular/animations": "^4.4.4",
     "@angular/cdk": "^2.0.0-beta.8",
     "@angular/common": "^4.3.2",
     "@angular/compiler": "^4.3.2",
@@ -40,6 +40,7 @@
     "@progress/kendo-angular-inputs": "^1.0.7",
     "@progress/kendo-angular-intl": "^1.2.1",
     "@progress/kendo-angular-l10n": "^1.0.2",
+    "@progress/kendo-angular-scrollview": "^1.0.5",
     "@progress/kendo-data-query": "^1.0.5",
     "@progress/kendo-drawing": "^1.1.2",
     "@progress/kendo-theme-default": "^2.38.1",

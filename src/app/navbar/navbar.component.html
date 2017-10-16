@@ -3,24 +3,24 @@
         <ul id="sidemenu" class="sidebar-nav">
             <li>
                 <div class="profile prof">
-                    <p class="p"><b>Hello, </b><span class="orange"> {{name}}</span></p>
-                    <p class="p"><b>Points:</b><span class="orange"> {{points}}</span></p>
-                    <a>
-                        <span><i class="fa fa-sign-out orange" aria-hidden="true"></i></span>
-                        <span class="orange" *ngIf="!opened" (click)="open()">LogOut</span>
-                        <div id="kendo">
-                            <div class="example-wrapper">
-                                <kendo-dialog title="Please confirm" *ngIf="opened" (close)="close('cancel')">
-                                    <p style="margin: 30px; text-align: center;">LogOut user <b>{{name}}</b>?</p>
-                                    <kendo-dialog-actions>
-                                        <button kendoButton (click)="close('no')">Cancel</button>
-                                        <button kendoButton (click)="logOut()" primary="true">LogOut</button>
-                                    </kendo-dialog-actions>
-                                </kendo-dialog>
-                            </div>
+                <p class="p"><b>Hello, </b><span class="orange"> {{name}}</span></p>
+                <p class="p"><b>Points:</b><span class="orange"> {{points}}</span></p>
+                <a>
+                    <span><i class="fa fa-sign-out orange" aria-hidden="true"></i></span>
+                    <span class="orange" *ngIf="!opened" (click)="open()">LogOut</span>
+                    <div id="kendo">
+                        <div class="example-wrapper">
+                            <kendo-dialog title="Please confirm" *ngIf="opened" (close)="close('cancel')">
+                                <p style="margin: 30px; text-align: center;">LogOut user <b>{{name}}</b>?</p>
+                                <kendo-dialog-actions>
+                                    <button kendoButton (click)="close('no')">Cancel</button>
+                                    <button kendoButton (click)="logOut()" primary="true">LogOut</button>
+                                </kendo-dialog-actions>
+                            </kendo-dialog>
                         </div>
-                    </a>
-                </div>
+                    </div>
+                </a>
+            </div>
                 <a class="icon" routerLink="/dashboard" routerLinkActive="active-link">
                     <span class="sidebar-icon"><i class="fa fa-newspaper-o"></i></span>
                     <span class="sidebar-title2">Dashboard</span>

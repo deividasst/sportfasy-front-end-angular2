@@ -7,6 +7,7 @@ import {KendoUiSettings} from '../shared/kendo-ui-settings.srv';
 import {Team} from '../shared/Team';
 import {TokenHolderServise} from '../shared/tokenholder.srv';
 import {PopupComponent} from '../../popup/popup.component';
+import {PointsHolderServise} from '../shared/pointsholder';
 
 @Component({
     selector: 'app-dashboard',
@@ -18,6 +19,8 @@ export class DashboardComponent implements OnInit {
     userId: string;
     tournaments: Tournament[];
     teams: Team[];
+    name: string;
+    points;
 
     // Kendo grid params
     gridView: GridDataResult;
@@ -25,13 +28,32 @@ export class DashboardComponent implements OnInit {
     pageSize: number;
     skip: number;
 
+    //ScrollView Params
+    public items: any[] = [
+        { title: 'F-1', url: 'https://acac.com/app/uploads/2016/02/Basketball.jpg', href: '/userprofile' },
+        { title: 'Basketball', url: 'https://acac.com/app/uploads/2016/02/Basketball.jpg', href: '/userprofile' },
+        { title: 'Football', url: 'https://acac.com/app/uploads/2016/02/Basketball.jpg', href: '/userprofile' }
+    ];
+    public width: string = "1050px";
+    public height: string = "200px";
+    public animate: boolean = true;
+
     constructor(private ds: DService,
                 public dialog: MdDialog,
                 private  kendoSettings: KendoUiSettings,
-                private tokenHolder: TokenHolderServise) {
-        this.pageSize = this.kendoSettings.getPageSize();
-        this.skip = this.kendoSettings.getSkip();
-    }
+                private tokenHolder: TokenHolderServise,
+                private pointsHolder: PointsHolderServise) {
+                this.pageSize = this.kendoSettings.getPageSize();
+                this.skip = this.kendoSettings.getSkip();
+                this.tokenHolder.nameChange$.subscribe(item => this.name = item);
+                this.tokenHolder.idChange$.subscribe(userId => {
+                this.userId = userId;
+                if (localStorage.getItem('id_token')) {
+                this.getUserPoints(this.tokenHolder.getUserID());
+                }
+                });
+                this.pointsHolder.pointsChange$.subscribe(item => this.points = item);
+                 }
 
     protected pageChange(event: PageChangeEvent): void {
         this.skip = event.skip;
@@ -58,6 +80,16 @@ export class DashboardComponent implements OnInit {
                 }
             }
         });
+        this.ds.getUserLedger(this.userId).subscribe(points => {
+            if (typeof points[0] !== 'undefined') {
+                this.points = points[0].sum;
+                this.pointsHolder.setPoints(points[0].sum);
+            } else {
+                this.points = 0;
+                this.pointsHolder.setPoints(0);
+            }
+        });
+        this.pointsHolder.pointsChange$.subscribe(item => this.points = item);
     }
 
     getUserTurnaments(userId): void {
@@ -77,5 +109,14 @@ export class DashboardComponent implements OnInit {
         this.ds.teamResults(team_master_id, ended_tournaments).subscribe(team => {
             this.teams = team;
         })
+    }
+    getUserPoints(userId): void {
+        this.ds.getUserLedger(userId).subscribe(points => {
+            if (typeof points[0] !== 'undefined') {
+                this.pointsHolder.setPoints(points[0].sum);
+            } else {
+                this.pointsHolder.setPoints(0);
+            }
+        });
     }
 }

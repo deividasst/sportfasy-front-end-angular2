@@ -4,7 +4,7 @@ import {Injectable} from '@angular/core';
 @Injectable()
 export class KendoUiSettings {
 
-    private _pageSize = 3;
+    private _pageSize = 4;
     private _skip = 0;
 
 

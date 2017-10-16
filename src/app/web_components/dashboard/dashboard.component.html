@@ -1,4 +1,5 @@
 <div id="main">
+    <h1>DASHBOARD</h1>
     <div id="all_tour">
         <p>
             <b>My Teams Results</b>
@@ -7,4 +8,28 @@
             <app-grid-user-profile [teams]="teams"></app-grid-user-profile>
         </div>
     </div>
+    <div class="profile">
+        <div>
+            <p class="p">USER PROFILE</p>
+            <br>
+            <div id="circle"></div>
+            <br>
+            <p class="p"><b>Hello, </b><span class="orange"> {{name}}</span></p>
+            <p class="p"><b>Points:</b><span class="orange"> {{points}}</span></p>
+        </div>
+    </div>
+    <kendo-scrollview class="scroll"
+            [data]="items"
+            [width]="width"
+            [height]="height"
+            [animate]="animate"
+            [arrows]="true"
+            [pageable]="true">
+            <ng-template let-item="item">
+                <a routerLink='{{item.href}}'>
+                    <h2 class="demo-title">{{item.title}}</h2>
+                    <img src='{{item.url}}' alt='{{item.title}}' [ngStyle]="{minWidth: width}" draggable="false" />
+                </a>
+            </ng-template>
+    </kendo-scrollview>
 </div>

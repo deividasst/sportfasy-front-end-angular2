@@ -53,6 +53,7 @@ import { TournamentTeamComponentComponent } from './web_components/game_componen
 import { GridUserProfileComponent } from './web_components/grid-user-profile/grid-user-profile.component';
 import { TeamListGridComponent } from './web_components/game_components/tournment/team-list-grid/team-list-grid.component';
 import {PointsHolderServise} from './web_components/shared/pointsholder';
+import { ScrollViewModule } from '@progress/kendo-angular-scrollview';
 
 @NgModule({
   declarations: [
@@ -88,6 +89,7 @@ import {PointsHolderServise} from './web_components/shared/pointsholder';
     imports: [
         BrowserModule,
         HttpModule,
+        ScrollViewModule,
         JsonpModule,
         FormsModule,
         ReactiveFormsModule,

@@ -1,6 +1,25 @@
 <div class="row header" >
 
     <header>
+        <div id="first">
         <p class="logo">Sportfasy</p>
+        </div>
+        <div id="second">
+        <a>
+            <span class="i" *ngIf="!opened" (click)="open()">LogOut </span>
+            <span><i class="glyphicon glyphicon-log-out log" aria-hidden="true"></i></span>
+            <div id="kendo">
+                <div class="example-wrapper">
+                    <kendo-dialog title="Please confirm" *ngIf="opened" (close)="close('cancel')">
+                        <p style="margin: 30px; text-align: center;">LogOut user <b>{{name}}</b>?</p>
+                        <kendo-dialog-actions>
+                            <button kendoButton (click)="close('no')">Cancel</button>
+                            <button kendoButton (click)="logOut()" primary="true">LogOut</button>
+                        </kendo-dialog-actions>
+                    </kendo-dialog>
+                </div>
+            </div>
+        </a>
+        </div>
     </header>
 </div>
