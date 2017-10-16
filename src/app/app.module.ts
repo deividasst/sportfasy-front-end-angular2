@@ -14,6 +14,7 @@ import {ListTournmentComponent} from './web_components/game_components/tournment
 import {ListTeamComponent} from './web_components/game_components/team/list-team/list-team.component';
 import {CreateTeamComponent} from './web_components/game_components/team/create-team/create-team.component';
 import {DashboardComponent} from './web_components/dashboard/dashboard.component';
+import {LobbyComponent} from './web_components/lobby/lobby.component';
 import { AlertModule } from 'ngx-bootstrap';
 import {DService} from './web_components/shared/data.srv';
 import {httpFactory} from './http.factory';
@@ -55,6 +56,7 @@ import { TeamListGridComponent } from './web_components/game_components/tournmen
 import {PointsHolderServise} from './web_components/shared/pointsholder';
 import { ScrollViewModule } from '@progress/kendo-angular-scrollview';
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -85,6 +87,7 @@ import { ScrollViewModule } from '@progress/kendo-angular-scrollview';
     TournamentTeamComponentComponent,
     TeamListGridComponent,
     GridUserProfileComponent,
+    LobbyComponent,
     ],
     imports: [
         BrowserModule,
@@ -141,7 +144,10 @@ import { ScrollViewModule } from '@progress/kendo-angular-scrollview';
                 component: CreateTeamComponent
             },
             {
-                path: 'dashboard',
+                path: 'lobby',
+                component: LobbyComponent
+            },
+            {   path: 'dashboard',
                 component: DashboardComponent
             },
             {
