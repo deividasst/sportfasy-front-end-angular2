@@ -1,27 +1,101 @@
-<div>
+
+  <!--<div class="container">-->
+    <!--<div class="row">-->
+      <!--<div class="col-md-offset-5 col-md-3">-->
+        <!--<div class="form-login">-->
+          <!--<h4>Welcome to Sportfasy!</h4>-->
+          <!--<form method="post" novalidate="">-->
+
+
+            <!--<label class="label" for="email">Email:</label><br>-->
+            <!--<input class="form-control input-sm chat-input" name="email" [(ngModel)]="user.email">-->
+
+
+            <!--<label class="label" for="password">Password:</label><br>-->
+            <!--<input class="form-control input-sm chat-input" type="password" required minlength="6" name="password"-->
+                   <!--[(ngModel)]="user.password"><br>-->
+
+              <!--<div class="error text-center"><span *ngIf="error">{{error}}</span></div><br>-->
+            <!--<div class="text-center"><input class="btn button" type="submit" (click)="loginUser()" value="LOG IN"></div>-->
+            <!--<p>Not a member yet? <a class="a" routerLink="/singup"><br>Join now!</a></p>-->
+          <!--</form>-->
+        <!--</div>-->
+      <!--</div>-->
+    <!--</div>-->
+  <!--</div>-->
+
+<!--</div>-->
+    <!--<div class="container ">-->
+
+
+        <!--&lt;!&ndash;<div class="form-login">&ndash;&gt;-->
+        <!--<div class="center">-->
+<!--<form>-->
+
+    <!--<div class="group">-->
+        <!--<input type="text" required name="email" [(ngModel)]="user.email">-->
+        <!--<span class="highlight"></span>-->
+        <!--<span class="bar"></span>-->
+        <!--<label>Name</label>-->
+    <!--</div>-->
+
+    <!--<div class="group">-->
+        <!--<input type="password" required minlength="6" name="password" [(ngModel)]="user.password">-->
+        <!--<span class="highlight"></span>-->
+        <!--<span class="bar"></span>-->
+        <!--<label>Email</label>-->
+    <!--</div>-->
+
+    <!--<div class="error text-center"><span *ngIf="error">{{error}}</span></div><br>-->
+    <!--<div class="text-center"><input class="btn button" type="submit" (click)="loginUser()" value="LOG IN"></div>-->
+    <!--<p>Not a member yet? <a class="a" routerLink="/singup"><br>Join now!</a></p>-->
+<!--</form>-->
+        <!--</div>-->
+        <!--&lt;!&ndash;</div>&ndash;&gt;-->
+
+        <!--</div>-->
+
+<!--<div class="container">-->
+    <!--<div class="centras">-->
+        <!--<h2>Welcome to Sportfasy!<small>Login</small></h2>-->
+        <!--<form>-->
+
+        <!--<div class="group">-->
+        <!--<input type="text" required name="email" [(ngModel)]="user.email" window.onload="this.value = ''">-->
+        <!--<span class="highlight"></span>-->
+        <!--<span class="bar"></span>-->
+        <!--<label>Name</label>-->
+        <!--</div>-->
+
+        <!--<div class="group">-->
+        <!--<input type="password" required  name="password" [(ngModel)]="user.password">-->
+        <!--<span class="highlight"></span>-->
+        <!--<span class="bar"></span>-->
+        <!--<label>Email</label>-->
+        <!--</div>-->
+
+        <!--<div class="error text-center"><span *ngIf="error">{{error}}</span></div><br>-->
+        <!--<div class="text-center"><input class="btn button" type="submit" (click)="loginUser()" value="LOG IN"></div>-->
+        <!--<p>Not a member yet? <a class="a" routerLink="/singup"><br>Join now!</a>   </p>-->
+        <!--</form>-->
+    <!--</div>-->
+<!--</div>-->
   <div class="container">
-    <div class="row">
-      <div class="col-md-offset-5 col-md-3">
-        <div class="form-login">
-          <h4>Welcome to Sportfasy!</h4>
-          <form method="post" novalidate="">
-
-
-            <label class="label" for="email">Email:</label><br>
-            <input class="form-control input-sm chat-input" name="email" [(ngModel)]="user.email">
-
-
-            <label class="label" for="password">Password:</label><br>
-            <input class="form-control input-sm chat-input" type="password" required minlength="6" name="password"
-                   [(ngModel)]="user.password"><br>
-
-              <div class="error text-center"><span *ngIf="error">{{error}}</span></div><br>
-            <div class="text-center"><input class="btn button" type="submit" (click)="loginUser()" value="LOG IN"></div>
-            <p>Not a member yet? <a class="a" routerLink="/singup"><br>Join now!</a></p>
+  <div class="wrapper">
+      <div id="box">
+          <img src="https://image.freepik.com/free-icon/refresh_318-33117.jpg" alt="lock" />
+          <h2>Welcome to Sportfasy</h2>
+          <h3>Please sign in</h3>
+          <form>
+              <input type="text" placeholder="EMAIL" name="email" [(ngModel)]="user.email" />
+              <input type="text" placeholder="PASSWORD" type="password" required minlength="6" name="password" [(ngModel)]="user.password" />
           </form>
-        </div>
+          <a href="#">forgot ?</a>
+          <input id="button" onclick="this.style.backgroundColor = '#df9700';" type="submit"  (click)="loginUser()"  value="Login"/>
+          <div class="error text-center"><span *ngIf="error">{{error}}</span></div><br>
+          <div class="signup">
+              <p>not a member ? <a routerLink="/singup">Join now!</a></p>
+          </div>
       </div>
-    </div>
   </div>
-
-</div>
+  </div>

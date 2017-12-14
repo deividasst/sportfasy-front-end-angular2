@@ -1,70 +1,318 @@
+//
+//body
+//  height: 100% !important
+//  width: 100%
+//  margin-left: auto
+//  margin-right: auto
+//  background-color: #dde7e9
+//  -webkit-font-smoothing: antialiased
+//  font: normal 14px Roboto,arial,sans-serif
+//
+////
+////
+////h4
+////  border: 0 solid #dde7e9
+////  color: #ffad01
+////  border-bottom-width: 1px
+////  padding-bottom: 10px
+////  text-align: center
+////
+//
+//.button
+//  background-color: #ffad01
+//  color: #212121
+//  border: 0px
+//h2
+//  text-align: center
+//  margin-bottom: 50px
+//  font-weight: bold
+//  margin-right: 10%
+//
+//h2 small
+//  font-weight: normal
+//  color: #888
+//  display: block
+//  margin-right: 10%
+//
+//p
+//  padding-top: 5%
+//  color: black
+//  text-align: center
+//  margin-right: 10%
+//.a
+//  color: #ffad01
+//  text-align: center
+//
+//.error
+//  color: red
+//  font-size: 80%
+//  margin: 0
+//  padding: 0
+//
+//.label
+//  color: white
+//
+//.group
+//  position: relative
+//  margin-bottom: 45px
+//
+//input
+//
+//  font-size: 18px
+//  padding: 10px 10px 10px 5px
+//  display: block
+//  width: 300px
+//  border: none
+//  border-bottom: 1px solid #757575
+//
+//input:focus
+//  outline: none
+//
+/////* LABEL ======================================= */
+//label
+//  color: #999
+//  font-size: 18px
+//  font-weight: normal
+//  position: absolute
+//  pointer-events: none
+//  left: 5px
+//  top: 10px
+//  transition: 0.2s ease all
+//  -moz-transition: 0.2s ease all
+//  -webkit-transition: 0.2s ease all
+//
+//
+///* active state */
+//input:focus ~ label, input:valid ~ label
+//  top: -20px
+//  font-size: 14px
+//  color: #ffad01 //#5264AE
+//
+//
+///* BOTTOM BARS ================================= */
+//.bar
+//  position: relative
+//  display: block
+//  width: 300px
+//.bar:before, .bar:after
+//  content: ''
+//  height: 2px
+//  width: 0
+//  bottom: 1px
+//  position: absolute
+//  background: #ffad01 //#5264AE
+//  transition: 0.2s ease all
+//  -moz-transition: 0.2s ease all
+//  -webkit-transition: 0.2s ease all
+////
+//.bar:before
+//  left: 50%
+//
+//.bar:after
+//  right: 50%
+//
+//
+///* active state */
+//input:focus ~ .bar:before, input:focus ~ .bar:after
+//  width: 50%
+//
+//
+///* HIGHLIGHTER ================================== */
+//.highlight
+//  position: absolute
+//  height: 60%
+//  width: 100px
+//  top: 25%
+//  left: 0
+//  pointer-events: none
+//  opacity: 0.5
+//
+//
+///* active state */
+//input:focus ~ .highlight
+//    -webkit-animation: inputHighlighter 0.3s ease
+//    -moz-animation: inputHighlighter 0.3s ease
+//    animation: inputHighlighter 0.3s ease
+//
+//
+///* ANIMATIONS ================ */
+//@-webkit-keyframes inputHighlighter
+//  from
+//     background: #5264AE
+//  to
+//    width: 0
+//    background: transparent
+//
+//@-moz-keyframes inputHighlighter
+//  from
+//    background: #5264AE
+//  to
+//     width: 0
+//     background: transparent
+//
+//@keyframes inputHighlighter
+//  from
+//    background: #5264AE
+//  to
+//    width: 0
+//    background: transparent
+//
+//
+//
+//.container
+//  text-align: center
+//  margin:  auto
+//.centras
+//  text-align: center
+//  align: center
+//  padding-left: 29%
+//  padding-top: 20%
+//  font-family: 'Roboto'
+//  width: 650px
+//  margin: 30px auto 0
+//  display: block
+//  background: #FFF
 
-body
-  background-color: #dde7e9
-  -webkit-font-smoothing: antialiased
-  font: normal 14px Roboto,arial,sans-serif
 
+@import url(https://fonts.googleapis.com/css?family=Montserrat:400,700)
+
+$gray: #666
+$light-gray: #ccc
 
 .container
-  overflow: hidden
-  padding: 25px
-  position: fixed
-  min-width: 280.2vh
+  padding-left: 20%
+  //padding-top: //200px
+  text-align: center
+  margin: 0 auto
+  outline: none
+  width: 100%
+  height: 100% !important
+  margin: 50px auto
+  background: white
+  box-sizing: border-box
+  font-family: 'Montserrat', sans-serif
+
+#wrapper
+  width: 100%
   height: 100%
-  background-color: #f5f5f5
+  margin: 0 auto
 
-.form-login
-  width: 200px
-  position: fixed
-  left: 50%
-  top: 25%
-  margin-top: -25px
-  margin-left: -100px
-  background-color: #212121
-  padding-top: 10px
-  padding-bottom: 20px
-  padding-left: 20px
-  padding-right: 20px
-  border-radius: 15px
-  border-color: #d2d2d2
-  border-width: 5px
-  box-shadow: 0 1px 0 #cfcfcf
+#box
+  width: 320px
+  height: auto
+  margin: 0 auto
+  background: #fff
+  border: thin solid #ededed
 
-h4
-  border: 0 solid #dde7e9
-  color: #ffad01
-  border-bottom-width: 1px
-  padding-bottom: 10px
+#box > img
+  width: 16px
+  height: auto
+  display: block
+  margin: 0 auto
+  padding: 30px 0 20px 0
+
+#box > h3
+  text-transform: uppercase
+  text-align: center
+  font-size: .9em
+  color: $gray
+  margin: 0 0 35px 0
+
+#box > form
+  width: 100%
+  height: auto
+  margin: 0 auto
   text-align: center
 
-.form-control
-  border-radius: 10px
+#box > form > input
+  display: inline-block
+  width: 260px
+  height: 50px
+  margin: 5px auto
+  padding: 15px
+  box-sizing: border-box
+  font-size: .8em
+  border: 1.5px solid #cccccc
+  transition: all .2s ease
 
-.wrapper
+#box > form > input:focus
+  border: thin solid #015b7e
+  outline: none
+
+::-webkit-input-placeholder
+  color: $light-gray
+  font-weight: 700
+  font-size: .9em
+
+
+#box > a
+  display: block
+  margin: 0
+  padding: 5px 0 15px 0
+  width: 260px
+  height: 20px
+  margin: 0 auto
+  text-align: right
+  text-transform: uppercase
+  font-size: .7em
+  color: $light-gray
+  font-weight: 400
+
+#box > input
+  width: 260px
+  height: 50px
+  background: #015b7e
+  border: none
+  outline: none
+  margin: 0 auto
+  display: block
+  color: #fff
+  text-transform: uppercase
   text-align: center
+  margin-bottom: 20px
+  border-radius: 3px
+  cursor: pointer
+  font-weight: 700
+  font-size: .7em
+  transition: all .2s ease
 
-.button
-  background-color: #ffad01
-  color: #212121
-  border: 0px
+#box > input:hover
+  background: #014965
+
+#box > .signup
+  width: 100%
+  height: auto
+  border: none
+  background: #f5f5f5
+  outline: none
+  margin: 0 auto
+  padding: 20px
+  display: block
+  color: $gray
+  text-transform: uppercase
+  text-align: center
+  box-sizing: border-box
+  font-size: .8em
+
+#box > .signup p,a
+  font-size: .8em
+  text-decoration: none
+
+#box > .signup p
+  color: $light-gray
+
+#box > .signup a
+  text-decoration: none
+  color: #015b7e
+  font-size: 1em
+  padding-left: 25px
 
 .row
-  padding-left: 40%
-p
-  padding-top: 5%
-  color: white
-  text-align: center
-.a
-  color: #ffad01
-  text-align: center
+  height: 100% !important
+  width: 100%
+  background-color: black
 
-.error
-  color: red
-  font-size: 80%
-  margin: 0
-  padding: 0
-
-.label
-  color: white
-
-
+#button
+  background-color: #ffad01 !important
+#button hover
+  background-color: black

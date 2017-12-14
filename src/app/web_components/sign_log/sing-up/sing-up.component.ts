@@ -26,17 +26,17 @@ export class SingUpComponent implements OnInit {
         this.form = fb.group({
 
             name: ['', Validators.compose([Validators.required,
-                Validators.minLength(5), // Minimum length is 5 characters
-                Validators.maxLength(30), // Maximum length is 30 characters
+                Validators.minLength(6), // Minimum length is 5 characters
+                Validators.maxLength(15), // Maximum length is 30 characters
                 this.validateUsername])],
             surname: ['', Validators.compose([Validators.required,
-                Validators.minLength(5), // Minimum length is 5 characters
-                Validators.maxLength(35), // Maximum length is 30 characters
+                Validators.minLength(3), // Minimum length is 5 characters
+                Validators.maxLength(15), // Maximum length is 30 characters
                 this.validateUsername])],
             password: ['', Validators.compose([
                 Validators.required, // Field is required
-                Validators.minLength(3), // Minimum length is 8 characters
-                Validators.maxLength(35), // Maximum length is 35 characters
+                Validators.minLength(5), // Minimum length is 8 characters
+                Validators.maxLength(15), // Maximum length is 35 characters
                 this.validateUsername // Custom validation
             ])],
             cPassword: ['', Validators.required],
@@ -113,6 +113,7 @@ export class SingUpComponent implements OnInit {
     }
 
     addUser(user) {
+        console.log('lal');
         this.ds.registerUser(JSON.stringify(this.user))
             .subscribe(obj => this.router.navigate(['/login']));
     }
